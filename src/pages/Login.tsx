@@ -67,9 +67,13 @@ export default function Login() {
               <Link to="/">비밀번호 찾기</Link>
             </div>
           </div>
-          <input type="submit" value="로그인" className="login-btn" />
+          <Link to="/home" className="login-btn">
+            로그인
+          </Link>
           {/* TODO: 클릭 시 회원가입 페이지로 이동 */}
-          <input type="button" value="회원가입" className="login-btn" />
+          <Link to="/signup" className="login-btn">
+            회원가입
+          </Link>
         </form>
       </div>
     </div>
