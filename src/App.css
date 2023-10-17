@@ -1,38 +1,120 @@
-.App {
-  text-align: center;
+:root {
+  --black: #191919;
+  --white: #e2e2e2;
+  --blue: #98c6f5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.contents-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 1280px;
+  height: 800px;
+  color: var(--black);
+  border: 1px solid var(--white);
+  overflow-y: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Login.tsx */
+.half-size {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+  width: 50%;
+}
+
+.contents-left {
+  background-color: var(--blue);
+}
+
+.login-logo > img {
+  max-width: 150px;
+}
+
+.login-title {
+  font-size: 55px;
+  font-weight: 700;
+}
+
+.login-photo > img {
+  max-width: 380px;
+}
+.bottom-logo-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.bottom-logo-wrapper > ul {
+  display: flex;
+  flex-direction: row;
+}
+.bottom-logo-wrapper li:first-child img {
+  max-width: 80px;
+  height: auto;
+}
+.bottom-logo-wrapper li:last-child img {
+  max-width: 106px;
+  height: auto;
+}
+
+.contents-right {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.login-title.margin-bottom {
+  margin-bottom: 40px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.login-input {
+  width: 415px;
+  height: 70px;
+  border: 1px solid var(--white);
+  padding-left: 20px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.login-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.checkbox {
+  width: 20px;
+  height: 20px;
+}
+.store-id {
+  display: flex;
+  align-items: center;
+  color: var(--black);
+  letter-spacing: -0.8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.find-id-password {
+  display: flex;
+}
+.login-btn {
+  width: 100%;
+  height: 75px;
+  background: transparent linear-gradient(265deg, #619fdf 0%, #75ceb9 100%) 0%
+    0% no-repeat padding-box;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  font-family: "SCoreDream";
+  font-weight: 800;
+}
+.login-btn:last-child {
+  background: #747474;
+  color: rgba(255, 255, 255, 0.747);
+  font-family: "SCoreDream";
+  font-weight: 300;
+  margin-top: 15px;
+  letter-spacing: -1px;
 }
