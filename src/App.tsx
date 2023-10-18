@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/Signup";
 import { RecoilRoot } from "recoil";
 import Layout from "./layout";
+import Test01Menu from "./pages/menus/Test01Menu";
 
 function App() {
   return (
@@ -17,6 +18,14 @@ function App() {
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/test01-menu"
+          element={
+            <Layout>
+              <Test01Menu />
             </Layout>
           }
         />
