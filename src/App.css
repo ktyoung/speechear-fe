@@ -123,17 +123,22 @@
 }
 
 /* Header.tsx */
+.header-wrapper {
+  width: 100%;
+  height: 75px;
+  color: #fff;
+}
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 75px;
-  padding: 0 30px;
+  width: 1280px;
+  height: 100%;
   background: transparent
     linear-gradient(270deg, #619fdf 0%, #74ccba 81%, #75ceb9 100%) 0% 0%
     no-repeat padding-box;
-  color: #fff;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 .nav {
@@ -164,10 +169,17 @@
   font-weight: 600;
 }
 
+/* UserModal */
+.modal-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 /* Home.tsx */
 .contents-wrapper.home {
   min-width: 1200px;
-  min-height: 800px;
+  height: 725px;
   flex-direction: column;
   justify-content: flex-start;
   background-image: url(/public/images/home/bg.png);
