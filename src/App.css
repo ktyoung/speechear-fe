@@ -305,6 +305,59 @@
   white-space: pre-wrap;
 }
 
+/* MyPage.tsx */
+.contents-wrapper {
+  padding: 50px;
+}
+.my-page-title {
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+.my-page-table {
+  width: 100%;
+  height: 100%;
+}
+.my-page-table td {
+  vertical-align: middle;
+  font-weight: 400;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  border: 3px solid #d9e4ee;
+  background-color: #fff;
+  text-align: left;
+  padding: 20px;
+}
+.my-page-table td:first-child {
+  width: 220px;
+  background-color: #365f81;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+.change-password-wrapper p,
+.settings-wrapper p {
+  display: inline-block;
+  width: 120px;
+  margin-bottom: 24px;
+}
+.change-password-wrapper input {
+  height: 30px;
+  border-radius: 0px;
+  border: 1px solid #d9e4ee;
+}
+.change-password-wrapper input[type="button"] {
+  width: 300px;
+  height: 50px;
+  background-color: rgb(207, 207, 207);
+  color: var(--black);
+  border: none;
+}
+.play-speed p {
+  margin: 0;
+}
+
 /* Test01Menu.tsx */
 .main-title.menu {
   margin: 62.5px 50px;
