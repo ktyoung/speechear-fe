@@ -2,12 +2,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface MenusType {
+  _className: string;
   _to: string;
   _difficulty: string;
   _title: string;
 }
 
-export default function Menus({ _to, _difficulty, _title }: MenusType) {
+export default function Menus({
+  _className,
+  _to,
+  _difficulty,
+  _title,
+}: MenusType) {
   const [isHovered, setIsHoverd] = useState(false);
   const _handleHover = () => {
     setIsHoverd(!isHovered);
@@ -15,7 +21,7 @@ export default function Menus({ _to, _difficulty, _title }: MenusType) {
 
   return (
     <ul
-      className={`${isHovered ? "hovered" : ""}`}
+      className={`${isHovered ? "hovered" : ""} ${_className}`}
       onMouseEnter={_handleHover}
       onMouseLeave={_handleHover}
     >

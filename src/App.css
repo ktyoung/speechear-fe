@@ -369,3 +369,15 @@
 .functions-wrapper.menus ul.hovered li:last-child img:last-child {
   display: none;
 }
+
+/* Test02Menu.tsx */
+.functions-wrapper.menus .menu02-style li:first-child a {
+  justify-content: center;
+}
+.functions-wrapper.menus .menu02-style .function-number {
+  border: none;
+  padding: 0;
+}
+.menu02-style .function-title {
+  display: none;
+}

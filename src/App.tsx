@@ -6,6 +6,7 @@ import SignUp from "./pages/Signup";
 import { RecoilRoot } from "recoil";
 import Layout from "./layout";
 import Test01Menu from "./pages/menus/Test01Menu";
+import Test02Menu from "./pages/menus/Test02Menu";
 
 function App() {
   return (
@@ -26,6 +27,14 @@ function App() {
           element={
             <Layout>
               <Test01Menu />
+            </Layout>
+          }
+        />
+        <Route
+          path="/test02-menu"
+          element={
+            <Layout>
+              <Test02Menu />
             </Layout>
           }
         />
