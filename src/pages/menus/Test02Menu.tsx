@@ -13,31 +13,27 @@ export default function Test02Menu() {
         <div className="functions-wrapper menus">
           <Menus
             _className="menu02-style"
-            _to="test01-basic"
-            _difficulty="기초"
-            _title={"소음이 없는\n조용한 상황\n(Quite 상황)"}
+            _to="test02-area"
+            _difficulty="지역"
+            _title=""
           />
           <Menus
             _className="menu02-style"
-            _to="test01-low"
-            _difficulty="난이도 하"
-            _title={
-              "소음이 조금 있는 상황\n(선풍기, 에어컨\n소리 정도의 소음)\n(6 dB SNR)"
-            }
+            _to="test02-culture"
+            _difficulty="우리문화"
+            _title=""
           />
           <Menus
             _className="menu02-style"
-            _to="test01-medium"
-            _difficulty="난이도 중"
-            _title={
-              "소음이 조금 있는 상황\n(생활환경에서의\n소음 정도)\n(3 dB SNR)"
-            }
+            _to="test02-food"
+            _difficulty="음식"
+            _title=""
           />
           <Menus
             _className="menu02-style"
-            _to="test01-high"
-            _difficulty="난이도 상"
-            _title={"소음이 조금 있는 상황\n(찻길 정도의 소음\n(0 dB SNR)"}
+            _to="test02-other"
+            _difficulty="기타"
+            _title=""
           />
         </div>
       </div>
