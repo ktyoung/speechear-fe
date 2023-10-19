@@ -67,11 +67,11 @@ export default function Login() {
               <Link to="/">비밀번호 찾기</Link>
             </div>
           </div>
-          <Link to="/home" className="login-btn">
+          <Link to="/home" className="btn-style gradient-btn">
             로그인
           </Link>
           {/* TODO: 클릭 시 회원가입 페이지로 이동 */}
-          <Link to="/signup" className="login-btn">
+          <Link to="/signup" className="btn-style gray-btn">
             회원가입
           </Link>
         </form>
