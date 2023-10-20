@@ -32,7 +32,11 @@ export default function Home() {
               _num="04"
               _title={`문장\n순서화 하기`}
             />
-            <FunctionList _to="/test05" _num="05" _title={`가로세로\n퀴즈`} />
+            <FunctionList
+              _to="/test05-menu"
+              _num="05"
+              _title={`가로세로\n퀴즈`}
+            />
           </ul>
         </div>
       </div>

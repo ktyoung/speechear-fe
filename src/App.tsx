@@ -10,6 +10,7 @@ import Test02Menu from "./pages/menus/Test02Menu";
 import MyPage from "./pages/MyPage";
 import Test03Menu from "./pages/menus/Test03Menu";
 import Test04Menu from "./pages/menus/Test04Menu";
+import Test05Menu from "./pages/menus/Test05Menu";
 
 function App() {
   return (
@@ -62,6 +63,14 @@ function App() {
           element={
             <Layout>
               <Test04Menu />
+            </Layout>
+          }
+        />
+        <Route
+          path="/test05-menu"
+          element={
+            <Layout>
+              <Test05Menu />
             </Layout>
           }
         />
