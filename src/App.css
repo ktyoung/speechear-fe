@@ -223,7 +223,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px 0;
+  margin: 0 50px 50px 50px;
 }
 .select-function {
   font-weight: 800;
@@ -362,7 +362,8 @@
 
 /* Test01Menu.tsx */
 .main-title.menu {
-  margin: 62.5px 50px;
+  margin: 0;
+  margin-bottom: 75px;
   align-items: flex-start;
 }
 .menu-title {
@@ -484,10 +485,17 @@
   margin: 0;
   color: #8a8a8a;
 }
-
 .functions-wrapper.menus li.test-card a {
   justify-content: center;
   align-items: center;
   font-weight: 800;
   font-size: 45px;
+}
+
+/* Test04Menu.tsx */
+.functions-wrapper.menus .card-wide {
+  width: 373px;
+}
+.functions-wrapper.menus .card-wide li {
+  width: 100%;
 }

@@ -9,6 +9,7 @@ import Test01Menu from "./pages/menus/Test01Menu";
 import Test02Menu from "./pages/menus/Test02Menu";
 import MyPage from "./pages/MyPage";
 import Test03Menu from "./pages/menus/Test03Menu";
+import Test04Menu from "./pages/menus/Test04Menu";
 
 function App() {
   return (
@@ -53,6 +54,14 @@ function App() {
           element={
             <Layout>
               <Test03Menu />
+            </Layout>
+          }
+        />
+        <Route
+          path="/test04-menu"
+          element={
+            <Layout>
+              <Test04Menu />
             </Layout>
           }
         />

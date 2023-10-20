@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Test02Menu() {
+export default function Test03Menu() {
   const testSubjects = [
     "요리",
     "전통문화",
