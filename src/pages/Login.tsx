@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
-    <div className="contents-wrapper">
+    <div className="contents-wrapper login">
       <div className="contents-left half-size">
         <figure className="login-logo">
           <img

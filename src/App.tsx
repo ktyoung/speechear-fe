@@ -8,6 +8,7 @@ import Layout from "./layout";
 import Test01Menu from "./pages/menus/Test01Menu";
 import Test02Menu from "./pages/menus/Test02Menu";
 import MyPage from "./pages/MyPage";
+import Test03Menu from "./pages/menus/Test03Menu";
 
 function App() {
   return (
@@ -44,6 +45,14 @@ function App() {
           element={
             <Layout>
               <Test02Menu />
+            </Layout>
+          }
+        />
+        <Route
+          path="/test03-menu"
+          element={
+            <Layout>
+              <Test03Menu />
             </Layout>
           }
         />

@@ -5,8 +5,8 @@ export default function Test01Menu() {
     <div className="contents-wrapper main">
       <div className="contents-main">
         <div className="main-title menu">
-          <p className="select-function menu-title color-test01-title">
-            <span className="function-number color-test01-number">01</span> 소음
+          <p className="select-function menu-title menu-title-color">
+            <span className="function-number menu-number-color">01</span> 소음
             하 문장듣기
           </p>
         </div>
