@@ -530,8 +530,11 @@
   border: none;
   background-color: transparent;
 }
-.functions-wrapper.menus li.page-btn:first-child {
-  margin-right: 24px;
+.functions-wrapper.menus li.page-btn {
+  margin-right: 20px;
+}
+.functions-wrapper.menus li.page-btn:last-child {
+  margin-right: 0;
 }
 .functions-wrapper.menus li.page-btn.active button {
   background-color: #63a4db;
@@ -545,6 +548,7 @@ li.page-btn button {
   border: none;
   cursor: pointer;
   font-size: 28px;
+  padding: 0;
 }
 .functions-wrapper.menus ul.grid.grid-small {
   grid-template-columns: repeat(10, 1fr);
@@ -564,4 +568,48 @@ li.page-btn button {
   font-size: inherit;
   color: inherit;
   font-weight: inherit;
+}
+
+/* Basic.tsx */
+.flex-end .menu-header {
+  justify-content: flex-end;
+  margin-top: 0;
+}
+.test-list-table {
+  text-align: center;
+  height: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+.test-list-table th,
+.test-list-table td {
+  border: 2px solid var(--white);
+  vertical-align: middle;
+  height: 44px;
+}
+.test-list-table th:first-child {
+  width: 8%;
+}
+.test-list-table th:nth-child(2) {
+  width: 80%;
+}
+.test-list-table th:last-child {
+  width: 12%;
+}
+.progress {
+  width: 90%;
+  height: 20px;
+}
+.progress-percent {
+  margin-left: 24px;
+}
+.test-start-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.test-start-btn img {
+  width: 100%;
+  max-width: 28px;
+  margin-right: 10px;
 }

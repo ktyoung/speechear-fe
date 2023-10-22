@@ -11,6 +11,7 @@ import MyPage from "./pages/MyPage";
 import Test03Menu from "./pages/menus/Test03Menu";
 import Test04Menu from "./pages/menus/Test04Menu";
 import Test05Menu from "./pages/menus/Test05Menu";
+import Basic from "./pages/tests/test01/Basic";
 
 function App() {
   return (
@@ -39,6 +40,14 @@ function App() {
           element={
             <Layout>
               <Test01Menu />
+            </Layout>
+          }
+        />
+        <Route
+          path="/test01-menu/test01-basic"
+          element={
+            <Layout>
+              <Basic />
             </Layout>
           }
         />

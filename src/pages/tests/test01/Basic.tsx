@@ -1,0 +1,17 @@
+import TestList from "../../../components/TestList";
+
+export default function Basic() {
+  return (
+    <div className="contents-wrapper main">
+      <div className="contents-main">
+        <div className="main-title menu no-margin-bottom">
+          <p className="select-function menu-title menu-title-color">
+            <span className="function-number menu-number-color">01</span> 소음
+            하 문장듣기
+          </p>
+        </div>
+        <TestList />
+      </div>
+    </div>
+  );
+}
