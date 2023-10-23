@@ -30,6 +30,9 @@ import Countries from "./pages/tests/test03/Countries";
 import Health from "./pages/tests/test03/Health";
 import People from "./pages/tests/test03/People";
 import Othres from "./pages/tests/test03/Othres";
+import SentenceSetThree from "./pages/tests/test04/SentenceSetThree";
+import SentenceSetFour from "./pages/tests/test04/SentenceSetFour";
+import SentenceSetFive from "./pages/tests/test04/SentenceSetFive";
 
 function LayoutRoutes() {
   return (
@@ -67,6 +70,9 @@ function LayoutRoutes() {
         <Route path="/test03-menu/test03-others" element={<Othres />} />
         {/* Test04 */}
         <Route path="/test04-menu" element={<Test04Menu />} />
+        <Route path="/test04-menu/test04-set3" element={<SentenceSetThree />} />
+        <Route path="/test04-menu/test04-set4" element={<SentenceSetFour />} />
+        <Route path="/test04-menu/test04-set5" element={<SentenceSetFive />} />
         {/* Test05 */}
         <Route path="/test05-menu" element={<Test05Menu />} />
       </Routes>

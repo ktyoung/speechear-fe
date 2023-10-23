@@ -10,7 +10,7 @@ export default function High() {
             하 문장듣기
           </p>
         </div>
-        <TestList _totalPage={10} _totalQuestionCount={10} />
+        <TestList _totalPage={10} _totalQuestionCount={100} />
       </div>
     </div>
   );
