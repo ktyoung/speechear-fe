@@ -13,76 +13,30 @@ import Test04Menu from "./pages/menus/Test04Menu";
 import Test05Menu from "./pages/menus/Test05Menu";
 import Basic from "./pages/tests/test01/Basic";
 
+function LayoutRoutes() {
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/myPage" element={<MyPage />} />
+        <Route path="/test01-menu" element={<Test01Menu />} />
+        <Route path="/test01-menu/test01-basic" element={<Basic />} />
+        <Route path="/test02-menu" element={<Test02Menu />} />
+        <Route path="/test03-menu" element={<Test03Menu />} />
+        <Route path="/test04-menu" element={<Test04Menu />} />
+        <Route path="/test05-menu" element={<Test05Menu />} />
+      </Routes>
+    </Layout>
+  );
+}
+
 function App() {
   return (
     <RecoilRoot>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route
-          path="/home"
-          element={
-            <Layout>
-              <Home />
-            </Layout>
-          }
-        />
-        <Route
-          path="/myPage"
-          element={
-            <Layout>
-              <MyPage />
-            </Layout>
-          }
-        />
-        <Route
-          path="/test01-menu"
-          element={
-            <Layout>
-              <Test01Menu />
-            </Layout>
-          }
-        />
-        <Route
-          path="/test01-menu/test01-basic"
-          element={
-            <Layout>
-              <Basic />
-            </Layout>
-          }
-        />
-        <Route
-          path="/test02-menu"
-          element={
-            <Layout>
-              <Test02Menu />
-            </Layout>
-          }
-        />
-        <Route
-          path="/test03-menu"
-          element={
-            <Layout>
-              <Test03Menu />
-            </Layout>
-          }
-        />
-        <Route
-          path="/test04-menu"
-          element={
-            <Layout>
-              <Test04Menu />
-            </Layout>
-          }
-        />
-        <Route
-          path="/test05-menu"
-          element={
-            <Layout>
-              <Test05Menu />
-            </Layout>
-          }
-        />
+        <Route path="/*" element={<LayoutRoutes />} />
       </Routes>
     </RecoilRoot>
   );
