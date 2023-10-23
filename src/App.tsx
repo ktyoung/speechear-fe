@@ -15,6 +15,10 @@ import Basic from "./pages/tests/test01/Basic";
 import Low from "./pages/tests/test01/Low";
 import Medium from "./pages/tests/test01/Medium";
 import High from "./pages/tests/test01/High";
+import Area from "./pages/tests/test02/Area";
+import Culture from "./pages/tests/test02/Culture";
+import Food from "./pages/tests/test02/Food";
+import Other from "./pages/tests/test02/Other";
 
 function LayoutRoutes() {
   return (
@@ -28,6 +32,10 @@ function LayoutRoutes() {
         <Route path="/test01-menu/test01-medium" element={<Medium />} />
         <Route path="/test01-menu/test01-high" element={<High />} />
         <Route path="/test02-menu" element={<Test02Menu />} />
+        <Route path="/test02-menu/test02-area" element={<Area />} />
+        <Route path="/test02-menu/test02-culture" element={<Culture />} />
+        <Route path="/test02-menu/test02-food" element={<Food />} />
+        <Route path="/test02-menu/test02-other" element={<Other />} />
         <Route path="/test03-menu" element={<Test03Menu />} />
         <Route path="/test04-menu" element={<Test04Menu />} />
         <Route path="/test05-menu" element={<Test05Menu />} />
