@@ -15,6 +15,20 @@ export default function Test03Menu() {
     "기타",
   ];
 
+  const testUrl = [
+    "cook", // 요리
+    "culture", // 전통문화
+    "sports", // 스포츠
+    "festivals", // 세계의 잔치
+    "proverbs", // 속담
+    "regions", // 지역
+    "heritage", // 세계유산
+    "countries", // 나라
+    "health", // 건강
+    "people", // 인물
+    "others", // 기타
+  ];
+
   return (
     <div className="contents-wrapper main">
       <div className="contents-main">
@@ -29,7 +43,7 @@ export default function Test03Menu() {
             {testSubjects.map((subject, i) => {
               return (
                 <li key={i} className="test-card">
-                  <Link to="/">{subject}</Link>
+                  <Link to={`test03-${testUrl[i]}`}>{subject}</Link>
                 </li>
               );
             })}
