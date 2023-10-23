@@ -12,6 +12,9 @@ import Test03Menu from "./pages/menus/Test03Menu";
 import Test04Menu from "./pages/menus/Test04Menu";
 import Test05Menu from "./pages/menus/Test05Menu";
 import Basic from "./pages/tests/test01/Basic";
+import Low from "./pages/tests/test01/Low";
+import Medium from "./pages/tests/test01/Medium";
+import High from "./pages/tests/test01/High";
 
 function LayoutRoutes() {
   return (
@@ -21,6 +24,9 @@ function LayoutRoutes() {
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/test01-menu" element={<Test01Menu />} />
         <Route path="/test01-menu/test01-basic" element={<Basic />} />
+        <Route path="/test01-menu/test01-low" element={<Low />} />
+        <Route path="/test01-menu/test01-medium" element={<Medium />} />
+        <Route path="/test01-menu/test01-high" element={<High />} />
         <Route path="/test02-menu" element={<Test02Menu />} />
         <Route path="/test03-menu" element={<Test03Menu />} />
         <Route path="/test04-menu" element={<Test04Menu />} />

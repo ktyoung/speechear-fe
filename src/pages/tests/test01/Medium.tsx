@@ -1,6 +1,6 @@
 import TestList from "../../../components/TestList";
 
-export default function Basic() {
+export default function Medium() {
   return (
     <div className="contents-wrapper main">
       <div className="contents-main">

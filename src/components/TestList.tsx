@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function TestList() {
+interface TestListProps {
+  _totalPage: number;
+  _totalQuestionCount: number;
+}
+
+export default function TestList({
+  _totalPage,
+  _totalQuestionCount,
+}: TestListProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Array.from({ length: 10 }, (_, i) => i + 1);
+  const totalPages = Array.from({ length: _totalPage }, (_, i) => i + 1);
   const numberArray = Array.from({ length: 100 }, (_, i) => i + 1);
   const numbersToDisplay = numberArray.slice(
-    (currentPage - 1) * 10,
-    currentPage * 10
+    (currentPage - 1) * _totalQuestionCount,
+    currentPage * _totalQuestionCount
   );
 
   const _handlePageNumber = (newPageNumber: number) => {
