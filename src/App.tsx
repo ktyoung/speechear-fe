@@ -33,6 +33,7 @@ import Othres from "./pages/tests/test03/Othres";
 import SentenceSetThree from "./pages/tests/test04/SentenceSetThree";
 import SentenceSetFour from "./pages/tests/test04/SentenceSetFour";
 import SentenceSetFive from "./pages/tests/test04/SentenceSetFive";
+import CrosswordQuiz from "./pages/tests/test05/CrosswrodQuiz";
 
 function LayoutRoutes() {
   return (
@@ -75,6 +76,10 @@ function LayoutRoutes() {
         <Route path="/test04-menu/test04-set5" element={<SentenceSetFive />} />
         {/* Test05 */}
         <Route path="/test05-menu" element={<Test05Menu />} />
+        <Route
+          path="/test05-menu/test05-quiz"
+          element={<CrosswordQuiz quizNumber={1} />}
+        />
       </Routes>
     </Layout>
   );

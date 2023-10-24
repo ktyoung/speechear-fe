@@ -38,7 +38,7 @@ export default function Test05Menu() {
             {numbersToDisplay.map((number) => {
               return (
                 <li key={number} className="test-card-small">
-                  <Link to="/">{`퀴즈 ${number}`}</Link>
+                  <Link to="/test05-menu/test05-quiz">{`퀴즈 ${number}`}</Link>
                 </li>
               );
             })}
