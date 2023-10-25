@@ -31,7 +31,15 @@ export default function CrosswordQuiz({ quizNumber }: CrosswordQuizProps) {
           </Link>
         </div>
       </div>
-      <CrosswordGrid rows={3} columns={5} hintRows={5} />
+      <CrosswordGrid
+        rows={5}
+        columns={5}
+        hintRows={5}
+        disabledCells={[
+          { row: 1, col: 2 },
+          { row: 3, col: 4 },
+        ]}
+      />
     </div>
   );
 }

@@ -2,9 +2,15 @@ interface CrosswordGridProps {
   rows: number;
   columns: number;
   hintRows: number;
+  disabledCells: Array<{ row: number; col: number }>;
 }
 interface HintGridProps {
   rows: number;
+}
+interface DisabledCellProps {
+  rowIndex: number;
+  colIndex: number;
+  disabledCells: Array<{ row: number; col: number }>;
 }
 
 function HintGrid({ rows }: HintGridProps) {
@@ -57,13 +63,49 @@ function HintGrid({ rows }: HintGridProps) {
   );
 }
 
-// TODO: 크로스워드 그리드 완성하기
-function CrosswordGrid({ rows, columns, hintRows }: CrosswordGridProps) {
+function isCellDisabled({
+  rowIndex,
+  colIndex,
+  disabledCells,
+}: DisabledCellProps) {
+  return disabledCells.some(
+    (cell) => cell.row === rowIndex && cell.col === colIndex
+  );
+}
+
+function CrosswordGrid({
+  rows,
+  columns,
+  hintRows,
+  disabledCells,
+}: CrosswordGridProps) {
+  // disabledCells 유효성 검사
+  disabledCells.forEach((cell) => {
+    if (
+      cell.row >= rows ||
+      cell.col >= columns ||
+      cell.row < 0 ||
+      cell.col < 0
+    ) {
+      throw new Error(
+        `유효하지 않은 셀 위치: (${cell.row}, ${cell.col}). 그리드 내에 있어야 합니다.`
+      );
+    }
+  });
+
   const gridRows = Array.from({ length: rows }, (_, rowIndex) => (
-    <tr key={rowIndex}>
+    <tr key={rowIndex} style={{ height: `${462 / rows}px` }}>
       {Array.from({ length: columns }, (_, colIndex) => (
-        <td className="crossword-answer-input" key={colIndex}>
-          <input type="text" maxLength={1} />
+        <td
+          className="crossword-answer-input"
+          key={colIndex}
+          style={{ height: `${462 / rows}px` }}
+        >
+          <input
+            type="text"
+            maxLength={1}
+            disabled={isCellDisabled({ rowIndex, colIndex, disabledCells })}
+          />
         </td>
       ))}
     </tr>
