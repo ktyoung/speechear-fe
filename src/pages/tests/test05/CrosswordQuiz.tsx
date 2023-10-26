@@ -23,7 +23,7 @@ export default function CrosswordQuiz() {
       (data) => data.quizNumber === quizNum
     );
     setQuizData(currentQuizData ?? null);
-  }, [quizNumber]);
+  }, [quizNum]);
 
   return (
     <div className="contents-wrapper main">

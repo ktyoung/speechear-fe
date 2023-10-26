@@ -656,15 +656,18 @@ li.page-btn button {
 }
 .hint-container p {
   position: absolute;
-  top: 5px;
+  top: 10px;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 800;
+  font-size: 30px;
 }
 .hint-container p.horizontal-hint {
   color: #63a4db;
-  left: 5px;
+  left: 10px;
 }
 .hint-container p.vertical-hint {
   color: #74ccbb;
-  right: 5px;
+  right: 10px;
 }
 .crossword-answer-input input {
   width: 100%;
