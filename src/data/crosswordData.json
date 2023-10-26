@@ -1,0 +1,38 @@
+[
+  {
+    "quizNumber": 1,
+    "rows": 5,
+    "columns": 5,
+    "hintRows": 5,
+    "disabledCells": [
+      { "row": 0, "col": 0 },
+      { "row": 0, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 2 },
+      { "number": 2, "row": 1, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 1, "row": 0, "col": 2 },
+      { "number": 2, "row": 2, "col": 0 }
+    ]
+  },
+  {
+    "quizNumber": 2,
+    "rows": 5,
+    "columns": 5,
+    "hintRows": 5,
+    "disabledCells": [
+      { "row": 0, "col": 2 },
+      { "row": 0, "col": 3 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 4 },
+      { "number": 3, "row": 1, "col": 3 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 4 },
+      { "number": 4, "row": 3, "col": 1 }
+    ]
+  }
+]

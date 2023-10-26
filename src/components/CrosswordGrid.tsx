@@ -3,6 +3,8 @@ interface CrosswordGridProps {
   columns: number;
   hintRows: number;
   disabledCells: Array<{ row: number; col: number }>;
+  horizontalHints: Array<{ number: number; row: number; col: number }>;
+  verticalHints: Array<{ number: number; row: number; col: number }>;
 }
 interface HintGridProps {
   rows: number;
@@ -73,11 +75,22 @@ function isCellDisabled({
   );
 }
 
+function renderHintNumber(
+  row: number,
+  col: number,
+  hints: Array<{ number: number; row: number; col: number }>
+) {
+  const hint = hints.find((h) => h.row === row && h.col === col);
+  return hint ? hint.number : null;
+}
+
 function CrosswordGrid({
   rows,
   columns,
   hintRows,
   disabledCells,
+  horizontalHints,
+  verticalHints,
 }: CrosswordGridProps) {
   // disabledCells 유효성 검사
   disabledCells.forEach((cell) => {
@@ -101,6 +114,15 @@ function CrosswordGrid({
           key={colIndex}
           style={{ height: `${462 / rows}px` }}
         >
+          <div className="hint-container">
+            <p className="horizontal-hint">
+              {renderHintNumber(rowIndex, colIndex, horizontalHints)}
+            </p>
+            <p className="vertical-hint">
+              {renderHintNumber(rowIndex, colIndex, verticalHints)}
+            </p>
+          </div>
+
           <input
             type="text"
             maxLength={1}
