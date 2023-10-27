@@ -10,7 +10,11 @@ export default function Basic() {
             하 문장듣기
           </p>
         </div>
-        <TestList _totalPage={10} _totalQuestionCount={100} />
+        <TestList
+          _totalPage={10}
+          _totalQuestionCount={100}
+          _to="/test01-menu/test01-basic/0"
+        />
       </div>
     </div>
   );

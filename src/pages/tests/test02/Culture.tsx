@@ -10,7 +10,11 @@ export default function Culture() {
             이야기 듣기
           </p>
         </div>
-        <TestList _totalPage={1} _totalQuestionCount={9} />
+        <TestList
+          _totalPage={1}
+          _totalQuestionCount={9}
+          _to="/test02-menu/test02-culture/0"
+        />
       </div>
     </div>
   );

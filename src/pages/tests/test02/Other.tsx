@@ -10,7 +10,11 @@ export default function Other() {
             이야기 듣기
           </p>
         </div>
-        <TestList _totalPage={1} _totalQuestionCount={7} />
+        <TestList
+          _totalPage={1}
+          _totalQuestionCount={7}
+          _to="/test02-menu/test02-other/0"
+        />
       </div>
     </div>
   );

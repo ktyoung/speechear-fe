@@ -10,7 +10,11 @@ export default function Festivals() {
             이야기 듣기
           </p>
         </div>
-        <TestList _totalPage={1} _totalQuestionCount={5} />
+        <TestList
+          _totalPage={1}
+          _totalQuestionCount={5}
+          _to="/test03-menu/test03-festivals/0"
+        />
       </div>
     </div>
   );

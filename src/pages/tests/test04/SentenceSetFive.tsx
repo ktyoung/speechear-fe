@@ -10,7 +10,11 @@ export default function SentenceSetFive() {
             순서화 하기
           </p>
         </div>
-        <TestList _totalPage={2} _totalQuestionCount={11} />
+        <TestList
+          _totalPage={2}
+          _totalQuestionCount={11}
+          _to="/test04-menu/test04-set05/0"
+        />
       </div>
     </div>
   );

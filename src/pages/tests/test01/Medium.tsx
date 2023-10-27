@@ -10,7 +10,11 @@ export default function Medium() {
             하 문장듣기
           </p>
         </div>
-        <TestList _totalPage={10} _totalQuestionCount={100} />
+        <TestList
+          _totalPage={10}
+          _totalQuestionCount={100}
+          _to="/test01-menu/test01-medium/0"
+        />
       </div>
     </div>
   );

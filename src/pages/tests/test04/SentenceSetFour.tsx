@@ -10,7 +10,11 @@ export default function SentenceSetFour() {
             순서화 하기
           </p>
         </div>
-        <TestList _totalPage={3} _totalQuestionCount={25} />
+        <TestList
+          _totalPage={3}
+          _totalQuestionCount={25}
+          _to="/test04-menu/test04-set04/0"
+        />
       </div>
     </div>
   );

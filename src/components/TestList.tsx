@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 interface TestListProps {
   _totalPage: number;
   _totalQuestionCount: number;
+  _to: string;
 }
 
 export default function TestList({
   _totalPage,
   _totalQuestionCount,
+  _to,
 }: TestListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Array.from({ length: _totalPage }, (_, i) => i + 1);
@@ -58,9 +60,9 @@ export default function TestList({
                 <span className="progress-percent">0%</span>
               </td>
               <td>
-                <Link className="test-start-btn" to="/test01-menu">
+                <Link className="test-start-btn" to={_to}>
                   <img
-                    src={`${process.env.PUBLIC_URL}/images/test/learning_but.png`}
+                    src={`${process.env.PUBLIC_URL}/images/test/learning_button.png`}
                     alt="Test Start Button"
                   />
                   학습하기

@@ -10,7 +10,11 @@ export default function SentenceSetThree() {
             순서화 하기
           </p>
         </div>
-        <TestList _totalPage={2} _totalQuestionCount={15} />
+        <TestList
+          _totalPage={2}
+          _totalQuestionCount={15}
+          _to="/test04-menu/test04-set03/0"
+        />
       </div>
     </div>
   );

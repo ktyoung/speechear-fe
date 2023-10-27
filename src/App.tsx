@@ -71,9 +71,12 @@ function LayoutRoutes() {
         <Route path="/test03-menu/test03-others" element={<Othres />} />
         {/* Test04 */}
         <Route path="/test04-menu" element={<Test04Menu />} />
-        <Route path="/test04-menu/test04-set3" element={<SentenceSetThree />} />
-        <Route path="/test04-menu/test04-set4" element={<SentenceSetFour />} />
-        <Route path="/test04-menu/test04-set5" element={<SentenceSetFive />} />
+        <Route
+          path="/test04-menu/test04-set03"
+          element={<SentenceSetThree />}
+        />
+        <Route path="/test04-menu/test04-set04" element={<SentenceSetFour />} />
+        <Route path="/test04-menu/test04-set05" element={<SentenceSetFive />} />
         {/* Test05 */}
         <Route path="/test05-menu" element={<Test05Menu />} />
         <Route
