@@ -1,7 +1,11 @@
 export default function TestScreen() {
   return (
-    <div>
-      <h1>테스트 진행 스크린임</h1>
+    <div className="test-screen-wrapper">
+      <div className="test-contents">
+        <div className="play-sentence"></div>
+        <div className="view-sentence"></div>
+      </div>
+      <div className="test-buttons"></div>
     </div>
   );
 }

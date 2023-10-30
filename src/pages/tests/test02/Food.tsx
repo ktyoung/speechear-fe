@@ -13,7 +13,7 @@ export default function Food() {
         <TestList
           _totalPage={1}
           _totalQuestionCount={7}
-          _to="/test02-menu/test02-food/0"
+          _to={`/test02-menu/test02-food/`}
         />
       </div>
     </div>

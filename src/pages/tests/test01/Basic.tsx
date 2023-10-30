@@ -13,7 +13,7 @@ export default function Basic() {
         <TestList
           _totalPage={10}
           _totalQuestionCount={100}
-          _to={`/test01-menu/test01-basic/0`}
+          _to={`/test01-menu/test01-basic/`}
         />
       </div>
     </div>

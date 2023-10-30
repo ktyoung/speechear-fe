@@ -13,7 +13,7 @@ export default function Medium() {
         <TestList
           _totalPage={10}
           _totalQuestionCount={100}
-          _to="/test01-menu/test01-medium/0"
+          _to={`/test01-menu/test01-medium/`}
         />
       </div>
     </div>

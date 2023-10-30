@@ -13,7 +13,7 @@ export default function Area() {
         <TestList
           _totalPage={1}
           _totalQuestionCount={7}
-          _to="/test02-menu/test02-area/0"
+          _to={`/test02-menu/test02-area/`}
         />
       </div>
     </div>

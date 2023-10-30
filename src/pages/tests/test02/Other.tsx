@@ -13,7 +13,7 @@ export default function Other() {
         <TestList
           _totalPage={1}
           _totalQuestionCount={7}
-          _to="/test02-menu/test02-other/0"
+          _to={`/test02-menu/test02-other/`}
         />
       </div>
     </div>

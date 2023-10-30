@@ -13,7 +13,7 @@ export default function SentenceSetThree() {
         <TestList
           _totalPage={2}
           _totalQuestionCount={15}
-          _to="/test04-menu/test04-set03/0"
+          _to={`/test04-menu/test04-set03/`}
         />
       </div>
     </div>

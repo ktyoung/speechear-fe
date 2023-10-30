@@ -13,7 +13,7 @@ export default function Sports() {
         <TestList
           _totalPage={1}
           _totalQuestionCount={5}
-          _to="/test03-menu/test03-sports/0"
+          _to={`/test03-menu/test03-sports/0`}
         />
       </div>
     </div>

@@ -13,7 +13,7 @@ export default function High() {
         <TestList
           _totalPage={10}
           _totalQuestionCount={100}
-          _to="/test01-menu/test01-high/0"
+          _to={`/test01-menu/test01-high/`}
         />
       </div>
     </div>

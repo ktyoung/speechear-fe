@@ -13,7 +13,7 @@ export default function Culture() {
         <TestList
           _totalPage={1}
           _totalQuestionCount={9}
-          _to="/test02-menu/test02-culture/0"
+          _to={`/test02-menu/test02-culture/`}
         />
       </div>
     </div>

@@ -13,7 +13,7 @@ export default function Regions() {
         <TestList
           _totalPage={1}
           _totalQuestionCount={5}
-          _to="/test03-menu/test03-regions/0"
+          _to={`/test03-menu/test03-regions/`}
         />
       </div>
     </div>

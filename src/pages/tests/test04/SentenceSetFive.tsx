@@ -13,7 +13,7 @@ export default function SentenceSetFive() {
         <TestList
           _totalPage={2}
           _totalQuestionCount={11}
-          _to="/test04-menu/test04-set05/0"
+          _to={`/test04-menu/test04-set05/`}
         />
       </div>
     </div>
