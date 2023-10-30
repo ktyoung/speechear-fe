@@ -999,6 +999,9 @@ li.page-btn button {
   text-align: center;
   opacity: 0.6;
 }
+.scoring li:hover {
+  opacity: 1;
+}
 .scoring li.check-correct {
   background-color: #f59cb3;
   border-top-left-radius: 15px;
@@ -1014,4 +1017,81 @@ li.page-btn button {
   font-size: 25px;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* TestScreen.tsx */
+.test-screen-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.answer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: -100px;
+  width: 100%;
+}
+.answer-buttons button {
+  opacity: 0.6;
+}
+.answer-buttons button:hover,
+.answer-buttons button:focus {
+  opacity: 1;
+}
+
+.test-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 40px 0 0 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+}
+.test-contents__bar {
+  width: 100%;
+  margin: 0 30px;
+}
+.play-sentence,
+.view-sentence,
+.view-sentence__accordion {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 140px;
+  margin: 0 0 25px 0;
+  box-shadow: 0 0 6px #7e8bc129;
+  background-color: #fff;
+  cursor: pointer;
+}
+.play-sentence.playing {
+  background-color: rgb(116, 205, 184);
+}
+.play-sentence > img,
+.view-sentence > img,
+.view-sentence__accordion > img {
+  margin: 0 30px;
+}
+.play-sentence > p {
+  color: #63a4db;
+}
+
+.view-sentence {
+  position: relative;
+  background-color: #63a4db;
+  margin: 0;
+}
+.view-sentence > p {
+  color: #fff;
+}
+.view-sentence__accordion {
+  position: absolute;
+  top: 140px;
 }
