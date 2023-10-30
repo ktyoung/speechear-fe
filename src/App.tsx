@@ -34,6 +34,7 @@ import SentenceSetThree from "./pages/tests/test04/SentenceSetThree";
 import SentenceSetFour from "./pages/tests/test04/SentenceSetFour";
 import SentenceSetFive from "./pages/tests/test04/SentenceSetFive";
 import CrosswordQuiz from "./pages/tests/test05/CrosswordQuiz";
+import TestBasic from "./pages/tests/test01/TestBasic";
 
 function LayoutRoutes() {
   return (
@@ -44,6 +45,10 @@ function LayoutRoutes() {
         {/* Test01  */}
         <Route path="/test01-menu" element={<Test01Menu />} />
         <Route path="/test01-menu/test01-basic" element={<Basic />} />
+        <Route
+          path="/test01-menu/test01-basic/:quizNumber"
+          element={<TestBasic />}
+        />
         <Route path="/test01-menu/test01-low" element={<Low />} />
         <Route path="/test01-menu/test01-medium" element={<Medium />} />
         <Route path="/test01-menu/test01-high" element={<High />} />
