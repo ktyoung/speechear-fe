@@ -1054,6 +1054,11 @@ li.page-btn button {
   font-weight: 700;
   font-size: 35px;
 }
+.test-contents .disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
 .test-contents__bar {
   width: 100%;
   margin: 0 30px;

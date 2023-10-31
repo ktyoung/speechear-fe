@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 export default function TestScreen() {
+  const { quizNumber } = useParams<{ quizNumber?: string }>();
+  const location = useLocation();
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
+
+  const currentQuizNumber = quizNumber ? parseInt(quizNumber) : 0;
+  console.log(currentQuizNumber);
 
   const togglePlay = () => {
     setIsPlay(!isPlay);
@@ -27,9 +32,20 @@ export default function TestScreen() {
             alt="Wrong answer button"
           />
         </button>
+        {location.pathname.includes("/test01-basic/") && (
+          <button>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/test/button_without_noise.png`}
+              alt="Listen without noise button"
+            />
+          </button>
+        )}
       </div>
       <div className="test-contents">
-        <Link to="">
+        <Link
+          to={`/test01-menu/test01-basic/${currentQuizNumber - 1}`}
+          className={currentQuizNumber === 1 ? "disabled" : ""}
+        >
           <img
             src={`${process.env.PUBLIC_URL}/images/test/button_left.png`}
             alt="Go to previous question"
@@ -52,7 +68,6 @@ export default function TestScreen() {
                 alt="Sentence listening icon"
               />
             )}
-
             <p>문장 듣기</p>
           </div>
           <div className="view-sentence" onClick={toggleOpenAnswer}>
@@ -72,7 +87,10 @@ export default function TestScreen() {
             )}
           </div>
         </div>
-        <Link to="">
+        <Link
+          to={`/test01-menu/test01-basic/${currentQuizNumber + 1}`}
+          className={currentQuizNumber === 100 ? "disabled" : ""}
+        >
           <img
             src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
             alt="Go to next question"
