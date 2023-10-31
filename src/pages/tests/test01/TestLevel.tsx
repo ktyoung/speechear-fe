@@ -1,6 +1,9 @@
+import { useParams } from "react-router-dom";
 import TestList from "../../../components/TestList";
 
-export default function High() {
+export default function TestLevel() {
+  const { testLevel } = useParams();
+
   return (
     <div className="contents-wrapper main">
       <div className="contents-main">
@@ -13,7 +16,7 @@ export default function High() {
         <TestList
           _totalPage={10}
           _totalQuestionCount={100}
-          _to={`/test01-menu/test01-high/`}
+          _to={`/test01-menu/${testLevel}`}
         />
       </div>
     </div>

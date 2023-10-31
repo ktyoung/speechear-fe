@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import TestScreen from "../../../components/test01/TestScreen";
 
-export default function TestHigh() {
-  const { quizNumber } = useParams<{ quizNumber?: string }>();
+export default function TestScreenWrapper() {
+  const { quizNumber } = useParams();
 
   return (
     <div className="contents-wrapper main">

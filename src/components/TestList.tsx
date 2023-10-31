@@ -60,7 +60,7 @@ export default function TestList({
                 <span className="progress-percent">0%</span>
               </td>
               <td>
-                <Link className="test-start-btn" to={`${_to}${number}`}>
+                <Link className="test-start-btn" to={`${_to}/${number}`}>
                   <img
                     src={`${process.env.PUBLIC_URL}/images/test/learning_button.png`}
                     alt="Test Start Button"

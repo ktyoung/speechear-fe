@@ -11,10 +11,6 @@ import MyPage from "./pages/MyPage";
 import Test03Menu from "./pages/menus/Test03Menu";
 import Test04Menu from "./pages/menus/Test04Menu";
 import Test05Menu from "./pages/menus/Test05Menu";
-import Basic from "./pages/tests/test01/Basic";
-import Low from "./pages/tests/test01/Low";
-import Medium from "./pages/tests/test01/Medium";
-import High from "./pages/tests/test01/High";
 import Area from "./pages/tests/test02/Area";
 import Culture from "./pages/tests/test02/Culture";
 import Food from "./pages/tests/test02/Food";
@@ -34,10 +30,8 @@ import SentenceSetThree from "./pages/tests/test04/SentenceSetThree";
 import SentenceSetFour from "./pages/tests/test04/SentenceSetFour";
 import SentenceSetFive from "./pages/tests/test04/SentenceSetFive";
 import CrosswordQuiz from "./pages/tests/test05/CrosswordQuiz";
-import TestBasic from "./pages/tests/test01/TestBasic";
-import TestLow from "./pages/tests/test01/TestLow";
-import TestMedium from "./pages/tests/test01/TestMedium";
-import TestHigh from "./pages/tests/test01/TestHigh";
+import TestLevel from "./pages/tests/test01/TestLevel";
+import TestScreenWrapper from "./pages/tests/test01/TestScreenWrapper";
 
 function LayoutRoutes() {
   return (
@@ -47,26 +41,11 @@ function LayoutRoutes() {
         <Route path="/myPage" element={<MyPage />} />
         {/* Test01  */}
         <Route path="/test01-menu" element={<Test01Menu />} />
-        <Route path="/test01-menu/test01-basic" element={<Basic />} />
+        <Route path="/test01-menu/:testLevel" element={<TestLevel />} />
         <Route
-          path="/test01-menu/test01-basic/:quizNumber"
-          element={<TestBasic />}
+          path="/test01-menu/:testLevel/:quizNumber"
+          element={<TestScreenWrapper />}
         />
-        <Route
-          path="/test01-menu/test01-low/:quizNumber"
-          element={<TestLow />}
-        />
-        <Route
-          path="/test01-menu/test01-medium/:quizNumber"
-          element={<TestMedium />}
-        />
-        <Route
-          path="/test01-menu/test01-high/:quizNumber"
-          element={<TestHigh />}
-        />
-        <Route path="/test01-menu/test01-low" element={<Low />} />
-        <Route path="/test01-menu/test01-medium" element={<Medium />} />
-        <Route path="/test01-menu/test01-high" element={<High />} />
         {/* Test02  */}
         <Route path="/test02-menu" element={<Test02Menu />} />
         <Route path="/test02-menu/test02-area" element={<Area />} />
