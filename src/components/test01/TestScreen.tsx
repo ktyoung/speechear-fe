@@ -1,14 +1,24 @@
 import { useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useMatch } from "react-router-dom";
 
 export default function TestScreen() {
-  const { quizNumber } = useParams<{ quizNumber?: string }>();
   const location = useLocation();
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
 
-  const currentQuizNumber = quizNumber ? parseInt(quizNumber) : 0;
-  console.log(currentQuizNumber);
+  const match = useMatch("/test01-menu/:testLevel/:quizNumber");
+
+  let testLevel: string | null = null;
+  let quizNumber: string | null = null;
+  let currentQuizNumber: number | null = null;
+
+  if (match) {
+    ({ testLevel, quizNumber } = match.params as {
+      testLevel: string;
+      quizNumber: string;
+    });
+    currentQuizNumber = parseInt(quizNumber);
+  }
 
   const togglePlay = () => {
     setIsPlay(!isPlay);
@@ -32,7 +42,7 @@ export default function TestScreen() {
             alt="Wrong answer button"
           />
         </button>
-        {location.pathname.includes("/test01-basic/") && (
+        {!location.pathname.includes("/test01-basic/") && (
           <button>
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_without_noise.png`}
@@ -43,7 +53,9 @@ export default function TestScreen() {
       </div>
       <div className="test-contents">
         <Link
-          to={`/test01-menu/test01-basic/${currentQuizNumber - 1}`}
+          to={`/test01-menu/${testLevel}/${
+            currentQuizNumber ? currentQuizNumber - 1 : quizNumber
+          }`}
           className={currentQuizNumber === 1 ? "disabled" : ""}
         >
           <img
@@ -88,7 +100,9 @@ export default function TestScreen() {
           </div>
         </div>
         <Link
-          to={`/test01-menu/test01-basic/${currentQuizNumber + 1}`}
+          to={`/test01-menu/${testLevel}/${
+            currentQuizNumber ? currentQuizNumber + 1 : quizNumber
+          }`}
           className={currentQuizNumber === 100 ? "disabled" : ""}
         >
           <img

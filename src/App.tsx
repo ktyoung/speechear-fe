@@ -35,6 +35,9 @@ import SentenceSetFour from "./pages/tests/test04/SentenceSetFour";
 import SentenceSetFive from "./pages/tests/test04/SentenceSetFive";
 import CrosswordQuiz from "./pages/tests/test05/CrosswordQuiz";
 import TestBasic from "./pages/tests/test01/TestBasic";
+import TestLow from "./pages/tests/test01/TestLow";
+import TestMedium from "./pages/tests/test01/TestMedium";
+import TestHigh from "./pages/tests/test01/TestHigh";
 
 function LayoutRoutes() {
   return (
@@ -48,6 +51,18 @@ function LayoutRoutes() {
         <Route
           path="/test01-menu/test01-basic/:quizNumber"
           element={<TestBasic />}
+        />
+        <Route
+          path="/test01-menu/test01-low/:quizNumber"
+          element={<TestLow />}
+        />
+        <Route
+          path="/test01-menu/test01-medium/:quizNumber"
+          element={<TestMedium />}
+        />
+        <Route
+          path="/test01-menu/test01-high/:quizNumber"
+          element={<TestHigh />}
         />
         <Route path="/test01-menu/test01-low" element={<Low />} />
         <Route path="/test01-menu/test01-medium" element={<Medium />} />
