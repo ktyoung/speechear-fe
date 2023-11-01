@@ -1045,15 +1045,27 @@ li.page-btn button {
 }
 
 .test-contents {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 70%;
   margin: 40px 0 0 0;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 35px;
 }
+.navigation-buttons a {
+  position: absolute;
+  top: 64px;
+}
+.navigation-buttons a:first-child {
+  left: -20%;
+}
+.navigation-buttons a:last-child {
+  right: -20%;
+}
+
 .test-contents .disabled {
   opacity: 0.5;
   cursor: default;
@@ -1076,27 +1088,55 @@ li.page-btn button {
   background-color: #fff;
   cursor: pointer;
 }
-.play-sentence.playing {
+.play-sentence.playing,
+.play-sentence.bg-blue.playing {
   background-color: rgb(116, 205, 184);
 }
-.play-sentence > img,
+.play-sentence__click > img,
 .view-sentence > img,
-.view-sentence__accordion > img {
+.view-sentence__accordion > img,
+.view-sentence__accordion > .describe-text {
   margin: 0 30px;
+}
+.describe-text {
+  font-size: 22px;
 }
 .play-sentence > p {
   color: #63a4db;
 }
 
+.play-sentence.bg-blue,
 .view-sentence {
-  position: relative;
   background-color: #63a4db;
   margin: 0;
+}
+.play-sentence.bg-blue {
+  justify-content: space-between;
+}
+.play-sentence__click,
+.view-test-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+  margin: 0 25px 0 0;
+}
+.view-test-text > p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  opacity: 0.9;
+  margin-right: 20px;
 }
 .view-sentence > p {
   color: #fff;
 }
 .view-sentence__accordion {
-  position: absolute;
-  top: 140px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+.view-sentence__accordion.open {
+  max-height: 140px;
 }

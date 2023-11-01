@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useMatch } from "react-router-dom";
 
-export default function TestScreen() {
+export default function Test01Screen() {
   const location = useLocation();
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
@@ -65,7 +65,7 @@ export default function TestScreen() {
         </Link>
         <div className="test-contents__bar">
           <div
-            className={`play-sentence ${isPlay && "playing"}`}
+            className={`play-sentence ${isPlay ? "playing" : ""}`}
             onClick={togglePlay}
           >
             {isPlay ? (

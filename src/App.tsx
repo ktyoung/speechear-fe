@@ -30,8 +30,10 @@ import SentenceSetThree from "./pages/tests/test04/SentenceSetThree";
 import SentenceSetFour from "./pages/tests/test04/SentenceSetFour";
 import SentenceSetFive from "./pages/tests/test04/SentenceSetFive";
 import CrosswordQuiz from "./pages/tests/test05/CrosswordQuiz";
-import TestLevel from "./pages/tests/test01/TestLevel";
-import TestScreenWrapper from "./pages/tests/test01/TestScreenWrapper";
+import Test01Level from "./pages/tests/test01/Test01Level";
+import Test01ScreenWrapper from "./pages/tests/test01/Test01ScreenWrapper";
+import Test02Level from "./pages/tests/test02/Test02Level";
+import Test02ScreenWrapper from "./pages/tests/test02/Test02ScreenWrapper";
 
 function LayoutRoutes() {
   return (
@@ -41,17 +43,22 @@ function LayoutRoutes() {
         <Route path="/myPage" element={<MyPage />} />
         {/* Test01  */}
         <Route path="/test01-menu" element={<Test01Menu />} />
-        <Route path="/test01-menu/:testLevel" element={<TestLevel />} />
+        <Route path="/test01-menu/:testLevel" element={<Test01Level />} />
         <Route
           path="/test01-menu/:testLevel/:quizNumber"
-          element={<TestScreenWrapper />}
+          element={<Test01ScreenWrapper />}
         />
         {/* Test02  */}
         <Route path="/test02-menu" element={<Test02Menu />} />
-        <Route path="/test02-menu/test02-area" element={<Area />} />
+        <Route path="/test02-menu/:testLevel" element={<Test02Level />} />
+        <Route
+          path="/test02-menu/:testLevel/:quizNumber"
+          element={<Test02ScreenWrapper />}
+        />
+        {/* <Route path="/test02-menu/test02-area" element={<Area />} />
         <Route path="/test02-menu/test02-culture" element={<Culture />} />
         <Route path="/test02-menu/test02-food" element={<Food />} />
-        <Route path="/test02-menu/test02-other" element={<Other />} />
+        <Route path="/test02-menu/test02-other" element={<Other />} /> */}
         {/* Test03  */}
         <Route path="/test03-menu" element={<Test03Menu />} />
         <Route path="/test03-menu/test03-cook" element={<Cook />} />
