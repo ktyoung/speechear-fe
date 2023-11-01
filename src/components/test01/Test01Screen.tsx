@@ -42,74 +42,70 @@ export default function Test01Screen() {
             alt="Wrong answer button"
           />
         </button>
-        {!location.pathname.includes("/test01-basic/") && (
-          <button>
-            <img
-              src={`${process.env.PUBLIC_URL}/images/test/button_without_noise.png`}
-              alt="Listen without noise button"
-            />
-          </button>
-        )}
       </div>
       <div className="test-contents">
-        <Link
-          to={`/test01-menu/${testLevel}/${
-            currentQuizNumber ? currentQuizNumber - 1 : quizNumber
-          }`}
-          className={currentQuizNumber === 1 ? "disabled" : ""}
-        >
-          <img
-            src={`${process.env.PUBLIC_URL}/images/test/button_left.png`}
-            alt="Go to previous question"
-          />
-        </Link>
-        <div className="test-contents__bar">
-          <div
-            className={`play-sentence ${isPlay ? "playing" : ""}`}
-            onClick={togglePlay}
+        <div className="navigation-buttons">
+          <Link
+            to={`/test01-menu/${testLevel}/${
+              currentQuizNumber ? currentQuizNumber - 1 : quizNumber
+            }`}
+            className={currentQuizNumber === 1 ? "disabled" : ""}
           >
-            {isPlay ? (
-              <img
-                src={`${process.env.PUBLIC_URL}/images/test/pause.png`}
-                alt="Sentence listening pause icon"
-                style={{ marginRight: "20px" }}
-              />
-            ) : (
-              <img
-                src={`${process.env.PUBLIC_URL}/images/test/play_small.png`}
-                alt="Sentence listening icon"
-              />
-            )}
-            <p>문장 듣기</p>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/test/button_left.png`}
+              alt="Go to previous question"
+            />
+          </Link>
+          <Link
+            to={`/test01-menu/${testLevel}/${
+              currentQuizNumber ? currentQuizNumber + 1 : quizNumber
+            }`}
+            className={currentQuizNumber === 100 ? "disabled" : ""}
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
+              alt="Go to next question"
+            />
+          </Link>
+        </div>
+        <div className="test-contents__bar">
+          <div className={`play-sentence ${isPlay ? "playing" : ""}`}>
+            <div className="play-sentence__click" onClick={togglePlay}>
+              {isPlay ? (
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/test/pause.png`}
+                  alt="Sentence listening pause icon"
+                  style={{ marginRight: "20px" }}
+                />
+              ) : (
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/test/play_small.png`}
+                  alt="Sentence listening icon"
+                  style={{ width: "45px" }}
+                />
+              )}
+              <p style={isPlay ? { color: "#fff" } : { color: "#63a4db" }}>
+                문장 듣기
+              </p>
+            </div>
           </div>
           <div className="view-sentence" onClick={toggleOpenAnswer}>
             <img
               src={`${process.env.PUBLIC_URL}/images/test/check.png`}
               alt="Sentence viewing icon"
             />
-            <p>문장 보기</p>
-            {isOpenAnswer && (
-              <div className="view-sentence__accordion">
-                <img
-                  src={`${process.env.PUBLIC_URL}/images/test/play_small.png`}
-                  alt="Sentence listening icon"
-                />
-                <p>테스트 텍스트입니다.</p>
-              </div>
-            )}
+            <p>정답 보기</p>
+          </div>
+          <div
+            className={`view-sentence__accordion ${isOpenAnswer ? "open" : ""}`}
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/images/test/answer.png`}
+              alt="Sentence listening icon"
+            />
+            <p>소음 하 문장 듣기 정답 텍스트입니다.</p>
           </div>
         </div>
-        <Link
-          to={`/test01-menu/${testLevel}/${
-            currentQuizNumber ? currentQuizNumber + 1 : quizNumber
-          }`}
-          className={currentQuizNumber === 100 ? "disabled" : ""}
-        >
-          <img
-            src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
-            alt="Go to next question"
-          />
-        </Link>
       </div>
     </div>
   );
