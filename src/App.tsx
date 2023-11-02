@@ -42,31 +42,12 @@ function LayoutRoutes() {
           path="/test02-menu/:testLevel/:quizNumber"
           element={<Test02ScreenWrapper />}
         />
-        {/* <Route path="/test02-menu/test02-area" element={<Area />} />
-        <Route path="/test02-menu/test02-culture" element={<Culture />} />
-        <Route path="/test02-menu/test02-food" element={<Food />} />
-        <Route path="/test02-menu/test02-other" element={<Other />} /> */}
-        {/* Test03  */}
         <Route path="/test03-menu" element={<Test03Menu />} />
         <Route path="/test03-menu/:testLevel" element={<Test03Level />} />
         <Route
           path="/test03-menu/:testLevel/:quizNumber"
           element={<Test03ScreenWrapper />}
         />
-        {/* <Route path="/test03-menu/test03-cook" element={<Cook />} />
-        <Route
-          path="/test03-menu/test03-culture"
-          element={<TraditionalCulture />}
-        />
-        <Route path="/test03-menu/test03-sports" element={<Sports />} />
-        <Route path="/test03-menu/test03-festivals" element={<Festivals />} />
-        <Route path="/test03-menu/test03-proverbs" element={<Proverbs />} />
-        <Route path="/test03-menu/test03-regions" element={<Regions />} />
-        <Route path="/test03-menu/test03-heritage" element={<Heritage />} />
-        <Route path="/test03-menu/test03-countries" element={<Countries />} />
-        <Route path="/test03-menu/test03-health" element={<Health />} />
-        <Route path="/test03-menu/test03-people" element={<People />} />
-        <Route path="/test03-menu/test03-others" element={<Othres />} /> */}
         {/* Test04 */}
         <Route path="/test04-menu" element={<Test04Menu />} />
         <Route
