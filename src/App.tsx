@@ -11,21 +11,6 @@ import MyPage from "./pages/MyPage";
 import Test03Menu from "./pages/menus/Test03Menu";
 import Test04Menu from "./pages/menus/Test04Menu";
 import Test05Menu from "./pages/menus/Test05Menu";
-import Area from "./pages/tests/test02/Area";
-import Culture from "./pages/tests/test02/Culture";
-import Food from "./pages/tests/test02/Food";
-import Other from "./pages/tests/test02/Other";
-import Cook from "./pages/tests/test03/Cook";
-import TraditionalCulture from "./pages/tests/test03/TraditionalCulture";
-import Sports from "./pages/tests/test03/Sports";
-import Festivals from "./pages/tests/test03/Festivals";
-import Proverbs from "./pages/tests/test03/Proverbs";
-import Regions from "./pages/tests/test03/Regions";
-import Heritage from "./pages/tests/test03/Heritage";
-import Countries from "./pages/tests/test03/Countries";
-import Health from "./pages/tests/test03/Health";
-import People from "./pages/tests/test03/People";
-import Othres from "./pages/tests/test03/Othres";
 import SentenceSetThree from "./pages/tests/test04/SentenceSetThree";
 import SentenceSetFour from "./pages/tests/test04/SentenceSetFour";
 import SentenceSetFive from "./pages/tests/test04/SentenceSetFive";
@@ -34,6 +19,8 @@ import Test01Level from "./pages/tests/test01/Test01Level";
 import Test01ScreenWrapper from "./pages/tests/test01/Test01ScreenWrapper";
 import Test02Level from "./pages/tests/test02/Test02Level";
 import Test02ScreenWrapper from "./pages/tests/test02/Test02ScreenWrapper";
+import Test03Level from "./pages/tests/test03/Test03Level";
+import Test03ScreenWrapper from "./pages/tests/test03/Test03ScreenWrapper";
 
 function LayoutRoutes() {
   return (
@@ -61,7 +48,12 @@ function LayoutRoutes() {
         <Route path="/test02-menu/test02-other" element={<Other />} /> */}
         {/* Test03  */}
         <Route path="/test03-menu" element={<Test03Menu />} />
-        <Route path="/test03-menu/test03-cook" element={<Cook />} />
+        <Route path="/test03-menu/:testLevel" element={<Test03Level />} />
+        <Route
+          path="/test03-menu/:testLevel/:quizNumber"
+          element={<Test03ScreenWrapper />}
+        />
+        {/* <Route path="/test03-menu/test03-cook" element={<Cook />} />
         <Route
           path="/test03-menu/test03-culture"
           element={<TraditionalCulture />}
@@ -74,7 +66,7 @@ function LayoutRoutes() {
         <Route path="/test03-menu/test03-countries" element={<Countries />} />
         <Route path="/test03-menu/test03-health" element={<Health />} />
         <Route path="/test03-menu/test03-people" element={<People />} />
-        <Route path="/test03-menu/test03-others" element={<Othres />} />
+        <Route path="/test03-menu/test03-others" element={<Othres />} /> */}
         {/* Test04 */}
         <Route path="/test04-menu" element={<Test04Menu />} />
         <Route

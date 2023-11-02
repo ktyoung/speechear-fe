@@ -995,11 +995,15 @@ li.page-btn button {
   color: white;
 }
 .scoring li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   text-align: center;
   opacity: 0.6;
 }
-.scoring li:hover {
+.scoring li:hover,
+.scoring li:focus-within {
   opacity: 1;
 }
 .scoring li.check-correct {
@@ -1043,6 +1047,10 @@ li.page-btn button {
 .answer-buttons button:focus {
   opacity: 1;
 }
+.answer-buttons .answer-buttons__opacity_1 {
+  opacity: 1;
+  padding: 0;
+}
 
 .test-contents {
   position: relative;
@@ -1054,6 +1062,10 @@ li.page-btn button {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 35px;
+}
+.test-contents.test-contents__width-full {
+  width: 100%;
+  justify-content: flex-start;
 }
 .navigation-buttons a {
   position: absolute;
@@ -1139,4 +1151,71 @@ li.page-btn button {
 }
 .view-sentence__accordion.open {
   max-height: 140px;
+}
+
+.test-contents__bg {
+  margin: 0 auto;
+}
+.test-contents__bg > img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.test-contents__view-story > p {
+  font-size: 26px;
+  line-height: 1.4;
+}
+
+.test-contents__qna-wrapper {
+  margin: 0 0 40px 0;
+}
+.test-contents__questions {
+  width: 100%;
+  height: 100%;
+  color: #6ebcc8;
+  font-size: 28px;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+.test-contents__question-mark {
+  color: white;
+  font-size: 26px;
+  background-color: #6ebcc8;
+  text-align: center;
+  border-radius: 50%;
+  padding: 2px 14px;
+  margin-right: 15px;
+}
+.test-contents__answer-wrapper {
+  display: flex;
+}
+.test-contents__view-answer > button {
+  background-color: #63a4db;
+  border-radius: 30px;
+  width: 70px;
+  height: 37px;
+  text-align: center;
+  line-height: 43px;
+}
+.test-contents__view-question,
+.test-contents__answer-list {
+  width: 100%;
+}
+.test-contents__answer-list {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 24px;
+  padding: 0 0 0 24px;
+  border-radius: 30px;
+  line-height: 37px;
+  background-color: #eff6fc;
+  font-size: 24px;
+  font-weight: 400;
+}
+.test-contents__answer-wrapper .scoring {
+  width: inherit;
+}
+.test-contents__answer-wrapper .scoring button {
+  height: 100%;
 }

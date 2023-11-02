@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import Test01Screen from "../../../components/test01/Test01Screen";
+import Test03Screen from "../../../components/test03/Test03Screen";
 
-export default function Test01ScreenWrapper() {
+export default function Test03ScreenWrapper() {
   const { quizNumber } = useParams();
 
   return (
@@ -9,12 +9,12 @@ export default function Test01ScreenWrapper() {
       <div className="contents-main">
         <div className="main-title menu no-margin-bottom">
           <p className="select-function menu-title menu-title-color">
-            <span className="function-number menu-number-color">01</span> 소음
-            하 문장듣기
+            <span className="function-number menu-number-color">03</span>긴
+            이야기 듣기
           </p>
-          <p className="quiz-rule">{`${quizNumber}. 다음 문장을 듣고 따라해 보세요.`}</p>
+          <p className="quiz-rule">{`${quizNumber}. 다음 긴 이야기를 듣고 문제에 답해 보세요.`}</p>
         </div>
-        <Test01Screen />
+        <Test03Screen />
       </div>
     </div>
   );
