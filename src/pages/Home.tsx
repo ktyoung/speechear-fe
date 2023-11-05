@@ -13,7 +13,7 @@ export default function Home() {
         <div className="functions-wrapper">
           <ul>
             <FunctionList
-              _to="/test01-menu"
+              _to="/training/part1"
               _num="01"
               _title={`소음 하\n문장 듣기`}
             />

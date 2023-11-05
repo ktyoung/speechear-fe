@@ -29,10 +29,10 @@ function LayoutRoutes() {
         <Route path="/home" element={<Home />} />
         <Route path="/myPage" element={<MyPage />} />
         {/* Test01  */}
-        <Route path="/test01-menu" element={<Test01Menu />} />
-        <Route path="/test01-menu/:testLevel" element={<Test01Level />} />
+        <Route path="/training/part1" element={<Test01Menu />} />
+        <Route path="/training/part1/:level/:page" element={<Test01Level />} />
         <Route
-          path="/test01-menu/:testLevel/:quizNumber"
+          path="/training/part1/:level/:page/:quiz"
           element={<Test01ScreenWrapper />}
         />
         {/* Test02  */}

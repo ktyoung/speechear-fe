@@ -1,9 +1,23 @@
 import { useParams } from "react-router-dom";
+import useAxios, {
+  API_URL,
+  IRequestType,
+  IResponseType,
+} from "../../../hooks/useAxios";
+
 import TestList from "../../../components/TestList";
 
 export default function Test01Level() {
-  const { testLevel } = useParams();
+  const { level, page } = useParams();
 
+  const requestConfig: IRequestType = {
+    url: API_URL + "/training/part1/page/" + page,
+    method: "GET",
+  };
+
+  const res: IResponseType | undefined = useAxios(requestConfig);
+
+  console.log(res);
   return (
     <div className="contents-wrapper main">
       <div className="contents-main">
@@ -16,7 +30,7 @@ export default function Test01Level() {
         <TestList
           _totalPage={10}
           _totalQuestionCount={100}
-          _to={`/test01-menu/${testLevel}`}
+          _to={`/training/part1/${level}/${page}`}
         />
       </div>
     </div>

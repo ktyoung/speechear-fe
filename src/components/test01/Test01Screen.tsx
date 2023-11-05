@@ -6,18 +6,22 @@ export default function Test01Screen() {
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
 
-  const match = useMatch("/test01-menu/:testLevel/:quizNumber");
+  const match = useMatch("/training/part1/:level/:page/:quiz");
 
-  let testLevel: string | null = null;
-  let quizNumber: string | null = null;
-  let currentQuizNumber: number | null = null;
+  let level: string | null = null;
+  let page: string | null = null;
+  let quiz: string | null = null;
+  let currentPage: number | null = null;
+  let currentQuiz: number | null = null;
 
   if (match) {
-    ({ testLevel, quizNumber } = match.params as {
-      testLevel: string;
-      quizNumber: string;
+    ({ level, page, quiz } = match.params as {
+      level: string;
+      page: string;
+      quiz: string;
     });
-    currentQuizNumber = parseInt(quizNumber);
+    currentPage = parseInt(page);
+    currentQuiz = parseInt(quiz);
   }
 
   const togglePlay = () => {
@@ -46,10 +50,10 @@ export default function Test01Screen() {
       <div className="test-contents">
         <div className="navigation-buttons">
           <Link
-            to={`/test01-menu/${testLevel}/${
-              currentQuizNumber ? currentQuizNumber - 1 : quizNumber
+            to={`/training/part1/${level}/${
+              currentQuiz ? currentQuiz - 1 : quiz
             }`}
-            className={currentQuizNumber === 1 ? "disabled" : ""}
+            className={currentQuiz === 1 ? "disabled" : ""}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_left.png`}
@@ -57,10 +61,10 @@ export default function Test01Screen() {
             />
           </Link>
           <Link
-            to={`/test01-menu/${testLevel}/${
-              currentQuizNumber ? currentQuizNumber + 1 : quizNumber
+            to={`/training/part1/${level}/${
+              currentQuiz ? currentQuiz + 1 : quiz
             }`}
-            className={currentQuizNumber === 100 ? "disabled" : ""}
+            className={currentQuiz === 100 ? "disabled" : ""}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
