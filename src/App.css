@@ -811,6 +811,7 @@
 }
 .functions-wrapper.menus li.page-btn {
   margin-right: 20px;
+  color: inherit;
 }
 .functions-wrapper.menus li.page-btn:last-child {
   margin-right: 0;
@@ -1067,14 +1068,14 @@ li.page-btn button {
   width: 100%;
   justify-content: flex-start;
 }
-.navigation-buttons a {
+.navigation-buttons button {
   position: absolute;
   top: 64px;
 }
-.navigation-buttons a:first-child {
+.navigation-buttons button:first-child {
   left: -20%;
 }
-.navigation-buttons a:last-child {
+.navigation-buttons button:last-child {
   right: -20%;
 }
 

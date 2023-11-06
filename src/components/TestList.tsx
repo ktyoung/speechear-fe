@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 interface TestListProps {
   _totalPage: number;
@@ -12,6 +12,9 @@ export default function TestList({
   _totalQuestionCount,
   _to,
 }: TestListProps) {
+  const navigate = useNavigate();
+  const { level } = useParams();
+
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Array.from({ length: _totalPage }, (_, i) => i + 1);
   const numberArray = Array.from(
@@ -25,6 +28,7 @@ export default function TestList({
 
   const _handlePageNumber = (newPageNumber: number) => {
     setCurrentPage(newPageNumber);
+    navigate(`/training/part1/${level}/${newPageNumber}`);
   };
 
   return (

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import Test01Screen from "../../../components/test01/Test01Screen";
 
 export default function Test01ScreenWrapper() {
-  const { quizNumber } = useParams();
+  const { quiz } = useParams();
 
   return (
     <div className="contents-wrapper main">
@@ -12,7 +12,7 @@ export default function Test01ScreenWrapper() {
             <span className="function-number menu-number-color">01</span> 소음
             하 문장듣기
           </p>
-          <p className="quiz-rule">{`${quizNumber}. 다음 문장을 듣고 따라해 보세요.`}</p>
+          <p className="quiz-rule">{`${quiz}. 다음 문장을 듣고 따라해 보세요.`}</p>
         </div>
         <Test01Screen />
       </div>
