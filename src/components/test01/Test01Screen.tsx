@@ -11,7 +11,6 @@ export default function Test01Screen() {
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
 
   const [quizIndex, setQuizIndex] = useState(1);
-  const [quizzes, setQuizzes] = useState([]);
   const [context, setContext] = useState<string>("");
 
   const match = useMatch("/training/part1/:level/:page/:quiz");
