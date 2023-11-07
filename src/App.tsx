@@ -11,9 +11,6 @@ import MyPage from "./pages/MyPage";
 import Test03Menu from "./pages/menus/Test03Menu";
 import Test04Menu from "./pages/menus/Test04Menu";
 import Test05Menu from "./pages/menus/Test05Menu";
-import SentenceSetThree from "./pages/tests/test04/SentenceSetThree";
-import SentenceSetFour from "./pages/tests/test04/SentenceSetFour";
-import SentenceSetFive from "./pages/tests/test04/SentenceSetFive";
 import CrosswordQuiz from "./pages/tests/test05/CrosswordQuiz";
 import Test01Level from "./pages/tests/test01/Test01Level";
 import Test01ScreenWrapper from "./pages/tests/test01/Test01ScreenWrapper";
@@ -21,6 +18,8 @@ import Test02Level from "./pages/tests/test02/Test02Level";
 import Test02ScreenWrapper from "./pages/tests/test02/Test02ScreenWrapper";
 import Test03Level from "./pages/tests/test03/Test03Level";
 import Test03ScreenWrapper from "./pages/tests/test03/Test03ScreenWrapper";
+import Test04Level from "./pages/tests/test04/Test04Level";
+import Test04ScreenWrapper from "./pages/tests/test04/Test04ScreenWrapper";
 
 function LayoutRoutes() {
   return (
@@ -36,30 +35,29 @@ function LayoutRoutes() {
           element={<Test01ScreenWrapper />}
         />
         {/* Test02  */}
-        <Route path="/test02-menu" element={<Test02Menu />} />
-        <Route path="/test02-menu/:testLevel" element={<Test02Level />} />
+        <Route path="/training/part2" element={<Test02Menu />} />
+        <Route path="/training/part2/:level/:page" element={<Test02Level />} />
         <Route
-          path="/test02-menu/:testLevel/:quizNumber"
+          path="/training/part2/:level/:page/:quiz"
           element={<Test02ScreenWrapper />}
         />
-        <Route path="/test03-menu" element={<Test03Menu />} />
-        <Route path="/test03-menu/:testLevel" element={<Test03Level />} />
+        <Route path="/training/part3" element={<Test03Menu />} />
+        <Route path="/training/part3/:level/:page" element={<Test03Level />} />
         <Route
-          path="/test03-menu/:testLevel/:quizNumber"
+          path="/training/part3/:level/:page/:quiz"
           element={<Test03ScreenWrapper />}
         />
         {/* Test04 */}
-        <Route path="/test04-menu" element={<Test04Menu />} />
+        <Route path="/training/part4" element={<Test04Menu />} />
+        <Route path="/training/part4/:level/:page" element={<Test04Level />} />
         <Route
-          path="/test04-menu/test04-set03"
-          element={<SentenceSetThree />}
+          path="/training/part4/:level/:page/:quiz"
+          element={<Test04ScreenWrapper />}
         />
-        <Route path="/test04-menu/test04-set04" element={<SentenceSetFour />} />
-        <Route path="/test04-menu/test04-set05" element={<SentenceSetFive />} />
         {/* Test05 */}
-        <Route path="/test05-menu" element={<Test05Menu />} />
+        <Route path="/training/part5" element={<Test05Menu />} />
         <Route
-          path="/test05-menu/test05-quiz/:quizNumber"
+          path="/training/part5/:level/:page/:quiz"
           element={<CrosswordQuiz />}
         />
       </Routes>

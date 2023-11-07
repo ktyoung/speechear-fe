@@ -2,7 +2,7 @@ import { useLocation, useParams } from "react-router-dom";
 import TestList from "../../../components/TestList";
 
 export default function Test02Level() {
-  const { testLevel } = useParams();
+  const { level, page } = useParams<{ level: string; page?: string }>();
   const location = useLocation();
 
   const isCultureRoute = location.pathname.includes("/test02-culture");
@@ -17,11 +17,11 @@ export default function Test02Level() {
             이야기 듣기
           </p>
         </div>
-        {/* <TestList
+        <TestList
           _totalPage={1}
           _totalQuestionCount={_totalQuestionCount}
-          _to={`/test02-menu/${testLevel}`}
-        /> */}
+          _to={`/training/part2/${level}/${page}`}
+        />
       </div>
     </div>
   );
