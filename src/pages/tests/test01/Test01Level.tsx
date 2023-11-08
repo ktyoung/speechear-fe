@@ -5,7 +5,7 @@ import useAxios, {
   IResponseType,
 } from "../../../hooks/useAxios";
 
-import TestList from "../../../components/TestList";
+import TestList from "../../../components/tests/TestList";
 import { useEffect, useState } from "react";
 
 export default function Test01Level() {

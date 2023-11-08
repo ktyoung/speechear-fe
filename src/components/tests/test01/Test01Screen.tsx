@@ -4,7 +4,7 @@ import useAxios, {
   IRequestType,
   API_URL,
   IResponseType,
-} from "../../hooks/useAxios";
+} from "../../../hooks/useAxios";
 
 export default function Test01Screen() {
   const [isPlay, setIsPlay] = useState(false);

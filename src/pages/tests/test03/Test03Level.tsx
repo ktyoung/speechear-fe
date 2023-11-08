@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import TestList from "../../../components/TestList";
+import TestList from "../../../components/tests/TestList";
 
 export default function Test03Level() {
   const { testLevel } = useParams();

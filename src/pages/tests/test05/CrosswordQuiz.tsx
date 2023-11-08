@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import CrosswordGrid from "../../../components/CrosswordGrid";
+import CrosswordGrid from "../../../components/tests/test05/CrosswordGrid";
 import crosswordData from "../../../data/crosswordData.json";
 import { useEffect, useState } from "react";
 
