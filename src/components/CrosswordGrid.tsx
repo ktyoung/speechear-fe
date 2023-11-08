@@ -125,6 +125,7 @@ function CrosswordGrid({
 
           <input
             type="text"
+            placeholder=""
             maxLength={1}
             disabled={isCellDisabled({ rowIndex, colIndex, disabledCells })}
           />
