@@ -1,4 +1,4 @@
-import FunctionList from "../components/FunctionList";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -41,5 +41,22 @@ export default function Home() {
         </div>
       </div>
     </div>
+  );
+}
+
+interface FunctionListProps {
+  _to: string;
+  _num: string;
+  _title: string;
+}
+
+function FunctionList({ _to, _num, _title }: FunctionListProps) {
+  return (
+    <li>
+      <Link to={_to}>
+        <p className="function-number">{_num}</p>
+        <p className="function-title">{_title}</p>
+      </Link>
+    </li>
   );
 }

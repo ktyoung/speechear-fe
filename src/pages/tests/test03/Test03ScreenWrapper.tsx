@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Test03Screen from "../../../components/test03/Test03Screen";
+import Test03Screen from "../../../components/tests/test03/Test03Screen";
 
 export default function Test03ScreenWrapper() {
   const { quizNumber } = useParams();

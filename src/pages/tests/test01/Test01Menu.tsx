@@ -1,4 +1,4 @@
-import Menus from "../../components/Menus";
+import Menus from "../../../components/tests/Menus";
 
 export default function Test01Menu() {
   return (

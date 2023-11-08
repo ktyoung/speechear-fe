@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { modalState } from "../state/atom";
+import { modalState } from "../../state/atom";
 
 export default function Header() {
   const [toggle, setToggle] = useRecoilState(modalState);

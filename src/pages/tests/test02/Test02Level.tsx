@@ -1,5 +1,5 @@
 import { useLocation, useParams } from "react-router-dom";
-import TestList from "../../../components/TestList";
+import TestList from "../../../components/tests/TestList";
 
 export default function Test02Level() {
   const { level, page } = useParams<{ level: string; page?: string }>();
