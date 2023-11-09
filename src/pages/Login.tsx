@@ -1,35 +1,46 @@
 import { useState, useEffect, FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import anime from "animejs";
-import { Link } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useRecoilState } from "recoil";
+import { jwtTokenState } from "../state/atom";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const [jwtToken, setJwtToken] = useRecoilState(jwtTokenState);
+
   const [authError, setAuthError] = useState(false);
 
-  const handleSignInClick = async (e: FormEvent) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignIn = async (e: FormEvent) => {
     e.preventDefault();
     setAuthError(false);
 
-    const formData = new FormData(
-      document.getElementById("loginForm") as HTMLFormElement
-    );
-    const csrfMetaTag = document.querySelector(
-      "meta[name='_csrf']"
-    ) as HTMLMetaElement;
-    const csrfToken = csrfMetaTag ? csrfMetaTag.content : "";
+    const API_URL = process.env.REACT_APP_RESTAPI_URL;
 
-    try {
-      await axios.post("/loginFormData", formData, {
-        headers: {
-          "X-CSRF-TOKEN": csrfToken,
-        },
-        withCredentials: true,
+    await axios({
+      method: "post",
+      url: API_URL + "/auth/signin",
+      data: {
+        username: username,
+        password: password,
+      },
+      withCredentials: true,
+    })
+      .then((res) => {
+        console.log(res);
+        console.log(jwtDecode(res.data.accessToken));
+        setJwtToken(res.data);
+        navigate("/home");
+      })
+      .catch((err) => {
+        console.log(err);
+        setAuthError(true);
       });
-
-      window.location.href = "/home/FunctionSelect";
-    } catch (error) {
-      setAuthError(true);
-    }
   };
 
   useEffect(() => {
@@ -90,7 +101,7 @@ export default function Login() {
             />
           </div>
           <div className="form_area">
-            <form id="loginForm" onSubmit={handleSignInClick} method="post">
+            <form id="loginForm" onSubmit={handleSignIn}>
               <div className="form_group">
                 <input
                   type="text"
@@ -98,6 +109,7 @@ export default function Login() {
                   name="username"
                   placeholder="아이디을 입력해주세요"
                   autoComplete="off"
+                  onChange={(e) => setUsername(e.target.value)}
                 />
                 <i className="input_icon icon_account"></i>
               </div>
@@ -108,6 +120,7 @@ export default function Login() {
                   name="password"
                   placeholder="비밀번호를 입력해주세요"
                   autoComplete="off"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <i className="input_icon icon_password"></i>
               </div>
@@ -117,12 +130,12 @@ export default function Login() {
                 </div>
               )}
               <div className="btn_login_bottom">
-                {/* <button type="submit" className="btn_login" id="signIn">
+                <button type="submit" className="btn_login" id="signIn">
                   로그인
-                </button> */}
-                <Link to="/home" className="btn_login">
+                </button>
+                {/* <Link to="/home" className="btn_login">
                   로그인
-                </Link>
+                </Link> */}
               </div>
               <div className="account_link">
                 <div>

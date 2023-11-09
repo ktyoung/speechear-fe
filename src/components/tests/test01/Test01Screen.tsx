@@ -1,30 +1,65 @@
-import { useState } from "react";
-import { Link, useLocation, useMatch } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useMatch } from "react-router-dom";
+import useAxios, {
+  IRequestType,
+  API_URL,
+  IResponseType,
+} from "../../../hooks/useAxios";
 
 export default function Test01Screen() {
-  const location = useLocation();
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
 
-  const match = useMatch("/test01-menu/:testLevel/:quizNumber");
+  const [quizIndex, setQuizIndex] = useState(1);
+  const [context, setContext] = useState<string>("");
 
-  let testLevel: string | null = null;
-  let quizNumber: string | null = null;
-  let currentQuizNumber: number | null = null;
+  const match = useMatch("/training/part1/:level/:page/:quiz");
+
+  let level: string | null = null;
+  let page: string | null = null;
+  let quiz: string | null = null;
+  let currentPage: number | null = null;
+  let currentQuiz: number | null = null;
 
   if (match) {
-    ({ testLevel, quizNumber } = match.params as {
-      testLevel: string;
-      quizNumber: string;
+    ({ level, page, quiz } = match.params as {
+      level: string;
+      page: string;
+      quiz: string;
     });
-    currentQuizNumber = parseInt(quizNumber);
+    currentPage = parseInt(page);
+    currentQuiz = parseInt(quiz);
   }
+
+  const requestConfig: IRequestType = {
+    url: API_URL + "/training/part1/page/" + currentPage,
+    method: "GET",
+  };
+
+  const res: IResponseType | undefined = useAxios(requestConfig);
+
+  useEffect(() => {
+    if (res?.data?.rows && currentQuiz !== null) {
+      const quizData = res.data.rows[currentQuiz.toString()];
+
+      if (quizData && quizData.results && quizIndex >= 1 && quizIndex <= 10) {
+        setContext(quizData.results[quizIndex - 1].context);
+      }
+      console.log(quizData);
+    }
+  }, [res, currentQuiz, quizIndex]);
 
   const togglePlay = () => {
     setIsPlay(!isPlay);
   };
   const toggleOpenAnswer = () => {
     setIsOpenAnswer(!isOpenAnswer);
+  };
+  const showPrevQuiz = () => {
+    setQuizIndex((prev) => (prev > 1 ? prev - 1 : prev));
+  };
+  const showNextQuiz = () => {
+    setQuizIndex((prev) => (prev < 10 ? prev + 1 : prev));
   };
 
   return (
@@ -45,28 +80,24 @@ export default function Test01Screen() {
       </div>
       <div className="test-contents">
         <div className="navigation-buttons">
-          <Link
-            to={`/test01-menu/${testLevel}/${
-              currentQuizNumber ? currentQuizNumber - 1 : quizNumber
-            }`}
-            className={currentQuizNumber === 1 ? "disabled" : ""}
+          <button
+            onClick={showPrevQuiz}
+            className={quizIndex === 1 ? "disabled" : ""}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_left.png`}
               alt="Go to previous question"
             />
-          </Link>
-          <Link
-            to={`/test01-menu/${testLevel}/${
-              currentQuizNumber ? currentQuizNumber + 1 : quizNumber
-            }`}
-            className={currentQuizNumber === 100 ? "disabled" : ""}
+          </button>
+          <button
+            onClick={showNextQuiz}
+            className={quizIndex === 10 ? "disabled" : ""}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
               alt="Go to next question"
             />
-          </Link>
+          </button>
         </div>
         <div className="test-contents__bar">
           <div className={`play-sentence ${isPlay ? "playing" : ""}`}>
@@ -103,7 +134,7 @@ export default function Test01Screen() {
               src={`${process.env.PUBLIC_URL}/images/test/answer.png`}
               alt="Sentence listening icon"
             />
-            <p>소음 하 문장 듣기 정답 텍스트입니다.</p>
+            <p>{context}</p>
           </div>
         </div>
       </div>
