@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import { jwtTokenState } from "../states";
+import { jwtTokenState } from "@states/index";
 
 export interface IRequestType {
   headers?: Object;
