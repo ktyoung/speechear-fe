@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import TestList from "../../../components/TestList";
+import TestList from "../../../components/tests/TestList";
 
 export default function Test03Level() {
   const { testLevel } = useParams();
@@ -13,11 +13,11 @@ export default function Test03Level() {
             이야기 듣기
           </p>
         </div>
-        <TestList
+        {/* <TestList
           _totalPage={1}
           _totalQuestionCount={5}
           _to={`/test03-menu/${testLevel}`}
-        />
+        /> */}
       </div>
     </div>
   );

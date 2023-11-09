@@ -1,19 +1,22 @@
-import TestList from "../../../components/TestList";
+import { useParams } from "react-router-dom";
+import TestList from "../../../components/tests/TestList";
 
-export default function SentenceSetFour() {
+export default function Test04Level() {
+  const { level, page } = useParams();
+
   return (
     <div className="contents-wrapper main">
       <div className="contents-main">
         <div className="main-title menu no-margin-bottom">
           <p className="select-function menu-title menu-title-color">
-            <span className="function-number menu-number-color">04</span> 문장
+            <span className="function-number menu-number-color">04</span>문장
             순서화 하기
           </p>
         </div>
         <TestList
           _totalPage={3}
           _totalQuestionCount={25}
-          _to={`/test04-menu/test04-set04/`}
+          _to={`/training/part4/${level}/${page}`}
         />
       </div>
     </div>
