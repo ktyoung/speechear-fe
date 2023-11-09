@@ -5,7 +5,7 @@ import axios from "axios";
 import anime from "animejs";
 import { jwtDecode } from "jwt-decode";
 import { useRecoilState } from "recoil";
-import { jwtTokenState } from "../state/atom";
+import { jwtTokenState } from "../states";
 
 export default function Login() {
   const navigate = useNavigate();

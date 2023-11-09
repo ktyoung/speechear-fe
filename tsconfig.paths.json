@@ -6,7 +6,7 @@
       "@public/*": ["public/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@state/*": ["src/store/*"]
+      "@states/*": ["src/states/*"]
     },
     "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],

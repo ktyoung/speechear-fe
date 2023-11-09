@@ -1219,3 +1219,14 @@ li.page-btn button {
 .test-contents__answer-wrapper .scoring button {
   height: 100%;
 }
+
+.config-figure {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 12px;
+}
+
+.config-figure > svg {
+  width: 12%;
+  height: 12%;
+}

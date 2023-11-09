@@ -41,33 +41,7 @@ export default function MyPage() {
             </td>
           </tr>
           <tr>
-            <td>전역 설정</td>
-            <td>
-              <div className="settings-wrapper">
-                <div className="noise-type">
-                  <p>소음 종류 : </p>
-                  <select name="noiseType" id="noiseType">
-                    <option selected>기본</option>
-                    <option>길거리</option>
-                    <option>식당</option>
-                    <option>와글와글</option>
-                  </select>
-                </div>
-                <div className="play-speed">
-                  <p>재생 속도 : </p>
-                  <select name="playSpeed" id="playSpeed">
-                    <option>느리게</option>
-                    <option>조금 느리게</option>
-                    <option selected>보통</option>
-                    <option>조금 빠르게</option>
-                    <option>빠르게</option>
-                  </select>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>CDKey 만료일</td>
+            <td>License 만료일</td>
             <td>2099.12.31</td>
           </tr>
         </tbody>
