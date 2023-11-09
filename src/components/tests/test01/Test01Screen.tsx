@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useMatch } from "react-router-dom";
+import PlaySound, { RES_URL } from "@hooks/PlaySound";
 
 export default function Test01Screen() {
   const location = useLocation();
@@ -7,6 +8,7 @@ export default function Test01Screen() {
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
 
   const match = useMatch("/training/part1/:level/:page/:quiz");
+  const soundFile = `${RES_URL}/function1/A01013.mp3`;
 
   let level: string | null = null;
   let page: string | null = null;
@@ -33,6 +35,13 @@ export default function Test01Screen() {
 
   return (
     <div className="test-screen-wrapper">
+      {isPlay && (
+        <PlaySound
+          mp3={soundFile}
+          volume={100}
+          onEnd={() => setIsPlay(false)}
+        />
+      )}
       <div className="answer-buttons">
         <button>
           <img

@@ -3,9 +3,9 @@ import useAxios, {
   API_URL,
   IRequestType,
   IResponseType,
-} from "../../../hooks/useAxios";
+} from "@hooks/useAxios";
 
-import TestList from "../../../components/tests/TestList";
+import TestList from "@components/tests/TestList";
 import { useEffect, useState } from "react";
 
 export default function Test01Level() {
