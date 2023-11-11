@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { myPageModalState, globalConfigModalState } from "@states/index";
+import {
+  myPageModalState,
+  globalConfigModalState,
+  gConfigState,
+} from "@states/index";
 
 export default function Header() {
   const [myPageModal, setMyPageModal] = useRecoilState(myPageModalState);
@@ -84,15 +89,86 @@ function MyPageModal({ setMyPageModal }: any) {
 }
 
 function GlobalConfigModal({ setGlobalConfigModal }: any) {
+  const [globalConfig, setGlobalconfig] = useRecoilState(gConfigState);
+
+  const [volume, setVolume] = useState(globalConfig.volume);
+  const [playSpeed, setPlaySpeed] = useState(globalConfig.playSpeed);
+  const [noise, setNoise] = useState(globalConfig.noise);
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVolume(Number(e.target.value));
+  };
+
+  const handlePlaySpeedChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPlaySpeed(Number(e.target.value));
+  };
+
+  const handleNoiseChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setNoise(e.target.value);
+  };
+
+  const handleSave = () => {
+    setGlobalconfig({
+      volume: volume,
+      playSpeed: playSpeed,
+      noise: noise,
+    });
+    setGlobalConfigModal(false);
+  };
+
   return (
-    <div className="modal-wrapper" onClick={() => setGlobalConfigModal(false)}>
+    <div className="modal-wrapper">
       <div className="modal">
         <p className="modal-name">전역 설정</p>
         <ul>
-          <li>불륨</li>
-          <li>재생속도</li>
-          <li>노이즈종류</li>
+          <li>
+            <div>볼륨</div>
+            <div>
+              0
+              <input
+                type="range"
+                min={0}
+                max={100}
+                step={1}
+                value={globalConfig.volume}
+                onChange={handleSliderChange}
+              />
+              100
+            </div>
+          </li>
+          <li>
+            <div>재생속도</div>
+            <div>
+              <select
+                defaultValue={globalConfig.playSpeed}
+                onChange={handlePlaySpeedChange}
+              >
+                <option value="0.8">느리게</option>
+                <option value="0.9">조금느리게</option>
+                <option value="1">보통</option>
+                <option value="1.1">조금빠르게</option>
+                <option value="1.2">빠르게</option>
+              </select>
+            </div>
+          </li>
+          <li>
+            <div>노이즈종류</div>
+            <div>
+              <select
+                defaultValue={globalConfig.noise}
+                onChange={handleNoiseChange}
+              >
+                <option value="noise1">기본</option>
+                <option value="noise2">길거리</option>
+                <option value="noise3">식당</option>
+                <option value="noise4">와글와글</option>
+              </select>
+            </div>
+          </li>
         </ul>
+        <button className="config-save-btn" onClick={handleSave}>
+          저장
+        </button>
       </div>
     </div>
   );

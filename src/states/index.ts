@@ -21,7 +21,7 @@ export const gConfigState = atom({
   default: {
     volume: 100,
     rate: 1.0,
-    noise: "default",
+    noise: "noise1",
   },
   effects_UNSTABLE: [persistAtom],
 });
