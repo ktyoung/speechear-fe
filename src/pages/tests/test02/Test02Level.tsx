@@ -17,11 +17,7 @@ export default function Test02Level() {
             이야기 듣기
           </p>
         </div>
-        <TestList
-          _totalPage={1}
-          _totalQuestionCount={_totalQuestionCount}
-          _to={`/training/part2/${level}/${page}`}
-        />
+        <TestList data={{}} _to={`/training/part2/${level}/${page}`} />
       </div>
     </div>
   );

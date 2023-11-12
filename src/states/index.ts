@@ -16,6 +16,11 @@ export const globalConfigModalState = atom({
   default: false,
 });
 
+export const trainingData = atom({
+  key: "trainginData",
+  default: {},
+});
+
 export const gConfigState = atom({
   key: "config",
   default: {

@@ -6,19 +6,23 @@ import { useEffect, useState } from "react";
 
 export default function Test01Level() {
   const { level, page } = useParams<{ level: string; page?: string }>();
-  const [currentPage, setCurrentPage] = useState<number>(
-    parseInt(page || "1", 10)
-  );
+  const [request, setRequest] = useState<IRequestType>();
+  const result = useAxios(request);
 
-  const requestConfig: IRequestType = {
-    url: API_URL + "/training/part1/page/" + currentPage,
-    method: "GET",
-  };
-
-  const result = useAxios(requestConfig);
+  // test loading
+  // useEffect(() => {
+  //   console.log("result?.loading ", result?.loading);
+  // }, [result?.loading]);
 
   useEffect(() => {
-    setCurrentPage(parseInt(page || "1", 10));
+    console.log("page ", page);
+    const currentPage = parseInt(page || "1", 10);
+    const requestConfig: IRequestType = {
+      url: API_URL + "/training/part1/page/" + currentPage,
+      method: "GET",
+    };
+    setRequest(requestConfig);
+    result.fetchData();
   }, [page]);
 
   return (
@@ -30,11 +34,7 @@ export default function Test01Level() {
             하 문장듣기
           </p>
         </div>
-        <TestList
-          _totalPage={result?.data.totalPage}
-          _totalQuestionCount={Object.keys(result?.data.rows || {}).length * 10}
-          _to={`/training/part1/${level}/${page}`}
-        />
+        <TestList data={result.data} _to={`/training/part1/${level}/${page}`} />
       </div>
     </div>
   );

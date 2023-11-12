@@ -13,11 +13,7 @@ export default function Test04Level() {
             순서화 하기
           </p>
         </div>
-        <TestList
-          _totalPage={3}
-          _totalQuestionCount={25}
-          _to={`/training/part4/${level}/${page}`}
-        />
+        <TestList data={{}} _to={`/training/part4/${level}/${page}`} />
       </div>
     </div>
   );

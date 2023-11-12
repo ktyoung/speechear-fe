@@ -51,6 +51,10 @@ const useAxios = (requestConfig: IRequestType | any) => {
   }
 
   useEffect(() => {
+    console.log("call AXIOS useEffect", trigger);
+    if (trigger == 0) {
+      return;
+    }
     if (!localRequestConfig.url) {
       setState(
         (prev) =>
@@ -77,6 +81,7 @@ const useAxios = (requestConfig: IRequestType | any) => {
               ({
                 ...prev,
                 data: res.data,
+                loading: false,
               } as IResponseType)
           );
         })
@@ -86,14 +91,6 @@ const useAxios = (requestConfig: IRequestType | any) => {
               ({
                 ...prev,
                 error: err,
-              } as IResponseType)
-          );
-        })
-        .finally(() => {
-          setState(
-            (prev) =>
-              ({
-                ...prev,
                 loading: false,
               } as IResponseType)
           );
