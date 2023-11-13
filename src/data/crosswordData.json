@@ -1,6 +1,6 @@
 [
   {
-    "quizNumber": 1,
+    "quiz": 1,
     "rows": 4,
     "columns": 3,
     "hintRows": 4,
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "quizNumber": 2,
+    "quiz": 2,
     "rows": 4,
     "columns": 3,
     "hintRows": 4,
@@ -40,7 +40,7 @@
     ]
   },
   {
-    "quizNumber": 3,
+    "quiz": 3,
     "rows": 3,
     "columns": 5,
     "hintRows": 4,
@@ -62,7 +62,7 @@
     ]
   },
   {
-    "quizNumber": 4,
+    "quiz": 4,
     "rows": 4,
     "columns": 4,
     "hintRows": 4,
@@ -83,7 +83,7 @@
     ]
   },
   {
-    "quizNumber": 5,
+    "quiz": 5,
     "rows": 4,
     "columns": 5,
     "hintRows": 4,
@@ -111,7 +111,7 @@
     ]
   },
   {
-    "quizNumber": 6,
+    "quiz": 6,
     "rows": 3,
     "columns": 5,
     "hintRows": 4,
@@ -135,7 +135,7 @@
     ]
   },
   {
-    "quizNumber": 7,
+    "quiz": 7,
     "rows": 4,
     "columns": 4,
     "hintRows": 4,
@@ -157,7 +157,7 @@
     "verticalHints": [{ "number": 2, "row": 0, "col": 2 }]
   },
   {
-    "quizNumber": 8,
+    "quiz": 8,
     "rows": 5,
     "columns": 5,
     "hintRows": 4,
@@ -188,7 +188,7 @@
     ]
   },
   {
-    "quizNumber": 9,
+    "quiz": 9,
     "rows": 5,
     "columns": 4,
     "hintRows": 4,
@@ -216,7 +216,7 @@
     ]
   },
   {
-    "quizNumber": 10,
+    "quiz": 10,
     "rows": 5,
     "columns": 4,
     "hintRows": 4,
@@ -244,7 +244,7 @@
     ]
   },
   {
-    "quizNumber": 11,
+    "quiz": 11,
     "rows": 3,
     "columns": 4,
     "hintRows": 4,
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "quizNumber": 12,
+    "quiz": 12,
     "rows": 5,
     "columns": 4,
     "hintRows": 4,
@@ -293,7 +293,7 @@
     ]
   },
   {
-    "quizNumber": 13,
+    "quiz": 13,
     "rows": 6,
     "columns": 5,
     "hintRows": 4,
@@ -328,7 +328,7 @@
     ]
   },
   {
-    "quizNumber": 14,
+    "quiz": 14,
     "rows": 5,
     "columns": 4,
     "hintRows": 4,
@@ -355,7 +355,7 @@
     ]
   },
   {
-    "quizNumber": 15,
+    "quiz": 15,
     "rows": 4,
     "columns": 5,
     "hintRows": 4,
@@ -381,7 +381,7 @@
     ]
   },
   {
-    "quizNumber": 16,
+    "quiz": 16,
     "rows": 4,
     "columns": 4,
     "hintRows": 4,
@@ -405,7 +405,7 @@
     ]
   },
   {
-    "quizNumber": 17,
+    "quiz": 17,
     "rows": 3,
     "columns": 4,
     "hintRows": 4,
@@ -426,7 +426,7 @@
     ]
   },
   {
-    "quizNumber": 18,
+    "quiz": 18,
     "rows": 4,
     "columns": 5,
     "hintRows": 4,
@@ -453,7 +453,7 @@
     ]
   },
   {
-    "quizNumber": 19,
+    "quiz": 19,
     "rows": 3,
     "columns": 5,
     "hintRows": 4,
@@ -475,7 +475,7 @@
     ]
   },
   {
-    "quizNumber": 20,
+    "quiz": 20,
     "rows": 3,
     "columns": 6,
     "hintRows": 4,

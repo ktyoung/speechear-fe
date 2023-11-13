@@ -39,7 +39,7 @@ export default function Test05Menu() {
               return (
                 <li key={number} className="test-card-small">
                   <Link
-                    to={`/test05-menu/test05-quiz/${number}`}
+                    to={`/training/part5/${number}`}
                   >{`퀴즈 ${number}`}</Link>
                 </li>
               );

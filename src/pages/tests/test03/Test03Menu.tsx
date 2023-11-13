@@ -43,7 +43,7 @@ export default function Test03Menu() {
             {testSubjects.map((subject, i) => {
               return (
                 <li key={i} className="test-card">
-                  <Link to={`test03-${testUrl[i]}`}>{subject}</Link>
+                  <Link to={`${testUrl[i]}/1`}>{subject}</Link>
                 </li>
               );
             })}

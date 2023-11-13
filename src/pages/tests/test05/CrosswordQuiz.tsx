@@ -4,7 +4,7 @@ import crosswordData from "../../../data/crosswordData.json";
 import { useEffect, useState } from "react";
 
 interface QuizData {
-  quizNumber: number;
+  quiz: number;
   rows: number;
   columns: number;
   hintRows: number;
@@ -14,14 +14,12 @@ interface QuizData {
 }
 
 export default function CrosswordQuiz() {
-  const { quizNumber } = useParams<{ quizNumber?: string }>();
+  const { quiz } = useParams<{ quiz?: string }>();
   const [quizData, setQuizData] = useState<QuizData | null>(null);
-  const quizNum = parseInt(quizNumber ?? "1", 10);
+  const quizNum = parseInt(quiz ?? "1", 10);
 
   useEffect(() => {
-    const currentQuizData = crosswordData.find(
-      (data) => data.quizNumber === quizNum
-    );
+    const currentQuizData = crosswordData.find((data) => data.quiz === quizNum);
     setQuizData(currentQuizData ?? null);
   }, [quizNum]);
 
@@ -33,7 +31,7 @@ export default function CrosswordQuiz() {
             <span className="function-number menu-number-color">05</span>
             가로세로 퀴즈
           </p>
-          <p className="quiz-rule">{`${quizNum}. 파란색 번호는 가로, 녹색 번호는 세로 문제입니다.`}</p>
+          <p className="quiz-rule">{`${quiz}. 파란색 번호는 가로, 녹색 번호는 세로 문제입니다.`}</p>
         </div>
         <div className="quiz-btn-wrapper">
           <Link to="/">

@@ -56,10 +56,7 @@ function LayoutRoutes() {
         />
         {/* Test05 */}
         <Route path="/training/part5" element={<Test05Menu />} />
-        <Route
-          path="/training/part5/:level/:page/:quiz"
-          element={<CrosswordQuiz />}
-        />
+        <Route path="/training/part5/:quiz" element={<CrosswordQuiz />} />
       </Routes>
     </Layout>
   );
