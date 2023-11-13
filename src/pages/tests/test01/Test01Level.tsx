@@ -40,6 +40,7 @@ export default function Test01Level() {
           _totalPage={res?.data.totalPage}
           _totalQuestionCount={Object.keys(res?.data.rows || {}).length * 10}
           _to={`/training/part1/${level}/${page}`}
+          partNum={1}
         />
       </div>
     </div>

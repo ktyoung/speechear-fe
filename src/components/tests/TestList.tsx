@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 interface TestListProps {
+  partNum: number;
   _totalPage: number;
   _totalQuestionCount: number;
   _to: string;
 }
 
 export default function TestList({
+  partNum,
   _totalPage,
   _totalQuestionCount,
   _to,
@@ -28,7 +30,7 @@ export default function TestList({
 
   const _handlePageNumber = (newPageNumber: number) => {
     setCurrentPage(newPageNumber);
-    navigate(`/training/part1/${level}/${newPageNumber}`);
+    navigate(`/training/part${partNum}/${level}/${newPageNumber}`);
   };
 
   return (

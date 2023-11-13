@@ -21,6 +21,7 @@ export default function Test02Level() {
           _totalPage={1}
           _totalQuestionCount={_totalQuestionCount}
           _to={`/training/part2/${level}/${page}`}
+          partNum={2}
         />
       </div>
     </div>
