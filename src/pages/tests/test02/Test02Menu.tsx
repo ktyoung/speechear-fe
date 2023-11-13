@@ -13,25 +13,25 @@ export default function Test02Menu() {
         <div className="functions-wrapper menus">
           <Menus
             _className="menu02-style"
-            _to="test02-area"
+            _to="area/1"
             _difficulty="지역"
             _title=""
           />
           <Menus
             _className="menu02-style"
-            _to="test02-culture"
+            _to="culture/1"
             _difficulty="우리문화"
             _title=""
           />
           <Menus
             _className="menu02-style"
-            _to="test02-food"
+            _to="food/1"
             _difficulty="음식"
             _title=""
           />
           <Menus
             _className="menu02-style"
-            _to="test02-other"
+            _to="other/1"
             _difficulty="기타"
             _title=""
           />

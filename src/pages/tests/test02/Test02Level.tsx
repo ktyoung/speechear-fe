@@ -5,7 +5,7 @@ export default function Test02Level() {
   const { level, page } = useParams<{ level: string; page?: string }>();
   const location = useLocation();
 
-  const isCultureRoute = location.pathname.includes("/test02-culture");
+  const isCultureRoute = location.pathname.includes("/culture/");
   const _totalQuestionCount = isCultureRoute ? 9 : 7;
 
   return (

@@ -6,30 +6,43 @@ export default function Test02Screen() {
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenText, setIsOpenText] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
+  const [quizIndex, setQuizIndex] = useState(1);
 
-  const match = useMatch("/test02-menu/:testLevel/:quizNumber");
-  const maxQuizNumber = location.pathname.includes("/test02-culture/") ? 9 : 7;
+  const match = useMatch("/training/part2/:level/:page/:quiz");
+  const maxQuizNumber = location.pathname.includes("/culture/") ? 9 : 7;
 
-  let testLevel: string | null = null;
-  let quizNumber: string | null = null;
-  let currentQuizNumber: number | null = null;
+  let level: string | null = null;
+  let page: string | null = null;
+  let quiz: string | null = null;
+  let currentPage: number | null = null;
+  let currentQuiz: number | null = null;
 
   if (match) {
-    ({ testLevel, quizNumber } = match.params as {
-      testLevel: string;
-      quizNumber: string;
+    ({ level, page, quiz } = match.params as {
+      level: string;
+      page: string;
+      quiz: string;
     });
-    currentQuizNumber = parseInt(quizNumber);
+    currentPage = parseInt(page);
+    currentQuiz = parseInt(quiz);
   }
 
   const togglePlay = () => {
     setIsPlay(!isPlay);
   };
   const toggleOpenText = () => {
+    setIsOpenAnswer(false);
     setIsOpenText(!isOpenText);
   };
   const toggleOpenAnswer = () => {
+    setIsOpenText(false);
     setIsOpenAnswer(!isOpenAnswer);
+  };
+  const showPrevQuiz = () => {
+    setQuizIndex((prev) => (prev > 1 ? prev - 1 : prev));
+  };
+  const showNextQuiz = () => {
+    setQuizIndex((prev) => (prev < 10 ? prev + 1 : prev));
   };
 
   return (
@@ -50,28 +63,24 @@ export default function Test02Screen() {
       </div>
       <div className="test-contents">
         <div className="navigation-buttons">
-          <Link
-            to={`/test02-menu/${testLevel}/${
-              currentQuizNumber ? currentQuizNumber - 1 : quizNumber
-            }`}
-            className={currentQuizNumber === 1 ? "disabled" : ""}
+          <button
+            onClick={showPrevQuiz}
+            className={quizIndex === 1 ? "disabled" : ""}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_left.png`}
               alt="Go to previous question"
             />
-          </Link>
-          <Link
-            to={`/test02-menu/${testLevel}/${
-              currentQuizNumber ? currentQuizNumber + 1 : quizNumber
-            }`}
-            className={currentQuizNumber === maxQuizNumber ? "disabled" : ""}
+          </button>
+          <button
+            onClick={showNextQuiz}
+            className={quizIndex === 10 ? "disabled" : ""}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
               alt="Go to next question"
             />
-          </Link>
+          </button>
         </div>
         <div className="test-contents__bar">
           <div className={`play-sentence bg-blue ${isPlay ? "playing" : ""}`}>
