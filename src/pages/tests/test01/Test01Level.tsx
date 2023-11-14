@@ -34,7 +34,11 @@ export default function Test01Level() {
             하 문장듣기
           </p>
         </div>
-        <TestList data={result.data} _to={`/training/part1/${level}/${page}`} />
+        <TestList
+          partNum={1}
+          data={result.data}
+          _to={`/training/part1/${level}/${page}`}
+        />
       </div>
     </div>
   );

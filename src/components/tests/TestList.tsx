@@ -10,14 +10,14 @@ interface TestListProps {
   _to: string;
 }
 
-function TestList({ data, _to }: TestListProps) {
+function TestList({ partNum, data, _to }: TestListProps) {
   const [training, setTraining] = useRecoilState(trainingData);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const { level } = useParams();
   const _handlePageNumber = (newPageNumber: number) => {
     setCurrentPage(newPageNumber);
-    navigate(`/training/part1/${level}/${newPageNumber}`);
+    navigate(`/training/part${partNum}/${level}/${newPageNumber}`);
   };
 
   const _handleTestLoad = (traingNumber: string, traingData: Array<any>) => {

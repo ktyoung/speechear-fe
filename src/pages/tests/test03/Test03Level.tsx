@@ -14,10 +14,9 @@ export default function Test03Level() {
           </p>
         </div>
         <TestList
-          _totalPage={1}
-          _totalQuestionCount={5}
-          _to={`/training/part3/${level}/${page}`}
           partNum={3}
+          data={{}}
+          _to={`/training/part3/${level}/${page}`}
         />
       </div>
     </div>

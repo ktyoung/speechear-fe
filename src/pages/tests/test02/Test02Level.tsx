@@ -17,7 +17,11 @@ export default function Test02Level() {
             이야기 듣기
           </p>
         </div>
-        <TestList data={{}} _to={`/training/part2/${level}/${page}`} />
+        <TestList
+          partNum={2}
+          data={{}}
+          _to={`/training/part2/${level}/${page}`}
+        />
       </div>
     </div>
   );
