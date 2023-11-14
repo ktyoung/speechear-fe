@@ -18,9 +18,21 @@ export interface IResponseType {
 
 export const API_URL = process.env.REACT_APP_RESTAPI_URL;
 
-const useAxios = (
-  requestConfig: IRequestType | any
-): IResponseType | undefined => {
+const useAxios = (requestConfig: IRequestType | any) => {
+  const [state, setState] = useState<IResponseType>({
+    loading: true,
+    data: null,
+    error: null,
+  });
+  const [trigger, setTrigger] = useState(0);
+  const fetchData = () => {
+    setState({
+      ...state,
+      loading: true,
+    });
+    setTrigger(Date.now());
+  };
+
   const token = useRecoilValue(jwtTokenState);
 
   const localRequestConfig = requestConfig || {
@@ -34,13 +46,15 @@ const useAxios = (
     Authorization: `Bearer ${token.accessToken}`,
   };
 
-  const [state, setState] = useState<IResponseType>();
-
   if (!localRequestConfig?.method) {
     localRequestConfig.method = "GET";
   }
 
   useEffect(() => {
+    console.log("call AXIOS useEffect", trigger);
+    if (trigger == 0) {
+      return;
+    }
     if (!localRequestConfig.url) {
       setState(
         (prev) =>
@@ -67,6 +81,7 @@ const useAxios = (
               ({
                 ...prev,
                 data: res.data,
+                loading: false,
               } as IResponseType)
           );
         })
@@ -76,22 +91,14 @@ const useAxios = (
               ({
                 ...prev,
                 error: err,
-              } as IResponseType)
-          );
-        })
-        .finally(() => {
-          setState(
-            (prev) =>
-              ({
-                ...prev,
                 loading: false,
               } as IResponseType)
           );
         });
     }
-  }, []);
+  }, [trigger]);
 
-  return state;
+  return { ...state, fetchData };
 };
 
 export default useAxios;

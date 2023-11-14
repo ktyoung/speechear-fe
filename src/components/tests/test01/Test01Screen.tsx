@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useMatch } from "react-router-dom";
-import useAxios, {
-  IRequestType,
-  API_URL,
-  IResponseType,
-} from "@hooks/useAxios";
+import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
+import { useRecoilState } from "recoil";
+import { trainingData } from "@states/index";
 import PlaySound, { RES_URL } from "@hooks/PlaySound";
 
 export default function Test01Screen() {
@@ -12,6 +10,7 @@ export default function Test01Screen() {
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
   const [quizIndex, setQuizIndex] = useState(1);
   const [context, setContext] = useState<string>("");
+  const [training, setTraining] = useRecoilState(trainingData);
 
   const match = useMatch("/training/part1/:level/:page/:quiz");
   const soundFile = `${RES_URL}/function1/A01013.mp3`;
@@ -30,14 +29,17 @@ export default function Test01Screen() {
     });
     currentPage = parseInt(page);
     currentQuiz = parseInt(quiz);
+    console.log("level", level);
   }
+
+  console.log("training", training);
 
   const requestConfig: IRequestType = {
     url: API_URL + "/training/part1/page/" + currentPage,
     method: "GET",
   };
 
-  const res: IResponseType | undefined = useAxios(requestConfig);
+  const res = useAxios(requestConfig);
 
   useEffect(() => {
     if (res?.data?.rows && currentQuiz !== null) {

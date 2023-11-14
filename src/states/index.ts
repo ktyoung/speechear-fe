@@ -16,12 +16,17 @@ export const globalConfigModalState = atom({
   default: false,
 });
 
+export const trainingData = atom({
+  key: "trainginData",
+  default: {},
+});
+
 export const gConfigState = atom({
   key: "config",
   default: {
     volume: 100,
     rate: 1.0,
-    noise: "default",
+    noise: "noise1",
   },
   effects_UNSTABLE: [persistAtom],
 });
