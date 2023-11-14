@@ -1156,13 +1156,19 @@ li.page-btn button {
   background-color: #fff;
   cursor: pointer;
 }
+.view-sentence__accordion {
+  padding: 0 30px;
+  word-break: keep-all;
+}
+.view-sentence__accordion > img {
+  margin: 0 30px 0 0;
+}
 .play-sentence.playing,
 .play-sentence.bg-blue.playing {
   background-color: rgb(116, 205, 184);
 }
 .play-sentence__click > img,
 .view-sentence > img,
-.view-sentence__accordion > img,
 .view-sentence__accordion > .describe-text {
   margin: 0 30px;
 }

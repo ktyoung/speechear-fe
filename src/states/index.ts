@@ -16,9 +16,14 @@ export const globalConfigModalState = atom({
   default: false,
 });
 
-export const trainingData = atom({
-  key: "trainginData",
-  default: {},
+interface TrainingItem {
+  index: string;
+  filename: string;
+  context: string;
+}
+export const trainingData = atom<TrainingItem[]>({
+  key: "trainingData",
+  default: [],
 });
 
 export const gConfigState = atom({
