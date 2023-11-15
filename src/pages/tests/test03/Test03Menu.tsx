@@ -17,16 +17,16 @@ export default function Test03Menu() {
 
   const testUrl = [
     "cook", // 요리
-    "culture", // 전통문화
-    "sports", // 스포츠
-    "festivals", // 세계의 잔치
-    "proverbs", // 속담
-    "regions", // 지역
+    "orient_culture", // 전통문화
+    "sport", // 스포츠
+    "party", // 세계의 잔치
+    "proverb", // 속담
+    "location", // 지역
     "heritage", // 세계유산
-    "countries", // 나라
+    "nation", // 나라
     "health", // 건강
-    "people", // 인물
-    "others", // 기타
+    "person", // 인물
+    "etc", // 기타
   ];
 
   return (
