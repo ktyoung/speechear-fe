@@ -13,20 +13,8 @@ export default function Test03Screen() {
   const [quizIndex, setQuizIndex] = useState(1);
   const [soundFile, setSoundFile] = useState<string>("");
   const [context, setContext] = useState<string>("");
-  const [answer, setAnswer] = useState<string>("");
+  // const [answer, setAnswer] = useState<string>("");
   const [training, setTraining] = useRecoilState(trainingData);
-
-  const match = useMatch("/training/part2/:level/:page/:quiz");
-
-  let quiz: string | null = null;
-  let currentQuiz: number | null = null;
-
-  if (match) {
-    ({ quiz } = match.params as {
-      quiz: string;
-    });
-    currentQuiz = parseInt(quiz);
-  }
 
   console.log("training", training);
 
@@ -57,12 +45,12 @@ export default function Test03Screen() {
     }
   }, [training, quizIndex]);
 
-  useEffect(() => {
-    if (training.length > 0 && quizIndex >= 1 && quizIndex <= training.length) {
-      const currentAnswer = training[quizIndex - 1].answer;
-      setAnswer(currentAnswer);
-    }
-  }, [training, quizIndex]);
+  // useEffect(() => {
+  //   if (training.length > 0 && quizIndex >= 1 && quizIndex <= training.length) {
+  //     const currentAnswer = training[quizIndex - 1].answer;
+  //     setAnswer(currentAnswer);
+  //   }
+  // }, [training, quizIndex]);
 
   const togglePlay = () => {
     setIsPlay(!isPlay);
@@ -79,11 +67,7 @@ export default function Test03Screen() {
   return (
     <div className="test-screen-wrapper">
       {isPlay && (
-        <PlaySound
-          mp3={soundFile}
-          volume={100}
-          onEnd={() => setIsPlay(false)}
-        />
+        <PlaySound mp3={soundFile} volume={100} onEnd={() => setIsPlay(false)} />
       )}
       <div className="answer-buttons">
         <button className="answer-buttons__opacity_1" onClick={togglePlay}>
@@ -106,10 +90,7 @@ export default function Test03Screen() {
             alt="View story button"
           />
         </button>
-        <button
-          className="answer-buttons__opacity_1"
-          onClick={toggleViewQuestion}
-        >
+        <button className="answer-buttons__opacity_1" onClick={toggleViewQuestion}>
           <img
             className="answer-buttons__opacity_1"
             src={`${process.env.PUBLIC_URL}/images/test/button_view_question.png`}
@@ -162,8 +143,7 @@ function QnA() {
     <ul className="test-contents__qna-wrapper">
       <li>
         <p className="test-contents__questions">
-          <span className="test-contents__question-mark">?</span>문제
-          텍스트입니다.
+          <span className="test-contents__question-mark">?</span>문제 텍스트입니다.
         </p>
         <ul className="test-contents__answer-wrapper">
           <li className="test-contents__view-answer">

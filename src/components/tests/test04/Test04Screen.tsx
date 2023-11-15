@@ -49,11 +49,7 @@ export default function Test04Screen() {
 
   const quizListItems = Array.from({ length: count }, (_, index) => (
     <li key={index} className="test-screen__sequencing-item">
-      <input
-        type="text"
-        maxLength={1}
-        className="test-screen__sequencing-input"
-      />
+      <input type="text" maxLength={1} className="test-screen__sequencing-input" />
       <p>문장 순서화 하기 {index + 1}번 문제</p>
     </li>
   ));
