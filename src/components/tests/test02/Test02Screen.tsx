@@ -1,31 +1,68 @@
-import { useState } from "react";
-import { Link, useLocation, useMatch } from "react-router-dom";
+import PlaySound, { RES_URL } from "@hooks/PlaySound";
+import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
+import { trainingData } from "@states/index";
+import { useEffect, useState } from "react";
+import { useMatch, useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 export default function Test02Screen() {
-  const location = useLocation();
+  const { level, page } = useParams<{ level: string; page?: string }>();
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenText, setIsOpenText] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
   const [quizIndex, setQuizIndex] = useState(1);
+  const [soundFile, setSoundFile] = useState<string>("");
+  const [context, setContext] = useState<string>("");
+  const [answer, setAnswer] = useState<string>("");
+  const [training, setTraining] = useRecoilState(trainingData);
 
   const match = useMatch("/training/part2/:level/:page/:quiz");
-  const maxQuizNumber = location.pathname.includes("/culture/") ? 9 : 7;
 
-  let level: string | null = null;
-  let page: string | null = null;
   let quiz: string | null = null;
-  let currentPage: number | null = null;
   let currentQuiz: number | null = null;
 
   if (match) {
-    ({ level, page, quiz } = match.params as {
-      level: string;
-      page: string;
+    ({ quiz } = match.params as {
       quiz: string;
     });
-    currentPage = parseInt(page);
     currentQuiz = parseInt(quiz);
   }
+
+  console.log("training", training);
+
+  const requestConfig: IRequestType = {
+    url: `${API_URL}/training/part2/chapter/${level}/page/${page}`,
+    method: "GET",
+  };
+
+  const res = useAxios(requestConfig);
+
+  useEffect(() => {
+    if (
+      Array.isArray(training) &&
+      training.length > 0 &&
+      quizIndex >= 1 &&
+      quizIndex <= training.length
+    ) {
+      const currentFilename = training[quizIndex - 1].speechcode;
+      const newSoundFile = `${RES_URL}/function2/${currentFilename}.mp3`;
+      setSoundFile(newSoundFile);
+    }
+  }, [training, quizIndex]);
+
+  useEffect(() => {
+    if (training.length > 0 && quizIndex >= 1 && quizIndex <= training.length) {
+      const currentContext = training[quizIndex - 1].speechcontext;
+      setContext(currentContext);
+    }
+  }, [training, quizIndex]);
+
+  useEffect(() => {
+    if (training.length > 0 && quizIndex >= 1 && quizIndex <= training.length) {
+      const currentAnswer = training[quizIndex - 1].answer;
+      setAnswer(currentAnswer);
+    }
+  }, [training, quizIndex]);
 
   const togglePlay = () => {
     setIsPlay(!isPlay);
@@ -47,6 +84,13 @@ export default function Test02Screen() {
 
   return (
     <div className="test-screen-wrapper">
+      {isPlay && (
+        <PlaySound
+          mp3={soundFile}
+          volume={100}
+          onEnd={() => setIsPlay(false)}
+        />
+      )}
       <div className="answer-buttons">
         <button>
           <img
@@ -74,7 +118,7 @@ export default function Test02Screen() {
           </button>
           <button
             onClick={showNextQuiz}
-            className={quizIndex === 10 ? "disabled" : ""}
+            className={quizIndex === 5 ? "disabled" : ""}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
@@ -116,9 +160,7 @@ export default function Test02Screen() {
           <div
             className={`view-sentence__accordion ${isOpenText ? "open" : ""}`}
           >
-            <p className="describe-text">
-              짧은 이야기 듣기 테스트 텍스트입니다.
-            </p>
+            <p className="describe-text">{context}</p>
           </div>
           <div className="view-sentence" onClick={toggleOpenAnswer}>
             <img
@@ -134,7 +176,7 @@ export default function Test02Screen() {
               src={`${process.env.PUBLIC_URL}/images/test/answer.png`}
               alt="Sentence listening icon"
             />
-            <p>짧은 이야기 듣기 정답 텍스트입니다.</p>
+            <p>{answer}</p>
           </div>
         </div>
       </div>

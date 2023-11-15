@@ -1,8 +1,23 @@
 import { useParams } from "react-router-dom";
 import TestList from "../../../components/tests/TestList";
+import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
+import { useState, useEffect } from "react";
 
 export default function Test04Level() {
-  const { level, page } = useParams();
+  const { level, page } = useParams<{ level: string; page?: string }>();
+  const [request, setRequest] = useState<IRequestType>();
+  const result = useAxios(request);
+
+  useEffect(() => {
+    console.log("page ", page);
+    const currentPage = parseInt(page || "1", 10);
+    const requestConfig: IRequestType = {
+      url: `${API_URL}/training/part4/chapter/${level}/page/${currentPage}`,
+      method: "GET",
+    };
+    setRequest(requestConfig);
+    result.fetchData();
+  }, [page]);
 
   return (
     <div className="contents-wrapper main">
@@ -14,10 +29,9 @@ export default function Test04Level() {
           </p>
         </div>
         <TestList
-          _totalPage={3}
-          _totalQuestionCount={25}
-          _to={`/training/part4/${level}/${page}`}
           partNum={4}
+          data={result.data}
+          _to={`/training/part4/${level}/${page}`}
         />
       </div>
     </div>

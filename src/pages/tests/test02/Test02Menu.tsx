@@ -13,7 +13,7 @@ export default function Test02Menu() {
         <div className="functions-wrapper menus">
           <Menus
             _className="menu02-style"
-            _to="area/1"
+            _to="location/1"
             _difficulty="지역"
             _title=""
           />
@@ -31,7 +31,7 @@ export default function Test02Menu() {
           />
           <Menus
             _className="menu02-style"
-            _to="other/1"
+            _to="etc/1"
             _difficulty="기타"
             _title=""
           />

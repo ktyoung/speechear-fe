@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
-import { Link, useMatch } from "react-router-dom";
-import useAxios, {
-  IRequestType,
-  API_URL,
-  IResponseType,
-} from "@hooks/useAxios";
+import { useMatch } from "react-router-dom";
+import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
+import { useRecoilState } from "recoil";
+import { trainingData } from "@states/index";
 import PlaySound, { RES_URL } from "@hooks/PlaySound";
 
 export default function Test01Screen() {
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
   const [quizIndex, setQuizIndex] = useState(1);
+  const [soundFile, setSoundFile] = useState<string>("");
   const [context, setContext] = useState<string>("");
+  const [training, setTraining] = useRecoilState(trainingData);
 
   const match = useMatch("/training/part1/:level/:page/:quiz");
-  const soundFile = `${RES_URL}/function1/A01013.mp3`;
+  // const soundFile = `${RES_URL}/function1/A01013.mp3`;
 
   let level: string | null = null;
   let page: string | null = null;
@@ -30,25 +30,37 @@ export default function Test01Screen() {
     });
     currentPage = parseInt(page);
     currentQuiz = parseInt(quiz);
+    console.log("level", level);
   }
+
+  console.log("training", training);
 
   const requestConfig: IRequestType = {
     url: API_URL + "/training/part1/page/" + currentPage,
     method: "GET",
   };
 
-  const res: IResponseType | undefined = useAxios(requestConfig);
+  const res = useAxios(requestConfig);
 
   useEffect(() => {
-    if (res?.data?.rows && currentQuiz !== null) {
-      const quizData = res.data.rows[currentQuiz.toString()];
-
-      if (quizData && quizData.results && quizIndex >= 1 && quizIndex <= 10) {
-        setContext(quizData.results[quizIndex - 1].context);
-      }
-      console.log(quizData);
+    if (
+      Array.isArray(training) &&
+      training.length > 0 &&
+      quizIndex >= 1 &&
+      quizIndex <= training.length
+    ) {
+      const currentFilename = training[quizIndex - 1].filename;
+      const newSoundFile = `${RES_URL}/function1/${currentFilename}.mp3`;
+      setSoundFile(newSoundFile);
     }
-  }, [res, currentQuiz, quizIndex]);
+  }, [training, quizIndex]);
+
+  useEffect(() => {
+    if (training.length > 0 && quizIndex >= 1 && quizIndex <= training.length) {
+      const currentContext = training[quizIndex - 1].context;
+      setContext(currentContext);
+    }
+  }, [training, quizIndex]);
 
   const togglePlay = () => {
     setIsPlay(!isPlay);
