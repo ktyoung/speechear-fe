@@ -1,12 +1,23 @@
-import { useLocation, useParams } from "react-router-dom";
-import TestList from "../../../components/tests/TestList";
+import { useParams } from "react-router-dom";
+import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
+import TestList from "@components/tests/TestList";
+import { useEffect, useState } from "react";
 
 export default function Test02Level() {
   const { level, page } = useParams<{ level: string; page?: string }>();
-  const location = useLocation();
+  const [request, setRequest] = useState<IRequestType>();
+  const result = useAxios(request);
 
-  const isCultureRoute = location.pathname.includes("/culture/");
-  const _totalQuestionCount = isCultureRoute ? 9 : 7;
+  useEffect(() => {
+    console.log("page ", page);
+    const currentPage = parseInt(page || "1", 10);
+    const requestConfig: IRequestType = {
+      url: `${API_URL}/training/part2/chapter/${level}/page/${currentPage}`,
+      method: "GET",
+    };
+    setRequest(requestConfig);
+    result.fetchData();
+  }, [page]);
 
   return (
     <div className="contents-wrapper main">
@@ -19,7 +30,7 @@ export default function Test02Level() {
         </div>
         <TestList
           partNum={2}
-          data={{}}
+          data={result.data}
           _to={`/training/part2/${level}/${page}`}
         />
       </div>

@@ -20,6 +20,9 @@ interface TrainingItem {
   index: string;
   filename: string;
   context: string;
+  speechcode: string;
+  speechcontext: string;
+  answer: string;
 }
 export const trainingData = atom<TrainingItem[]>({
   key: "trainingData",

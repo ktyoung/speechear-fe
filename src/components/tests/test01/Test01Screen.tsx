@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useMatch } from "react-router-dom";
+import { useMatch } from "react-router-dom";
 import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
 import { useRecoilState } from "recoil";
 import { trainingData } from "@states/index";
