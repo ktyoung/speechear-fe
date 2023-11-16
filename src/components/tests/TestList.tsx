@@ -46,9 +46,7 @@ function TestList({ partNum, data, _to }: TestListProps) {
                   key={page}
                   className={`page-btn ${page === currentPage ? "active" : ""}`}
                 >
-                  <button onClick={() => _handlePageNumber(page)}>
-                    {page}
-                  </button>
+                  <button onClick={() => _handlePageNumber(page)}>{page}</button>
                 </li>
               );
             })}
@@ -68,8 +66,9 @@ function TestList({ partNum, data, _to }: TestListProps) {
                 <tr key={k}>
                   <td>{k}</td>
                   <td>
-                    <progress className="progress" value={0} max={100} />
-                    <span className="progress-percent">0%</span>
+                    {Array.from({ length: 10 }).map((_, index) => (
+                      <span key={index} className="stamp"></span>
+                    ))}
                   </td>
                   <td>
                     <button className="test-start-btn">

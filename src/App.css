@@ -930,17 +930,27 @@ li.page-btn button {
 .test-list-table th:last-child {
   width: 12%;
 }
-.progress {
-  width: 90%;
-  height: 20px;
+.stamp {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin: 0 20px;
+  background-color: #fff;
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  opacity: 0.3;
 }
-.progress-percent {
-  margin-left: 24px;
+.stamp.active {
+  background-color: #63a4db;
 }
 .test-start-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  font-family: "SCoreDream";
+  font-weight: 500;
+  font-size: 16px;
 }
 .test-start-btn img {
   width: 100%;
@@ -1103,17 +1113,6 @@ input[type="checkbox"]:checked + .custom-button,
 input[type="radio"]:checked + .custom-button {
   opacity: 1;
 }
-/* .answer-buttons button {
-  opacity: 0.6;
-}
-.answer-buttons button:hover,
-.answer-buttons button:focus {
-  opacity: 1;
-}
-.answer-buttons .answer-buttons__opacity_1 {
-  opacity: 1;
-  padding: 0;
-} */
 
 .test-contents {
   position: relative;
