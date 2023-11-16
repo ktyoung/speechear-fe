@@ -152,7 +152,7 @@
   height: 48px;
   width: 366px;
   font-weight: 500;
-  font-size: 1.2em;
+  font-size: 1.6em;
   line-height: 22px;
   outline: none;
   color: #ffffff;
@@ -416,9 +416,8 @@
   align-items: center;
   width: 1280px;
   height: 100%;
-  background: transparent
-    linear-gradient(270deg, #619fdf 0%, #74ccba 81%, #75ceb9 100%) 0% 0%
-    no-repeat padding-box;
+  background: transparent linear-gradient(270deg, #619fdf 0%, #74ccba 81%, #75ceb9 100%)
+    0% 0% no-repeat padding-box;
   margin: 0 auto;
   padding: 0 30px;
 }
@@ -1096,7 +1095,15 @@ li.page-btn button {
   top: -100px;
   width: 100%;
 }
-.answer-buttons button {
+input[type="checkbox"] + .custom-button,
+input[type="radio"] + .custom-button {
+  opacity: 0.6;
+}
+input[type="checkbox"]:checked + .custom-button,
+input[type="radio"]:checked + .custom-button {
+  opacity: 1;
+}
+/* .answer-buttons button {
   opacity: 0.6;
 }
 .answer-buttons button:hover,
@@ -1106,7 +1113,7 @@ li.page-btn button {
 .answer-buttons .answer-buttons__opacity_1 {
   opacity: 1;
   padding: 0;
-}
+} */
 
 .test-contents {
   position: relative;
