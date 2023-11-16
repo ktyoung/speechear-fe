@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useMatch } from "react-router-dom";
+import { useMatch, useParams } from "react-router-dom";
 import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
 import { useRecoilState } from "recoil";
 import { trainingData } from "@states/index";
@@ -7,6 +7,7 @@ import PlaySound, { RES_URL } from "@hooks/PlaySound";
 import CustomInputButton from "../CustomInputButton";
 
 export default function Test01Screen() {
+  const { level } = useParams();
   const [isPlay, setIsPlay] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
   const [quizIndex, setQuizIndex] = useState(1);
@@ -17,14 +18,13 @@ export default function Test01Screen() {
   const match = useMatch("/training/part1/:level/:page/:quiz");
   // const soundFile = `${RES_URL}/function1/A01013.mp3`;
 
-  let level: string | null = null;
   let page: string | null = null;
   let quiz: string | null = null;
   let currentPage: number | null = null;
   let currentQuiz: number | null = null;
 
   if (match) {
-    ({ level, page, quiz } = match.params as {
+    ({ page, quiz } = match.params as {
       level: string;
       page: string;
       quiz: string;
@@ -82,6 +82,14 @@ export default function Test01Screen() {
         <PlaySound mp3={soundFile} volume={100} onEnd={() => setIsPlay(false)} />
       )}
       <div className="answer-buttons">
+        {level !== "basic" && (
+          <CustomInputButton
+            type="radio"
+            id="withoutNoiseButton"
+            name="answer"
+            imageName="button_without_noise"
+          />
+        )}
         <CustomInputButton
           type="radio"
           id="correctButton"
