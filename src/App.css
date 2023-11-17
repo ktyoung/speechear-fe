@@ -1064,11 +1064,15 @@ li.page-btn button {
   justify-content: center;
   align-items: center;
   width: 50px;
+  height: 100%;
+  font-size: 25px;
+  font-weight: 600;
   text-align: center;
   opacity: 0.6;
+  cursor: pointer;
 }
 .scoring li:hover,
-.scoring li:focus-within {
+.scoring li.active {
   opacity: 1;
 }
 .scoring li.check-correct {
@@ -1081,11 +1085,9 @@ li.page-btn button {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
-.scoring li button {
-  width: 100%;
-  font-size: 25px;
-  font-weight: 600;
+.scoring li label {
   cursor: pointer;
+  padding: 8px 15px;
 }
 
 /* TestScreen.tsx */
@@ -1124,6 +1126,7 @@ input[type="radio"]:checked + .custom-button {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 35px;
+  word-break: keep-all;
 }
 .test-contents.test-contents__width-full {
   width: 100%;
@@ -1283,9 +1286,6 @@ input[type="radio"]:checked + .custom-button {
 }
 .test-contents__answer-wrapper .scoring {
   width: inherit;
-}
-.test-contents__answer-wrapper .scoring button {
-  height: 100%;
 }
 
 .config-figure {

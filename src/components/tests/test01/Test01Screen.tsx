@@ -84,7 +84,7 @@ export default function Test01Screen() {
       <div className="answer-buttons">
         {level !== "basic" && (
           <CustomInputButton
-            type="radio"
+            type="checkbox"
             id="withoutNoiseButton"
             name="answer"
             imageName="button_without_noise"

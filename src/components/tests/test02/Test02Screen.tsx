@@ -4,6 +4,7 @@ import { trainingData } from "@states/index";
 import { useEffect, useState } from "react";
 import { useMatch, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import CustomInputButton from "../CustomInputButton";
 
 export default function Test02Screen() {
   const { level, page } = useParams<{ level: string; page?: string }>();
@@ -85,41 +86,31 @@ export default function Test02Screen() {
   return (
     <div className="test-screen-wrapper">
       {isPlay && (
-        <PlaySound
-          mp3={soundFile}
-          volume={100}
-          onEnd={() => setIsPlay(false)}
-        />
+        <PlaySound mp3={soundFile} volume={100} onEnd={() => setIsPlay(false)} />
       )}
       <div className="answer-buttons">
-        <button>
-          <img
-            src={`${process.env.PUBLIC_URL}/images/test/button_correct.png`}
-            alt="Correct answer button"
-          />
-        </button>
-        <button>
-          <img
-            src={`${process.env.PUBLIC_URL}/images/test/button_wrong.png`}
-            alt="Wrong answer button"
-          />
-        </button>
+        <CustomInputButton
+          type="radio"
+          id="correctButton"
+          name="answer"
+          imageName="button_correct"
+        />
+        <CustomInputButton
+          type="radio"
+          id="wrongButton"
+          name="answer"
+          imageName="button_wrong"
+        />
       </div>
       <div className="test-contents">
         <div className="navigation-buttons">
-          <button
-            onClick={showPrevQuiz}
-            className={quizIndex === 1 ? "disabled" : ""}
-          >
+          <button onClick={showPrevQuiz} className={quizIndex === 1 ? "disabled" : ""}>
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_left.png`}
               alt="Go to previous question"
             />
           </button>
-          <button
-            onClick={showNextQuiz}
-            className={quizIndex === 5 ? "disabled" : ""}
-          >
+          <button onClick={showNextQuiz} className={quizIndex === 5 ? "disabled" : ""}>
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
               alt="Go to next question"
@@ -157,9 +148,7 @@ export default function Test02Screen() {
               />
             </div>
           </div>
-          <div
-            className={`view-sentence__accordion ${isOpenText ? "open" : ""}`}
-          >
+          <div className={`view-sentence__accordion ${isOpenText ? "open" : ""}`}>
             <p className="describe-text">{context}</p>
           </div>
           <div className="view-sentence" onClick={toggleOpenAnswer}>
@@ -169,9 +158,7 @@ export default function Test02Screen() {
             />
             <p>정답 보기</p>
           </div>
-          <div
-            className={`view-sentence__accordion ${isOpenAnswer ? "open" : ""}`}
-          >
+          <div className={`view-sentence__accordion ${isOpenAnswer ? "open" : ""}`}>
             <img
               src={`${process.env.PUBLIC_URL}/images/test/answer.png`}
               alt="Sentence listening icon"

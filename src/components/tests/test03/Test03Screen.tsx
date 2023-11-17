@@ -1,8 +1,8 @@
 import PlaySound, { RES_URL } from "@hooks/PlaySound";
 import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
 import { trainingData } from "@states/index";
-import { useEffect, useState } from "react";
-import { Link, useMatch, useParams } from "react-router-dom";
+import { ChangeEvent, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 export default function Test03Screen() {
@@ -10,6 +10,8 @@ export default function Test03Screen() {
   const [isPlay, setIsPlay] = useState(false);
   const [isViewStory, setIsViewStory] = useState(false);
   const [isViewQuestion, setIsViewQuestion] = useState(false);
+  const [qnaCount, setQnaCount] = useState(1);
+  const [qnaScores, setQnaScores] = useState(Array(4).fill(false));
   const [quizIndex, setQuizIndex] = useState(1);
   const [soundFile, setSoundFile] = useState<string>("");
   const [context, setContext] = useState<string>("");
@@ -62,6 +64,12 @@ export default function Test03Screen() {
   const toggleViewQuestion = () => {
     setIsViewQuestion(!isViewQuestion);
     setIsViewStory(false);
+  };
+  const handleScore = (index: number) => {
+    setQnaScores((scores) => scores.map((scored, i) => (i === index ? true : scored)));
+    if (qnaCount < 4) {
+      setQnaCount(qnaCount + 1);
+    }
   };
 
   return (
@@ -121,10 +129,14 @@ export default function Test03Screen() {
         )}
         {isViewQuestion && (
           <div className="test-contents__view-question">
-            <QnA />
-            <QnA />
-            <QnA />
-            <QnA />
+            {Array.from({ length: qnaCount }, (_, i) => (
+              <QnA
+                key={i}
+                quizNumber={i + 1}
+                onScore={() => handleScore(i)}
+                isScored={qnaScores[i]}
+              />
+            ))}
           </div>
         )}
       </div>
@@ -132,21 +144,40 @@ export default function Test03Screen() {
   );
 }
 
-function QnA() {
+interface QnAProps {
+  quizNumber: number;
+  onScore: () => void;
+  isScored: boolean;
+}
+function QnA({ quizNumber, onScore, isScored }: QnAProps) {
   const [isAnswerVisible, setIsAnswerVisible] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string>("");
 
   const handleAnswerVisible = () => {
     setIsAnswerVisible(!isAnswerVisible);
+  };
+
+  const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // setSelectedOption(e.target.value);
+    onScore();
+  };
+
+  const handleLabelClick = (option: string) => {
+    if (!isScored) {
+      setSelectedOption(option);
+      onScore();
+    }
   };
 
   return (
     <ul className="test-contents__qna-wrapper">
       <li>
         <p className="test-contents__questions">
-          <span className="test-contents__question-mark">?</span>문제 텍스트입니다.
+          <span className="test-contents__question-mark">?</span>
+          {quizNumber}번 문제 텍스트입니다.
         </p>
         <ul className="test-contents__answer-wrapper">
-          <li className="test-contents__view-answer">
+          <li className={`test-contents__view-answer `}>
             <button onClick={handleAnswerVisible}>
               <img
                 src={`${process.env.PUBLIC_URL}/images/test/check_1.png`}
@@ -158,11 +189,29 @@ function QnA() {
             {isAnswerVisible && <p>정답 1, 정답 2, 정답 3, 정답 4, 정답 5</p>}
           </li>
           <ul className="scoring">
-            <li className="check-correct">
-              <button>O</button>
+            <li
+              className={`check-correct ${selectedOption === "correct" ? "active" : ""}`}
+            >
+              <input
+                type="radio"
+                name={`score-${quizNumber}`}
+                value="correct"
+                onChange={handleRadioChange}
+                disabled={isScored}
+                hidden
+              />
+              <label onClick={() => handleLabelClick("correct")}>O</label>
             </li>
-            <li className="check-wrong">
-              <button>X</button>
+            <li className={`check-wrong ${selectedOption === "wrong" ? "active" : ""}`}>
+              <input
+                type="radio"
+                name={`score-${quizNumber}`}
+                value="wrong"
+                onChange={handleRadioChange}
+                disabled={isScored}
+                hidden
+              />
+              <label onClick={() => handleLabelClick("wrong")}>X</label>
             </li>
           </ul>
         </ul>
