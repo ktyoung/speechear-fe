@@ -1,12 +1,15 @@
+import Modal from "@components/common/Modal";
 import PlaySound, { RES_URL } from "@hooks/PlaySound";
 import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
-import { trainingData } from "@states/index";
+import { testModalState, trainingData } from "@states/index";
 import { ChangeEvent, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import CustomInputButton from "../CustomInputButton";
 
 export default function Test03Screen() {
   const { level, page } = useParams<{ level: string; page?: string }>();
+  const navigate = useNavigate();
   const [isPlay, setIsPlay] = useState(false);
   const [isViewStory, setIsViewStory] = useState(false);
   const [isViewQuestion, setIsViewQuestion] = useState(false);
@@ -17,6 +20,7 @@ export default function Test03Screen() {
   const [context, setContext] = useState<string>("");
   // const [answer, setAnswer] = useState<string>("");
   const [training, setTraining] = useRecoilState(trainingData);
+  const [testModal, setTestModal] = useRecoilState(testModalState);
 
   console.log("training", training);
 
@@ -71,9 +75,14 @@ export default function Test03Screen() {
       setQnaCount(qnaCount + 1);
     }
   };
+  const handleNavigate = () => {
+    setTestModal(true);
+    navigate("/home");
+  };
 
   return (
     <div className="test-screen-wrapper">
+      {testModal && <Modal setModal={setTestModal} modalText="훈련을 마쳤습니다." />}
       {isPlay && (
         <PlaySound mp3={soundFile} volume={100} onEnd={() => setIsPlay(false)} />
       )}
@@ -91,27 +100,30 @@ export default function Test03Screen() {
             />
           )}
         </button>
-        <button className="answer-buttons__opacity_1" onClick={toggleViewStory}>
-          <img
-            className="answer-buttons__opacity_1"
-            src={`${process.env.PUBLIC_URL}/images/test/button_view_story.png`}
-            alt="View story button"
-          />
-        </button>
-        <button className="answer-buttons__opacity_1" onClick={toggleViewQuestion}>
-          <img
-            className="answer-buttons__opacity_1"
-            src={`${process.env.PUBLIC_URL}/images/test/button_view_question.png`}
-            alt="View question button"
-          />
-        </button>
-        <Link to="/home" className="answer-buttons__opacity_1">
-          <img
-            className="answer-buttons__opacity_1"
-            src={`${process.env.PUBLIC_URL}/images/test/button_submit.png`}
-            alt="Submit button"
-          />
-        </Link>
+        <CustomInputButton
+          type="radio"
+          id="viewStoryButton"
+          name="viewStory"
+          className="answer-buttons__opacity_1"
+          imageName="button_view_story"
+          onClick={toggleViewStory}
+        />
+        <CustomInputButton
+          type="radio"
+          id="viewQuestionButton"
+          name="viewQuestion"
+          className="answer-buttons__opacity_1"
+          imageName="button_view_question"
+          onClick={toggleViewQuestion}
+        />
+        <CustomInputButton
+          type="radio"
+          id="submitButton"
+          name="submit"
+          className="answer-buttons__opacity_1"
+          imageName="button_submit"
+          onClick={() => setTestModal(true)}
+        />
       </div>
       <div className="test-contents test-contents__width-full">
         {!isViewStory && !isViewQuestion && (

@@ -6,8 +6,13 @@ const { persistAtom } = recoilPersist({
   converter: JSON,
 });
 
-export const myPageModalState = atom({
-  key: "isMyPageOpen",
+export const modalState = atom({
+  key: "isModalOpen",
+  default: false,
+});
+
+export const testModalState = atom({
+  key: "isTestModalOpen",
   default: false,
 });
 

@@ -486,6 +486,15 @@
   height: 50px;
   border-radius: 50px;
 }
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 20px;
+  font-weight: 800;
+}
 
 /* Home.tsx */
 .contents-wrapper.main {
