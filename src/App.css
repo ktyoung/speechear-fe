@@ -779,6 +779,9 @@
   font-weight: 800;
   font-size: 45px;
 }
+input[type="radio"] + .custom-button.answer-buttons__opacity_1 {
+  opacity: 1;
+}
 
 /* Test04Menu.tsx */
 .functions-wrapper.menus .card-wide {

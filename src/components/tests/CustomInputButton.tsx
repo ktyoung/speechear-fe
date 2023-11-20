@@ -5,6 +5,8 @@ interface CustomInputButtonProps {
   id: string;
   imageName: string;
   name: string;
+  className: string;
+  onClick: () => void;
 }
 
 export default function CustomInputButton({
@@ -12,6 +14,8 @@ export default function CustomInputButton({
   id,
   imageName,
   name,
+  className,
+  onClick,
 }: CustomInputButtonProps) {
   const [checked, setChecked] = useState(false);
 
@@ -30,8 +34,9 @@ export default function CustomInputButton({
         hidden
       />
       <label
-        className="custom-button"
+        className={`custom-button ${className}`}
         htmlFor={id}
+        onClick={onClick}
         style={{
           display: "inline-block",
           width: "151px",

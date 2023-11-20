@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useMatch, useParams } from "react-router-dom";
 import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
 import { useRecoilState } from "recoil";
-import { trainingData } from "@states/index";
+import { testModalState, trainingData } from "@states/index";
 import PlaySound, { RES_URL } from "@hooks/PlaySound";
-import CustomInputButton from "../CustomInputButton";
+import CustomInputButton from "@components/tests/CustomInputButton";
+import Modal from "@components/common/Modal";
 
 export default function Test01Screen() {
   const { level } = useParams();
@@ -14,6 +15,7 @@ export default function Test01Screen() {
   const [soundFile, setSoundFile] = useState<string>("");
   const [context, setContext] = useState<string>("");
   const [training, setTraining] = useRecoilState(trainingData);
+  const [testModal, setTestModal] = useRecoilState(testModalState);
 
   const match = useMatch("/training/part1/:level/:page/:quiz");
   // const soundFile = `${RES_URL}/function1/A01013.mp3`;
@@ -42,6 +44,12 @@ export default function Test01Screen() {
   };
 
   const res = useAxios(requestConfig);
+
+  useEffect(() => {
+    if (quizIndex === 10) {
+      setTestModal(true);
+    }
+  }, [quizIndex]);
 
   useEffect(() => {
     if (
@@ -78,6 +86,7 @@ export default function Test01Screen() {
 
   return (
     <div className="test-screen-wrapper">
+      {testModal && <Modal setModal={setTestModal} modalText="마지막 페이지입니다." />}
       {isPlay && (
         <PlaySound mp3={soundFile} volume={100} onEnd={() => setIsPlay(false)} />
       )}
@@ -87,20 +96,26 @@ export default function Test01Screen() {
             type="checkbox"
             id="withoutNoiseButton"
             name="answer"
+            className=""
             imageName="button_without_noise"
+            onClick={() => {}}
           />
         )}
         <CustomInputButton
           type="radio"
           id="correctButton"
           name="answer"
+          className=""
           imageName="button_correct"
+          onClick={() => {}}
         />
         <CustomInputButton
           type="radio"
           id="wrongButton"
           name="answer"
+          className=""
           imageName="button_wrong"
+          onClick={() => {}}
         />
       </div>
       <div className="test-contents">
