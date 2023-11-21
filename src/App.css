@@ -833,17 +833,6 @@ input[type="radio"] + .custom-button.answer-buttons__opacity_1 {
   width: 100%;
   max-width: 45px;
 }
-.test-screen__sequencing-input {
-  width: 50px;
-  height: 50px;
-  margin-right: 20px;
-  text-align: center;
-  background-color: #eef6f9;
-  border: 1px solid #81a8b7;
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-}
 
 /* Test05Menu.tsx */
 .main-title.menu.no-margin-bottom {
