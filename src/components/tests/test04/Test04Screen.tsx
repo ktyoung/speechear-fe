@@ -49,18 +49,26 @@ export default function Test04Screen() {
   }, [level]);
 
   // 문장을 섞어서 렌더링하기 위한 shuffle 메서드
-  const shuffle = (array: QuizItem[]) => {
-    let currentIndex = array.length,
-      randomIndex;
+  const shuffle = (array: QuizItem[], correctOrder: number[]) => {
+    let shuffled = false;
 
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+    while (!shuffled) {
+      let currentIndex = array.length,
+        randomIndex;
 
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex],
+          array[currentIndex],
+        ];
+      }
+
+      // Shuffle된 결과가 정답 순서와 동일한지 확인
+      if (!array.every((item, index) => correctOrder[index] === item.id)) {
+        shuffled = true;
+      }
     }
 
     return array;
@@ -68,7 +76,8 @@ export default function Test04Screen() {
 
   useEffect(() => {
     setQuizItems((currentItems) => {
-      const shuffledItems = shuffle([...currentItems]);
+      const correctOrder = determineCorrectOrder();
+      const shuffledItems = shuffle([...currentItems], correctOrder);
       checkOrder(shuffledItems);
       return shuffledItems;
     });
