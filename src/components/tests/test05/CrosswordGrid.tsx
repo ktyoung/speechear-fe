@@ -1,3 +1,5 @@
+import { ChangeEvent, useState } from "react";
+
 interface CrosswordGridProps {
   rows: number;
   columns: number;
@@ -15,76 +17,7 @@ interface DisabledCellProps {
   disabledCells: Array<{ row: number; col: number }>;
 }
 
-function HintGrid({ rows }: HintGridProps) {
-  const headers = [" ", "Level 1", "Level 2", "Level 3", "정답", "채점"];
-  const hintTitle = Array.from(
-    { length: rows },
-    (_, index) => `${index + 1}번\n힌트`
-  );
-
-  return (
-    <table className="hint-grid">
-      <thead>
-        <tr className="blue">
-          {headers.map((header, index) => (
-            <th key={index} style={{ width: `calc(100% / 6)` }}>
-              {header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {hintTitle.map((title, rowIndex) => (
-          <tr key={rowIndex}>
-            <td className="blue">{title}</td>
-            {Array.from({ length: 5 }, (_, colIndex) => (
-              <td key={colIndex}>
-                {colIndex < 4 ? (
-                  <button>
-                    <img
-                      src={`${process.env.PUBLIC_URL}/images/test/play_small.png`}
-                      alt="Play Button"
-                    />
-                  </button>
-                ) : (
-                  <ul className="scoring">
-                    <li className="check-correct">
-                      <button>O</button>
-                    </li>
-                    <li className="check-wrong">
-                      <button>X</button>
-                    </li>
-                  </ul>
-                )}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
-function isCellDisabled({
-  rowIndex,
-  colIndex,
-  disabledCells,
-}: DisabledCellProps) {
-  return disabledCells.some(
-    (cell) => cell.row === rowIndex && cell.col === colIndex
-  );
-}
-
-function renderHintNumber(
-  row: number,
-  col: number,
-  hints: Array<{ number: number; row: number; col: number }>
-) {
-  const hint = hints.find((h) => h.row === row && h.col === col);
-  return hint ? hint.number : null;
-}
-
-function CrosswordGrid({
+export default function CrosswordGrid({
   rows,
   columns,
   hintRows,
@@ -92,20 +25,6 @@ function CrosswordGrid({
   horizontalHints,
   verticalHints,
 }: CrosswordGridProps) {
-  // disabledCells 유효성 검사
-  disabledCells.forEach((cell) => {
-    if (
-      cell.row >= rows ||
-      cell.col >= columns ||
-      cell.row < 0 ||
-      cell.col < 0
-    ) {
-      throw new Error(
-        `유효하지 않은 셀 위치: (${cell.row}, ${cell.col}). 그리드 내에 있어야 합니다.`
-      );
-    }
-  });
-
   const gridRows = Array.from({ length: rows }, (_, rowIndex) => (
     <tr key={rowIndex} style={{ height: `${462 / rows}px` }}>
       {Array.from({ length: columns }, (_, colIndex) => (
@@ -144,4 +63,95 @@ function CrosswordGrid({
   );
 }
 
-export default CrosswordGrid;
+function HintGrid({ rows }: HintGridProps) {
+  const headers = [" ", "Level 1", "Level 2", "Level 3", "정답", "채점"];
+  const hintTitle = Array.from({ length: rows }, (_, index) => `${index + 1}번\n힌트`);
+  const [selectedOptions, setSelectedOptions] = useState<Array<string>>(
+    Array(rows).fill("")
+  );
+
+  const handleRadioChange = (rowIndex: number) => (e: ChangeEvent<HTMLInputElement>) => {
+    const newSelectedOptions = [...selectedOptions];
+    newSelectedOptions[rowIndex] = e.target.value;
+    setSelectedOptions(newSelectedOptions);
+  };
+
+  return (
+    <table className="hint-grid">
+      <thead>
+        <tr className="blue">
+          {headers.map((header, index) => (
+            <th key={index} style={{ width: `calc(100% / 6)` }}>
+              {header}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {hintTitle.map((title, rowIndex) => (
+          <tr key={rowIndex}>
+            <td className="blue">{title}</td>
+            {Array.from({ length: 5 }, (_, colIndex) => (
+              <td key={colIndex}>
+                {colIndex < 4 ? (
+                  <button>
+                    <img
+                      src={`${process.env.PUBLIC_URL}/images/test/play_small.png`}
+                      alt="Play Button"
+                    />
+                  </button>
+                ) : (
+                  <ul className="scoring">
+                    <li
+                      className={`check-correct ${
+                        selectedOptions[rowIndex] === "correct" ? "active" : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        id={`score-correct-${rowIndex}`}
+                        name={`score-${rowIndex}`}
+                        value="correct"
+                        onChange={handleRadioChange(rowIndex)}
+                        hidden
+                      />
+                      <label htmlFor={`score-correct-${rowIndex}`}>O</label>
+                    </li>
+                    <li
+                      className={`check-wrong ${
+                        selectedOptions[rowIndex] === "wrong" ? "active" : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        id={`score-wrong-${rowIndex}`}
+                        name={`score-${rowIndex}`}
+                        value="wrong"
+                        onChange={handleRadioChange(rowIndex)}
+                        hidden
+                      />
+                      <label htmlFor={`score-wrong-${rowIndex}`}>X</label>
+                    </li>
+                  </ul>
+                )}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function isCellDisabled({ rowIndex, colIndex, disabledCells }: DisabledCellProps) {
+  return disabledCells.some((cell) => cell.row === rowIndex && cell.col === colIndex);
+}
+
+function renderHintNumber(
+  row: number,
+  col: number,
+  hints: Array<{ number: number; row: number; col: number }>
+) {
+  const hint = hints.find((h) => h.row === row && h.col === col);
+  return hint ? hint.number : null;
+}
