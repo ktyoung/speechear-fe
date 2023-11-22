@@ -1,7 +1,13 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useParams } from "react-router-dom";
+
+type QuizItem = {
+  id: number;
+  text: string;
+  isCorrect?: boolean;
+};
 
 export default function Test04Screen() {
   const [isPlay, setIsPlay] = useState([false]);
@@ -11,25 +17,87 @@ export default function Test04Screen() {
   const { level } = useParams();
   const count = parseInt(level?.charAt(level.length - 1) ?? "0", 10);
 
-  const [quizItems, setQuizItems] = useState(
+  const [quizItems, setQuizItems] = useState<QuizItem[]>(
     Array.from({ length: count }, (_, index) => ({
       id: index,
       text: `문장 순서화 하기 ${index + 1}번 문제`,
+      isCorrect: false,
     }))
   );
 
-  const moveItem = useCallback(
-    (dragIndex: any, hoverIndex: any) => {
-      const dragItem = quizItems[dragIndex];
-      setQuizItems((prevItems) => {
-        const newItems = [...prevItems];
-        newItems.splice(dragIndex, 1);
-        newItems.splice(hoverIndex, 0, dragItem);
-        return newItems;
-      });
-    },
-    [quizItems]
-  );
+  const determineCorrectOrder = () => {
+    if (level === "word3") {
+      return [1, 0, 2]; // 정답: 2, 1, 3
+    } else if (level === "word4") {
+      return [2, 0, 1, 3]; // 정답: 3, 1, 2, 4
+    } else if (level === "word5") {
+      return [0, 4, 2, 3, 1]; // 정답: 1, 5, 3, 4, 2
+    } else {
+      return []; // 기본값: 빈 배열
+    }
+  };
+
+  useEffect(() => {
+    const correctOrder = determineCorrectOrder();
+    setQuizItems(
+      Array.from({ length: correctOrder.length }, (_, index) => ({
+        id: index,
+        text: `문장 순서화 하기 ${index + 1}번 문제`,
+        isCorrect: false,
+      }))
+    );
+  }, [level]);
+
+  // 문장을 섞어서 렌더링하기 위한 shuffle 메서드
+  const shuffle = (array: QuizItem[]) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  };
+
+  useEffect(() => {
+    setQuizItems((currentItems) => {
+      const shuffledItems = shuffle([...currentItems]);
+      checkOrder(shuffledItems);
+      return shuffledItems;
+    });
+  }, [level]);
+
+  const checkOrder = (itemsToCheck: QuizItem[]) => {
+    const correctOrder = determineCorrectOrder();
+    const updatedItems = itemsToCheck.map((item, index) => {
+      // 올바른 위치에 있는지 확인
+      const isCorrectPosition = correctOrder[index] === item.id;
+      return {
+        ...item,
+        isCorrect: isCorrectPosition,
+      };
+    });
+    setQuizItems(updatedItems);
+  };
+
+  // 드래그 앤 드롭 로직에서 아이템을 이동시킨 후 checkOrder 호출
+  const moveItem = useCallback((dragIndex: number, hoverIndex: number) => {
+    setQuizItems((prevItems) => {
+      const newItems = [...prevItems];
+      const dragItem = newItems.splice(dragIndex, 1)[0];
+      newItems.splice(hoverIndex, 0, dragItem);
+
+      checkOrder(newItems);
+      return newItems;
+    });
+  }, []);
 
   const togglePlay = (index: number) => {
     const updatedIsPlay = isPlay.map(() => false);
@@ -66,13 +134,6 @@ export default function Test04Screen() {
           />
         )}
       </button>
-    </li>
-  ));
-
-  const quizListItems = Array.from({ length: count }, (_, index) => (
-    <li key={index} className="test-screen__sequencing-item">
-      <input type="text" maxLength={1} className="test-screen__sequencing-input" />
-      <p>문장 순서화 하기 {index + 1}번 문제</p>
     </li>
   ));
 
@@ -146,14 +207,25 @@ export default function Test04Screen() {
   );
 }
 
-const DraggableItem = ({ id, text }: { id: number; text: string }) => {
-  const [, drag] = useDrag(() => ({
+const DraggableItem = ({ id, text, isCorrect }: QuizItem) => {
+  const [, drag, preview] = useDrag({
     type: "QUIZ_ITEM",
     item: { id },
-  }));
+    canDrag: !isCorrect, // 올바른 위치에 있으면 드래그 비활성화
+  });
 
   return (
-    <li ref={drag} className="test-screen__sequencing-item">
+    <li
+      ref={preview}
+      className="test-screen__sequencing-item"
+      style={{ color: isCorrect ? "green" : "inherit" }} // 올바른 위치에 있으면 텍스트 색상 변경
+    >
+      <span
+        ref={isCorrect ? null : drag}
+        style={{ cursor: isCorrect ? "default" : "move", marginRight: "30px" }}
+      >
+        ☰
+      </span>
       {`${id + 1}. ${text}`}
     </li>
   );
@@ -204,8 +276,13 @@ const DropList = ({ items, moveItem }: { items: any[]; moveItem: Function }) => 
 
   return (
     <ul ref={ref}>
-      {items.map((item, index) => (
-        <DraggableItem key={item.id} id={index} text={item.text} />
+      {items.map((item) => (
+        <DraggableItem
+          key={item.id}
+          id={item.id}
+          text={item.text}
+          isCorrect={item.isCorrect}
+        />
       ))}
     </ul>
   );
