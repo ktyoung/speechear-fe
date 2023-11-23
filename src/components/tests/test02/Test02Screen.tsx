@@ -1,9 +1,11 @@
 import PlaySound, { RES_URL } from "@hooks/PlaySound";
 import useAxios, { IRequestType, API_URL } from "@hooks/useAxios";
-import { trainingData } from "@states/index";
+import { testModalState, trainingData } from "@states/index";
 import { useEffect, useState } from "react";
 import { useMatch, useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import CustomInputButton from "../CustomInputButton";
+import Modal from "@components/common/Modal";
 
 export default function Test02Screen() {
   const { level, page } = useParams<{ level: string; page?: string }>();
@@ -15,6 +17,7 @@ export default function Test02Screen() {
   const [context, setContext] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
   const [training, setTraining] = useRecoilState(trainingData);
+  const [testModal, setTestModal] = useRecoilState(testModalState);
 
   const match = useMatch("/training/part2/:level/:page/:quiz");
 
@@ -36,6 +39,12 @@ export default function Test02Screen() {
   };
 
   const res = useAxios(requestConfig);
+
+  useEffect(() => {
+    if (quizIndex === 5) {
+      setTestModal(true);
+    }
+  }, [quizIndex]);
 
   useEffect(() => {
     if (
@@ -84,42 +93,37 @@ export default function Test02Screen() {
 
   return (
     <div className="test-screen-wrapper">
+      {testModal && <Modal setModal={setTestModal} modalText="마지막 페이지입니다." />}
       {isPlay && (
-        <PlaySound
-          mp3={soundFile}
-          volume={100}
-          onEnd={() => setIsPlay(false)}
-        />
+        <PlaySound mp3={soundFile} volume={100} onEnd={() => setIsPlay(false)} />
       )}
       <div className="answer-buttons">
-        <button>
-          <img
-            src={`${process.env.PUBLIC_URL}/images/test/button_correct.png`}
-            alt="Correct answer button"
-          />
-        </button>
-        <button>
-          <img
-            src={`${process.env.PUBLIC_URL}/images/test/button_wrong.png`}
-            alt="Wrong answer button"
-          />
-        </button>
+        <CustomInputButton
+          type="radio"
+          id="correctButton"
+          name="answer"
+          className=""
+          imageName="button_correct"
+          onClick={() => {}}
+        />
+        <CustomInputButton
+          type="radio"
+          id="wrongButton"
+          name="answer"
+          className=""
+          imageName="button_wrong"
+          onClick={() => {}}
+        />
       </div>
       <div className="test-contents">
         <div className="navigation-buttons">
-          <button
-            onClick={showPrevQuiz}
-            className={quizIndex === 1 ? "disabled" : ""}
-          >
+          <button onClick={showPrevQuiz} className={quizIndex === 1 ? "disabled" : ""}>
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_left.png`}
               alt="Go to previous question"
             />
           </button>
-          <button
-            onClick={showNextQuiz}
-            className={quizIndex === 5 ? "disabled" : ""}
-          >
+          <button onClick={showNextQuiz} className={quizIndex === 5 ? "disabled" : ""}>
             <img
               src={`${process.env.PUBLIC_URL}/images/test/button_right.png`}
               alt="Go to next question"
@@ -157,9 +161,7 @@ export default function Test02Screen() {
               />
             </div>
           </div>
-          <div
-            className={`view-sentence__accordion ${isOpenText ? "open" : ""}`}
-          >
+          <div className={`view-sentence__accordion ${isOpenText ? "open" : ""}`}>
             <p className="describe-text">{context}</p>
           </div>
           <div className="view-sentence" onClick={toggleOpenAnswer}>
@@ -169,9 +171,7 @@ export default function Test02Screen() {
             />
             <p>정답 보기</p>
           </div>
-          <div
-            className={`view-sentence__accordion ${isOpenAnswer ? "open" : ""}`}
-          >
+          <div className={`view-sentence__accordion ${isOpenAnswer ? "open" : ""}`}>
             <img
               src={`${process.env.PUBLIC_URL}/images/test/answer.png`}
               alt="Sentence listening icon"

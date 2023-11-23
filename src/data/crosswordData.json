@@ -17,7 +17,17 @@
     "verticalHints": [
       { "number": 2, "row": 0, "col": 1 },
       { "number": 3, "row": 2, "col": 2 }
-    ]
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
   },
   {
     "quiz": 2,
@@ -26,478 +36,2967 @@
     "hintRows": 4,
     "disabledCells": [
       { "row": 1, "col": 0 },
-      { "row": 1, "col": 1 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 2 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 3, "col": 0 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 2 },
-      { "number": 4, "row": 2, "col": 1 }
-    ]
-  },
-  {
-    "quiz": 3,
-    "rows": 3,
-    "columns": 5,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 3 },
-      { "row": 0, "col": 4 },
-      { "row": 1, "col": 0 },
       { "row": 1, "col": 2 },
-      { "row": 1, "col": 3 },
-      { "row": 2, "col": 0 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 2, "col": 1 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 1 },
-      { "number": 4, "row": 1, "col": 4 }
-    ]
-  },
-  {
-    "quiz": 4,
-    "rows": 4,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 3 },
-      { "row": 0, "col": 1 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 2 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 1 },
-      { "row": 3, "col": 2 }
-    ],
-    "horizontalHints": [{ "number": 2, "row": 1, "col": 0 }],
-    "verticalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 0, "col": 2 },
-      { "number": 4, "row": 1, "col": 3 }
-    ]
-  },
-  {
-    "quiz": 5,
-    "rows": 4,
-    "columns": 5,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 0 },
-      { "row": 0, "col": 1 },
-      { "row": 0, "col": 2 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 1 },
-      { "row": 1, "col": 2 },
-      { "row": 1, "col": 4 },
-      { "row": 2, "col": 4 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 2 },
-      { "row": 3, "col": 3 },
-      { "row": 3, "col": 4 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 3 },
-      { "number": 3, "row": 2, "col": 0 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 3 },
-      { "number": 4, "row": 2, "col": 1 }
-    ]
-  },
-  {
-    "quiz": 6,
-    "rows": 3,
-    "columns": 5,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 2 },
-      { "row": 0, "col": 3 },
-      { "row": 0, "col": 4 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 2 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 2 },
-      { "row": 2, "col": 3 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 1, "col": 3 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 1 },
-      { "number": 4, "row": 1, "col": 4 }
-    ]
-  },
-  {
-    "quiz": 7,
-    "rows": 4,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 0 },
-      { "row": 0, "col": 1 },
-      { "row": 1, "col": 3 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 1 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 1 },
-      { "row": 3, "col": 3 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 2 },
-      { "number": 3, "row": 1, "col": 0 },
-      { "number": 4, "row": 2, "col": 2 }
-    ],
-    "verticalHints": [{ "number": 2, "row": 0, "col": 2 }]
-  },
-  {
-    "quiz": 8,
-    "rows": 5,
-    "columns": 5,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 0 },
-      { "row": 0, "col": 1 },
-      { "row": 0, "col": 3 },
-      { "row": 0, "col": 4 },
-      { "row": 1, "col": 3 },
-      { "row": 1, "col": 4 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 3 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 1 },
-      { "row": 4, "col": 0 },
-      { "row": 4, "col": 1 },
-      { "row": 4, "col": 2 },
-      { "row": 4, "col": 3 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 1, "col": 0 },
-      { "number": 3, "row": 3, "col": 2 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 2 },
-      { "number": 4, "row": 2, "col": 4 }
-    ]
-  },
-  {
-    "quiz": 9,
-    "rows": 5,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 0 },
-      { "row": 0, "col": 1 },
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 1 },
-      { "row": 2, "col": 3 },
-      { "row": 3, "col": 1 },
-      { "row": 3, "col": 2 },
-      { "row": 3, "col": 3 },
-      { "row": 4, "col": 1 },
-      { "row": 4, "col": 2 },
-      { "row": 4, "col": 3 }
-    ],
-    "horizontalHints": [
-      { "number": 2, "row": 1, "col": 2 },
-      { "number": 3, "row": 2, "col": 0 }
-    ],
-    "verticalHints": [
-      { "number": 1, "row": 0, "col": 2 },
-      { "number": 4, "row": 2, "col": 0 }
-    ]
-  },
-  {
-    "quiz": 10,
-    "rows": 5,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 2 },
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 0 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 3 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 1 },
-      { "row": 3, "col": 3 },
-      { "row": 4, "col": 0 },
-      { "row": 4, "col": 1 },
-      { "row": 4, "col": 3 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 1, "col": 1 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 1 },
-      { "number": 4, "row": 1, "col": 2 }
-    ]
-  },
-  {
-    "quiz": 11,
-    "rows": 3,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 2 },
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 0 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 2 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 1, "col": 1 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 1 },
-      { "number": 4, "row": 1, "col": 3 }
-    ]
-  },
-  {
-    "quiz": 12,
-    "rows": 5,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 2 },
-      { "row": 1, "col": 3 },
-      { "row": 2, "col": 0 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 1 },
-      { "row": 3, "col": 3 },
-      { "row": 4, "col": 0 },
-      { "row": 4, "col": 1 },
-      { "row": 4, "col": 3 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 2, "col": 1 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 1 },
-      { "number": 4, "row": 2, "col": 2 }
-    ]
-  },
-  {
-    "quiz": 13,
-    "rows": 6,
-    "columns": 5,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 0 },
-      { "row": 0, "col": 2 },
-      { "row": 0, "col": 3 },
-      { "row": 0, "col": 4 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 2 },
-      { "row": 1, "col": 3 },
-      { "row": 1, "col": 4 },
-      { "row": 2, "col": 3 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 1 },
-      { "row": 3, "col": 2 },
-      { "row": 3, "col": 3 },
-      { "row": 4, "col": 0 },
-      { "row": 4, "col": 1 },
-      { "row": 5, "col": 0 },
-      { "row": 5, "col": 1 },
-      { "row": 5, "col": 2 },
-      { "row": 5, "col": 3 }
-    ],
-    "horizontalHints": [
-      { "number": 2, "row": 2, "col": 0 },
-      { "number": 4, "row": 4, "col": 2 }
-    ],
-    "verticalHints": [
-      { "number": 1, "row": 0, "col": 1 },
-      { "number": 3, "row": 2, "col": 4 }
-    ]
-  },
-  {
-    "quiz": 14,
-    "rows": 5,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 1 },
-      { "row": 0, "col": 2 },
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 2 },
-      { "row": 1, "col": 3 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 2 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 1 },
-      { "row": 3, "col": 2 },
-      { "row": 4, "col": 0 }
-    ],
-    "horizontalHints": [
-      { "number": 2, "row": 1, "col": 0 },
-      { "number": 4, "row": 4, "col": 1 }
-    ],
-    "verticalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 2, "col": 3 }
-    ]
-  },
-  {
-    "quiz": 15,
-    "rows": 4,
-    "columns": 5,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 4 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 1 },
-      { "row": 1, "col": 3 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 2 },
-      { "row": 2, "col": 3 },
-      { "row": 3, "col": 0 },
-      { "row": 3, "col": 1 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 4, "row": 3, "col": 2 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 2 },
-      { "number": 3, "row": 1, "col": 4 }
-    ]
-  },
-  {
-    "quiz": 16,
-    "rows": 4,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 2 },
-      { "row": 1, "col": 3 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 2 },
-      { "row": 3, "col": 0 }
-    ],
-    "horizontalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 4, "row": 3, "col": 1 }
-    ],
-    "verticalHints": [
-      { "number": 2, "row": 0, "col": 1 },
-      { "number": 3, "row": 2, "col": 3 }
-    ]
-  },
-  {
-    "quiz": 17,
-    "rows": 3,
-    "columns": 4,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 1 },
-      { "row": 0, "col": 2 },
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 1 },
-      { "row": 2, "col": 3 }
-    ],
-    "horizontalHints": [
-      { "number": 2, "row": 2, "col": 0 },
-      { "number": 4, "row": 1, "col": 2 }
-    ],
-    "verticalHints": [
-      { "number": 1, "row": 0, "col": 0 },
-      { "number": 3, "row": 1, "col": 2 }
-    ]
-  },
-  {
-    "quiz": 18,
-    "rows": 4,
-    "columns": 5,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 0 },
-      { "row": 0, "col": 1 },
-      { "row": 0, "col": 2 },
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 1 },
-      { "row": 2, "col": 0 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 3 },
-      { "row": 3, "col": 3 },
-      { "row": 3, "col": 4 }
-    ],
-    "horizontalHints": [
-      { "number": 2, "row": 1, "col": 2 },
-      { "number": 4, "row": 3, "col": 0 }
-    ],
-    "verticalHints": [
-      { "number": 1, "row": 0, "col": 4 },
-      { "number": 3, "row": 1, "col": 2 }
-    ]
-  },
-  {
-    "quiz": 19,
-    "rows": 3,
-    "columns": 5,
-    "hintRows": 4,
-    "disabledCells": [
-      { "row": 0, "col": 3 },
-      { "row": 1, "col": 0 },
-      { "row": 1, "col": 2 },
-      { "row": 1, "col": 3 },
       { "row": 2, "col": 0 },
       { "row": 2, "col": 1 }
     ],
     "horizontalHints": [
       { "number": 1, "row": 0, "col": 0 },
-      { "number": 4, "row": 2, "col": 2 }
+      { "number": 4, "row": 3, "col": 0 }
     ],
     "verticalHints": [
       { "number": 2, "row": 0, "col": 1 },
-      { "number": 3, "row": 0, "col": 4 }
-    ]
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
   },
   {
-    "quiz": 20,
-    "rows": 3,
-    "columns": 6,
+    "quiz": 3,
+    "rows": 4,
+    "columns": 3,
     "hintRows": 4,
     "disabledCells": [
-      { "row": 0, "col": 2 },
-      { "row": 0, "col": 3 },
-      { "row": 0, "col": 5 },
       { "row": 1, "col": 0 },
       { "row": 1, "col": 2 },
       { "row": 2, "col": 0 },
-      { "row": 2, "col": 1 },
-      { "row": 2, "col": 2 },
-      { "row": 2, "col": 3 },
-      { "row": 2, "col": 5 }
+      { "row": 2, "col": 1 }
     ],
     "horizontalHints": [
       { "number": 1, "row": 0, "col": 0 },
-      { "number": 4, "row": 1, "col": 3 }
+      { "number": 4, "row": 3, "col": 0 }
     ],
     "verticalHints": [
       { "number": 2, "row": 0, "col": 1 },
-      { "number": 3, "row": 0, "col": 4 }
-    ]
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 4,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 5,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 6,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 7,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 8,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 9,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 10,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 11,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 12,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 13,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 14,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 15,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 16,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 17,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 18,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 19,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 20,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 21,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 22,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 23,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 24,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 25,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 26,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 27,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 28,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 29,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 30,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 31,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 32,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 33,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 34,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 35,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 36,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 37,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 38,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 39,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 40,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 41,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 42,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 43,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 44,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 45,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 46,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 47,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 48,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 49,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 50,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 51,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 52,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 53,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 54,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 55,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 56,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 57,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 58,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 59,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 60,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 61,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 62,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 63,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 64,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 65,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 66,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 67,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 68,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 69,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 70,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 71,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 72,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 73,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 74,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 75,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 76,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 77,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 78,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 79,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 80,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 81,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 82,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 83,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 84,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 85,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 86,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 87,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 88,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 89,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 90,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 91,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 92,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 93,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 94,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 95,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 96,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 97,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 98,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 99,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
+  },
+  {
+    "quiz": 100,
+    "rows": 4,
+    "columns": 3,
+    "hintRows": 4,
+    "disabledCells": [
+      { "row": 1, "col": 0 },
+      { "row": 1, "col": 2 },
+      { "row": 2, "col": 0 },
+      { "row": 2, "col": 1 }
+    ],
+    "horizontalHints": [
+      { "number": 1, "row": 0, "col": 0 },
+      { "number": 4, "row": 3, "col": 0 }
+    ],
+    "verticalHints": [
+      { "number": 2, "row": 0, "col": 1 },
+      { "number": 3, "row": 2, "col": 2 }
+    ],
+    "answers": {
+      "0_0": "유",
+      "0_1": "모",
+      "0_2": "차",
+      "1_1": "자",
+      "2_2": "오",
+      "3_0": "병",
+      "3_1": "아",
+      "3_2": "리"
+    }
   }
 ]

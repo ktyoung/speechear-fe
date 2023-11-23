@@ -152,7 +152,7 @@
   height: 48px;
   width: 366px;
   font-weight: 500;
-  font-size: 1.2em;
+  font-size: 1.6em;
   line-height: 22px;
   outline: none;
   color: #ffffff;
@@ -416,9 +416,8 @@
   align-items: center;
   width: 1280px;
   height: 100%;
-  background: transparent
-    linear-gradient(270deg, #619fdf 0%, #74ccba 81%, #75ceb9 100%) 0% 0%
-    no-repeat padding-box;
+  background: transparent linear-gradient(270deg, #619fdf 0%, #74ccba 81%, #75ceb9 100%)
+    0% 0% no-repeat padding-box;
   margin: 0 auto;
   padding: 0 30px;
 }
@@ -455,6 +454,8 @@
 /* UserModal */
 .modal-wrapper {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.363);
@@ -486,6 +487,15 @@
   width: 80%;
   height: 50px;
   border-radius: 50px;
+}
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 /* Home.tsx */
@@ -771,6 +781,9 @@
   font-weight: 800;
   font-size: 45px;
 }
+input[type="radio"] + .custom-button.answer-buttons__opacity_1 {
+  opacity: 1;
+}
 
 /* Test04Menu.tsx */
 .functions-wrapper.menus .card-wide {
@@ -821,17 +834,6 @@
 .test-screen__select-item button img {
   width: 100%;
   max-width: 45px;
-}
-.test-screen__sequencing-input {
-  width: 50px;
-  height: 50px;
-  margin-right: 20px;
-  text-align: center;
-  background-color: #eef6f9;
-  border: 1px solid #81a8b7;
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  font-weight: bold;
 }
 
 /* Test05Menu.tsx */
@@ -931,17 +933,27 @@ li.page-btn button {
 .test-list-table th:last-child {
   width: 12%;
 }
-.progress {
-  width: 90%;
-  height: 20px;
+.stamp {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin: 0 20px;
+  background-color: #fff;
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  opacity: 0.3;
 }
-.progress-percent {
-  margin-left: 24px;
+.stamp.active {
+  background-color: #63a4db;
 }
 .test-start-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  font-family: "SCoreDream";
+  font-weight: 500;
+  font-size: 16px;
 }
 .test-start-btn img {
   width: 100%;
@@ -1055,11 +1067,15 @@ li.page-btn button {
   justify-content: center;
   align-items: center;
   width: 50px;
+  height: 100%;
+  font-size: 25px;
+  font-weight: 600;
   text-align: center;
   opacity: 0.6;
+  cursor: pointer;
 }
 .scoring li:hover,
-.scoring li:focus-within {
+.scoring li.active {
   opacity: 1;
 }
 .scoring li.check-correct {
@@ -1072,11 +1088,9 @@ li.page-btn button {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
-.scoring li button {
-  width: 100%;
-  font-size: 25px;
-  font-weight: 600;
+.scoring li label {
   cursor: pointer;
+  padding: 8px 15px;
 }
 
 /* TestScreen.tsx */
@@ -1096,16 +1110,13 @@ li.page-btn button {
   top: -100px;
   width: 100%;
 }
-.answer-buttons button {
+input[type="checkbox"] + .custom-button,
+input[type="radio"] + .custom-button {
   opacity: 0.6;
 }
-.answer-buttons button:hover,
-.answer-buttons button:focus {
+input[type="checkbox"]:checked + .custom-button,
+input[type="radio"]:checked + .custom-button {
   opacity: 1;
-}
-.answer-buttons .answer-buttons__opacity_1 {
-  opacity: 1;
-  padding: 0;
 }
 
 .test-contents {
@@ -1118,6 +1129,7 @@ li.page-btn button {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   font-size: 35px;
+  word-break: keep-all;
 }
 .test-contents.test-contents__width-full {
   width: 100%;
@@ -1277,9 +1289,6 @@ li.page-btn button {
 }
 .test-contents__answer-wrapper .scoring {
   width: inherit;
-}
-.test-contents__answer-wrapper .scoring button {
-  height: 100%;
 }
 
 .config-figure {

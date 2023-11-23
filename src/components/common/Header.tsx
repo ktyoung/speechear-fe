@@ -1,37 +1,32 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import {
-  myPageModalState,
-  globalConfigModalState,
-  gConfigState,
-} from "@states/index";
+import { modalState, globalConfigModalState, gConfigState } from "@states/index";
 
 export default function Header() {
-  const [myPageModal, setMyPageModal] = useRecoilState(myPageModalState);
-  const [globalConfigModal, setGlobalConfigModal] = useRecoilState(
-    globalConfigModalState
-  );
+  const [modal, setModal] = useRecoilState(modalState);
+  const [globalConfigModal, setGlobalConfigModal] =
+    useRecoilState(globalConfigModalState);
 
   return (
     <>
-      {myPageModal && <MyPageModal setMyPageModal={setMyPageModal} />}
+      {modal && <MyPageModal setModal={setModal} />}
       {globalConfigModal && (
-        <GlobalConfigModal setGlobalConfigModal={setGlobalConfigModal} />
+        <GlobalConfigModal
+          setGlobalConfigModal={setGlobalConfigModal}
+          setModal={setModal}
+        />
       )}
       <header className="header-wrapper">
         <div className="header">
           <div className="nav">
-            <h2 className="app-title">말귀연습</h2>
+            <h2 className="app-title">말귀</h2>
             <Link to="/home" className="link-home">
               HOME
             </Link>
           </div>
           <div className="nav">
-            <figure
-              className="config-figure"
-              onClick={() => setGlobalConfigModal(true)}
-            >
+            <figure className="config-figure" onClick={() => setGlobalConfigModal(true)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -54,7 +49,7 @@ export default function Header() {
             <Link to="/" className="logout-btn">
               로그아웃
             </Link>
-            <figure onClick={() => setMyPageModal(true)}>
+            <figure onClick={() => setModal(true)}>
               <img
                 src={`${process.env.PUBLIC_URL}/images/home/user.png`}
                 alt="User Icon"
@@ -67,9 +62,9 @@ export default function Header() {
   );
 }
 
-function MyPageModal({ setMyPageModal }: any) {
+function MyPageModal({ setModal }: any) {
   return (
-    <div className="modal-wrapper" onClick={() => setMyPageModal(false)}>
+    <div className="modal-wrapper" onClick={() => setModal(false)}>
       <div className="modal">
         <img
           src={`${process.env.PUBLIC_URL}/images/home/user.png`}
@@ -117,7 +112,7 @@ function GlobalConfigModal({ setGlobalConfigModal }: any) {
   };
 
   return (
-    <div className="modal-wrapper">
+    <div className="modal-wrapper" onClick={() => setGlobalConfigModal(false)}>
       <div className="modal">
         <p className="modal-name">전역 설정</p>
         <ul>
@@ -154,10 +149,7 @@ function GlobalConfigModal({ setGlobalConfigModal }: any) {
           <li>
             <div>노이즈종류</div>
             <div>
-              <select
-                defaultValue={globalConfig.noise}
-                onChange={handleNoiseChange}
-              >
+              <select defaultValue={globalConfig.noise} onChange={handleNoiseChange}>
                 <option value="noise1">기본</option>
                 <option value="noise2">길거리</option>
                 <option value="noise3">식당</option>

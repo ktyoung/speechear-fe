@@ -1,3 +1,5 @@
+import { ChangeEvent, useState } from "react";
+
 interface CrosswordGridProps {
   rows: number;
   columns: number;
@@ -5,6 +7,7 @@ interface CrosswordGridProps {
   disabledCells: Array<{ row: number; col: number }>;
   horizontalHints: Array<{ number: number; row: number; col: number }>;
   verticalHints: Array<{ number: number; row: number; col: number }>;
+  answers: { [key: string]: string };
 }
 interface HintGridProps {
   rows: number;
@@ -15,12 +18,70 @@ interface DisabledCellProps {
   disabledCells: Array<{ row: number; col: number }>;
 }
 
+export default function CrosswordGrid({
+  rows,
+  columns,
+  hintRows,
+  disabledCells,
+  horizontalHints,
+  verticalHints,
+  answers,
+}: CrosswordGridProps) {
+  const gridRows = Array.from({ length: rows }, (_, rowIndex) => (
+    <tr key={rowIndex} style={{ height: `${462 / rows}px` }}>
+      {Array.from({ length: columns }, (_, colIndex) => {
+        const answerKey = `${rowIndex}_${colIndex}`;
+        return (
+          <td
+            className="crossword-answer-input"
+            key={colIndex}
+            style={{ height: `${462 / rows}px` }}
+          >
+            <div className="hint-container">
+              <p className="horizontal-hint">
+                {renderHintNumber(rowIndex, colIndex, horizontalHints)}
+              </p>
+              <p className="vertical-hint">
+                {renderHintNumber(rowIndex, colIndex, verticalHints)}
+              </p>
+            </div>
+
+            <input
+              type="text"
+              placeholder=""
+              maxLength={1}
+              value={answers && answers[answerKey] ? answers[answerKey] : ""}
+              disabled={isCellDisabled({ rowIndex, colIndex, disabledCells })}
+              readOnly
+            />
+          </td>
+        );
+      })}
+    </tr>
+  ));
+
+  return (
+    <div className="crossword-wrapper">
+      <table className="crossword-grid">
+        <tbody>{gridRows}</tbody>
+      </table>
+      <HintGrid rows={hintRows} />
+    </div>
+  );
+}
+
 function HintGrid({ rows }: HintGridProps) {
   const headers = [" ", "Level 1", "Level 2", "Level 3", "정답", "채점"];
-  const hintTitle = Array.from(
-    { length: rows },
-    (_, index) => `${index + 1}번\n힌트`
+  const hintTitle = Array.from({ length: rows }, (_, index) => `${index + 1}번\n힌트`);
+  const [selectedOptions, setSelectedOptions] = useState<Array<string>>(
+    Array(rows).fill("")
   );
+
+  const handleRadioChange = (rowIndex: number) => (e: ChangeEvent<HTMLInputElement>) => {
+    const newSelectedOptions = [...selectedOptions];
+    newSelectedOptions[rowIndex] = e.target.value;
+    setSelectedOptions(newSelectedOptions);
+  };
 
   return (
     <table className="hint-grid">
@@ -48,11 +109,35 @@ function HintGrid({ rows }: HintGridProps) {
                   </button>
                 ) : (
                   <ul className="scoring">
-                    <li className="check-correct">
-                      <button>O</button>
+                    <li
+                      className={`check-correct ${
+                        selectedOptions[rowIndex] === "correct" ? "active" : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        id={`score-correct-${rowIndex}`}
+                        name={`score-${rowIndex}`}
+                        value="correct"
+                        onChange={handleRadioChange(rowIndex)}
+                        hidden
+                      />
+                      <label htmlFor={`score-correct-${rowIndex}`}>O</label>
                     </li>
-                    <li className="check-wrong">
-                      <button>X</button>
+                    <li
+                      className={`check-wrong ${
+                        selectedOptions[rowIndex] === "wrong" ? "active" : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        id={`score-wrong-${rowIndex}`}
+                        name={`score-${rowIndex}`}
+                        value="wrong"
+                        onChange={handleRadioChange(rowIndex)}
+                        hidden
+                      />
+                      <label htmlFor={`score-wrong-${rowIndex}`}>X</label>
                     </li>
                   </ul>
                 )}
@@ -65,14 +150,8 @@ function HintGrid({ rows }: HintGridProps) {
   );
 }
 
-function isCellDisabled({
-  rowIndex,
-  colIndex,
-  disabledCells,
-}: DisabledCellProps) {
-  return disabledCells.some(
-    (cell) => cell.row === rowIndex && cell.col === colIndex
-  );
+function isCellDisabled({ rowIndex, colIndex, disabledCells }: DisabledCellProps) {
+  return disabledCells.some((cell) => cell.row === rowIndex && cell.col === colIndex);
 }
 
 function renderHintNumber(
@@ -83,65 +162,3 @@ function renderHintNumber(
   const hint = hints.find((h) => h.row === row && h.col === col);
   return hint ? hint.number : null;
 }
-
-function CrosswordGrid({
-  rows,
-  columns,
-  hintRows,
-  disabledCells,
-  horizontalHints,
-  verticalHints,
-}: CrosswordGridProps) {
-  // disabledCells 유효성 검사
-  disabledCells.forEach((cell) => {
-    if (
-      cell.row >= rows ||
-      cell.col >= columns ||
-      cell.row < 0 ||
-      cell.col < 0
-    ) {
-      throw new Error(
-        `유효하지 않은 셀 위치: (${cell.row}, ${cell.col}). 그리드 내에 있어야 합니다.`
-      );
-    }
-  });
-
-  const gridRows = Array.from({ length: rows }, (_, rowIndex) => (
-    <tr key={rowIndex} style={{ height: `${462 / rows}px` }}>
-      {Array.from({ length: columns }, (_, colIndex) => (
-        <td
-          className="crossword-answer-input"
-          key={colIndex}
-          style={{ height: `${462 / rows}px` }}
-        >
-          <div className="hint-container">
-            <p className="horizontal-hint">
-              {renderHintNumber(rowIndex, colIndex, horizontalHints)}
-            </p>
-            <p className="vertical-hint">
-              {renderHintNumber(rowIndex, colIndex, verticalHints)}
-            </p>
-          </div>
-
-          <input
-            type="text"
-            placeholder=""
-            maxLength={1}
-            disabled={isCellDisabled({ rowIndex, colIndex, disabledCells })}
-          />
-        </td>
-      ))}
-    </tr>
-  ));
-
-  return (
-    <div className="crossword-wrapper">
-      <table className="crossword-grid">
-        <tbody>{gridRows}</tbody>
-      </table>
-      <HintGrid rows={hintRows} />
-    </div>
-  );
-}
-
-export default CrosswordGrid;
