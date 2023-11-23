@@ -1,7 +1,10 @@
+import Modal from "@components/common/Modal";
+import { testModalState } from "@states/index";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 type QuizItem = {
   id: number;
@@ -13,6 +16,7 @@ export default function Test04Screen() {
   const [isPlay, setIsPlay] = useState([false]);
   const [sequencing, setSequencing] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
+  const [testModal, setTestModal] = useRecoilState(testModalState);
 
   const { level } = useParams();
   const count = parseInt(level?.charAt(level.length - 1) ?? "0", 10);
@@ -157,6 +161,7 @@ export default function Test04Screen() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="test-screen-wrapper__main">
+        {testModal && <Modal setModal={setTestModal} modalText="훈련을 마쳤습니다." />}
         <div className="answer-buttons">
           <button
             onClick={toggleSequencing}
@@ -187,7 +192,7 @@ export default function Test04Screen() {
                   alt="Wrong answer button"
                 />
               </button>
-              <button style={{ opacity: 1 }}>
+              <button style={{ opacity: 1 }} onClick={() => setTestModal(true)}>
                 <img
                   src={`${process.env.PUBLIC_URL}/images/test/button_next_quiz.png`}
                   alt="Go to next quiz button"

@@ -8,7 +8,7 @@ export default function Modal({ setModal, modalText }: any) {
   };
 
   return (
-    <div className="modal-wrapper" onClick={handleClose} style={{ height: "110%" }}>
+    <div className="modal-wrapper" onClick={handleClose}>
       <div className="modal" onClick={handleModalContentClick}>
         <p>{modalText}</p>
         <button className="close-button" onClick={handleClose}>
