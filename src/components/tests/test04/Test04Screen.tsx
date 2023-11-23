@@ -69,10 +69,8 @@ export default function Test04Screen() {
         ];
       }
 
-      // Shuffle된 결과가 정답 순서와 동일한지 확인
-      if (!array.every((item, index) => correctOrder[index] === item.id)) {
-        shuffled = true;
-      }
+      // 모든 요소가 정답 순서와 다른지 확인
+      shuffled = array.every((item, index) => correctOrder[index] !== item.id);
     }
 
     return array;
@@ -150,10 +148,10 @@ export default function Test04Screen() {
     </li>
   ));
 
-  const answerListItems = Array.from({ length: count }, (_, index) => (
+  const answerListItems = determineCorrectOrder().map((order, index) => (
     <li key={index} className="test-screen__sequencing-item">
       <p>
-        {index + 1}. 문장 순서화 하기 {index + 1}번 정답
+        {index + 1}. 문장 순서화 하기 {order + 1}번 정답
       </p>
     </li>
   ));
