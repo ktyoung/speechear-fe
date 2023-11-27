@@ -113,7 +113,7 @@ function GlobalConfigModal({ setGlobalConfigModal }: any) {
 
   return (
     <div className="modal-wrapper" onClick={() => setGlobalConfigModal(false)}>
-      <div className="modal">
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <p className="modal-name">전역 설정</p>
         <ul>
           <li>
