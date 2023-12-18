@@ -1,25 +1,26 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import SignUp from "./pages/Signup";
+import Login from "@pages/Login";
+import Home from "@pages/Home";
+import SignUp from "@pages/Signup";
 import Layout from "./layout";
-import MyPage from "./pages/MyPage";
-import Test01Menu from "./pages/tests/test01/Test01Menu";
-import Test01Level from "./pages/tests/test01/Test01Level";
-import Test01ScreenWrapper from "./pages/tests/test01/Test01ScreenWrapper";
-import Test02Menu from "./pages/tests/test02/Test02Menu";
-import Test02Level from "./pages/tests/test02/Test02Level";
-import Test02ScreenWrapper from "./pages/tests/test02/Test02ScreenWrapper";
-import Test03Menu from "./pages/tests/test03/Test03Menu";
-import Test03Level from "./pages/tests/test03/Test03Level";
-import Test03ScreenWrapper from "./pages/tests/test03/Test03ScreenWrapper";
-import Test04Menu from "./pages/tests/test04/Test04Menu";
-import Test04Level from "./pages/tests/test04/Test04Level";
-import Test04ScreenWrapper from "./pages/tests/test04/Test04ScreenWrapper";
-import Test05Menu from "./pages/tests/test05/Test05Menu";
-import CrosswordQuiz from "./pages/tests/test05/CrosswordQuiz";
+import MyPage from "@pages/MyPage";
+import Test01Menu from "@pages/tests/test01/Test01Menu";
+import Test01Level from "@pages/tests/test01/Test01Level";
+import Test01ScreenWrapper from "@pages/tests/test01/Test01ScreenWrapper";
+import Test02Menu from "@pages/tests/test02/Test02Menu";
+import Test02Level from "@pages/tests/test02/Test02Level";
+import Test02ScreenWrapper from "@pages/tests/test02/Test02ScreenWrapper";
+import Test03Menu from "@pages/tests/test03/Test03Menu";
+import Test03Level from "@pages/tests/test03/Test03Level";
+import Test03ScreenWrapper from "@pages/tests/test03/Test03ScreenWrapper";
+import Test04Menu from "@pages/tests/test04/Test04Menu";
+import Test04Level from "@pages/tests/test04/Test04Level";
+import Test04ScreenWrapper from "@pages/tests/test04/Test04ScreenWrapper";
+import Test05Menu from "@pages/tests/test05/Test05Menu";
+import CrosswordQuiz from "@pages/tests/test05/CrosswordQuiz";
+import License from "@pages/License";
 
 function LayoutRoutes() {
   return (
@@ -67,6 +68,7 @@ function App() {
     <RecoilRoot>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/license" element={<License />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/*" element={<LayoutRoutes />} />
       </Routes>

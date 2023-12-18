@@ -35,7 +35,7 @@ export default function Login() {
         console.log(res);
         console.log(jwtDecode(res.data.accessToken));
         setJwtToken(res.data);
-        navigate("/home");
+        navigate("/license");
       })
       .catch((err) => {
         console.log(err);
@@ -51,15 +51,8 @@ export default function Login() {
     }, 700);
   }, []);
 
-  const transitionPage = (
-    curr: number,
-    next: number,
-    x: number,
-    y: number
-  ): void => {
-    const pages = document.querySelectorAll(
-      ".login_page"
-    ) as NodeListOf<HTMLElement>;
+  const transitionPage = (curr: number, next: number, x: number, y: number): void => {
+    const pages = document.querySelectorAll(".login_page") as NodeListOf<HTMLElement>;
     pages[next].style.zIndex = (
       parseInt(getComputedStyle(pages[curr]).zIndex, 10) + 1
     ).toString();
@@ -67,9 +60,7 @@ export default function Login() {
     anime({
       targets: pages[next],
       update: (anim: any) => {
-        pages[next].style.clipPath = `circle(${
-          anim.progress * 2
-        }% at ${x}px ${y}px)`;
+        pages[next].style.clipPath = `circle(${anim.progress * 2}% at ${x}px ${y}px)`;
       },
     });
   };
@@ -82,7 +73,7 @@ export default function Login() {
             <img
               className="main_logo"
               // onClick="nextPage(0, 1);"
-              src={`${process.env.PUBLIC_URL}/images/login/logo.png`}
+              src={`${process.env.PUBLIC_URL}/images/logo/logo.png`}
               alt="SpeechEar_Logo"
             />
           </div>
@@ -91,12 +82,12 @@ export default function Login() {
           <div className="img_circle_logo">
             <img
               className="circle_logo"
-              src={`${process.env.PUBLIC_URL}/images/login/circle_logo.png`}
+              src={`${process.env.PUBLIC_URL}/images/logo/circle_logo.png`}
               alt="CircleLogo"
             />
             <img
               className="circle_logo_center"
-              src={`${process.env.PUBLIC_URL}/images/login/circle_logo_center.png`}
+              src={`${process.env.PUBLIC_URL}/images/logo/circle_logo_center.png`}
               alt="CircleLogo_Mob"
             />
           </div>

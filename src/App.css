@@ -1301,3 +1301,68 @@ input[type="radio"]:checked + .custom-button {
   width: 12%;
   height: 12%;
 }
+
+/* License.tsx */
+.license-wrapper {
+  background-color: #f3f3f3;
+  height: 100vw;
+  padding: 120px 0 0 0;
+  font-family: "SCoreDream";
+}
+
+.license-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.license-contents__top {
+  display: flex;
+}
+.license-description {
+  margin: 0 0 0 100px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 180%;
+  word-break: keep-all;
+}
+
+.license-contents__bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 150px 0 0 0;
+}
+.license-key-input-text {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 31px 0;
+}
+.license-key-input {
+  width: 710px;
+  height: 102px;
+  padding: 26px 64px;
+  margin: 0 30px 0 0;
+  border: none;
+  border-radius: 34px;
+  background: #fff;
+  font-family: "Montserrat";
+  font-size: 32px;
+  letter-spacing: 1.2px;
+  font-weight: 400;
+}
+.license-button__check {
+  width: 162px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #40a0ff;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+.license-logo-bottom {
+  margin: 111px 0 0 0;
+}
