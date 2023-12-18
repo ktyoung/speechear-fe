@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 export default function License() {
+  const [checkLicense, setCheckLicense] = useState(false);
+
+  function handleCheckLicense() {
+    setCheckLicense(true);
+  }
+
   return (
     <>
       <div className="license-wrapper">
@@ -27,11 +35,26 @@ export default function License() {
             </div>
           </div>
           <div className="license-contents__bottom">
-            <div className="license-key-input-wrapper">
-              <p className="license-key-input-text">라이센스키를 입력해 주십시오.</p>
-              <input type="text" className="license-key-input" />
-              <button className="license-button__check">확인</button>
-            </div>
+            {!checkLicense ? (
+              <div className="license-key-input-wrapper">
+                <p className="license-key-input-text">라이센스키를 입력해 주십시오.</p>
+                <input type="text" className="license-key-input" />
+                <button className="license-button__check" onClick={handleCheckLicense}>
+                  확인
+                </button>
+              </div>
+            ) : (
+              <div className="license-check__pass">
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/icons/license_chek_icon.png`}
+                  alt="Monochrome Logo"
+                />
+                <div className="license-check-modal">
+                  <p>License</p>
+                  <p>라이센스 확인 완료</p>
+                </div>
+              </div>
+            )}
             <div className="license-logo-bottom">
               <img
                 src={`${process.env.PUBLIC_URL}/images/logo/license_logo_bw.png`}

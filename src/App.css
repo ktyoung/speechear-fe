@@ -1335,6 +1335,10 @@ input[type="radio"]:checked + .custom-button {
   align-items: center;
   margin: 150px 0 0 0;
 }
+/* .license-key-input-wrapper,
+.license-logo-bottom {
+  height: 133px;
+} */
 .license-key-input-text {
   text-align: center;
   font-size: 20px;
@@ -1363,6 +1367,28 @@ input[type="radio"]:checked + .custom-button {
   font-size: 20px;
   font-weight: 700;
 }
+
+.license-check__pass img {
+  float: left;
+  margin: -20px 80px 0 0;
+}
+.license-check-modal {
+  float: left;
+  width: 270px;
+  height: 130px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 15px;
+  text-align: center;
+}
+.license-check-modal p:first-child {
+  font-size: 17px;
+}
+.license-check-modal p:last-child {
+  margin: 30px 0 0 0;
+  font-size: 24px;
+}
 .license-logo-bottom {
-  margin: 111px 0 0 0;
+  position: absolute;
+  bottom: 57px;
 }
