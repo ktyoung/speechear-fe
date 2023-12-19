@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function License() {
+  const navigate = useNavigate();
   const [checkLicense, setCheckLicense] = useState(false);
 
   function handleCheckLicense() {
     setCheckLicense(true);
+
+    setTimeout(() => {
+      navigate("/home");
+    }, 1500);
   }
 
   return (

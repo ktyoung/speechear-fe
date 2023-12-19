@@ -1303,24 +1303,29 @@ input[type="radio"]:checked + .custom-button {
 }
 
 /* License.tsx */
-.license-wrapper {
+/* Settings.tsx */
+.license-wrapper,
+.settings-wrapper {
   background-color: #f3f3f3;
   height: 100vw;
   padding: 120px 0 0 0;
   font-family: "SCoreDream";
 }
 
-.license-contents {
+.license-contents,
+.settings-contents {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.license-contents__top {
+.license-contents__top,
+.settings-contents__top {
   display: flex;
 }
-.license-description {
+.license-description,
+.settings-description {
   margin: 0 0 0 100px;
   font-size: 22px;
   font-weight: 400;
@@ -1328,17 +1333,14 @@ input[type="radio"]:checked + .custom-button {
   word-break: keep-all;
 }
 
-.license-contents__bottom {
+.license-contents__bottom,
+.settings-contents__bottom {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 150px 0 0 0;
 }
-/* .license-key-input-wrapper,
-.license-logo-bottom {
-  height: 133px;
-} */
 .license-key-input-text {
   text-align: center;
   font-size: 20px;
@@ -1391,4 +1393,76 @@ input[type="radio"]:checked + .custom-button {
 .license-logo-bottom {
   position: absolute;
   bottom: 57px;
+}
+
+/* Settings.tsx */
+.settings-logo {
+  width: 171px;
+  margin: 0 0 50px 0;
+}
+
+.listening-setting-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 778px;
+  height: 418px;
+  padding: 70px 50px;
+  background-color: #fff;
+  border-radius: 40px;
+}
+.listening-setting-wrapper > p {
+  width: 283px;
+  margin: 0;
+  padding: 0 0 14px 0;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+  border-bottom: 1px solid #d9d9d9;
+}
+.noise-type,
+.speech-speed-slider,
+.speech-rate-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.noise-type > p,
+.speech-speed-slider > p {
+  display: block;
+  width: 160px;
+  margin: 0;
+}
+.noise-type__button label {
+  width: 120px;
+  height: 37px;
+  margin: 0 11px;
+  background: #fff;
+  border-radius: 17.5px;
+  border: 2px solid #4894fe;
+  text-align: center;
+  color: #85888a;
+  display: inline-block;
+  line-height: 33px;
+  cursor: pointer;
+}
+
+.noise-type__button input[type="radio"] {
+  display: none;
+}
+
+.noise-type__button input[type="radio"]:checked + label {
+  color: #fff;
+  background: #4894fe;
+}
+
+.speech-speed-slider__column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.speech-rate-labels {
+  margin: 10px 0 0 0;
 }

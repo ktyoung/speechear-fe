@@ -21,6 +21,7 @@ import Test04ScreenWrapper from "@pages/tests/test04/Test04ScreenWrapper";
 import Test05Menu from "@pages/tests/test05/Test05Menu";
 import CrosswordQuiz from "@pages/tests/test05/CrosswordQuiz";
 import License from "@pages/License";
+import Settings from "@pages/Settings";
 
 function LayoutRoutes() {
   return (
@@ -69,6 +70,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/license" element={<License />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/*" element={<LayoutRoutes />} />
       </Routes>
