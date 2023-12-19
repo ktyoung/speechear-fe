@@ -9,22 +9,22 @@ export default function License() {
     setCheckLicense(true);
 
     setTimeout(() => {
-      navigate("/home");
+      navigate("/settings");
     }, 1500);
   }
 
   return (
     <>
-      <div className="license-wrapper">
-        <div className="license-contents">
-          <div className="license-contents__top">
-            <div className="license-logo">
+      <div className="main-wrapper">
+        <div className="main-contents">
+          <div className="main-contents__top">
+            <div className="main-logo">
               <img
                 src={`${process.env.PUBLIC_URL}/images/logo/license_logo.png`}
                 alt="License Logo"
               />
             </div>
-            <div className="license-description">
+            <div className="main-description">
               <p className="license-text">
                 아이해브 말귀는 말소리 듣기 연습 프로그램입니다. <br />
                 청각학 교수와 난청 전문의가 머리를 맞대고 만든 <br />
@@ -40,7 +40,7 @@ export default function License() {
               </p>
             </div>
           </div>
-          <div className="license-contents__bottom">
+          <div className="main-contents__bottom">
             {!checkLicense ? (
               <div className="license-key-input-wrapper">
                 <p className="license-key-input-text">라이센스키를 입력해 주십시오.</p>
@@ -61,7 +61,7 @@ export default function License() {
                 </div>
               </div>
             )}
-            <div className="license-logo-bottom">
+            <div className="main-logo-bottom">
               <img
                 src={`${process.env.PUBLIC_URL}/images/logo/license_logo_bw.png`}
                 alt="Monochrome Logo"

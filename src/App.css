@@ -1303,29 +1303,24 @@ input[type="radio"]:checked + .custom-button {
 }
 
 /* License.tsx */
-/* Settings.tsx */
-.license-wrapper,
-.settings-wrapper {
+.main-wrapper {
   background-color: #f3f3f3;
   height: 100vw;
   padding: 120px 0 0 0;
   font-family: "SCoreDream";
 }
 
-.license-contents,
-.settings-contents {
+.main-contents {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.license-contents__top,
-.settings-contents__top {
+.main-contents__top {
   display: flex;
 }
-.license-description,
-.settings-description {
+.main-description {
   margin: 0 0 0 100px;
   font-size: 22px;
   font-weight: 400;
@@ -1333,8 +1328,7 @@ input[type="radio"]:checked + .custom-button {
   word-break: keep-all;
 }
 
-.license-contents__bottom,
-.settings-contents__bottom {
+.main-contents__bottom {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1390,7 +1384,7 @@ input[type="radio"]:checked + .custom-button {
   margin: 30px 0 0 0;
   font-size: 24px;
 }
-.license-logo-bottom {
+.main-logo-bottom {
   position: absolute;
   bottom: 57px;
 }

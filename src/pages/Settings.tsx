@@ -13,8 +13,8 @@ export default function Settings() {
 
   return (
     <>
-      <div className="settings-wrapper">
-        <div className="settings-contents">
+      <div className="main-wrapper">
+        <div className="main-contents">
           <img
             src={`${process.env.PUBLIC_URL}/images/logo/logo.png`}
             alt="White Logo"
@@ -60,7 +60,7 @@ export default function Settings() {
               </div>
             </div>
           </div>
-          <div className="license-logo-bottom">
+          <div className="main-logo-bottom">
             <img
               src={`${process.env.PUBLIC_URL}/images/logo/license_logo_bw.png`}
               alt="Monochrome Logo"
