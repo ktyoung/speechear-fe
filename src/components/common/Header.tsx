@@ -5,28 +5,56 @@ import { modalState, globalConfigModalState, gConfigState } from "@states/index"
 
 export default function Header() {
   const [modal, setModal] = useRecoilState(modalState);
-  const [globalConfigModal, setGlobalConfigModal] =
-    useRecoilState(globalConfigModalState);
+  // const [globalConfigModal, setGlobalConfigModal] =
+  //   useRecoilState(globalConfigModalState);
 
   return (
     <>
       {modal && <MyPageModal setModal={setModal} />}
-      {globalConfigModal && (
+      {/* {globalConfigModal && (
         <GlobalConfigModal
           setGlobalConfigModal={setGlobalConfigModal}
           setModal={setModal}
         />
-      )}
+      )} */}
       <header className="header-wrapper">
         <div className="header">
-          <div className="nav">
-            <h2 className="app-title">말귀</h2>
-            <Link to="/home" className="link-home">
-              HOME
-            </Link>
+          <div className="header-logo">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/logo/header_logo.png`}
+              alt="Header Logo"
+            />
           </div>
           <div className="nav">
-            <figure className="config-figure" onClick={() => setGlobalConfigModal(true)}>
+            <Link to="/home">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/icons/icon_profile.png`}
+                alt="Profile Icon"
+              />
+              사용자 정보
+            </Link>
+            <Link to="/home">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/icons/icon_card.png`}
+                alt="Card Icon"
+              />
+              사용자 로그
+            </Link>
+            <Link to="/home">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/icons/icon_note.png`}
+                alt="Note Icon"
+              />
+              연습하기
+            </Link>
+            <Link to="/settings">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/icons/icon_setting.png`}
+                alt="Setting Icon"
+              />
+              설정
+            </Link>
+            {/* <figure className="config-figure" onClick={() => setGlobalConfigModal(true)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -45,16 +73,7 @@ export default function Header() {
                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-            </figure>
-            <Link to="/" className="logout-btn">
-              로그아웃
-            </Link>
-            <figure onClick={() => setModal(true)}>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/home/user.png`}
-                alt="User Icon"
-              />
-            </figure>
+            </figure> */}
           </div>
         </div>
       </header>
