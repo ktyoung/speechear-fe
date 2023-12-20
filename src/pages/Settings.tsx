@@ -13,19 +13,19 @@ export default function Settings() {
 
   return (
     <>
-      <div className="main-wrapper">
+      <div className="main-wrapper settings">
         <div className="main-contents">
           <img
             src={`${process.env.PUBLIC_URL}/images/logo/logo.png`}
             alt="White Logo"
             className="settings-logo"
           />
-          <div className="listening-setting-wrapper">
+          <div className="main-select-wrapper settings">
             <p>듣기 설정</p>
-            <ul className="noise-type">
+            <ul className="select-type">
               <p>소음 종류</p>
               {["기본", "식당", "거리", "와글와글"].map((noiseType) => (
-                <li key={noiseType} className="noise-type__button">
+                <li key={noiseType} className="select-type__button">
                   <input
                     type="radio"
                     id={noiseType}

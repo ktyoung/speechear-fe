@@ -1,40 +1,65 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Home() {
+  const [selectedNoiseType, setSelectedNoiseType] = useState("");
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedNoiseType(event.target.value);
+  };
+
   return (
-    <div className="contents-wrapper main">
-      <div className="contents-main">
-        <div className="main-title">
-          <p className="select-function">듣기연습 선택</p>
-          <p className="select-function small-text">연습할 듣기 종류를 고르세요.</p>
+    <div className="main-wrapper">
+      <div className="main-contents home">
+        <div className="main-contents__left">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/logo/logo.png`}
+            alt="White Logo"
+            className="settings-logo"
+          />
         </div>
-        <div className="functions-wrapper">
-          <ul>
-            <FunctionList _to="/training/part1" _num="01" _title={`소음 하\n문장 듣기`} />
-            <FunctionList _to="/training/part2" _num="02" _title={`짧은 이야기\n듣기`} />
-            <FunctionList _to="/training/part3" _num="03" _title={`긴 이야기\n듣기`} />
-            <FunctionList _to="/training/part4" _num="04" _title={`문장\n순서화 하기`} />
-            <FunctionList _to="/training/part5" _num="05" _title={`가로세로\n퀴즈`} />
+        <div className="main-select-wrapper">
+          <p>듣기 연습 선택</p>
+          <p className="font-light">실행할 듣기 연습 종류를 선택하세요.</p>
+          <ul className="select-type">
+            {[
+              "소음 하 문장듣기",
+              "짧은 이야기 듣기",
+              "긴 이야기 듣기",
+              "문장 순서화 하기",
+              "가로세로 퀴즈",
+            ].map((noiseType) => (
+              <li key={noiseType} className="select-type__button">
+                <input
+                  type="radio"
+                  id={noiseType}
+                  name="noiseType"
+                  value={noiseType}
+                  checked={selectedNoiseType === noiseType}
+                  onChange={handleRadioChange}
+                  style={{ display: "none" }}
+                />
+                <label htmlFor={noiseType}>{noiseType}</label>
+              </li>
+            ))}
           </ul>
+          <div className="select-button-wrapper">
+            <button className="refesh">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/icons/icon_refresh.png`}
+                alt=""
+              />
+            </button>
+            <button className="check">
+              <img src={`${process.env.PUBLIC_URL}/images/icons/icon_check.png`} alt="" />
+            </button>
+          </div>
+        </div>
+        <div className="main-logo-bottom">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/logo/license_logo_bw.png`}
+            alt="Monochrome Logo"
+          />
         </div>
       </div>
     </div>
-  );
-}
-
-interface FunctionListProps {
-  _to: string;
-  _num: string;
-  _title: string;
-}
-
-function FunctionList({ _to, _num, _title }: FunctionListProps) {
-  return (
-    <li>
-      <Link to={_to}>
-        <p className="function-number">{_num}</p>
-        <p className="function-title">{_title}</p>
-      </Link>
-    </li>
   );
 }

@@ -9,13 +9,13 @@ export default function License() {
     setCheckLicense(true);
 
     setTimeout(() => {
-      navigate("/settings");
+      navigate("/home");
     }, 1500);
   }
 
   return (
     <>
-      <div className="main-wrapper">
+      <div className="main-wrapper license">
         <div className="main-contents">
           <div className="main-contents__top">
             <div className="main-logo">
