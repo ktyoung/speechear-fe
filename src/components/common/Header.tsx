@@ -20,13 +20,15 @@ export default function Header() {
       <header className="header-wrapper">
         <div className="header">
           <div className="header-logo">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/logo/header_logo.png`}
-              alt="Header Logo"
-            />
+            <Link to="/home">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/logo/header_logo.png`}
+                alt="Header Logo"
+              />
+            </Link>
           </div>
           <div className="nav">
-            <Link to="/home">
+            <Link to="/myPage">
               <img
                 src={`${process.env.PUBLIC_URL}/images/icons/icon_profile.png`}
                 alt="Profile Icon"

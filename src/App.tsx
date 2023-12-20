@@ -28,7 +28,7 @@ function LayoutRoutes() {
     <Layout>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/myPage" element={<MyPage />} />
+
         {/* Test01  */}
         <Route path="/training/part1" element={<Test01Menu />} />
         <Route path="/training/part1/:level/:page" element={<Test01Level />} />
@@ -71,6 +71,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/license" element={<License />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/myPage" element={<MyPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/*" element={<LayoutRoutes />} />
       </Routes>
