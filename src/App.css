@@ -464,9 +464,13 @@
 }
 
 .select-button-wrapper {
+  display: flex;
   margin: 50px 0 0 0;
 }
-.select-button-wrapper button {
+.select-button-wrapper a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 66px;
   height: 66px;
   margin: 0px 15px;
@@ -1207,8 +1211,7 @@ input[type="radio"]:checked + .custom-button {
 }
 
 /* License.tsx */
-.main-wrapper.license,
-.main-wrapper.settings {
+.main-wrapper.license {
   padding: 120px 0 0 0;
 }
 
@@ -1270,6 +1273,10 @@ input[type="radio"]:checked + .custom-button {
 }
 
 /* Settings.tsx */
+.main-wrapper.settings {
+  padding: 75px 0 0 0;
+}
+
 .settings-logo {
   width: 171px;
   margin: 0 0 50px 0;

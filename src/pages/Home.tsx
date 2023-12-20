@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [selectedNoiseType, setSelectedNoiseType] = useState("");
@@ -42,15 +43,18 @@ export default function Home() {
             ))}
           </ul>
           <div className="select-button-wrapper">
-            <button className="refesh">
+            <Link to="/home" className="refesh">
               <img
                 src={`${process.env.PUBLIC_URL}/images/icons/icon_refresh.png`}
-                alt=""
+                alt="Refresh Icon"
               />
-            </button>
-            <button className="check">
-              <img src={`${process.env.PUBLIC_URL}/images/icons/icon_check.png`} alt="" />
-            </button>
+            </Link>
+            <Link to="/home" className="check">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/icons/icon_check.png`}
+                alt="Check Icon"
+              />
+            </Link>
           </div>
         </div>
         <div className="main-logo-bottom">

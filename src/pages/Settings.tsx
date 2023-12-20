@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Settings() {
   const [selectedNoiseType, setSelectedNoiseType] = useState("기본");
@@ -58,6 +59,20 @@ export default function Settings() {
                   <li className="rate-fast">빠르게</li>
                 </ul>
               </div>
+            </div>
+            <div className="select-button-wrapper">
+              <Link to="/settings" className="refesh">
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/icons/icon_refresh.png`}
+                  alt="Refresh Icon"
+                />
+              </Link>
+              <Link to="/home" className="check">
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/icons/icon_check.png`}
+                  alt="Check Icon"
+                />
+              </Link>
             </div>
           </div>
           <div className="main-logo-bottom">
