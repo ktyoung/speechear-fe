@@ -5,16 +5,15 @@ import { modalState, globalConfigModalState, gConfigState } from "@states/index"
 
 export default function Header() {
   const [modal, setModal] = useRecoilState(modalState);
+  const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   // const [globalConfigModal, setGlobalConfigModal] =
   //   useRecoilState(globalConfigModalState);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseDown = () => setIsClicked(true);
+  const handleMouseUp = () => setIsClicked(false);
 
   return (
     <>
@@ -30,12 +29,16 @@ export default function Header() {
           <div className="header-logo">
             <Link
               to="/home"
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <img
                 src={
-                  isHovered
+                  isClicked
+                    ? `${process.env.PUBLIC_URL}/images/logo/header_logo.png`
+                    : isHovered
                     ? `${process.env.PUBLIC_URL}/images/logo/header_logo_white.png`
                     : `${process.env.PUBLIC_URL}/images/logo/header_logo.png`
                 }

@@ -2,60 +2,25 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const [selectedNoiseType, setSelectedNoiseType] = useState("");
-  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedNoiseType(event.target.value);
-  };
+  const practiceType = [
+    { name: "소음 하 문장듣기", path: "/Test01Menu" },
+    { name: "짧은 이야기 듣기", path: "/Test02Menu" },
+    { name: "긴 이야기 듣기", path: "/Test03Menu" },
+    { name: "문장 순서화 하기", path: "/Test04Menu" },
+    { name: "가로세로 퀴즈", path: "/Test05Menu" },
+  ];
 
   return (
     <div className="main-wrapper">
       <div className="main-contents home">
-        <div className="main-contents__left">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/logo/logo.png`}
-            alt="White Logo"
-            className="settings-logo"
-          />
-        </div>
+        <p>듣기 연습 선택</p>
         <div className="main-select-wrapper">
-          <p>듣기 연습 선택</p>
           <p className="font-light">실행할 듣기 연습 종류를 선택하세요.</p>
           <ul className="select-type">
-            {[
-              "소음 하 문장듣기",
-              "짧은 이야기 듣기",
-              "긴 이야기 듣기",
-              "문장 순서화 하기",
-              "가로세로 퀴즈",
-            ].map((noiseType) => (
-              <li key={noiseType} className="select-type__button">
-                <input
-                  type="radio"
-                  id={noiseType}
-                  name="noiseType"
-                  value={noiseType}
-                  checked={selectedNoiseType === noiseType}
-                  onChange={handleRadioChange}
-                  style={{ display: "none" }}
-                />
-                <label htmlFor={noiseType}>{noiseType}</label>
-              </li>
+            {practiceType.map((type) => (
+              <SelectTypeButton to={type.path} children={type.name} />
             ))}
           </ul>
-          <div className="select-button-wrapper">
-            <Link to="/home" className="refesh">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/icons/icon_refresh.png`}
-                alt="Refresh Icon"
-              />
-            </Link>
-            <Link to="/home" className="check">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/icons/icon_check.png`}
-                alt="Check Icon"
-              />
-            </Link>
-          </div>
         </div>
         <div className="main-logo-bottom">
           <img
@@ -65,5 +30,38 @@ export default function Home() {
         </div>
       </div>
     </div>
+  );
+}
+
+function SelectTypeButton({ to, children }: any) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseDown = () => setIsClicked(true);
+  const handleMouseUp = () => setIsClicked(false);
+  const buttonStyle = {
+    backgroundColor: isClicked
+      ? "#40A0FF"
+      : isHovered
+      ? "rgba(99, 180, 255, 0.1)"
+      : "#fff",
+    color: isClicked ? "#fff" : "#4894fe",
+    border: isHovered ? "3px solid transparent" : "3px solid #4894fe",
+  };
+
+  return (
+    <Link
+      className="select-type__button"
+      to={to}
+      style={buttonStyle}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
+      {children}
+    </Link>
   );
 }
