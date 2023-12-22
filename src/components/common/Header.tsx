@@ -5,8 +5,16 @@ import { modalState, globalConfigModalState, gConfigState } from "@states/index"
 
 export default function Header() {
   const [modal, setModal] = useRecoilState(modalState);
+  const [isHovered, setIsHovered] = useState(false);
   // const [globalConfigModal, setGlobalConfigModal] =
   //   useRecoilState(globalConfigModalState);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   return (
     <>
@@ -20,42 +28,46 @@ export default function Header() {
       <header className="header-wrapper">
         <div className="header">
           <div className="header-logo">
-            <Link to="/home">
+            <Link
+              to="/home"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <img
-                src={`${process.env.PUBLIC_URL}/images/logo/header_logo.png`}
+                src={
+                  isHovered
+                    ? `${process.env.PUBLIC_URL}/images/logo/header_logo_white.png`
+                    : `${process.env.PUBLIC_URL}/images/logo/header_logo.png`
+                }
                 alt="Header Logo"
               />
             </Link>
           </div>
           <div className="nav">
-            <Link to="/myPage">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/icons/icon_profile.png`}
-                alt="Profile Icon"
-              />
-              사용자 정보
-            </Link>
-            <Link to="/home">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/icons/icon_card.png`}
-                alt="Card Icon"
-              />
-              사용자 로그
-            </Link>
-            <Link to="/home">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/icons/icon_note.png`}
-                alt="Note Icon"
-              />
-              연습하기
-            </Link>
-            <Link to="/settings">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/icons/icon_setting.png`}
-                alt="Setting Icon"
-              />
-              설정
-            </Link>
+            <NavLink
+              to="/myPage"
+              defaultIcon="icon_profile"
+              clickedIcon="icon_profile_white"
+              children="사용자 정보"
+            />
+            <NavLink
+              to="/home"
+              defaultIcon="icon_card"
+              clickedIcon="icon_card_white"
+              children="사용자 로그"
+            />
+            <NavLink
+              to="/home"
+              defaultIcon="icon_note"
+              clickedIcon="icon_note_white"
+              children="연습하기"
+            />
+            <NavLink
+              to="/settings"
+              defaultIcon="icon_setting"
+              clickedIcon="icon_setting"
+              children="설정"
+            />
             {/* <figure className="config-figure" onClick={() => setGlobalConfigModal(true)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -184,5 +196,39 @@ function GlobalConfigModal({ setGlobalConfigModal }: any) {
         </button>
       </div>
     </div>
+  );
+}
+
+function NavLink({ to, defaultIcon, clickedIcon, children }: any) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseDown = () => setIsClicked(true);
+  const handleMouseUp = () => setIsClicked(false);
+
+  return (
+    <Link
+      to={to}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      style={{
+        backgroundColor: isClicked ? "#40A0FF" : isHovered ? "#fff" : "transparent",
+        color: isClicked ? "#fff" : "inherit",
+      }}
+    >
+      <img
+        src={
+          isClicked
+            ? `${process.env.PUBLIC_URL}/images/icons/${clickedIcon}.png`
+            : `${process.env.PUBLIC_URL}/images/icons/${defaultIcon}.png`
+        }
+        alt="Icon"
+      />
+      {children}
+    </Link>
   );
 }

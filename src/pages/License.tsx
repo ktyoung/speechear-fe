@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function License() {
   const navigate = useNavigate();
@@ -7,10 +7,6 @@ export default function License() {
 
   function handleCheckLicense() {
     setCheckLicense(true);
-
-    setTimeout(() => {
-      navigate("/home");
-    }, 1500);
   }
 
   return (
@@ -59,6 +55,7 @@ export default function License() {
                   <p>License</p>
                   <p>라이센스 확인 완료</p>
                 </div>
+                <Link to="/home">다음</Link>
               </div>
             )}
             <div className="main-logo-bottom">
