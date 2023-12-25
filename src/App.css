@@ -407,9 +407,6 @@
   flex-direction: row;
   align-items: flex-start;
 }
-.snb {
-  width: 250px;
-}
 
 .main-select-wrapper {
   display: flex;
@@ -580,98 +577,125 @@
   border-bottom: 1px solid #8696bb;
 }
 
+/* Snb.tsx */
+.snb {
+  width: 161px;
+  margin: 60px 60px 0 0;
+}
+
+.select-type__snb {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 13px;
+}
+.snb-select-type__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 156px;
+  height: 55px;
+  padding: 12px 20px;
+  background-color: #40a0ff;
+  border-radius: 100px;
+  font-weight: 900;
+}
+
 /* Test01Menu.tsx */
-.main-title.menu {
-  margin: 0;
-  margin-bottom: 75px;
+.main-contents.home.test {
   align-items: flex-start;
 }
-.menu-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 50px;
+.main-contents.home.test .main-contents__column > p {
   margin: 0;
+  padding: 0;
 }
-.menu-title.menu-title-color {
-  color: #75cdb9;
-}
-.menu-title .function-number {
-  font-size: 67px;
-  margin: 0 30px 0 0;
-}
-.function-number.menu-number-color {
-  color: #a9e0d4;
+.main-contents.home.test .main-select-wrapper {
+  background-color: transparent;
+  padding: 30px;
 }
 
-.functions-wrapper.menus {
+.test-card-wrapper {
   display: flex;
-  justify-content: space-between;
-}
-.functions-wrapper.menus ul {
-  flex-direction: column;
-  width: 280px;
-}
-.functions-wrapper.menus li:first-child {
-  width: 280px;
-  height: 270px;
-  margin-bottom: 10px;
-}
-.functions-wrapper.menus li:first-child a {
   justify-content: flex-start;
-  padding: 20px;
+  align-items: flex-start;
+  width: 766px;
+  padding: 25px 30px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 2px 12px 20px 0px rgba(90, 117, 167, 0.04);
+  color: #40a0ff;
+  margin: 0 0 20px 0;
 }
-.functions-wrapper.menus li:last-child {
-  width: 280px;
-  height: 95px;
-  font-family: "SCoreDream";
-  font-weight: 600;
-  color: #8a8a8a;
-  font-size: 30px;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 0px 7px #75cdb95e;
-  text-align: center;
-  background-color: #fff;
-  transition: all 0.5s;
-}
-.functions-wrapper.menus li:first-child a p {
-  width: 100%;
-  color: #8a8a8a;
-  padding-bottom: 20px;
-}
-.functions-wrapper.menus .function-number {
-  font-family: "SCoreDream";
-  border-bottom: 1px solid var(--white);
-  opacity: 1;
+.test-card-wrapper:last-child {
   margin: 0;
 }
-.functions-wrapper.menus .function-title {
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 300;
-  padding: 20px;
+.test-card-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 15%;
 }
-.functions-wrapper.menus li:last-child a {
-  flex-direction: row;
+.test-card-left .font-light {
+  font-size: 15px;
+  font-weight: 600;
 }
-.functions-wrapper.menus li:last-child a img {
-  margin-left: 26px;
-}
-.functions-wrapper.menus ul li:last-child img:first-child {
-  display: none;
+.test-card-left .font-bold,
+.test-card-right .font-bold {
+  font-size: 25px;
+  font-weight: 800;
 }
 
-.functions-wrapper.menus ul.hovered li:last-child {
-  border: 2px solid #71c4c1;
-  background-color: #75cdb9;
+.test-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+}
+.test-card-right__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 15px 0;
+  padding: 0 0 15px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.test-card-right p.margin {
+  margin: 0 25px 0 10px;
+  width: 300px;
+}
+.test-card-right .text-gray {
+  color: #8696bb;
+  font-size: 17px;
+  font-weight: 400;
+  white-space: pre-wrap;
+}
+
+.test-card-button {
+  display: flex;
+  width: 433px;
+  padding: 10px 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border: 3px solid #4894fe;
+  background: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  color: #4894fe;
+}
+.test-card-button:hover {
+  border: 3px solid transparent;
+  background: rgba(99, 180, 255, 0.1);
+}
+.test-card-button:active {
+  border: 3px solid transparent;
+  background-color: #40a0ff;
   color: #fff;
-}
-.functions-wrapper.menus ul.hovered li:last-child img:first-child {
-  display: block;
-}
-.functions-wrapper.menus ul.hovered li:last-child img:last-child {
-  display: none;
 }
 
 /* Test02Menu.tsx */
