@@ -4,7 +4,7 @@ export default function MyPage() {
   return (
     <div className="main-wrapper">
       <div className="main-contents info">
-        <div className="main-contents__left">
+        <div className="snb">
           <img
             src={`${process.env.PUBLIC_URL}/images/logo/logo.png`}
             alt="White Logo"

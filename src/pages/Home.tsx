@@ -13,14 +13,17 @@ export default function Home() {
   return (
     <div className="main-wrapper">
       <div className="main-contents home">
-        <p>듣기 연습 선택</p>
-        <div className="main-select-wrapper">
-          <p className="font-light">실행할 듣기 연습 종류를 선택하세요.</p>
-          <ul className="select-type">
-            {practiceType.map((type) => (
-              <SelectTypeButton to={type.path} children={type.name} />
-            ))}
-          </ul>
+        <div className="snb"></div>
+        <div className="main-contents__column">
+          <p>듣기 연습 선택</p>
+          <div className="main-select-wrapper">
+            <p className="font-light">실행할 듣기 연습 종류를 선택하세요.</p>
+            <ul className="select-type">
+              {practiceType.map((type) => (
+                <SelectTypeButton to={type.path} children={type.name} />
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="main-logo-bottom">
           <img
