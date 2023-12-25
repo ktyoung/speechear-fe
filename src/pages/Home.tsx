@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   const practiceType = [
-    { name: "소음 하 문장듣기", path: "/Test01Menu" },
-    { name: "짧은 이야기 듣기", path: "/Test02Menu" },
-    { name: "긴 이야기 듣기", path: "/Test03Menu" },
-    { name: "문장 순서화 하기", path: "/Test04Menu" },
-    { name: "가로세로 퀴즈", path: "/Test05Menu" },
+    { name: "소음 하 문장듣기", path: "/training/part1" },
+    { name: "짧은 이야기 듣기", path: "/training/part2" },
+    { name: "긴 이야기 듣기", path: "/training/part3" },
+    { name: "문장 순서화 하기", path: "/training/part4" },
+    { name: "가로세로 퀴즈", path: "/training/part5" },
   ];
 
   return (
