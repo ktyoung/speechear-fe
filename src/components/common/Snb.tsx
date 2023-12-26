@@ -33,6 +33,7 @@ interface SelectTypeButtonProps {
 }
 
 function SelectTypeButton({ to, children, isSelected }: SelectTypeButtonProps) {
+  const currentPathIncludesTo = location.pathname.includes(to);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -41,19 +42,20 @@ function SelectTypeButton({ to, children, isSelected }: SelectTypeButtonProps) {
   const handleMouseDown = () => setIsClicked(true);
   const handleMouseUp = () => setIsClicked(false);
   const buttonStyle = {
-    backgroundColor: isSelected
-      ? "#40A0FF"
-      : isClicked
-      ? "#40A0FF"
-      : isHovered
-      ? "rgba(99, 180, 255, 0.1)"
-      : "#fff",
-    color: isSelected ? "#fff" : isClicked ? "#fff" : "#4894fe",
-    border: isSelected
-      ? "3px solid transparent"
-      : isHovered
-      ? "3px solid transparent"
-      : "3px solid #4894fe",
+    transition: "all 0.2s ease-out",
+    backgroundColor:
+      currentPathIncludesTo || isSelected || isClicked
+        ? "#40A0FF"
+        : isHovered
+        ? "rgba(99, 180, 255, 0.1)"
+        : "#fff",
+    color: currentPathIncludesTo || isSelected || isClicked ? "#fff" : "#4894fe",
+    border:
+      currentPathIncludesTo || isSelected
+        ? "3px solid transparent"
+        : isHovered
+        ? "3px solid transparent"
+        : "3px solid #4894fe",
   };
 
   return (
