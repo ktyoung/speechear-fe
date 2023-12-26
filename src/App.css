@@ -581,6 +581,7 @@
 .snb {
   width: 161px;
   margin: 60px 60px 0 0;
+  transition: all 0.2s ease-out;
 }
 
 .select-type__snb {
@@ -687,6 +688,7 @@
   font-size: 24px;
   font-weight: 800;
   color: #4894fe;
+  transition: all 0.2s ease-out;
 }
 .test-card-button:hover {
   border: 3px solid transparent;
@@ -698,17 +700,89 @@
   color: #fff;
 }
 
-/* Test02Menu.tsx */
-.functions-wrapper.menus .menu02-style li:first-child a {
-  justify-content: center;
+/* Test01Level.tsx */
+.main-contents.home.test .main-select-wrapper.visible {
+  background-color: #fbfbfb;
 }
-.functions-wrapper.menus .menu02-style .function-number {
-  border: none;
+
+.main-contents.home.test .main-contents__column > p.mb,
+.main-contents.home.test .main-contents__column > p.pb {
+  margin: 0 0 20px 0;
+  padding: 0 0 14px 0;
+}
+
+.status-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+  width: 600px;
+  margin: 0 0 10px 0;
+  padding: 7px 14px;
+  background-color: #fff;
+}
+.status-card__number {
+  font-size: 14px;
+  font-weight: 400;
+  color: #8696bb;
+  width: 5%;
+  text-align: center;
+}
+.status-card__progress-bar {
+  width: 210px;
+  background-color: rgba(120, 120, 128, 0.16); /* 진행바의 배경색 */
+  height: 4px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.status-card__progress-fill {
+  background-color: #40a0ff;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  transition: width 0.5s ease;
+}
+.status-card__percentage {
+  font-size: 17px;
+  font-weight: 400;
+  color: #8696bb;
+}
+.status-card__complete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: #40a0ff;
+  border-radius: 100%;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.pagination-wrapper ul {
+  list-style: none;
   padding: 0;
 }
-.menu02-style .function-title {
-  display: none;
+.pagination-wrapper .page-item {
+  display: inline-block;
+  margin-right: 5px;
 }
+.pagination-wrapper .page-item button {
+  width: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8696bb;
+}
+.pagination-wrapper .page-item.active button {
+  color: #4894fe;
+  font-weight: 900;
+}
+
+/* Test02Menu.tsx */
 
 /* Test03Menu.tsx */
 .functions-wrapper.menus ul.grid {
