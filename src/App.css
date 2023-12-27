@@ -782,6 +782,125 @@
   font-weight: 900;
 }
 
+/* Test01ScreenWrapper.tsx */
+.test-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 560px;
+}
+.test-contents__buttons {
+  display: flex;
+  flex-direction: column;
+}
+.test-contents__buttons button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 327px;
+  height: 83px;
+  background-color: #fff;
+  border: 3px solid #4894fe;
+  border-radius: 41.5px;
+  color: #4894fe;
+  font-size: 29px;
+  font-weight: 700;
+  margin: 0 0 35px 0;
+  padding: 0 60px;
+  transition: all 0.2s ease;
+}
+.test-contents__buttons button img.view-more {
+  margin: 0 25px 0 0;
+}
+
+.test-contents__context {
+  position: relative;
+  width: 100%;
+  margin: 30px 0 0 0;
+}
+.context__arrows {
+  width: 100%;
+}
+.left-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.right-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.context {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.test-contents__answer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 110px 0 0 0;
+}
+.custom-radio-button {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-right: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #4894fe;
+  user-select: none;
+  line-height: 135%;
+}
+.custom-radio-button input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid #4894fe;
+}
+.custom-radio-button:hover input ~ .checkmark {
+  background-color: rgba(99, 180, 255, 0.1);
+}
+.custom-radio-button input:checked ~ .checkmark {
+  background-color: transparent;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.custom-radio-button input:checked ~ .checkmark:after {
+  display: block;
+}
+.custom-radio-button .checkmark:after {
+  left: 10px;
+  top: -12px;
+  width: 10px;
+  height: 25px;
+  border: solid #4894fe;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.label-text {
+  padding-top: 3px; /* Align text with checkmark */
+}
+.custom-radio-button input:checked ~ .label-text {
+  font-weight: 900;
+}
+
 /* Test02Menu.tsx */
 
 /* Test03Menu.tsx */
@@ -1122,7 +1241,7 @@ li.page-btn button {
 }
 
 /* TestScreen.tsx */
-.test-screen-wrapper {
+/* .test-screen-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1328,7 +1447,7 @@ input[type="radio"]:checked + .custom-button {
 .config-figure > svg {
   width: 12%;
   height: 12%;
-}
+} */
 
 /* License.tsx */
 .main-wrapper.license {
