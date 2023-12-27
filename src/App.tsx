@@ -8,7 +8,7 @@ import Layout from "./layout";
 import MyPage from "@pages/MyPage";
 import Test01Menu from "@pages/tests/test01/Test01Menu";
 import Test01Level from "@pages/tests/test01/Test01Level";
-import Test01ScreenWrapper from "@pages/tests/test01/Test01ScreenWrapper";
+import Test01Screen from "@pages/tests/test01/Test01Screen";
 import Test02Menu from "@pages/tests/test02/Test02Menu";
 import Test02Level from "@pages/tests/test02/Test02Level";
 import Test02ScreenWrapper from "@pages/tests/test02/Test02ScreenWrapper";
@@ -32,10 +32,7 @@ function LayoutRoutes() {
         {/* Test01  */}
         <Route path="/training/part1" element={<Test01Menu />} />
         <Route path="/training/part1/:level/:page" element={<Test01Level />} />
-        <Route
-          path="/training/part1/:level/:page/:quiz"
-          element={<Test01ScreenWrapper />}
-        />
+        <Route path="/training/part1/:level/:page/:quiz" element={<Test01Screen />} />
         {/* Test02  */}
         <Route path="/training/part2" element={<Test02Menu />} />
         <Route path="/training/part2/:level/:page" element={<Test02Level />} />
