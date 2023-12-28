@@ -811,9 +811,6 @@
   padding: 0 60px;
   transition: all 0.2s ease;
 }
-.test-contents__buttons button img.view-more {
-  margin: 0 25px 0 0;
-}
 
 .test-contents__context {
   position: relative;

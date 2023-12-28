@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 import { useEffect, useState } from "react";
 import Snb from "@components/common/Snb";
@@ -9,8 +9,9 @@ const CARDS_PER_PAGE = 10;
 export default function Test01Level() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCards, setCurrentCards] = useState<number[]>([]);
-  const { level, page } = useParams<{ level: string; page?: string }>();
   const [request, setRequest] = useState<IRequestType>();
+  const navigate = useNavigate();
+  const { level, page } = useParams<{ level: string; page?: string }>();
   const result = useAxios(request);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function Test01Level() {
 
   const onPageChange = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
+    navigate(`/training/part1/basic/${pageNumber}`);
   };
 
   useEffect(() => {
