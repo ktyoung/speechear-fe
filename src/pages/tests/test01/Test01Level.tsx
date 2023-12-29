@@ -9,9 +9,9 @@ const CARDS_PER_PAGE = 10;
 export default function Test01Level() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCards, setCurrentCards] = useState<number[]>([]);
-  const [request, setRequest] = useState<IRequestType>();
   const navigate = useNavigate();
-  const { level, page } = useParams<{ level: string; page?: string }>();
+  const [request, setRequest] = useState<IRequestType>();
+  const { page } = useParams<{ page?: string }>();
   const result = useAxios(request);
 
   useEffect(() => {
@@ -69,7 +69,6 @@ export default function Test01Level() {
 interface StatusCardProps {
   number: number;
 }
-
 function StatusCard({ number }: StatusCardProps) {
   const [progress, setProgress] = useState(50);
   const location = useLocation();

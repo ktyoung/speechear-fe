@@ -19,8 +19,8 @@ export default function Home() {
           <div className="main-select-wrapper">
             <p className="font-light">실행할 듣기 연습 종류를 선택하세요.</p>
             <ul className="select-type">
-              {practiceType.map((type) => (
-                <SelectTypeButton to={type.path} children={type.name} />
+              {practiceType.map((type, i) => (
+                <SelectTypeButton key={i} to={type.path} children={type.name} />
               ))}
             </ul>
           </div>

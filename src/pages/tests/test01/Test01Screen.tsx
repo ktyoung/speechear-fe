@@ -1,14 +1,34 @@
-import { useParams } from "react-router-dom";
 import Snb from "@components/common/Snb";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import PlaySound, { RES_URL } from "@hooks/PlaySound";
+import { testModalState, trainingData } from "@states/index";
+import { useRecoilState } from "recoil";
+import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
+import { useMatch, useParams } from "react-router-dom";
+import Modal from "@components/common/Modal";
+import ToggleSwitch from "@components/common/ToggleSwitch";
+import AnswerButton from "@components/common/AnswerButton";
 
 const CARDS_PER_PAGE = 10;
 
 export default function Test01Screen() {
+  const [isPlay, setIsPlay] = useState(false);
+  const [isContextVisible, setIsContextVisible] = useState(false);
   // const { quiz } = useParams();
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+
+  const handlePlayClick = () => {
+    setIsPlay(!isPlay);
+  };
+  const handleContextButtonClick = () => {
+    setIsContextVisible(!isContextVisible);
+  };
   const onPageChange = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
+  };
+  const handleSelect = (answer: string) => {
+    setSelectedAnswer(answer);
   };
 
   return (
@@ -20,7 +40,11 @@ export default function Test01Screen() {
         <div className="main-contents__column">
           <p className="mb pb">소음 하 문장 듣기</p>
           <div className="main-select-wrapper visible">
-            <p className="font-light">다음 문장을 듣고 따라해 보세요.</p>
+            <div className="text-container">
+              <p className="font-bold">다음 문장을 듣고 따라해 보세요.</p>
+              <p className="font-light">난이도 하 [3] 2/10</p>
+              <ToggleSwitch />
+            </div>
             <div className="test-contents">
               <div className="test-contents__buttons">
                 <CustomButton
@@ -28,12 +52,14 @@ export default function Test01Screen() {
                   defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
                   blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
                   whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_white.png`}
+                  onClick={handlePlayClick}
                 />
                 <CustomButton
                   text="문장 보기"
                   defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
                   blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
                   whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_white.png`}
+                  onClick={handleContextButtonClick}
                 />
               </div>
               <div className="test-contents__context">
@@ -53,19 +79,26 @@ export default function Test01Screen() {
                     />
                   </button>
                 </div>
-                <p className="context">소음 하 문장 듣기 문제입니다.</p>
+                <p
+                  className="context"
+                  style={isContextVisible ? { opacity: 1 } : { opacity: 0 }}
+                >
+                  소음 하 문장 듣기
+                </p>
               </div>
               <div className="test-contents__answer">
-                <label className="custom-radio-button">
-                  <input type="radio" name="option" value="left" />
-                  <span className="checkmark"></span>
-                  <span className="label-text">정답</span>
-                </label>
-                <label className="custom-radio-button">
-                  <input type="radio" name="option" value="right" />
-                  <span className="checkmark"></span>
-                  <span className="label-text">오답</span>
-                </label>
+                <AnswerButton
+                  label="정답"
+                  icon="correct"
+                  isSelected={selectedAnswer === "정답"}
+                  onSelect={() => handleSelect("정답")}
+                />
+                <AnswerButton
+                  label="오답"
+                  icon="wrong"
+                  isSelected={selectedAnswer === "오답"}
+                  onSelect={() => handleSelect("오답")}
+                />
               </div>
             </div>
             <Pagination
@@ -85,13 +118,15 @@ interface ButtonProps {
   defaultIcon: string;
   blueIcon: string;
   whiteIcon: string;
+  onClick: () => void;
 }
-function CustomButton({ text, defaultIcon, blueIcon, whiteIcon }: ButtonProps) {
+function CustomButton({ text, defaultIcon, blueIcon, whiteIcon, onClick }: ButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   const handleButtonClick = () => {
     setIsClicked(!isClicked);
+    onClick();
   };
 
   const backgroundColor = isClicked
@@ -101,6 +136,11 @@ function CustomButton({ text, defaultIcon, blueIcon, whiteIcon }: ButtonProps) {
     : "#fff";
   const textColor = isClicked ? "#fff" : "#4894fe";
   const iconSrc = isClicked ? whiteIcon : isHovered ? blueIcon : defaultIcon;
+  const imageStyle = {
+    marginRight: text === "문장 보기" ? "17px" : undefined,
+    transform: text === "문장 보기" && isClicked ? "rotateX(180deg)" : "rotateX(0deg)",
+    transition: "transform 0.4s",
+  };
 
   return (
     <button
@@ -114,11 +154,7 @@ function CustomButton({ text, defaultIcon, blueIcon, whiteIcon }: ButtonProps) {
       }}
     >
       <p>{text}</p>
-      <img
-        src={iconSrc}
-        alt={text}
-        style={text === "문장 보기" ? { marginRight: "17px" } : {}}
-      />
+      <img src={iconSrc} alt={text} style={imageStyle} />
     </button>
   );
 }
