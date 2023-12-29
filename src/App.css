@@ -840,11 +840,13 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 99;
 }
 .right-arrow {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 99;
 }
 .context {
   text-align: center;
@@ -1627,6 +1629,7 @@ input:checked + .slider:before {
   align-items: center;
   width: 126px;
   height: 60px;
+  margin: 0 15px;
   padding: 12px;
   border-radius: 30px;
   border: 2px solid #4894fe;
