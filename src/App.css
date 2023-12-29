@@ -438,7 +438,7 @@
   margin: 0 0 20px 0;
   border: none;
 }
-.main-select-wrapper > p.font-light {
+.main-select-wrapper p.font-light {
   margin: 0 0 30px 0;
   padding: 0;
   color: #8696bb;
@@ -638,7 +638,9 @@
   align-items: flex-start;
   width: 15%;
 }
-.test-card-left .font-light {
+.test-card-wrapper .test-card-left .font-light {
+  margin: 0;
+  color: #40a0ff;
   font-size: 15px;
   font-weight: 600;
 }
@@ -704,6 +706,14 @@
 .main-contents.home.test .main-select-wrapper.visible {
   background-color: #fbfbfb;
 }
+.main-contents.home.test .main-select-wrapper.visible .font-bold {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard Variable";
+  font-size: 27px;
+  font-weight: 400;
+  border: none;
+}
 
 .main-contents.home.test .main-contents__column > p.mb,
 .main-contents.home.test .main-contents__column > p.pb {
@@ -759,7 +769,7 @@
 .pagination-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 .pagination-wrapper ul {
   list-style: none;
@@ -782,7 +792,13 @@
   font-weight: 900;
 }
 
-/* Test01ScreenWrapper.tsx */
+/* Test01Screen.tsx */
+.text-container {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+}
 .test-contents {
   display: flex;
   flex-direction: column;
@@ -834,6 +850,7 @@
   text-align: center;
   font-size: 30px;
   font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .test-contents__answer {
@@ -841,61 +858,6 @@
   justify-content: center;
   align-items: center;
   margin: 110px 0 0 0;
-}
-.custom-radio-button {
-  display: inline-block;
-  position: relative;
-  padding-left: 35px;
-  margin-right: 15px;
-  cursor: pointer;
-  font-size: 20px;
-  color: #4894fe;
-  user-select: none;
-  line-height: 135%;
-}
-.custom-radio-button input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 26px;
-  height: 26px;
-  background-color: #fff;
-  border-radius: 4px;
-  border: 2px solid #4894fe;
-}
-.custom-radio-button:hover input ~ .checkmark {
-  background-color: rgba(99, 180, 255, 0.1);
-}
-.custom-radio-button input:checked ~ .checkmark {
-  background-color: transparent;
-}
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-.custom-radio-button input:checked ~ .checkmark:after {
-  display: block;
-}
-.custom-radio-button .checkmark:after {
-  left: 10px;
-  top: -12px;
-  width: 10px;
-  height: 25px;
-  border: solid #4894fe;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-.label-text {
-  padding-top: 3px; /* Align text with checkmark */
-}
-.custom-radio-button input:checked ~ .label-text {
-  font-weight: 900;
 }
 
 /* Test02Menu.tsx */
@@ -1588,4 +1550,101 @@ input[type="radio"]:checked + .custom-button {
 }
 .speech-rate-labels {
   margin: 10px 0 0 0;
+}
+
+/* ToggleSwitch.tsx */
+.toggle-switch-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 51px;
+  height: 31px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 27px;
+  width: 27px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  box-shadow: 0px 3px 1px 0px rgba(0, 0, 0, 0.06), 0px 3px 8px 0px rgba(0, 0, 0, 0.15),
+    0px 0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.toggle-text {
+  margin-top: 11px;
+  color: #8696bb;
+  font-size: 18px;
+  font-weight: 700;
+  transition: color 0.4s;
+}
+
+.text-on {
+  color: #4894fe;
+}
+
+/* AnswerButton.tsx */
+.answer-checkbox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 126px;
+  height: 60px;
+  padding: 12px;
+  border-radius: 30px;
+  border: 2px solid #4894fe;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.answer-checkbox p {
+  margin: 0 0 0 10px;
+  color: #40a0ff;
+  font-family: "Roboto";
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.answer-checkbox input {
+  display: none;
+}
+
+.answer-checkbox:hover {
+  background: rgba(99, 180, 255, 0.1);
 }
