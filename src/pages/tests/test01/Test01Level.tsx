@@ -11,7 +11,7 @@ export default function Test01Level() {
   const [currentCards, setCurrentCards] = useState<number[]>([]);
   const navigate = useNavigate();
   const [request, setRequest] = useState<IRequestType>();
-  const { page } = useParams<{ page?: string }>();
+  const { level, page } = useParams<{ level?: string; page?: string }>();
   const result = useAxios(request);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function Test01Level() {
 
   const onPageChange = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
-    navigate(`/training/part1/basic/${pageNumber}`);
+    navigate(`/training/part1/${level}/${pageNumber}`);
   };
 
   useEffect(() => {
