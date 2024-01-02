@@ -1,17 +1,11 @@
 import Snb from "@components/common/Snb";
-import { useEffect, useState } from "react";
-import PlaySound, { RES_URL } from "@hooks/PlaySound";
-import { testModalState, trainingData } from "@states/index";
-import { useRecoilState } from "recoil";
-import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
-import { useMatch, useNavigate, useParams } from "react-router-dom";
-import Modal from "@components/common/Modal";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import ToggleSwitch from "@components/common/ToggleSwitch";
 import AnswerButton from "@components/common/AnswerButton";
 
-const totalQuestions = 10;
-
 export default function Test01Screen() {
+  const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isContextVisible, setIsContextVisible] = useState(false);
   // const { quiz } = useParams();
@@ -62,6 +56,9 @@ export default function Test01Screen() {
   const handleSelect = (answer: string) => {
     setSelectedAnswer(answer);
   };
+  const handleTestFinished = (): void => {
+    setIsFinished(true);
+  };
 
   return (
     <div className="main-wrapper">
@@ -73,82 +70,99 @@ export default function Test01Screen() {
           <p className="mb pb">소음 하 문장 듣기</p>
           <div className="main-select-wrapper visible">
             <div className="text-container">
-              <p className="font-bold">다음 문장을 듣고 따라해 보세요.</p>
-              <p className="font-light">
-                {difficultyText} [{quiz}] {currentQuestionIndex}/{totalQuestions}
-              </p>
-              {level !== "basic" ? <ToggleSwitch /> : null}
+              {!isFinished ? (
+                <>
+                  <p className="font-bold">다음 문장을 듣고 따라해 보세요.</p>
+                  <p className="font-light">
+                    {difficultyText} [{quiz}] {currentQuestionIndex}/{totalQuestions}
+                  </p>
+                  {level !== "basic" ? <ToggleSwitch /> : null}
+                </>
+              ) : (
+                <p className="font-bold">오늘의 소음 하 문장 듣기 연습을 마쳤습니다.</p>
+              )}
             </div>
             <div className="test-contents">
-              <div className="test-contents__buttons">
-                <CustomButton
-                  text="문장 듣기"
-                  defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
-                  blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
-                  whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_white.png`}
-                  onClick={handlePlayClick}
-                />
-                <CustomButton
-                  text="문장 보기"
-                  defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
-                  blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
-                  whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_white.png`}
-                  onClick={handleContextButtonClick}
-                />
-              </div>
-              <div className="test-contents__context">
-                <div className="context__arrows">
-                  <button onClick={handleLeftArrowClick}>
-                    <img
-                      src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_left.png`}
-                      alt="Left Arrow Icon"
-                      className="left-arrow"
-                      style={{
-                        opacity: currentQuestionIndex === 1 ? 0.5 : 1,
-                        cursor: currentQuestionIndex === 1 ? "default" : "pointer",
-                      }}
+              {!isFinished ? (
+                <>
+                  <div className="test-contents__buttons">
+                    <CustomButton
+                      text="문장 듣기"
+                      defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
+                      blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
+                      whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_white.png`}
+                      onClick={handlePlayClick}
                     />
-                  </button>
-                  <button onClick={handleRightArrowClick}>
-                    <img
-                      src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_right.png`}
-                      alt="Right Arrow Icon"
-                      className="right-arrow"
-                      style={{
-                        opacity: currentQuestionIndex === totalQuestions ? 0.5 : 1,
-                        cursor:
-                          currentQuestionIndex === totalQuestions ? "default" : "pointer",
-                      }}
+                    <CustomButton
+                      text="문장 보기"
+                      defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
+                      blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
+                      whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_white.png`}
+                      onClick={handleContextButtonClick}
                     />
-                  </button>
-                </div>
-                <p
-                  className="context"
-                  style={isContextVisible ? { opacity: 1 } : { opacity: 0 }}
-                >
-                  소음 하 문장 듣기 ({difficultyText})
-                </p>
-              </div>
-              <div className="test-contents__answer">
-                <AnswerButton
-                  label="정답"
-                  icon="correct"
-                  isSelected={selectedAnswer === "정답"}
-                  onSelect={() => handleSelect("정답")}
-                />
-                <AnswerButton
-                  label="오답"
-                  icon="wrong"
-                  isSelected={selectedAnswer === "오답"}
-                  onSelect={() => handleSelect("오답")}
-                />
-              </div>
+                  </div>
+                  <div className="test-contents__context">
+                    <div className="context__arrows">
+                      <button onClick={handleLeftArrowClick}>
+                        <img
+                          src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_left.png`}
+                          alt="Left Arrow Icon"
+                          className="left-arrow"
+                          style={{
+                            opacity: currentQuestionIndex === 1 ? 0.5 : 1,
+                            cursor: currentQuestionIndex === 1 ? "default" : "pointer",
+                          }}
+                        />
+                      </button>
+                      <button onClick={handleRightArrowClick}>
+                        <img
+                          src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_right.png`}
+                          alt="Right Arrow Icon"
+                          className="right-arrow"
+                          style={{
+                            opacity: currentQuestionIndex === totalQuestions ? 0.5 : 1,
+                            cursor:
+                              currentQuestionIndex === totalQuestions
+                                ? "default"
+                                : "pointer",
+                          }}
+                        />
+                      </button>
+                    </div>
+                    <p
+                      className="context"
+                      style={isContextVisible ? { opacity: 1 } : { opacity: 0 }}
+                    >
+                      소음 하 문장 듣기 ({difficultyText})
+                    </p>
+                  </div>
+                  <div className="test-contents__answer">
+                    <AnswerButton
+                      label="정답"
+                      icon="correct"
+                      isSelected={selectedAnswer === "정답"}
+                      onSelect={() => handleSelect("정답")}
+                    />
+                    <AnswerButton
+                      label="오답"
+                      icon="wrong"
+                      isSelected={selectedAnswer === "오답"}
+                      onSelect={() => handleSelect("오답")}
+                    />
+                  </div>
+                </>
+              ) : (
+                <SelectTypeButton children="한번 더 연습하기" to={"/training/part1"} />
+              )}
             </div>
-            <Pagination
-              currentPage={currentQuestionIndex}
-              totalPages={totalQuestions}
-              onPageChange={onPageChange}
-            />
+            {!isFinished && (
+              <Pagination
+                currentPage={currentQuestionIndex}
+                totalPages={totalQuestions}
+                onPageChange={onPageChange}
+                handleFinished={handleTestFinished}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -202,12 +216,51 @@ function CustomButton({ text, defaultIcon, blueIcon, whiteIcon, onClick }: Butto
   );
 }
 
+function SelectTypeButton({ to, children }: any) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseDown = () => setIsClicked(true);
+  const handleMouseUp = () => setIsClicked(false);
+  const buttonStyle = {
+    backgroundColor: isClicked
+      ? "#40A0FF"
+      : isHovered
+      ? "rgba(99, 180, 255, 0.1)"
+      : "#fff",
+    color: isClicked ? "#fff" : "#4894fe",
+    border: isHovered ? "3px solid transparent" : "3px solid #4894fe",
+  };
+
+  return (
+    <Link
+      className="select-type__button"
+      to={to}
+      style={buttonStyle}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
+      {children}
+    </Link>
+  );
+}
+
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (pageNumber: number) => void;
+  handleFinished: () => void;
 }
-function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
+function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  handleFinished,
+}: PaginationProps) {
   return (
     <div className="pagination-wrapper">
       <ul>
@@ -222,6 +275,9 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
             </li>
           );
         })}
+        <li className="finish-button">
+          <button onClick={handleFinished}>연습 마치기</button>
+        </li>
       </ul>
     </div>
   );
