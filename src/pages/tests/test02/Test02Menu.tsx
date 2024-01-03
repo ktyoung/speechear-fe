@@ -28,7 +28,7 @@ export default function Test02Menu() {
           <Snb />
         </div>
         <div className="main-contents__column">
-          <p className="mb pb">듣기 연습 선택</p>
+          <p className="mb pb">짧은 이야기 듣기</p>
           <div className="main-select-wrapper visible">
             <p className="font-bold">듣고 싶은 이야기를 골라주세요</p>
             <div className="test-category-container">

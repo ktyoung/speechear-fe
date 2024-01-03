@@ -40,7 +40,7 @@ export default function Test01Menu() {
           <Snb />
         </div>
         <div className="main-contents__column">
-          <p>듣기 연습 선택</p>
+          <p>소음 하 문장 듣기</p>
           <div className="main-select-wrapper">
             {difficultyLevels.map((level) => (
               <DifficultyCard
