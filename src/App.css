@@ -878,6 +878,34 @@
 }
 
 /* Test02Menu.tsx */
+.test-category-container {
+  display: flex;
+  margin: 200px 0 0 0;
+}
+.category-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30px;
+}
+.category-items figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  background: rgba(99, 180, 255, 0.1);
+}
+.category-items-text {
+  margin: 8px 0 0 0;
+  color: #4894fe;
+  font-family: "Poppins";
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
 
 /* Test03Menu.tsx */
 .functions-wrapper.menus ul.grid {
