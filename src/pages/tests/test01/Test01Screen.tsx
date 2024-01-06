@@ -1,10 +1,13 @@
 import Snb from "@components/common/Snb";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ToggleSwitch from "@components/common/ToggleSwitch";
 import AnswerButton from "@components/common/AnswerButton";
+import data from "../../../data/test01Data.json";
 
 export default function Test01Screen() {
+  const [currentContext, setCurrentContext] = useState("");
+  const [currentAudioUrl, setCurrentAudioUrl] = useState("");
   const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isContextVisible, setIsContextVisible] = useState(false);
@@ -50,8 +53,8 @@ export default function Test01Screen() {
   const handleContextButtonClick = () => {
     setIsContextVisible(!isContextVisible);
   };
-  const onPageChange = (pageNumber: number): void => {
-    setCurrentPage(pageNumber);
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentQuestionIndex(pageNumber);
   };
   const handleSelect = (answer: string) => {
     setSelectedAnswer(answer);
@@ -59,6 +62,32 @@ export default function Test01Screen() {
   const handleTestFinished = (): void => {
     setIsFinished(true);
   };
+
+  useEffect(() => {
+    const currentData = data.find((item) => item.index === currentQuestionIndex);
+    if (currentData) {
+      setCurrentContext(currentData.context);
+      setCurrentAudioUrl(
+        `${process.env.PUBLIC_URL}/sounds/test01/${currentData.filename}.mp3`
+      );
+    }
+  }, [currentQuestionIndex]);
+
+  // 오디오 재생 로직
+  useEffect(() => {
+    const audio = new Audio(currentAudioUrl);
+    if (isPlay) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, [isPlay, currentAudioUrl]);
+  //
 
   return (
     <div className="main-wrapper">
@@ -133,7 +162,7 @@ export default function Test01Screen() {
                       className="context"
                       style={isContextVisible ? { opacity: 1 } : { opacity: 0 }}
                     >
-                      소음 하 문장 듣기 ({difficultyText})
+                      {currentContext}
                     </p>
                   </div>
                   <div className="test-contents__answer">
@@ -159,7 +188,7 @@ export default function Test01Screen() {
               <Pagination
                 currentPage={currentQuestionIndex}
                 totalPages={totalQuestions}
-                onPageChange={onPageChange}
+                onPageChange={handlePageChange}
                 handleFinished={handleTestFinished}
               />
             )}
