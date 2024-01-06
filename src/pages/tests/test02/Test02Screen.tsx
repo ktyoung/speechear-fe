@@ -1,10 +1,14 @@
 import Snb from "@components/common/Snb";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ToggleSwitch from "@components/common/ToggleSwitch";
 import AnswerButton from "@components/common/AnswerButton";
+import data from "../../../data/test02Data.json";
 
 export default function Test02Screen() {
+  const [currentContext, setCurrentContext] = useState("");
+  const [currentAnswerContext, setCurrentAnswerContext] = useState("");
+  const [currentAudioUrl, setCurrentAudioUrl] = useState("");
   const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isContextVisible, setIsContextVisible] = useState(false);
@@ -16,7 +20,7 @@ export default function Test02Screen() {
   // 현재 문제 풀이 진행도를 출력하기 위한 코드
   const { level, page, quiz } = useParams();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
-  const totalQuestions = 10;
+  const totalQuestions = 5;
 
   interface DifficultyMapping {
     [key: string]: string;
@@ -45,6 +49,32 @@ export default function Test02Screen() {
     currentQuestionIndex < totalQuestions ? () => changeQuestionIndex("next") : undefined;
   //
 
+  // 퀴즈 데이터 패칭 로직
+  useEffect(() => {
+    const currentData = data.find((item) => item.index === currentQuestionIndex);
+    if (currentData) {
+      setCurrentContext(currentData.questioncontext);
+      setCurrentAnswerContext(currentData.answer);
+      setCurrentAudioUrl(
+        `${process.env.PUBLIC_URL}/sounds/test02/${currentData.questioncode}.mp3`
+      );
+    }
+  }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    const audio = new Audio(currentAudioUrl);
+    if (isPlay) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, [isPlay, currentAudioUrl]);
+  //
   const handlePlayClick = () => {
     setIsPlay(!isPlay);
   };
@@ -54,8 +84,8 @@ export default function Test02Screen() {
   const handleAnswerButtonClick = () => {
     setIsAnswerVisible(!isAnswerVisible);
   };
-  const onPageChange = (pageNumber: number): void => {
-    setCurrentPage(pageNumber);
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentQuestionIndex(pageNumber);
   };
   const handleSelect = (answer: string) => {
     setSelectedAnswer(answer);
@@ -144,7 +174,7 @@ export default function Test02Screen() {
                       className="context"
                       style={isContextVisible ? { opacity: 1 } : { opacity: 0 }}
                     >
-                      짧은 이야기 듣기 ({difficultyText})
+                      {currentContext}
                     </p>
                   </div>
                   <div className="test-contents__answer-context">
@@ -152,7 +182,7 @@ export default function Test02Screen() {
                       className="context answer"
                       style={isAnswerVisible ? { opacity: 1 } : { opacity: 0 }}
                     >
-                      정답: 11234
+                      정답: {currentAnswerContext}
                     </p>
                   </div>
                   <div className="test-contents__answer">
@@ -178,7 +208,7 @@ export default function Test02Screen() {
               <Pagination
                 currentPage={currentQuestionIndex}
                 totalPages={totalQuestions}
-                onPageChange={onPageChange}
+                onPageChange={handlePageChange}
                 handleFinished={handleTestFinished}
               />
             )}

@@ -63,6 +63,7 @@ export default function Test01Screen() {
     setIsFinished(true);
   };
 
+  // 퀴즈 데이터 패칭 로직
   useEffect(() => {
     const currentData = data.find((item) => item.index === currentQuestionIndex);
     if (currentData) {
@@ -73,7 +74,6 @@ export default function Test01Screen() {
     }
   }, [currentQuestionIndex]);
 
-  // 오디오 재생 로직
   useEffect(() => {
     const audio = new Audio(currentAudioUrl);
     if (isPlay) {
