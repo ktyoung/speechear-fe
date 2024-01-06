@@ -803,6 +803,13 @@
   height: 50px;
   text-align: center;
 }
+.text-container .font-light.diffculty {
+  color: #8696bb;
+  text-align: center;
+  font-family: "Pretendard Variable";
+  font-size: 20px;
+  font-weight: 400;
+}
 .test-contents {
   display: flex;
   flex-direction: column;
@@ -925,6 +932,21 @@
   font-size: 15px;
   font-weight: 600;
   color: #85888a;
+}
+
+/* Test02Screen.tsx */
+.test-contents__buttons.row {
+  flex-direction: row;
+  gap: 30px;
+}
+.test-contents__buttons.row button {
+  width: 304px;
+  height: 83px;
+  padding: 0 50px;
+  font-family: "Pretendard Variable";
+}
+.context.answer {
+  margin: 60px 0 0 0;
 }
 
 /* Test03Menu.tsx */

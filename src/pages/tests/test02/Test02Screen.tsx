@@ -4,10 +4,11 @@ import { Link, useParams } from "react-router-dom";
 import ToggleSwitch from "@components/common/ToggleSwitch";
 import AnswerButton from "@components/common/AnswerButton";
 
-export default function Test01Screen() {
+export default function Test02Screen() {
   const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isContextVisible, setIsContextVisible] = useState(false);
+  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   // const { quiz } = useParams();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -21,10 +22,10 @@ export default function Test01Screen() {
     [key: string]: string;
   }
   const difficultyMapping: DifficultyMapping = {
-    basic: "기초",
-    low: "난이도 하",
-    medium: "난이도 중",
-    high: "난이도 상",
+    location: "지역",
+    culture: "우리문화",
+    food: "음식",
+    etc: "기타",
   };
   const difficultyText = level ? difficultyMapping[level] : "난이도 미정";
   //
@@ -50,6 +51,9 @@ export default function Test01Screen() {
   const handleContextButtonClick = () => {
     setIsContextVisible(!isContextVisible);
   };
+  const handleAnswerButtonClick = () => {
+    setIsAnswerVisible(!isAnswerVisible);
+  };
   const onPageChange = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
   };
@@ -67,38 +71,45 @@ export default function Test01Screen() {
           <Snb />
         </div>
         <div className="main-contents__column">
-          <p className="mb pb">소음 하 문장 듣기</p>
+          <p className="mb pb">짧은 이야기 듣기</p>
           <div className="main-select-wrapper visible">
             <div className="text-container">
               {!isFinished ? (
                 <>
-                  <p className="font-bold">다음 문장을 듣고 따라해 보세요.</p>
+                  <p className="font-bold">다음 문장과 질문을 듣고 답해 보세요.</p>
                   <p className="font-light diffculty">
                     {difficultyText} [{quiz}] {currentQuestionIndex}/{totalQuestions}
                   </p>
                   {level !== "basic" ? <ToggleSwitch /> : null}
                 </>
               ) : (
-                <p className="font-bold">오늘의 소음 하 문장 듣기 연습을 마쳤습니다.</p>
+                <p className="font-bold">오늘의 짧은 이야기 듣기 연습을 마쳤습니다.</p>
               )}
             </div>
             <div className="test-contents">
               {!isFinished ? (
                 <>
-                  <div className="test-contents__buttons">
+                  <div className="test-contents__buttons row">
                     <CustomButton
-                      text="문장 듣기"
+                      text="이야기 듣기"
                       defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
                       blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
                       whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_white.png`}
                       onClick={handlePlayClick}
                     />
                     <CustomButton
-                      text="문장 보기"
+                      text="이야기 보기"
                       defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
                       blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
                       whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_white.png`}
                       onClick={handleContextButtonClick}
+                    />
+                    <CustomButton
+                      text="정답 보기"
+                      defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
+                      blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
+                      whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_white.png`}
+                      onClick={handleAnswerButtonClick}
                     />
                   </div>
                   <div className="test-contents__context">
@@ -133,7 +144,15 @@ export default function Test01Screen() {
                       className="context"
                       style={isContextVisible ? { opacity: 1 } : { opacity: 0 }}
                     >
-                      소음 하 문장 듣기 ({difficultyText})
+                      짧은 이야기 듣기 ({difficultyText})
+                    </p>
+                  </div>
+                  <div className="test-contents__answer-context">
+                    <p
+                      className="context answer"
+                      style={isAnswerVisible ? { opacity: 1 } : { opacity: 0 }}
+                    >
+                      정답: 11234
                     </p>
                   </div>
                   <div className="test-contents__answer">
@@ -152,7 +171,7 @@ export default function Test01Screen() {
                   </div>
                 </>
               ) : (
-                <SelectTypeButton children="한번 더 연습하기" to={"/training/part1"} />
+                <SelectTypeButton children="한번 더 연습하기" to={"/training/part2"} />
               )}
             </div>
             {!isFinished && (
@@ -194,8 +213,7 @@ function CustomButton({ text, defaultIcon, blueIcon, whiteIcon, onClick }: Butto
   const textColor = isClicked ? "#fff" : "#4894fe";
   const iconSrc = isClicked ? whiteIcon : isHovered ? blueIcon : defaultIcon;
   const imageStyle = {
-    marginRight: text === "문장 보기" ? "17px" : undefined,
-    transform: text === "문장 보기" && isClicked ? "rotateX(180deg)" : "rotateX(0deg)",
+    transform: text !== "이야기 듣기" && isClicked ? "rotateX(180deg)" : "rotateX(0deg)",
     transition: "transform 0.4s",
   };
 
