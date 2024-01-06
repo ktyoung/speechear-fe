@@ -48,7 +48,7 @@ export default function Test01Level() {
         <div className="main-contents__column">
           <p className="mb pb">소음 하 문장 듣기</p>
           <div className="main-select-wrapper visible">
-            <p className="font-light">듣기연습할 문장 세트를 선택하세요</p>
+            <p className="font-light">듣기연습할 문장 세트를 선택하세요.</p>
             <div className="status-card-wrapper">
               {currentCards.map((number) => (
                 <StatusCard key={number} number={number} />
