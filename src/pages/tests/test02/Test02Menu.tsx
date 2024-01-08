@@ -34,7 +34,12 @@ export default function Test02Menu() {
             <div className="test-category-container">
               {testCategories.map((items, i) => {
                 return (
-                  <TestCategory key={i} icon={items.icon} children={items.children} />
+                  <TestCategory
+                    key={i}
+                    part="part2"
+                    icon={items.icon}
+                    children={items.children}
+                  />
                 );
               })}
             </div>
