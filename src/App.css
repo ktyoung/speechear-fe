@@ -957,6 +957,20 @@
   gap: 30px 0;
   margin: 30px 0 0 0;
 }
+.status-card.margin {
+  margin: 0 0 30px 0;
+}
+.status-card__title {
+  color: #8696bb;
+  font-family: "Pretendard Variable";
+  font-size: 25px;
+  font-weight: 400;
+}
+
+/* Test03Level.tsx */
+.test-category-lnb.narrow {
+  gap: 25px;
+}
 
 /* Test04Menu.tsx */
 .functions-wrapper.menus .card-wide {

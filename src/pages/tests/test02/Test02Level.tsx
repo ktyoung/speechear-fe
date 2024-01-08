@@ -35,7 +35,7 @@ export default function Test02Level() {
     console.log("page ", page);
     const currentPage = parseInt(page || "1", 10);
     const requestConfig: IRequestType = {
-      url: API_URL + "/training/part1/page/" + currentPage,
+      url: API_URL + "/training/part2/page/" + currentPage,
       method: "GET",
     };
     setRequest(requestConfig);
