@@ -14,7 +14,7 @@ import Test02Level from "@pages/tests/test02/Test02Level";
 import Test02Screen from "@pages/tests/test02/Test02Screen";
 import Test03Menu from "@pages/tests/test03/Test03Menu";
 import Test03Level from "@pages/tests/test03/Test03Level";
-import Test03ScreenWrapper from "@pages/tests/test03/Test03ScreenWrapper";
+import Test03Screen from "@pages/tests/test03/Test03Screen";
 import Test04Menu from "@pages/tests/test04/Test04Menu";
 import Test04Level from "@pages/tests/test04/Test04Level";
 import Test04ScreenWrapper from "@pages/tests/test04/Test04ScreenWrapper";
@@ -39,10 +39,7 @@ function LayoutRoutes() {
         <Route path="/training/part2/:level/:page/:quiz" element={<Test02Screen />} />
         <Route path="/training/part3" element={<Test03Menu />} />
         <Route path="/training/part3/:level/:page" element={<Test03Level />} />
-        <Route
-          path="/training/part3/:level/:page/:quiz"
-          element={<Test03ScreenWrapper />}
-        />
+        <Route path="/training/part3/:level/:page/:quiz" element={<Test03Screen />} />
         {/* Test04 */}
         <Route path="/training/part4" element={<Test04Menu />} />
         <Route path="/training/part4/:level/:page" element={<Test04Level />} />
