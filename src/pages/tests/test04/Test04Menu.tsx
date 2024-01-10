@@ -7,17 +7,17 @@ export default function Test04Menu() {
     {
       title: "3문장 세트",
       detail: "문장 세개를 순서에 맞게 선택",
-      to: "word3",
+      to: "word3/1",
     },
     {
       title: "4문장 세트",
       detail: "문장 네개를 순서에 맞게 선택",
-      to: "word4",
+      to: "word4/1",
     },
     {
       title: "5문장 세트",
       detail: "문장 다섯개를 순서에 맞게 선택",
-      to: "word5",
+      to: "word5/1",
     },
   ];
 

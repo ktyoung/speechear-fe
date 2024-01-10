@@ -37,6 +37,7 @@ function LayoutRoutes() {
         <Route path="/training/part2" element={<Test02Menu />} />
         <Route path="/training/part2/:level/:page" element={<Test02Level />} />
         <Route path="/training/part2/:level/:page/:quiz" element={<Test02Screen />} />
+        {/* Test03 */}
         <Route path="/training/part3" element={<Test03Menu />} />
         <Route path="/training/part3/:level/:page" element={<Test03Level />} />
         <Route path="/training/part3/:level/:page/:quiz" element={<Test03Screen />} />
