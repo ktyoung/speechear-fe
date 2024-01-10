@@ -1043,11 +1043,50 @@
 }
 
 /* Test04Menu.tsx */
-.functions-wrapper.menus .card-wide {
-  width: 373px;
+.test-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 510px;
+  height: 150px;
+  margin: 32px 0;
+  padding: 10px 16px;
+  gap: 6px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 2px 12px 20px 0px rgba(90, 117, 167, 0.04);
 }
-.functions-wrapper.menus .card-wide li {
+.card-title {
   width: 100%;
+  padding: 0 0 8px 0;
+  border-bottom: 1px solid #f5f5f5;
+  color: #0d1b34;
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 25px;
+  font-weight: 800;
+}
+.card-detail {
+  margin: 10px 0;
+  color: #8696bb;
+  font-family: "Pretendard Variable";
+  font-size: 14px;
+  font-weight: 400;
+}
+.card-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: 100px;
+  background: rgba(99, 180, 255, 0.1);
+  color: #4894fe;
+  font-family: "Pretendard Variable";
+  font-size: 20px;
+  font-weight: 700;
 }
 
 /* Test04Screen */
