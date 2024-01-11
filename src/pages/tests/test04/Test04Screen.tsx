@@ -9,11 +9,12 @@ export default function Test04Screen() {
   // const [currentAudioUrl, setCurrentAudioUrl] = useState("");
   const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
+  const [isCoachMarkVisible, setIsCoachMarkVisible] = useState(true);
   // const [isContextVisible, setIsContextVisible] = useState(false);
   // const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   // const { quiz } = useParams();
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  // const [currentPage, setCurrentPage] = useState<number>(1);
+  // const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
   // 문제 더미 데이터
   const questionData = [
@@ -118,6 +119,9 @@ export default function Test04Screen() {
   const handleTestFinished = (): void => {
     setIsFinished(true);
   };
+  const handleCoachMarkVisible = () => {
+    setIsCoachMarkVisible(false);
+  };
 
   return (
     <div className="main-wrapper">
@@ -127,6 +131,7 @@ export default function Test04Screen() {
         </div>
         <div className="main-contents__column">
           <p className="mb pb">문장 순서화 하기</p>
+          {isCoachMarkVisible && <CoachMark handleVisible={handleCoachMarkVisible} />}
           <div className="main-select-wrapper visible">
             <div className="text-container">
               {!isFinished ? (
@@ -365,6 +370,25 @@ function Pagination({
           <button onClick={handleFinished}>연습 마치기</button>
         </li>
       </ul>
+    </div>
+  );
+}
+
+interface CoachMarkProps {
+  handleVisible: () => void;
+}
+function CoachMark({ handleVisible }: CoachMarkProps) {
+  return (
+    <div className="coach-mark-container">
+      <button onClick={handleVisible} className="coach-mark-btn__close">
+        팝업창 끄기 &times;
+      </button>
+      <div className="guide-with-finger">
+        <p>문장박스를 움직여 순서를 맞춰보세요.</p>
+        <figure>
+          <img src={`${process.env.PUBLIC_URL}/images/test/finger_up_down.png`} alt="" />
+        </figure>
+      </div>
     </div>
   );
 }
