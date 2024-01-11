@@ -285,7 +285,11 @@ export default function Test03Screen() {
                   </div> */}
                 </>
               ) : (
-                <SelectTypeButton children="한번 더 연습하기" to={"/training/part3"} />
+                <SelectTypeButton
+                  className="position"
+                  children="한번 더 연습하기"
+                  to={"/training/part3"}
+                />
               )}
             </div>
             {!isFinished && (
@@ -354,7 +358,7 @@ function CustomButton({
   );
 }
 
-function SelectTypeButton({ to, children }: any) {
+function SelectTypeButton({ to, children, className }: any) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -374,7 +378,7 @@ function SelectTypeButton({ to, children }: any) {
 
   return (
     <Link
-      className="select-type__button"
+      className={`select-type__button ${className}`}
       to={to}
       style={buttonStyle}
       onMouseEnter={handleMouseEnter}
