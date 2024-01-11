@@ -468,6 +468,10 @@
   font-size: 25px;
   transition: all 0.15s ease;
 }
+.select-type__button.position {
+  position: absolute;
+  top: 42.4%;
+}
 
 .main-contents__top {
   display: flex;
@@ -810,6 +814,7 @@
   font-weight: 400;
 }
 .test-contents {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1090,46 +1095,42 @@
 }
 
 /* Test04Screen */
-.test-screen-wrapper__main {
-  position: relative;
-  width: 100%;
-  min-height: 492px;
-  background-color: #fff;
-  box-shadow: 0 0 6px #7e8bc129;
-  margin: 40px 0 0 0;
-  padding: 28px 50px;
+.guide-text {
+  margin: 0 0 18px 30px;
+  color: #4894fe;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 18px;
+  font-weight: 600;
 }
-.test-screen-wrapper__main .answer-buttons {
-  top: -150px;
-  right: 0px;
-}
-.answer-buttons__sequencing button {
-  opacity: 0.6;
-}
-.test-screen__select-list {
+
+.test-contents__section {
   display: flex;
-  flex-direction: column;
-}
-.test-screen__select-item,
-.test-screen__sequencing-item {
-  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 500;
-  font-size: 30px;
-  margin-bottom: 30px;
+  margin: 0 0 20px 0;
 }
-.test-screen__select-item button {
-  padding: 5px 20px;
-  background-color: #63a4db;
-  margin-left: 15px;
+.test-contents__buttons.margin-left button {
+  margin: 0 20px 0 0;
+  padding: 0 30px;
 }
-.test-screen__select-item button.playing {
-  background-color: rgb(116, 205, 184);
+.context-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 346px;
+  height: 83px;
+  padding: 14px 28px;
+  border-radius: 41.5px;
+  background: #40a0ff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  word-break: keep-all;
+  text-align: center;
 }
-.test-screen__select-item button img {
-  width: 100%;
-  max-width: 45px;
+.test-contents__answer.sm {
+  margin: 0;
 }
 
 /* Test05Menu.tsx */
