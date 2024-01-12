@@ -1,7 +1,9 @@
 import Snb from "@components/common/Snb";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import AnswerButton from "@components/common/AnswerButton";
+import { DndProvider, DropTargetMonitor, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 export default function Test04Screen() {
   // const [currentContext, setCurrentContext] = useState("");
@@ -10,6 +12,7 @@ export default function Test04Screen() {
   const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isCoachMarkVisible, setIsCoachMarkVisible] = useState(true);
+
   // const [isContextVisible, setIsContextVisible] = useState(false);
   // const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   // const { quiz } = useParams();
@@ -24,6 +27,7 @@ export default function Test04Screen() {
     { question: "테니스는 라켓 스포츠의 한 종류입니다." },
     { question: "테니스는 혼자 혹은 둘이서 한 팀을 이룹니다." },
   ];
+
   //
 
   // 현재 문제 풀이 진행도를 출력하기 위한 코드
@@ -53,7 +57,10 @@ export default function Test04Screen() {
     numQuestions = 4;
   }
 
-  const visibleQuestions = questionData.slice(0, numQuestions);
+  const [visibleQuestions, setVisibleQuestions] = useState(
+    questionData.slice(0, numQuestions)
+  );
+  // const visibleQuestions = questionData.slice(0, numQuestions);
   //
 
   // 각 문제의 응답 상태 관리
@@ -65,6 +72,17 @@ export default function Test04Screen() {
     const newAnswers = [...selectedAnswers];
     newAnswers[index] = answer;
     setSelectedAnswers(newAnswers);
+  };
+  //
+
+  // 드래그된 요소의 위치를 변경하는 로직
+  const moveQuestion = (dragIndex: number, hoverIndex: number) => {
+    const dragItem = visibleQuestions[dragIndex];
+    const newVisibleQuestions = [...visibleQuestions];
+    newVisibleQuestions.splice(dragIndex, 1);
+    newVisibleQuestions.splice(hoverIndex, 0, dragItem);
+
+    setVisibleQuestions(newVisibleQuestions); // 상태 업데이트
   };
   //
 
@@ -124,67 +142,73 @@ export default function Test04Screen() {
   };
 
   return (
-    <div className="main-wrapper">
-      <div className="main-contents home test">
-        <div className="snb">
-          <Snb />
-        </div>
-        <div className="main-contents__column">
-          <p className="mb pb">문장 순서화 하기</p>
-          {isCoachMarkVisible && <CoachMark handleVisible={handleCoachMarkVisible} />}
-          <div className="main-select-wrapper visible">
-            <div className="text-container">
-              {!isFinished ? (
-                <>
-                  <p className="font-bold">다음 문장을 다 듣고 순서를 맞춰보세요.</p>
-                  <p className="font-light diffculty">
-                    {difficultyText} [{quiz}] {currentQuestionIndex}/{totalQuestions}
+    <DndProvider backend={HTML5Backend}>
+      <div className="main-wrapper">
+        <div className="main-contents home test">
+          <div className="snb">
+            <Snb />
+          </div>
+          <div className="main-contents__column">
+            <p className="mb pb">문장 순서화 하기</p>
+            {isCoachMarkVisible && <CoachMark handleVisible={handleCoachMarkVisible} />}
+            <div className="main-select-wrapper visible">
+              <div className="text-container">
+                {!isFinished ? (
+                  <>
+                    <p className="font-bold">다음 문장을 다 듣고 순서를 맞춰보세요.</p>
+                    <p className="font-light diffculty">
+                      {difficultyText} [{quiz}] {currentQuestionIndex}/{totalQuestions}
+                    </p>
+                  </>
+                ) : (
+                  <p className="font-bold">
+                    오늘의 문장 순서화 하기 듣기 연습을 마쳤습니다.
                   </p>
-                </>
-              ) : (
-                <p className="font-bold">
-                  오늘의 문장 순서화 하기 듣기 연습을 마쳤습니다.
-                </p>
-              )}
-            </div>
-            <div className="test-contents flex-start">
-              {!isFinished ? (
-                <>
-                  <p className="guide-text">순서 맞추기</p>
-                  {visibleQuestions.map((item, i) => {
-                    return (
-                      <div key={i} className="test-contents__section">
-                        <div className="test-contents__buttons margin-left">
-                          <CustomButton
-                            text={`${i + 1}번째 문장 듣기`}
-                            defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
-                            blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
-                            whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_white.png`}
-                            onClick={handlePlayClick}
+                )}
+              </div>
+              <div className="test-contents flex-start">
+                {!isFinished ? (
+                  <>
+                    <p className="guide-text">순서 맞추기</p>
+                    {visibleQuestions.map((item, i) => {
+                      return (
+                        <div key={i} className="test-contents__section">
+                          <div className="test-contents__buttons margin-left">
+                            <CustomButton
+                              text={`${i + 1}번째 문장 듣기`}
+                              defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
+                              blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
+                              whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_white.png`}
+                              onClick={handlePlayClick}
+                            />
+                          </div>
+                          <DraggableQuestion
+                            index={i}
+                            item={item}
+                            moveQuestion={moveQuestion}
                           />
-                        </div>
-                        <div className="context-container">
+                          {/* <div className="context-container">
                           <p>{item.question}</p>
+                        </div> */}
+                          <div className="test-contents__answer sm">
+                            <AnswerButton
+                              label="정답"
+                              icon="correct"
+                              isSelected={selectedAnswers[i] === "정답"}
+                              onSelect={() => handleSelect(i, "정답")}
+                            />
+                            <AnswerButton
+                              label="오답"
+                              icon="wrong"
+                              isSelected={selectedAnswers[i] === "오답"}
+                              onSelect={() => handleSelect(i, "오답")}
+                            />
+                          </div>
                         </div>
-                        <div className="test-contents__answer sm">
-                          <AnswerButton
-                            label="정답"
-                            icon="correct"
-                            isSelected={selectedAnswers[i] === "정답"}
-                            onSelect={() => handleSelect(i, "정답")}
-                          />
-                          <AnswerButton
-                            label="오답"
-                            icon="wrong"
-                            isSelected={selectedAnswers[i] === "오답"}
-                            onSelect={() => handleSelect(i, "오답")}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
 
-                  {/*                   
+                    {/*                   
                   <div className="test-contents__buttons row">
                     <CustomButton
                       text="이야기 듣기"
@@ -238,27 +262,28 @@ export default function Test04Screen() {
                       onSelect={() => handleSelect("오답")}
                     />
                   </div> */}
-                </>
-              ) : (
-                <SelectTypeButton
-                  className="position"
-                  children="한번 더 연습하기"
-                  to={"/training/part4"}
+                  </>
+                ) : (
+                  <SelectTypeButton
+                    className="position"
+                    children="한번 더 연습하기"
+                    to={"/training/part4"}
+                  />
+                )}
+              </div>
+              {!isFinished && (
+                <Pagination
+                  currentPage={currentQuestionIndex}
+                  totalPages={totalQuestions}
+                  onPageChange={handlePageChange}
+                  handleFinished={handleTestFinished}
                 />
               )}
             </div>
-            {!isFinished && (
-              <Pagination
-                currentPage={currentQuestionIndex}
-                totalPages={totalQuestions}
-                onPageChange={handlePageChange}
-                handleFinished={handleTestFinished}
-              />
-            )}
           </div>
         </div>
       </div>
-    </div>
+    </DndProvider>
   );
 }
 
@@ -386,9 +411,76 @@ function CoachMark({ handleVisible }: CoachMarkProps) {
       <div className="guide-with-finger">
         <p>문장박스를 움직여 순서를 맞춰보세요.</p>
         <figure>
-          <img src={`${process.env.PUBLIC_URL}/images/test/finger_up_down.png`} alt="" />
+          <img
+            src={`${process.env.PUBLIC_URL}/images/test/finger_up_down.png`}
+            alt="Coach Mark Finger Icon"
+          />
         </figure>
       </div>
+    </div>
+  );
+}
+
+// 드래그 앤 드롭 컴포넌트
+interface DragItem {
+  type: string;
+  index: number;
+}
+interface QuestionItem {
+  question: string;
+  // 추가적인 속성들이 있을 수 있습니다.
+}
+interface DraggableQuestionProps {
+  item: QuestionItem;
+  index: number;
+  moveQuestion: (dragIndex: number, hoverIndex: number) => void;
+}
+
+const ItemType = "QUESTION";
+
+function DraggableQuestion({ item, index, moveQuestion }: DraggableQuestionProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [{ isDragging }, drag] = useDrag({
+    type: ItemType,
+    item: { type: ItemType, index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  const [, drop] = useDrop({
+    accept: ItemType,
+    hover: (item: DragItem, monitor: DropTargetMonitor) => {
+      if (!ref.current) {
+        return;
+      }
+      const dragIndex = item.index;
+      const hoverIndex = index;
+
+      // 드래그하는 요소가 현재 요소의 위나 아래에 있는지 확인
+      const hoverBoundingRect = ref.current?.getBoundingClientRect();
+      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const clientOffset = monitor.getClientOffset();
+      const hoverClientY = clientOffset!.y - hoverBoundingRect.top;
+
+      // 드래그 방향 결정
+      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+        return;
+      }
+      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+        return;
+      }
+
+      moveQuestion(dragIndex, hoverIndex);
+      item.index = hoverIndex;
+    },
+  });
+
+  drag(drop(ref));
+
+  return (
+    <div className="context-container" ref={ref}>
+      <p>{item.question}</p>
     </div>
   );
 }
