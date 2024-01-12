@@ -9,15 +9,10 @@ export default function Test04Screen() {
   // const [currentContext, setCurrentContext] = useState("");
   // const [currentAnswerContext, setCurrentAnswerContext] = useState("");
   // const [currentAudioUrl, setCurrentAudioUrl] = useState("");
+  // const { quiz } = useParams();
   const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isCoachMarkVisible, setIsCoachMarkVisible] = useState(true);
-
-  // const [isContextVisible, setIsContextVisible] = useState(false);
-  // const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-  // const { quiz } = useParams();
-  // const [currentPage, setCurrentPage] = useState<number>(1);
-  // const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
   // 문제 더미 데이터
   const questionData = [
@@ -27,7 +22,6 @@ export default function Test04Screen() {
     { question: "테니스는 라켓 스포츠의 한 종류입니다." },
     { question: "테니스는 혼자 혹은 둘이서 한 팀을 이룹니다." },
   ];
-
   //
 
   // 현재 문제 풀이 진행도를 출력하기 위한 코드
@@ -60,7 +54,6 @@ export default function Test04Screen() {
   const [visibleQuestions, setVisibleQuestions] = useState(
     questionData.slice(0, numQuestions)
   );
-  // const visibleQuestions = questionData.slice(0, numQuestions);
   //
 
   // 각 문제의 응답 상태 관리
@@ -84,21 +77,6 @@ export default function Test04Screen() {
 
     setVisibleQuestions(newVisibleQuestions); // 상태 업데이트
   };
-  //
-
-  // 이전 또는 다음 문제로 이동하기 위한 로직
-  // const changeQuestionIndex = (direction: "prev" | "next") => {
-  //   if (direction === "prev" && currentQuestionIndex > 1) {
-  //     setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
-  //   } else if (direction === "next" && currentQuestionIndex < totalQuestions) {
-  //     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-  //   }
-  // };
-
-  // const handleLeftArrowClick =
-  //   currentQuestionIndex > 1 ? () => changeQuestionIndex("prev") : undefined;
-  // const handleRightArrowClick =
-  //   currentQuestionIndex < totalQuestions ? () => changeQuestionIndex("next") : undefined;
   //
 
   // 퀴즈 데이터 패칭 로직
@@ -187,9 +165,6 @@ export default function Test04Screen() {
                             item={item}
                             moveQuestion={moveQuestion}
                           />
-                          {/* <div className="context-container">
-                          <p>{item.question}</p>
-                        </div> */}
                           <div className="test-contents__answer sm">
                             <AnswerButton
                               label="정답"
@@ -207,61 +182,6 @@ export default function Test04Screen() {
                         </div>
                       );
                     })}
-
-                    {/*                   
-                  <div className="test-contents__buttons row">
-                    <CustomButton
-                      text="이야기 듣기"
-                      defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
-                      blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
-                      whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_white.png`}
-                      onClick={handlePlayClick}
-                    />
-                    <CustomButton
-                      text="이야기 보기"
-                      defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
-                      blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
-                      whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_white.png`}
-                      onClick={handleContextButtonClick}
-                    />
-                    <CustomButton
-                      text="정답 보기"
-                      defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
-                      blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
-                      whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_white.png`}
-                      onClick={handleAnswerButtonClick}
-                    />
-                  </div>
-                  <div className="test-contents__context">
-                    <p
-                      className="context"
-                      style={isContextVisible ? { opacity: 1 } : { opacity: 0 }}
-                    >
-                      {currentContext}
-                    </p>
-                  </div>
-                  <div className="test-contents__answer-context">
-                    <p
-                      className="context answer"
-                      style={isAnswerVisible ? { opacity: 1 } : { opacity: 0 }}
-                    >
-                      정답: {currentAnswerContext}
-                    </p>
-                  </div>
-                  <div className="test-contents__answer">
-                    <AnswerButton
-                      label="정답"
-                      icon="correct"
-                      isSelected={selectedAnswer === "정답"}
-                      onSelect={() => handleSelect("정답")}
-                    />
-                    <AnswerButton
-                      label="오답"
-                      icon="wrong"
-                      isSelected={selectedAnswer === "오답"}
-                      onSelect={() => handleSelect("오답")}
-                    />
-                  </div> */}
                   </>
                 ) : (
                   <SelectTypeButton
@@ -428,7 +348,6 @@ interface DragItem {
 }
 interface QuestionItem {
   question: string;
-  // 추가적인 속성들이 있을 수 있습니다.
 }
 interface DraggableQuestionProps {
   item: QuestionItem;
