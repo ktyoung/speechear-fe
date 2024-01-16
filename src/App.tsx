@@ -19,7 +19,7 @@ import Test04Menu from "@pages/tests/test04/Test04Menu";
 import Test04Level from "@pages/tests/test04/Test04Level";
 import Test04Screen from "@pages/tests/test04/Test04Screen";
 import Test05Menu from "@pages/tests/test05/Test05Menu";
-import CrosswordQuiz from "@pages/tests/test05/CrosswordQuiz";
+import Test05Screen from "@pages/tests/test05/Test05Screen";
 import License from "@pages/License";
 import Settings from "@pages/Settings";
 
@@ -47,7 +47,7 @@ function LayoutRoutes() {
         <Route path="/training/part4/:level/:page/:quiz" element={<Test04Screen />} />
         {/* Test05 */}
         <Route path="/training/part5" element={<Test05Menu />} />
-        <Route path="/training/part5/:quiz" element={<CrosswordQuiz />} />
+        <Route path="/training/part5/:quiz" element={<Test05Screen />} />
       </Routes>
     </Layout>
   );
