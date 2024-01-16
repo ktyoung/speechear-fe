@@ -20,6 +20,9 @@ export default function Test05Screen() {
   const handleCoachMarkVisible = () => {
     setIsCoachMarkVisible(false);
   };
+  const handleShowAnswer = () => {
+    setShowAnswers(!showAnswers);
+  };
 
   // 퀴즈 데이터 패칭 로직
   interface QuizData {
@@ -38,6 +41,13 @@ export default function Test05Screen() {
   useEffect(() => {
     const currentQuizData = crosswordData.find((data) => data.quiz === quizNum);
     setQuizData(currentQuizData ?? null);
+  }, [quizNum]);
+  //
+
+  // 퀴즈 네비게이션 렌더링 로직
+  useEffect(() => {
+    const newQuizNavIndex = Math.floor((quizNum - 1) / 10) * 10 + 1;
+    setQuizNavIndex(newQuizNavIndex);
   }, [quizNum]);
   //
 
@@ -79,6 +89,7 @@ export default function Test05Screen() {
               </button>
             </div>
             <div className="test-contents flex-start">
+              <SpeechBubble showAnswer={handleShowAnswer} />
               {quizData && (
                 <CrosswordGrid
                   rows={quizData.rows}
@@ -144,5 +155,19 @@ function NavigationButton({ quizNumber }: NavigationButtonProps) {
     <Link to={`/training/part5/${quizNumber}`} style={buttonStyle}>
       퀴즈 <br /> {quizNumber}
     </Link>
+  );
+}
+
+interface SpeechBubbleProps {
+  showAnswer: () => void;
+}
+function SpeechBubble({ showAnswer }: SpeechBubbleProps) {
+  return (
+    <div className="speech-bubble-container" onClick={showAnswer}>
+      <div className="blur"></div>
+      <div className="speech-bubble-text">
+        <p>정답</p>
+      </div>
+    </div>
   );
 }
