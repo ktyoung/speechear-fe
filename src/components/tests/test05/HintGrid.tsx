@@ -1,27 +1,20 @@
 import AnswerButton from "@components/common/AnswerButton";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 interface HintGridProps {
   rows: number;
 }
 
 export default function HintGrid({ rows }: HintGridProps) {
-  const [value, setValue] = useState(1); // 슬라이더의 현재 값
-  const sliderRef = useRef<HTMLInputElement>(null); // 슬라이더의 ref
-  const labelRef = useRef<HTMLSpanElement>(null); // 레이블의 ref
+  // 각 슬라이더의 상태 관리
+  const [sliderValues, setSliderValues] = useState(Array(rows).fill(1));
 
-  useEffect(() => {
-    if (sliderRef.current && labelRef.current) {
-      const slider = sliderRef.current;
-      const label = labelRef.current;
-
-      const max = parseInt(slider.max);
-      const min = parseInt(slider.min);
-      const percent = ((value - min) / (max - min)) * 100;
-      const thumbWidth = slider.offsetWidth / (max - min);
-      label.style.left = `calc(${percent}% - ${thumbWidth / 2}px)`;
-    }
-  }, [value]);
+  const handleSliderChange = (index: number, newValue: number) => {
+    const newSliderValues = [...sliderValues];
+    newSliderValues[index] = newValue;
+    setSliderValues(newSliderValues);
+  };
+  //
 
   // 각 문제의 응답 상태 관리
   const [selectedAnswers, setSelectedAnswers] = useState(Array(rows).fill(null));
@@ -41,17 +34,29 @@ export default function HintGrid({ rows }: HintGridProps) {
           return (
             <div className="hint__slider-answer">
               <div className="hint-slider-container">
+                <div className="slider-marks">
+                  <span className="slider-mark" style={{ left: "6%" }}></span>
+                  <span className="slider-mark" style={{ left: "50%" }}></span>
+                  <span className="slider-mark" style={{ left: "94%" }}></span>
+                </div>
                 <input
                   type="range"
                   min="1"
                   max="3"
-                  value={value}
+                  value={sliderValues[i]}
                   className="hint-slider"
-                  onChange={(e) => setValue(parseInt(e.target.value, 10))}
+                  onChange={(e) => handleSliderChange(i, parseInt(e.target.value, 10))}
                 />
                 <div
                   className="slider-thumb-label"
-                  style={{ left: value === 1 ? "6%" : value === 2 ? "43%" : "79.5%" }}
+                  style={{
+                    left:
+                      sliderValues[i] === 1
+                        ? "7%"
+                        : sliderValues[i] === 2
+                        ? "42%"
+                        : "78%",
+                  }}
                 >
                   힌트 {i + 1}
                 </div>
