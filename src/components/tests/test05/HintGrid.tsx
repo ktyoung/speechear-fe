@@ -26,6 +26,18 @@ export default function HintGrid({ rows }: HintGridProps) {
   };
   //
 
+  // 반응형 슬라이더
+  const calculateLeftPosition = (sliderValue: number, screenWidth: number) => {
+    if (screenWidth <= 1280) {
+      // 반응형 화면 크기에 대한 계산
+      return sliderValue === 1 ? "8.5%" : sliderValue === 2 ? "38.5%" : "68.5%";
+    } else {
+      // 기존 화면 크기에 대한 계산
+      return sliderValue === 1 ? "7%" : sliderValue === 2 ? "42%" : "77%";
+    }
+  };
+  //
+
   return (
     <div className="hint-grid-container">
       {Array(rows)
@@ -50,30 +62,25 @@ export default function HintGrid({ rows }: HintGridProps) {
                 <div
                   className="slider-thumb-label"
                   style={{
-                    left:
-                      sliderValues[i] === 1
-                        ? "7%"
-                        : sliderValues[i] === 2
-                        ? "42%"
-                        : "78%",
+                    left: calculateLeftPosition(sliderValues[i], window.innerWidth),
                   }}
                 >
                   힌트 {i + 1}
                 </div>
               </div>
               <div className="hint-answer">
-                <AnswerButton
-                  label="정답"
-                  icon="correct"
-                  isSelected={selectedAnswers[i] === "정답"}
-                  onSelect={() => handleSelect(i, "정답")}
-                />
-                <AnswerButton
-                  label="오답"
-                  icon="wrong"
-                  isSelected={selectedAnswers[i] === "오답"}
-                  onSelect={() => handleSelect(i, "오답")}
-                />
+                <button className="button__answer">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/icons/icon_answer_correct.png`}
+                    alt="Correct Answer"
+                  />
+                </button>
+                <button className="button__answer">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/icons/icon_answer_wrong.png`}
+                    alt="Wrong Answer"
+                  />
+                </button>
               </div>
             </div>
           );

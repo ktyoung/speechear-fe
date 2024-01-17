@@ -151,7 +151,7 @@ export default function Test04Screen() {
                     {visibleQuestions.map((item, i) => {
                       return (
                         <div key={i} className="test-contents__section">
-                          <div className="test-contents__buttons margin-left">
+                          <div className="test-contents__buttons margin-left btn__sm">
                             <CustomButton
                               text={`${i + 1}번째 문장 듣기`}
                               defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
@@ -166,7 +166,19 @@ export default function Test04Screen() {
                             moveQuestion={moveQuestion}
                           />
                           <div className="test-contents__answer sm">
-                            <AnswerButton
+                            <button className="button__answer">
+                              <img
+                                src={`${process.env.PUBLIC_URL}/images/icons/icon_answer_correct.png`}
+                                alt="Correct Answer"
+                              />
+                            </button>
+                            <button className="button__answer">
+                              <img
+                                src={`${process.env.PUBLIC_URL}/images/icons/icon_answer_wrong.png`}
+                                alt="Wrong Answer"
+                              />
+                            </button>
+                            {/* <AnswerButton
                               label="정답"
                               icon="correct"
                               isSelected={selectedAnswers[i] === "정답"}
@@ -177,7 +189,7 @@ export default function Test04Screen() {
                               icon="wrong"
                               isSelected={selectedAnswers[i] === "오답"}
                               onSelect={() => handleSelect(i, "오답")}
-                            />
+                            /> */}
                           </div>
                         </div>
                       );
