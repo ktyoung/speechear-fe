@@ -1399,6 +1399,7 @@
   font-family: "Pretendard Variable";
   font-size: 18px;
   font-weight: 800;
+  pointer-events: none;
 }
 .hint-slider {
   position: relative;

@@ -75,6 +75,29 @@ export default function Test02Screen() {
     };
   }, [isPlay, currentAudioUrl]);
   //
+
+  // 각 문제에 대한 응답을 각각 저장하는 로직
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string | null>>(
+    {}
+  );
+
+  useEffect(() => {
+    setSelectedAnswer(selectedAnswers[currentQuestionIndex] || null);
+  }, [currentQuestionIndex, selectedAnswers]);
+
+  const handleSelect = (answer: string) => {
+    setSelectedAnswers((prevAnswers) => ({
+      ...prevAnswers,
+      [currentQuestionIndex]: answer,
+    }));
+  };
+
+  const handleAnswerSelect = (answer: string) => {
+    handleSelect(answer);
+    setSelectedAnswer(answer);
+  };
+  //
+
   const handlePlayClick = () => {
     setIsPlay(!isPlay);
   };
@@ -86,9 +109,6 @@ export default function Test02Screen() {
   };
   const handlePageChange = (pageNumber: number) => {
     setCurrentQuestionIndex(pageNumber);
-  };
-  const handleSelect = (answer: string) => {
-    setSelectedAnswer(answer);
   };
   const handleTestFinished = (): void => {
     setIsFinished(true);
@@ -190,13 +210,13 @@ export default function Test02Screen() {
                       label="정답"
                       icon="correct"
                       isSelected={selectedAnswer === "정답"}
-                      onSelect={() => handleSelect("정답")}
+                      onSelect={() => handleAnswerSelect("정답")}
                     />
                     <AnswerButton
                       label="오답"
                       icon="wrong"
                       isSelected={selectedAnswer === "오답"}
-                      onSelect={() => handleSelect("오답")}
+                      onSelect={() => handleAnswerSelect("오답")}
                     />
                   </div>
                 </>
