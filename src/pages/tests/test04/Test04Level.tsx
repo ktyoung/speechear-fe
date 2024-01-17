@@ -60,8 +60,8 @@ export default function Test04Level() {
               {testCategories.map((items, i) => {
                 const isActive = location.pathname.includes(items.to);
                 const textStyle = isActive
-                  ? { color: "#4894FE", fontSize: "25px" }
-                  : { fontSize: "25px" };
+                  ? { color: "#4894FE", fontSize: "22px" }
+                  : { fontSize: "22px" };
 
                 return (
                   <Link key={i} to={`/training/part4/${items.to}/1`}>

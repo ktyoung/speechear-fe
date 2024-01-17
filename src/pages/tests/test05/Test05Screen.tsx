@@ -118,16 +118,7 @@ function CoachMark({ handleVisible }: CoachMarkProps) {
       <button onClick={handleVisible} className="coach-mark-btn__close">
         팝업창 끄기 &times;
       </button>
-      <div
-        className="guide-with-finger"
-        style={{
-          left: "42.5%",
-          bottom: "19.5%",
-          flexDirection: "column-reverse",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className="guide-with-finger finger__right">
         <p>힌트 버튼을 밀어 힌트를 확인해보세요.</p>
         <figure>
           <img

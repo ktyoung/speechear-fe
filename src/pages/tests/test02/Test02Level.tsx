@@ -60,7 +60,7 @@ export default function Test02Level() {
         <div className="main-contents__column">
           <p className="mb pb">짧은 이야기 듣기</p>
           <div className="main-select-wrapper visible">
-            <div className="test-category-lnb">
+            <div className="test-category-lnb lnb__wide">
               {testCategories.map((items, i) => {
                 const isActive = location.pathname.includes(items.icon);
                 const iconUrl = `${process.env.PUBLIC_URL}/images/icons/icon_${

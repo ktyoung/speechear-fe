@@ -246,7 +246,19 @@ export default function Test03Screen() {
                             <div className="question-answer">
                               <input className="answer-input" type="text" />
                               <div className="test-contents__answer">
-                                <AnswerButton
+                                <button className="button__answer">
+                                  <img
+                                    src={`${process.env.PUBLIC_URL}/images/icons/icon_answer_correct.png`}
+                                    alt="Correct Answer"
+                                  />
+                                </button>
+                                <button className="button__answer">
+                                  <img
+                                    src={`${process.env.PUBLIC_URL}/images/icons/icon_answer_wrong.png`}
+                                    alt="Wrong Answer"
+                                  />
+                                </button>
+                                {/* <AnswerButton
                                   label="정답"
                                   icon="correct"
                                   isSelected={selectedAnswers[i] === "정답"}
@@ -257,7 +269,7 @@ export default function Test03Screen() {
                                   icon="wrong"
                                   isSelected={selectedAnswers[i] === "오답"}
                                   onSelect={() => handleSelect(i, "오답")}
-                                />
+                                /> */}
                               </div>
                             </div>
                           </div>
