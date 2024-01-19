@@ -1,25 +1,10 @@
+import categories from "@datas/testCategories.json";
+
 import TestCategory from "@components/TestCategory";
 import Snb from "@components/common/Snb";
 
 export default function Test02Menu() {
-  const testCategories = [
-    {
-      icon: "location",
-      children: "지역",
-    },
-    {
-      icon: "culture",
-      children: "우리문화",
-    },
-    {
-      icon: "food",
-      children: "음식",
-    },
-    {
-      icon: "etc",
-      children: "기타",
-    },
-  ];
+  const testCategories = categories["02"];
 
   return (
     <div className="main-wrapper">

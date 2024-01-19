@@ -1,57 +1,18 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 import { useEffect, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
+
+import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
+
+import categories from "@datas/testCategories.json";
+
 import Snb from "@components/common/Snb";
+import StatusCard from "@components/tests/StatusCard";
 
 const CARDS_PER_PAGE = 7;
 
 export default function Test03Level() {
-  const testCategories = [
-    {
-      icon: "cook",
-      children: "요리",
-    },
-    {
-      icon: "orient_culture",
-      children: "전통문화",
-    },
-    {
-      icon: "sport",
-      children: "스포츠",
-    },
-    {
-      icon: "party",
-      children: "세계의 잔치",
-    },
-    {
-      icon: "proverb",
-      children: "속담",
-    },
-    {
-      icon: "location",
-      children: "지역",
-    },
-    {
-      icon: "heritage",
-      children: "세계유산",
-    },
-    {
-      icon: "nation",
-      children: "나라",
-    },
-    {
-      icon: "health",
-      children: "건강",
-    },
-    {
-      icon: "person",
-      children: "인물",
-    },
-    {
-      icon: "etc",
-      children: "기타",
-    },
-  ];
+  const testCategories = categories["03"];
+
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCards, setCurrentCards] = useState<number[]>([]);
@@ -117,26 +78,5 @@ export default function Test03Level() {
         </div>
       </div>
     </div>
-  );
-}
-
-interface StatusCardProps {
-  number: number;
-}
-function StatusCard({ number }: StatusCardProps) {
-  const location = useLocation();
-
-  const testScreenPath = `${location.pathname}/${number}`;
-
-  return (
-    <Link to={testScreenPath} className="status-card margin">
-      <p className="status-card__title">긴 이야기 {number}</p>
-      <div className="status-card__complete">
-        <img
-          src={`${process.env.PUBLIC_URL}/images/icons/icon_progress_check_white.png`}
-          alt="White Check Icon"
-        />
-      </div>
-    </Link>
   );
 }

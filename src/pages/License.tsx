@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function License() {
-  const navigate = useNavigate();
   const [checkLicense, setCheckLicense] = useState(false);
 
   function handleCheckLicense() {

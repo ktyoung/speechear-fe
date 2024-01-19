@@ -1,29 +1,18 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 import { useEffect, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
+
+import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
+
+import categories from "@datas/testCategories.json";
+
 import Snb from "@components/common/Snb";
+import StatusCard from "@components/tests/StatusCard";
 
 const CARDS_PER_PAGE = 10;
 
 export default function Test02Level() {
-  const testCategories = [
-    {
-      icon: "location",
-      children: "지역",
-    },
-    {
-      icon: "culture",
-      children: "우리문화",
-    },
-    {
-      icon: "food",
-      children: "음식",
-    },
-    {
-      icon: "etc",
-      children: "기타",
-    },
-  ];
+  const testCategories = categories["02"];
+
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCards, setCurrentCards] = useState<number[]>([]);
@@ -89,34 +78,5 @@ export default function Test02Level() {
         </div>
       </div>
     </div>
-  );
-}
-
-interface StatusCardProps {
-  number: number;
-}
-function StatusCard({ number }: StatusCardProps) {
-  const [progress, setProgress] = useState(50);
-  const location = useLocation();
-
-  const testScreenPath = `${location.pathname}/${number}`;
-
-  return (
-    <Link to={testScreenPath} className="status-card">
-      <p className="status-card__number">{number}</p>
-      <div className="status-card__progress-bar">
-        <div
-          className="status-card__progress-fill"
-          style={{ width: `${progress}%` }}
-        ></div>
-      </div>
-      <div className="status-card__percentage">{progress}%</div>
-      <div className="status-card__complete">
-        <img
-          src={`${process.env.PUBLIC_URL}/images/icons/icon_progress_check_white.png`}
-          alt="White Check Icon"
-        />
-      </div>
-    </Link>
   );
 }
