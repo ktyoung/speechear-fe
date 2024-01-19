@@ -7,7 +7,8 @@
       "@pages/*": ["src/pages/*"],
       "@hooks/*": ["src/hooks/*"],
       "@states/*": ["src/states/*"],
-      "@libs/*": ["src/libs/*"]
+      "@libs/*": ["src/libs/*"],
+      "@datas/*": ["src/datas/*"]
     }
   }
 }

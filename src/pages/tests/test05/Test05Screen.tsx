@@ -1,7 +1,7 @@
 import Snb from "@components/common/Snb";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import crosswordData from "../../../data/test05Data.json";
+import crosswordData from "@datas/test05Data.json";
 import CrosswordGrid from "@components/tests/test05/CrosswordGrid";
 
 export default function Test05Screen() {

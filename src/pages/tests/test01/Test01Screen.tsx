@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ToggleSwitch from "@components/common/ToggleSwitch";
 import AnswerButton from "@components/common/AnswerButton";
-import data from "../../../data/test01Data.json";
+import data from "@datas/test01Data.json";
 
 export default function Test01Screen() {
   const [currentContext, setCurrentContext] = useState("");

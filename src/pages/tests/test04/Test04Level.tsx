@@ -1,25 +1,14 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
-import { useEffect, useState } from "react";
 import Snb from "@components/common/Snb";
+import categories from "@datas/testCategories.json";
 
 const CARDS_PER_PAGE = 10;
 
 export default function Test04Level() {
-  const testCategories = [
-    {
-      to: "word3",
-      set: "3문장 세트",
-    },
-    {
-      to: "word4",
-      set: "4문장 세트",
-    },
-    {
-      to: "word5",
-      set: "5문장 세트",
-    },
-  ];
+  const testCategories = categories["04"];
+
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCards, setCurrentCards] = useState<number[]>([]);

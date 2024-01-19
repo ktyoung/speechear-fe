@@ -1,25 +1,9 @@
-import TestCategory from "@components/TestCategory";
-import Snb from "@components/common/Snb";
 import { Link } from "react-router-dom";
+import Snb from "@components/common/Snb";
+import categories from "@datas/testCategories.json";
 
 export default function Test04Menu() {
-  const testCategories = [
-    {
-      title: "3문장 세트",
-      detail: "문장 세개를 순서에 맞게 선택",
-      to: "word3/1",
-    },
-    {
-      title: "4문장 세트",
-      detail: "문장 네개를 순서에 맞게 선택",
-      to: "word4/1",
-    },
-    {
-      title: "5문장 세트",
-      detail: "문장 다섯개를 순서에 맞게 선택",
-      to: "word5/1",
-    },
-  ];
+  const testCategories = categories["04_1"];
 
   return (
     <div className="main-wrapper">

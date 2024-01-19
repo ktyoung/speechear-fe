@@ -1,0 +1,127 @@
+{
+  "01": [
+    {
+      "showDifficulty": false,
+      "difficulty": "기초",
+      "noiseLevel": "소음이 없는 조용한 상황",
+      "snr": "Quiet 상황",
+      "to": "basic/1"
+    },
+    {
+      "showDifficulty": true,
+      "difficulty": "하",
+      "noiseLevel": "소음이 조금 있는 상황",
+      "snr": "선풍기, 에어컨 소리 정도의 소음\n(6 dB SNR)",
+      "to": "low/1"
+    },
+    {
+      "showDifficulty": true,
+      "difficulty": "중",
+      "noiseLevel": "주변 소음이 보통의 상황",
+      "snr": "생활환경에서의 소음\n(3 dB SNR)",
+      "to": "medium/1"
+    },
+    {
+      "showDifficulty": true,
+      "difficulty": "상",
+      "noiseLevel": "주변이 시끄러운 상황",
+      "snr": "찻길 정도의 소음\n(0 dB SNR)",
+      "to": "high/1"
+    }
+  ],
+  "02": [
+    {
+      "icon": "location",
+      "children": "지역"
+    },
+    {
+      "icon": "culture",
+      "children": "우리문화"
+    },
+    {
+      "icon": "food",
+      "children": "음식"
+    },
+    {
+      "icon": "etc",
+      "children": "기타"
+    }
+  ],
+  "03": [
+    {
+      "icon": "cook",
+      "children": "요리"
+    },
+    {
+      "icon": "orient_culture",
+      "children": "전통문화"
+    },
+    {
+      "icon": "sport",
+      "children": "스포츠"
+    },
+    {
+      "icon": "party",
+      "children": "세계의 잔치"
+    },
+    {
+      "icon": "proverb",
+      "children": "속담"
+    },
+    {
+      "icon": "location",
+      "children": "지역"
+    },
+    {
+      "icon": "heritage",
+      "children": "세계유산"
+    },
+    {
+      "icon": "nation",
+      "children": "나라"
+    },
+    {
+      "icon": "health",
+      "children": "건강"
+    },
+    {
+      "icon": "person",
+      "children": "인물"
+    },
+    {
+      "icon": "etc",
+      "children": "기타"
+    }
+  ],
+  "04": [
+    {
+      "to": "word3",
+      "set": "3문장 세트"
+    },
+    {
+      "to": "word4",
+      "set": "4문장 세트"
+    },
+    {
+      "to": "word5",
+      "set": "5문장 세트"
+    }
+  ],
+  "04_1": [
+    {
+      "title": "3문장 세트",
+      "detail": "문장 세개를 순서에 맞게 선택",
+      "to": "word3/1"
+    },
+    {
+      "title": "4문장 세트",
+      "detail": "문장 네개를 순서에 맞게 선택",
+      "to": "word4/1"
+    },
+    {
+      "title": "5문장 세트",
+      "detail": "문장 다섯개를 순서에 맞게 선택",
+      "to": "word5/1"
+    }
+  ]
+}

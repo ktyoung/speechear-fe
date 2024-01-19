@@ -1,29 +1,14 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 import { useEffect, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
+import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 import Snb from "@components/common/Snb";
+import categories from "@datas/testCategories.json";
 
 const CARDS_PER_PAGE = 10;
 
 export default function Test02Level() {
-  const testCategories = [
-    {
-      icon: "location",
-      children: "지역",
-    },
-    {
-      icon: "culture",
-      children: "우리문화",
-    },
-    {
-      icon: "food",
-      children: "음식",
-    },
-    {
-      icon: "etc",
-      children: "기타",
-    },
-  ];
+  const testCategories = categories["02"];
+
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCards, setCurrentCards] = useState<number[]>([]);

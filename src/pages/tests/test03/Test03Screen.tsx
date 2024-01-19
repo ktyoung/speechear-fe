@@ -1,7 +1,7 @@
-import Snb from "@components/common/Snb";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import data from "../../../data/test03Data.json";
+import Snb from "@components/common/Snb";
+import data from "@datas/test03Data.json";
 import AnswerButton from "@components/common/AnswerButton";
 
 export default function Test03Screen() {

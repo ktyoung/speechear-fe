@@ -1,9 +1,9 @@
-import Snb from "@components/common/Snb";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Snb from "@components/common/Snb";
 import ToggleSwitch from "@components/common/ToggleSwitch";
 import AnswerButton from "@components/common/AnswerButton";
-import data from "../../../data/test02Data.json";
+import data from "@datas/test02Data.json";
 
 export default function Test02Screen() {
   const [currentContext, setCurrentContext] = useState("");
