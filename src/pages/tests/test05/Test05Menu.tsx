@@ -1,6 +1,7 @@
-import Snb from "@components/common/Snb";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
+import Snb from "@components/common/Snb";
+import QuizLinks from "@components/tests/test05/QuizLinks";
 
 export default function Test05Menu() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,8 +19,6 @@ export default function Test05Menu() {
   };
   //
 
-  console.log(currentPage);
-
   return (
     <div className="main-wrapper">
       <div className="main-contents home test">
@@ -32,7 +31,11 @@ export default function Test05Menu() {
             <div className="pagination-arrows">
               <button onClick={handleLeftArrowClick}>
                 <img
-                  src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_left.png`}
+                  src={
+                    currentPage === 1
+                      ? `${process.env.PUBLIC_URL}/images/icons/icon_arrow_left_disabled.png`
+                      : `${process.env.PUBLIC_URL}/images/icons/icon_arrow_left.png`
+                  }
                   alt="Left Arrow Icon"
                   style={{
                     opacity: currentPage === 1 ? 0.5 : 1,
@@ -42,7 +45,11 @@ export default function Test05Menu() {
               </button>
               <button onClick={handleRightArrowClick}>
                 <img
-                  src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_right.png`}
+                  src={
+                    currentPage === 2
+                      ? `${process.env.PUBLIC_URL}/images/icons/icon_arrow_right_disabled.png`
+                      : `${process.env.PUBLIC_URL}/images/icons/icon_arrow_right.png`
+                  }
                   alt="Right Arrow Icon"
                   style={{
                     opacity: currentPage === 2 ? 0.5 : 1,
@@ -55,24 +62,6 @@ export default function Test05Menu() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-interface QuizLinksProps {
-  page: number;
-}
-function QuizLinks({ page }: QuizLinksProps) {
-  const start = (page - 1) * 50 + 1;
-  const end = page * 50;
-
-  return (
-    <div className="quiz-link-container">
-      {Array.from({ length: end - start + 1 }, (_, i) => i + start).map((quizNumber) => (
-        <Link key={quizNumber} to={`/training/part5/${quizNumber}`}>
-          퀴즈 <br /> {quizNumber}
-        </Link>
-      ))}
     </div>
   );
 }

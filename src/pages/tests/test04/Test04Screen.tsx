@@ -1,17 +1,19 @@
-import Snb from "@components/common/Snb";
-import { useEffect, useRef, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
-import AnswerButton from "@components/common/AnswerButton";
-import { DndProvider, DropTargetMonitor, useDrag, useDrop } from "react-dnd";
+import { useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+import Snb from "@components/common/Snb";
+import SelectTypeButton from "@components/common/SelectTypeButton";
+import Pagination from "@components/tests/Pagination";
+import CoachMark from "@components/tests/CoachMark";
+import Test04InteractiveButton from "@components/tests/test04/Test04InteractiveButton";
+import DraggableQuestion from "@components/tests/test04/DraggableQuestion";
+
 export default function Test04Screen() {
-  // const [currentContext, setCurrentContext] = useState("");
-  // const [currentAnswerContext, setCurrentAnswerContext] = useState("");
-  // const [currentAudioUrl, setCurrentAudioUrl] = useState("");
-  // const { quiz } = useParams();
-  const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
+  const [activeButtonId, setActiveButtonId] = useState(-1);
+  const [isFinished, setIsFinished] = useState(false);
   const [isCoachMarkVisible, setIsCoachMarkVisible] = useState(true);
 
   // 문제 더미 데이터
@@ -57,15 +59,7 @@ export default function Test04Screen() {
   //
 
   // 각 문제의 응답 상태 관리
-  const [selectedAnswers, setSelectedAnswers] = useState(
-    Array(questionData.length).fill(null)
-  );
 
-  const handleSelect = (index: number, answer: string) => {
-    const newAnswers = [...selectedAnswers];
-    newAnswers[index] = answer;
-    setSelectedAnswers(newAnswers);
-  };
   //
 
   // 드래그된 요소의 위치를 변경하는 로직
@@ -80,35 +74,15 @@ export default function Test04Screen() {
   //
 
   // 퀴즈 데이터 패칭 로직
-  // useEffect(() => {
-  //   const currentData = data.find((item) => item.index === currentQuestionIndex);
-  //   if (currentData) {
-  //     setCurrentContext(currentData.questioncontext);
-  //     setCurrentAnswerContext(currentData.answer);
-  //     setCurrentAudioUrl(
-  //       `${process.env.PUBLIC_URL}/sounds/test02/${currentData.questioncode}.mp3`
-  //     );
-  //   }
-  // }, [currentQuestionIndex]);
 
-  // useEffect(() => {
-  //   const audio = new Audio(currentAudioUrl);
-  //   if (isPlay) {
-  //     audio.play();
-  //   } else {
-  //     audio.pause();
-  //   }
-
-  //   return () => {
-  //     audio.pause();
-  //     audio.currentTime = 0;
-  //   };
-  // }, [isPlay, currentAudioUrl]);
   //
 
-  const handlePlayClick = () => {
-    setIsPlay(!isPlay);
+  const handlePlayClick = (buttonId: number) => {
+    const isActivating = activeButtonId !== buttonId || !isPlay;
+    setActiveButtonId(isActivating ? buttonId : -1);
+    setIsPlay(isActivating);
   };
+
   const handlePageChange = (pageNumber: number) => {
     setCurrentQuestionIndex(pageNumber);
   };
@@ -128,7 +102,9 @@ export default function Test04Screen() {
           </div>
           <div className="main-contents__column">
             <p className="mb pb">문장 순서화 하기</p>
-            {isCoachMarkVisible && <CoachMark handleVisible={handleCoachMarkVisible} />}
+            {isCoachMarkVisible && (
+              <CoachMark handleVisible={handleCoachMarkVisible} isRightFinger={false} />
+            )}
             <div className="main-select-wrapper visible">
               <div className="text-container">
                 {!isFinished ? (
@@ -152,12 +128,13 @@ export default function Test04Screen() {
                       return (
                         <div key={i} className="test-contents__section">
                           <div className="test-contents__buttons margin-left btn__sm">
-                            <CustomButton
+                            <Test04InteractiveButton
                               text={`${i + 1}번째 문장 듣기`}
                               defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
                               blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
                               whiteIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_white.png`}
-                              onClick={handlePlayClick}
+                              onClick={() => handlePlayClick(i)}
+                              isActive={activeButtonId === i}
                             />
                           </div>
                           <DraggableQuestion
@@ -178,18 +155,6 @@ export default function Test04Screen() {
                                 alt="Wrong Answer"
                               />
                             </button>
-                            {/* <AnswerButton
-                              label="정답"
-                              icon="correct"
-                              isSelected={selectedAnswers[i] === "정답"}
-                              onSelect={() => handleSelect(i, "정답")}
-                            />
-                            <AnswerButton
-                              label="오답"
-                              icon="wrong"
-                              isSelected={selectedAnswers[i] === "오답"}
-                              onSelect={() => handleSelect(i, "오답")}
-                            /> */}
                           </div>
                         </div>
                       );
@@ -216,202 +181,5 @@ export default function Test04Screen() {
         </div>
       </div>
     </DndProvider>
-  );
-}
-
-interface ButtonProps {
-  text: string;
-  defaultIcon: string;
-  blueIcon: string;
-  whiteIcon: string;
-  onClick: () => void;
-}
-function CustomButton({ text, defaultIcon, blueIcon, whiteIcon, onClick }: ButtonProps) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsClicked(!isClicked);
-    onClick();
-  };
-
-  const backgroundColor = isClicked
-    ? "#40A0FF"
-    : isHovered
-    ? "rgba(99, 180, 255, 0.10)"
-    : "#fff";
-  const textColor = isClicked ? "#fff" : "#4894fe";
-  const iconSrc = isClicked ? whiteIcon : isHovered ? blueIcon : defaultIcon;
-  const imageStyle = {
-    // transform: text !== "이야기 듣기" && isClicked ? "rotateX(180deg)" : "rotateX(0deg)",
-    transition: "transform 0.4s",
-  };
-
-  return (
-    <button
-      className="btn"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={handleButtonClick}
-      style={{
-        backgroundColor: backgroundColor,
-        color: textColor,
-      }}
-    >
-      <p>{text}</p>
-      <img src={iconSrc} alt={text} style={imageStyle} />
-    </button>
-  );
-}
-
-function SelectTypeButton({ to, children, className }: any) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-  const handleMouseDown = () => setIsClicked(true);
-  const handleMouseUp = () => setIsClicked(false);
-  const buttonStyle = {
-    backgroundColor: isClicked
-      ? "#40A0FF"
-      : isHovered
-      ? "rgba(99, 180, 255, 0.1)"
-      : "#fff",
-    color: isClicked ? "#fff" : "#4894fe",
-    border: isHovered ? "3px solid transparent" : "3px solid #4894fe",
-  };
-
-  return (
-    <Link
-      className={`select-type__button ${className}`}
-      to={to}
-      style={buttonStyle}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-    >
-      {children}
-    </Link>
-  );
-}
-
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (pageNumber: number) => void;
-  handleFinished: () => void;
-}
-function Pagination({
-  currentPage,
-  totalPages,
-  onPageChange,
-  handleFinished,
-}: PaginationProps) {
-  return (
-    <div className="pagination-wrapper">
-      <ul>
-        {[...Array(totalPages)].map((_, index) => {
-          const number = index + 1;
-          return (
-            <li
-              key={number}
-              className={`page-item ${number === currentPage ? "active" : ""}`}
-            >
-              <button onClick={() => onPageChange(number)}>{number}</button>
-            </li>
-          );
-        })}
-        <li className="finish-button">
-          <button onClick={handleFinished}>연습 마치기</button>
-        </li>
-      </ul>
-    </div>
-  );
-}
-
-interface CoachMarkProps {
-  handleVisible: () => void;
-}
-function CoachMark({ handleVisible }: CoachMarkProps) {
-  return (
-    <div className="coach-mark-container">
-      <button onClick={handleVisible} className="coach-mark-btn__close">
-        팝업창 끄기 &times;
-      </button>
-      <div className="guide-with-finger">
-        <p>문장박스를 움직여 순서를 맞춰보세요.</p>
-        <figure>
-          <img
-            src={`${process.env.PUBLIC_URL}/images/test/finger_up_down.png`}
-            alt="Coach Mark Finger Icon"
-          />
-        </figure>
-      </div>
-    </div>
-  );
-}
-
-// 드래그 앤 드롭 컴포넌트
-interface DragItem {
-  type: string;
-  index: number;
-}
-interface QuestionItem {
-  question: string;
-}
-interface DraggableQuestionProps {
-  item: QuestionItem;
-  index: number;
-  moveQuestion: (dragIndex: number, hoverIndex: number) => void;
-}
-
-const ItemType = "QUESTION";
-
-function DraggableQuestion({ item, index, moveQuestion }: DraggableQuestionProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [{ isDragging }, drag] = useDrag({
-    type: ItemType,
-    item: { type: ItemType, index },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-
-  const [, drop] = useDrop({
-    accept: ItemType,
-    hover: (item: DragItem, monitor: DropTargetMonitor) => {
-      if (!ref.current) {
-        return;
-      }
-      const dragIndex = item.index;
-      const hoverIndex = index;
-
-      // 드래그하는 요소가 현재 요소의 위나 아래에 있는지 확인
-      const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      const clientOffset = monitor.getClientOffset();
-      const hoverClientY = clientOffset!.y - hoverBoundingRect.top;
-
-      // 드래그 방향 결정
-      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-        return;
-      }
-      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-        return;
-      }
-
-      moveQuestion(dragIndex, hoverIndex);
-      item.index = hoverIndex;
-    },
-  });
-
-  drag(drop(ref));
-
-  return (
-    <div className="context-container" ref={ref}>
-      <p>{item.question}</p>
-    </div>
   );
 }

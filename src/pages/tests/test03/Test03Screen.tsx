@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import Snb from "@components/common/Snb";
+import { useParams } from "react-router-dom";
+
 import data from "@datas/test03Data.json";
-import AnswerButton from "@components/common/AnswerButton";
+
+import Snb from "@components/common/Snb";
+import SelectTypeButton from "@components/common/SelectTypeButton";
+import Pagination from "@components/tests/Pagination";
+import Test03InteractiveButton from "@components/tests/test03/Test03InteractiveButton";
 
 export default function Test03Screen() {
-  const [activeButton, setActiveButton] = useState(null);
   const [currentContext, setCurrentContext] = useState("");
   const [currentAudioUrl, setCurrentAudioUrl] = useState("");
   const [isFinished, setIsFinished] = useState(false);
@@ -15,8 +18,6 @@ export default function Test03Screen() {
   const [isPlayActive, setIsPlayActive] = useState(false);
   const [isContextActive, setIsContextActive] = useState(false);
   const [isQuestionActive, setIsQuestionActive] = useState(false);
-  // const { quiz } = useParams();
-  const [currentPage, setCurrentPage] = useState<number>(1);
 
   // 현재 문제 풀이 진행도를 출력하기 위한 코드
   const { level, page, quiz } = useParams();
@@ -52,21 +53,6 @@ export default function Test03Screen() {
   ];
   //
 
-  // 이전 또는 다음 문제로 이동하기 위한 로직
-  const changeQuestionIndex = (direction: "prev" | "next") => {
-    if (direction === "prev" && currentQuestionIndex > 1) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
-    } else if (direction === "next" && currentQuestionIndex < totalQuestions) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    }
-  };
-
-  // const handleLeftArrowClick =
-  //   currentQuestionIndex > 1 ? () => changeQuestionIndex("prev") : undefined;
-  // const handleRightArrowClick =
-  //   currentQuestionIndex < totalQuestions ? () => changeQuestionIndex("next") : undefined;
-  //
-
   // 퀴즈 데이터 패칭 로직
   useEffect(() => {
     const currentData = data.find((item) => item.index === currentQuestionIndex);
@@ -94,15 +80,15 @@ export default function Test03Screen() {
   //
 
   // 각 문제의 응답 상태 관리
-  const [selectedAnswers, setSelectedAnswers] = useState(
-    Array(questionData.length).fill(null)
-  );
+  // const [selectedAnswers, setSelectedAnswers] = useState(
+  //   Array(questionData.length).fill(null)
+  // );
 
-  const handleSelect = (index: number, answer: string) => {
-    const newAnswers = [...selectedAnswers];
-    newAnswers[index] = answer;
-    setSelectedAnswers(newAnswers);
-  };
+  // const handleSelect = (index: number, answer: string) => {
+  //   const newAnswers = [...selectedAnswers];
+  //   newAnswers[index] = answer;
+  //   setSelectedAnswers(newAnswers);
+  // };
   //
 
   const handlePlayClick = () => {
@@ -163,7 +149,7 @@ export default function Test03Screen() {
               {!isFinished ? (
                 <>
                   <div className="test-contents__buttons row border">
-                    <CustomButton
+                    <Test03InteractiveButton
                       text="이야기 듣기"
                       defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker.png`}
                       blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
@@ -171,7 +157,7 @@ export default function Test03Screen() {
                       onClick={handlePlayClick}
                       isActive={isPlayActive}
                     />
-                    <CustomButton
+                    <Test03InteractiveButton
                       text="이야기 보기"
                       defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
                       blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
@@ -179,7 +165,7 @@ export default function Test03Screen() {
                       onClick={handleContextButtonClick}
                       isActive={isContextActive}
                     />
-                    <CustomButton
+                    <Test03InteractiveButton
                       text="문제 보기"
                       defaultIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
                       blueIcon={`${process.env.PUBLIC_URL}/images/icons/icon_more_blue.png`}
@@ -200,33 +186,6 @@ export default function Test03Screen() {
                   )}
                   {isContextVisible && (
                     <div className="test-contents__context">
-                      {/* <div className="context__arrows">
-                      <button onClick={handleLeftArrowClick}>
-                        <img
-                          src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_left.png`}
-                          alt="Left Arrow Icon"
-                          className="left-arrow"
-                          style={{
-                            opacity: currentQuestionIndex === 1 ? 0.5 : 1,
-                            cursor: currentQuestionIndex === 1 ? "default" : "pointer",
-                          }}
-                        />
-                      </button>
-                      <button onClick={handleRightArrowClick}>
-                        <img
-                          src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_right.png`}
-                          alt="Right Arrow Icon"
-                          className="right-arrow"
-                          style={{
-                            opacity: currentQuestionIndex === totalQuestions ? 0.5 : 1,
-                            cursor:
-                              currentQuestionIndex === totalQuestions
-                                ? "default"
-                                : "pointer",
-                          }}
-                        />
-                      </button>
-                    </div> */}
                       <p
                         className="context font-small"
                         style={isContextVisible ? { opacity: 1 } : { opacity: 0 }}
@@ -258,49 +217,19 @@ export default function Test03Screen() {
                                     alt="Wrong Answer"
                                   />
                                 </button>
-                                {/* <AnswerButton
-                                  label="정답"
-                                  icon="correct"
-                                  isSelected={selectedAnswers[i] === "정답"}
-                                  onSelect={() => handleSelect(i, "정답")}
-                                />
-                                <AnswerButton
-                                  label="오답"
-                                  icon="wrong"
-                                  isSelected={selectedAnswers[i] === "오답"}
-                                  onSelect={() => handleSelect(i, "오답")}
-                                /> */}
                               </div>
                             </div>
                           </div>
                         );
                       })}
-                      {/* <p
-                        className="context answer"
-                        style={isQuestionVisible ? { opacity: 1 } : { opacity: 0 }}
-                      ></p> */}
                     </div>
                   )}
-                  {/* <div className="test-contents__answer">
-                    <AnswerButton
-                      label="정답"
-                      icon="correct"
-                      isSelected={selectedAnswer === "정답"}
-                      onSelect={() => handleSelect("정답")}
-                    />
-                    <AnswerButton
-                      label="오답"
-                      icon="wrong"
-                      isSelected={selectedAnswer === "오답"}
-                      onSelect={() => handleSelect("오답")}
-                    />
-                  </div> */}
                 </>
               ) : (
                 <SelectTypeButton
-                  className="position"
                   children="한번 더 연습하기"
                   to={"/training/part3"}
+                  className="position"
                 />
               )}
             </div>
@@ -315,124 +244,6 @@ export default function Test03Screen() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-interface ButtonProps {
-  text: string;
-  defaultIcon: string;
-  blueIcon: string;
-  whiteIcon: string;
-  onClick: () => void;
-  isActive: boolean;
-}
-function CustomButton({
-  text,
-  defaultIcon,
-  blueIcon,
-  whiteIcon,
-  onClick,
-  isActive,
-}: ButtonProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleButtonClick = () => {
-    onClick();
-  };
-
-  const backgroundColor = isActive
-    ? "#40A0FF"
-    : isHovered
-    ? "rgba(99, 180, 255, 0.10)"
-    : "#fff";
-  const textColor = isActive ? "#fff" : "#4894fe";
-  const iconSrc = isActive ? whiteIcon : isHovered ? blueIcon : defaultIcon;
-  const imageStyle = {
-    transform: text !== "이야기 듣기" && isActive ? "rotateX(180deg)" : "rotateX(0deg)",
-    transition: "transform 0.4s",
-  };
-
-  return (
-    <button
-      className="btn"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={handleButtonClick}
-      style={{
-        backgroundColor: backgroundColor,
-        color: textColor,
-      }}
-    >
-      <p>{text}</p>
-      <img src={iconSrc} alt={text} style={imageStyle} />
-    </button>
-  );
-}
-
-function SelectTypeButton({ to, children, className }: any) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-  const handleMouseDown = () => setIsClicked(true);
-  const handleMouseUp = () => setIsClicked(false);
-  const buttonStyle = {
-    backgroundColor: isClicked
-      ? "#40A0FF"
-      : isHovered
-      ? "rgba(99, 180, 255, 0.1)"
-      : "#fff",
-    color: isClicked ? "#fff" : "#4894fe",
-    border: isHovered ? "3px solid transparent" : "3px solid #4894fe",
-  };
-
-  return (
-    <Link
-      className={`select-type__button ${className}`}
-      to={to}
-      style={buttonStyle}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-    >
-      {children}
-    </Link>
-  );
-}
-
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (pageNumber: number) => void;
-  handleFinished: () => void;
-}
-function Pagination({
-  currentPage,
-  totalPages,
-  onPageChange,
-  handleFinished,
-}: PaginationProps) {
-  return (
-    <div className="pagination-wrapper">
-      <ul>
-        {[...Array(totalPages)].map((_, index) => {
-          const number = index + 1;
-          return (
-            <li
-              key={number}
-              className={`page-item ${number === currentPage ? "active" : ""}`}
-            >
-              <button onClick={() => onPageChange(number)}>{number}</button>
-            </li>
-          );
-        })}
-        <li className="finish-button">
-          <button onClick={handleFinished}>연습 마치기</button>
-        </li>
-      </ul>
     </div>
   );
 }

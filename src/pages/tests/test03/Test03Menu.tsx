@@ -1,6 +1,7 @@
-import TestCategory from "@components/TestCategory";
-import Snb from "@components/common/Snb";
 import categories from "@datas/testCategories.json";
+
+import Snb from "@components/common/Snb";
+import TestCategory from "@components/TestCategory";
 
 export default function Test03Menu() {
   const testCategories = categories["03"];

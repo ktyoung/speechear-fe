@@ -1,8 +1,13 @@
-import Snb from "@components/common/Snb";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 import crosswordData from "@datas/test05Data.json";
+
+import Snb from "@components/common/Snb";
+import CoachMark from "@components/tests/CoachMark";
 import CrosswordGrid from "@components/tests/test05/CrosswordGrid";
+import NavigationButton from "@components/tests/test05/NavigationButton";
+import SpeechBubble from "@components/tests/test05/SpeechBubble";
 
 export default function Test05Screen() {
   const [quizNavIndex, setQuizNavIndex] = useState(1);
@@ -25,7 +30,7 @@ export default function Test05Screen() {
   };
 
   // 퀴즈 데이터 패칭 로직
-  interface QuizData {
+  type QuizData = {
     quiz: number;
     rows: number;
     columns: number;
@@ -34,7 +39,7 @@ export default function Test05Screen() {
     horizontalHints: Array<{ number: number; row: number; col: number }>;
     verticalHints: Array<{ number: number; row: number; col: number }>;
     answers: { [key: string]: string };
-  }
+  };
 
   const [quizData, setQuizData] = useState<QuizData | null>(null);
 
@@ -59,7 +64,9 @@ export default function Test05Screen() {
         </div>
         <div className="main-contents__column">
           <p className="mb pb">가로세로 퀴즈</p>
-          {isCoachMarkVisible && <CoachMark handleVisible={handleCoachMarkVisible} />}
+          {isCoachMarkVisible && (
+            <CoachMark handleVisible={handleCoachMarkVisible} isRightFinger={true} />
+          )}
           <div className="main-select-wrapper visible">
             <div className="quiz-navigation-container">
               <button onClick={handlePrevious} disabled={quizNavIndex === 1}>
@@ -104,60 +111,6 @@ export default function Test05Screen() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-interface CoachMarkProps {
-  handleVisible: () => void;
-}
-function CoachMark({ handleVisible }: CoachMarkProps) {
-  return (
-    <div className="coach-mark-container">
-      <button onClick={handleVisible} className="coach-mark-btn__close">
-        팝업창 끄기 &times;
-      </button>
-      <div className="guide-with-finger finger__right">
-        <p>힌트 버튼을 밀어 힌트를 확인해보세요.</p>
-        <figure>
-          <img
-            src={`${process.env.PUBLIC_URL}/images/test/finger_left_right.png`}
-            alt="Coach Mark Finger Icon"
-          />
-        </figure>
-      </div>
-    </div>
-  );
-}
-
-interface NavigationButtonProps {
-  quizNumber: number;
-}
-function NavigationButton({ quizNumber }: NavigationButtonProps) {
-  const location = useLocation();
-
-  const isActive = location.pathname === `/training/part5/${quizNumber}`;
-  const buttonStyle = {
-    color: isActive ? "#40A0FF" : "#8696BB",
-  };
-
-  return (
-    <Link to={`/training/part5/${quizNumber}`} style={buttonStyle}>
-      퀴즈 <br /> {quizNumber}
-    </Link>
-  );
-}
-
-interface SpeechBubbleProps {
-  showAnswer: () => void;
-}
-function SpeechBubble({ showAnswer }: SpeechBubbleProps) {
-  return (
-    <div className="speech-bubble-container" onClick={showAnswer}>
-      <div className="blur"></div>
-      <div className="speech-bubble-text">
-        <p>정답</p>
       </div>
     </div>
   );
