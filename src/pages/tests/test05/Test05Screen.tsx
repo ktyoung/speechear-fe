@@ -16,19 +16,6 @@ export default function Test05Screen() {
   const quizNum = parseInt(quiz ?? "1", 10);
   const [showAnswers, setShowAnswers] = useState(false);
 
-  const handlePrevious = () => {
-    setQuizNavIndex((prevIndex) => (prevIndex > 10 ? prevIndex - 10 : 1));
-  };
-  const handleNext = () => {
-    setQuizNavIndex((prevIndex) => (prevIndex < 91 ? prevIndex + 10 : 91));
-  };
-  const handleCoachMarkVisible = () => {
-    setIsCoachMarkVisible(false);
-  };
-  const handleShowAnswer = () => {
-    setShowAnswers(!showAnswers);
-  };
-
   // 퀴즈 데이터 패칭 로직
   type QuizData = {
     quiz: number;
@@ -55,6 +42,19 @@ export default function Test05Screen() {
     setQuizNavIndex(newQuizNavIndex);
   }, [quizNum]);
   //
+
+  const handlePrevious = () => {
+    setQuizNavIndex((prevIndex) => (prevIndex > 10 ? prevIndex - 10 : 1));
+  };
+  const handleNext = () => {
+    setQuizNavIndex((prevIndex) => (prevIndex < 91 ? prevIndex + 10 : 91));
+  };
+  const handleCoachMarkVisible = () => {
+    setIsCoachMarkVisible(false);
+  };
+  const handleShowAnswer = () => {
+    setShowAnswers(!showAnswers);
+  };
 
   return (
     <div className="main-wrapper">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import data from "@datas/test03Data.json";
@@ -8,9 +8,11 @@ import SelectTypeButton from "@components/common/SelectTypeButton";
 import Pagination from "@components/tests/Pagination";
 import Test03InteractiveButton from "@components/tests/test03/Test03InteractiveButton";
 
+import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
+import { useQuizDataFetching } from "@hooks/useQuizDataFetching";
+
 export default function Test03Screen() {
   const [currentContext, setCurrentContext] = useState("");
-  const [currentAudioUrl, setCurrentAudioUrl] = useState("");
   const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isContextVisible, setIsContextVisible] = useState(false);
@@ -18,16 +20,12 @@ export default function Test03Screen() {
   const [isPlayActive, setIsPlayActive] = useState(false);
   const [isContextActive, setIsContextActive] = useState(false);
   const [isQuestionActive, setIsQuestionActive] = useState(false);
-
-  // 현재 문제 풀이 진행도를 출력하기 위한 코드
-  const { level, page, quiz } = useParams();
+  const { level, quiz } = useParams();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
   const totalQuestions = 5;
 
-  interface DifficultyMapping {
-    [key: string]: string;
-  }
-  const difficultyMapping: DifficultyMapping = {
+  // 난이도 매핑 로직 (useDifficultyMapping)
+  const difficultyMapping = {
     cook: "요리",
     orient_culture: "전통문화",
     sport: "스포츠",
@@ -40,7 +38,7 @@ export default function Test03Screen() {
     person: "인물",
     etc: "기타",
   };
-  const difficultyText = level ? difficultyMapping[level] : "난이도 미정";
+  const difficultyText = useDifficultyMapping({ level, mapping: difficultyMapping });
   //
 
   // 문제 더미 데이터
@@ -53,43 +51,13 @@ export default function Test03Screen() {
   ];
   //
 
-  // 퀴즈 데이터 패칭 로직
-  useEffect(() => {
-    const currentData = data.find((item) => item.index === currentQuestionIndex);
-    if (currentData) {
-      setCurrentContext(currentData.speechcontext);
-      setCurrentAudioUrl(
-        `${process.env.PUBLIC_URL}/sounds/test03/${currentData.speechcode}.mp3`
-      );
-    }
-  }, [currentQuestionIndex]);
-
-  useEffect(() => {
-    const audio = new Audio(currentAudioUrl);
-    if (isPlay) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-
-    return () => {
-      audio.pause();
-      audio.currentTime = 0;
-    };
-  }, [isPlay, currentAudioUrl]);
-  //
-
-  // 각 문제의 응답 상태 관리
-  // const [selectedAnswers, setSelectedAnswers] = useState(
-  //   Array(questionData.length).fill(null)
-  // );
-
-  // const handleSelect = (index: number, answer: string) => {
-  //   const newAnswers = [...selectedAnswers];
-  //   newAnswers[index] = answer;
-  //   setSelectedAnswers(newAnswers);
-  // };
-  //
+  // 퀴즈 데이터 패칭 및 오디오 재생 로직 (useQuizDataFetching)
+  useQuizDataFetching({
+    currentQuestionIndex,
+    quizDataArray: data,
+    setContext: setCurrentContext,
+    isPlay,
+  });
 
   const handlePlayClick = () => {
     setIsPlayActive(!isPlayActive);
@@ -99,6 +67,7 @@ export default function Test03Screen() {
     setIsContextVisible(false);
     setIsQuestionVisible(false);
   };
+  //
 
   const handleContextButtonClick = () => {
     setIsPlayActive(false);
@@ -123,6 +92,10 @@ export default function Test03Screen() {
   const handleTestFinished = (): void => {
     setIsFinished(true);
   };
+
+  // 각 문제의 응답 상태 관리
+
+  //
 
   return (
     <div className="main-wrapper">
