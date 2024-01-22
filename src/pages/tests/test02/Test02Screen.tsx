@@ -74,6 +74,7 @@ export default function Test02Screen() {
   };
   //
 
+  // 상태 관리 로직: 사용자 상호작용에 따른 UI 상태 변경
   const handleContextButtonClick = () => {
     setIsContextVisible(!isContextVisible);
   };
@@ -83,6 +84,7 @@ export default function Test02Screen() {
   const handleTestFinished = (): void => {
     setIsFinished(true);
   };
+  //
 
   return (
     <div className="main-wrapper">

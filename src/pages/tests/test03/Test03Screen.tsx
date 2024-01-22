@@ -69,6 +69,7 @@ export default function Test03Screen() {
   };
   //
 
+  // 상태 관리 로직: 사용자 상호작용에 따른 UI 상태 변경
   const handleContextButtonClick = () => {
     setIsPlayActive(false);
     setIsContextActive(!isContextActive);
@@ -92,6 +93,7 @@ export default function Test03Screen() {
   const handleTestFinished = (): void => {
     setIsFinished(true);
   };
+  //
 
   // 각 문제의 응답 상태 관리
 

@@ -43,13 +43,6 @@ export default function Test01Screen() {
   } = useQuestionNavigation({ totalQuestions });
   //
 
-  const handleContextButtonClick = () => {
-    setIsContextVisible(!isContextVisible);
-  };
-  const handleTestFinished = (): void => {
-    setIsFinished(true);
-  };
-
   // 퀴즈 데이터 패칭 및 오디오 재생 로직 (useQuizDataFetching)
   useQuizDataFetching({
     currentQuestionIndex,
@@ -73,6 +66,15 @@ export default function Test01Screen() {
   const handleAnswerSelect = (answer: string) => {
     handleSelect(currentQuestionIndex, answer);
     setSelectedAnswer(answer);
+  };
+  //
+
+  // 상태 관리 로직: 사용자 상호작용에 따른 UI 상태 변경
+  const handleContextButtonClick = () => {
+    setIsContextVisible(!isContextVisible);
+  };
+  const handleTestFinished = (): void => {
+    setIsFinished(true);
   };
   //
 

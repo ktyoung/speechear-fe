@@ -43,6 +43,7 @@ export default function Test05Screen() {
   }, [quizNum]);
   //
 
+  // 상태 관리 로직: 사용자 상호작용에 따른 UI 상태 변경
   const handlePrevious = () => {
     setQuizNavIndex((prevIndex) => (prevIndex > 10 ? prevIndex - 10 : 1));
   };
@@ -55,6 +56,7 @@ export default function Test05Screen() {
   const handleShowAnswer = () => {
     setShowAnswers(!showAnswers);
   };
+  //
 
   return (
     <div className="main-wrapper">

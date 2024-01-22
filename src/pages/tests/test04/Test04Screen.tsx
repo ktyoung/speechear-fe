@@ -67,6 +67,7 @@ export default function Test04Screen() {
   };
   //
 
+  // 상태 관리 로직: 사용자 상호작용에 따른 UI 상태 변경
   const handlePlayClick = (buttonId: number) => {
     const isActivating = activeButtonId !== buttonId || !isPlay;
     setActiveButtonId(isActivating ? buttonId : -1);
@@ -82,6 +83,7 @@ export default function Test04Screen() {
   const handleCoachMarkVisible = () => {
     setIsCoachMarkVisible(false);
   };
+  //
 
   // 퀴즈 데이터 패칭 로직
 
