@@ -10,111 +10,71 @@ import SelectTypeButton from "@components/common/SelectTypeButton";
 import Pagination from "@components/tests/Pagination";
 import InteractiveTestButton from "@components/tests/InteractiveTestButton";
 
+import { useQuestionNavigation } from "@hooks/useQuestionNavigation";
+import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
+import { useQuizDataFetching } from "@hooks/useQuizDataFetching";
+import { useAnswerManagement } from "@hooks/useAnswerManagement";
+
 export default function Test01Screen() {
   const [currentContext, setCurrentContext] = useState("");
-  const [currentAudioUrl, setCurrentAudioUrl] = useState("");
   const [isFinished, setIsFinished] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
   const [isContextVisible, setIsContextVisible] = useState(false);
-  // const { quiz } = useParams();
-  const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-
-  // 현재 문제 풀이 진행도를 출력하기 위한 코드
-  const { level, page, quiz } = useParams();
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
+  const { level, quiz } = useParams();
   const totalQuestions = 10;
 
-  interface DifficultyMapping {
-    [key: string]: string;
-  }
-  const difficultyMapping: DifficultyMapping = {
+  // 난이도 매핑 로직 (useDifficultyMapping)
+  const difficultyMapping = {
     basic: "기초",
     low: "난이도 하",
     medium: "난이도 중",
     high: "난이도 상",
   };
-  const difficultyText = level ? difficultyMapping[level] : "난이도 미정";
+  const difficultyText = useDifficultyMapping({ level, mapping: difficultyMapping });
   //
 
-  // 이전 또는 다음 문제로 이동하기 위한 로직
-  const changeQuestionIndex = (direction: "prev" | "next") => {
-    if (direction === "prev" && currentQuestionIndex > 1) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
-    } else if (direction === "next" && currentQuestionIndex < totalQuestions) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    }
-  };
-
-  const handleLeftArrowClick =
-    currentQuestionIndex > 1 ? () => changeQuestionIndex("prev") : undefined;
-  const handleRightArrowClick =
-    currentQuestionIndex < totalQuestions ? () => changeQuestionIndex("next") : undefined;
+  // 문제 이동과 관련된 상태 및 함수 관리(useQuestionNavigation)
+  const {
+    currentQuestionIndex,
+    setCurrentQuestionIndex,
+    handleLeftArrowClick,
+    handleRightArrowClick,
+  } = useQuestionNavigation({ totalQuestions });
   //
+
+  // 퀴즈 데이터 패칭 및 오디오 재생 로직 (useQuizDataFetching)
+  useQuizDataFetching({
+    currentQuestionIndex,
+    quizDataArray: data,
+    setContext: setCurrentContext,
+    isPlay,
+  });
 
   const handlePlayClick = () => {
     setIsPlay(!isPlay);
   };
-  const handleContextButtonClick = () => {
-    setIsContextVisible(!isContextVisible);
-  };
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentQuestionIndex(pageNumber);
-  };
-  // const handleSelect = (answer: string) => {
-  //   setSelectedAnswer(answer);
-  // };
-  const handleTestFinished = (): void => {
-    setIsFinished(true);
-  };
-
-  // 퀴즈 데이터 패칭 로직
-  useEffect(() => {
-    const currentData = data.find((item) => item.index === currentQuestionIndex);
-    if (currentData) {
-      setCurrentContext(currentData.context);
-      setCurrentAudioUrl(
-        `${process.env.PUBLIC_URL}/sounds/test01/${currentData.filename}.mp3`
-      );
-    }
-
-    setSelectedAnswer(selectedAnswers[currentQuestionIndex] || null);
-  }, [currentQuestionIndex]);
-
-  useEffect(() => {
-    const audio = new Audio(currentAudioUrl);
-    if (isPlay) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-
-    return () => {
-      audio.pause();
-      audio.currentTime = 0;
-    };
-  }, [isPlay, currentAudioUrl]);
   //
 
-  // 각 문제에 대한 응답을 각각 저장하는 로직
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string | null>>(
-    {}
-  );
+  // 선택된 답변을 관리하는 로직 (useAnswerManagement)
+  const { selectedAnswers, handleSelect } = useAnswerManagement();
 
   useEffect(() => {
     setSelectedAnswer(selectedAnswers[currentQuestionIndex] || null);
   }, [currentQuestionIndex, selectedAnswers]);
 
-  const handleSelect = (answer: string) => {
-    setSelectedAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [currentQuestionIndex]: answer,
-    }));
-  };
-
   const handleAnswerSelect = (answer: string) => {
-    handleSelect(answer);
+    handleSelect(currentQuestionIndex, answer);
     setSelectedAnswer(answer);
+  };
+  //
+
+  // 상태 관리 로직: 사용자 상호작용에 따른 UI 상태 변경
+  const handleContextButtonClick = () => {
+    setIsContextVisible(!isContextVisible);
+  };
+  const handleTestFinished = (): void => {
+    setIsFinished(true);
   };
   //
 
@@ -229,7 +189,7 @@ export default function Test01Screen() {
               <Pagination
                 currentPage={currentQuestionIndex}
                 totalPages={totalQuestions}
-                onPageChange={handlePageChange}
+                onPageChange={setCurrentQuestionIndex}
                 handleFinished={handleTestFinished}
               />
             )}

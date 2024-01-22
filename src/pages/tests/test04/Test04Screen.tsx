@@ -10,11 +10,16 @@ import CoachMark from "@components/tests/CoachMark";
 import Test04InteractiveButton from "@components/tests/test04/Test04InteractiveButton";
 import DraggableQuestion from "@components/tests/test04/DraggableQuestion";
 
+import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
+
 export default function Test04Screen() {
   const [isPlay, setIsPlay] = useState(false);
   const [activeButtonId, setActiveButtonId] = useState(-1);
   const [isFinished, setIsFinished] = useState(false);
   const [isCoachMarkVisible, setIsCoachMarkVisible] = useState(true);
+  const { level, quiz } = useParams();
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
+  const totalQuestions = 5;
 
   // 문제 더미 데이터
   const questionData = [
@@ -26,20 +31,13 @@ export default function Test04Screen() {
   ];
   //
 
-  // 현재 문제 풀이 진행도를 출력하기 위한 코드
-  const { level, page, quiz } = useParams();
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
-  const totalQuestions = 5;
-
-  interface DifficultyMapping {
-    [key: string]: string;
-  }
-  const difficultyMapping: DifficultyMapping = {
+  // 난이도 매핑 로직 (useDifficultyMapping)
+  const difficultyMapping = {
     word3: "3문장 세트",
     word4: "4문장 세트",
     word5: "5문장 세트",
   };
-  const difficultyText = level ? difficultyMapping[level] : "난이도 미정";
+  const difficultyText = useDifficultyMapping({ level, mapping: difficultyMapping });
   //
 
   // URL에 따른 문제 개수 조절
@@ -58,10 +56,6 @@ export default function Test04Screen() {
   );
   //
 
-  // 각 문제의 응답 상태 관리
-
-  //
-
   // 드래그된 요소의 위치를 변경하는 로직
   const moveQuestion = (dragIndex: number, hoverIndex: number) => {
     const dragItem = visibleQuestions[dragIndex];
@@ -73,10 +67,7 @@ export default function Test04Screen() {
   };
   //
 
-  // 퀴즈 데이터 패칭 로직
-
-  //
-
+  // 상태 관리 로직: 사용자 상호작용에 따른 UI 상태 변경
   const handlePlayClick = (buttonId: number) => {
     const isActivating = activeButtonId !== buttonId || !isPlay;
     setActiveButtonId(isActivating ? buttonId : -1);
@@ -92,6 +83,15 @@ export default function Test04Screen() {
   const handleCoachMarkVisible = () => {
     setIsCoachMarkVisible(false);
   };
+  //
+
+  // 퀴즈 데이터 패칭 로직
+
+  //
+
+  // 각 문제의 응답 상태 관리
+
+  //
 
   return (
     <DndProvider backend={HTML5Backend}>

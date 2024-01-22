@@ -1,5 +1,6 @@
 [
   {
+    "audioPath": "test02",
     "index": 1,
     "speechcontext": "통영하면 바로 떠오르는 먹거리는 충무김밥입니다. 통영의 충무김밥은 김밥과 반찬의 조합이 특징입니다.",
     "questioncode": "SA01",
@@ -7,6 +8,7 @@
     "answer": "충무김밥"
   },
   {
+    "audioPath": "test02",
     "index": 2,
     "speechcontext": "우도는 누워있는 소의 형상을 꼭 빼닮았습니다. 그래서 섬의 이름을 우도라고 합니다.",
     "questioncode": "SA02",
@@ -14,6 +16,7 @@
     "answer": "우도"
   },
   {
+    "audioPath": "test02",
     "index": 3,
     "speechcontext": "월명 공원은 오래된 벚나무가 많고 울창합니다. 그래서 월명공원은 특히 봄경치가 아름답기로 소문이 나 있습니다.",
     "questioncode": "SA03",
@@ -21,6 +24,7 @@
     "answer": "월명 공원"
   },
   {
+    "audioPath": "test02",
     "index": 4,
     "speechcontext": "오동도는 여수를 대표하는 관광명소입니다. 이 오동도는 많은 연인들이 찾아와 사랑을 속삭이는 장소이기도 합니다.",
     "questioncode": "SA04",
@@ -28,6 +32,7 @@
     "answer": "오동도"
   },
   {
+    "audioPath": "test02",
     "index": 5,
     "speechcontext": "보성군에 자리한 보성 차밭은 매우 아름답습니다. 그래서 많은 관광객들이 보성 차밭을 구경옵니다.",
     "questioncode": "SA05",
