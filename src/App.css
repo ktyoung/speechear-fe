@@ -1967,3 +1967,57 @@ input:checked + .slider:before {
     left: 3%;
   }
 }
+
+/* Mobile */
+@media screen and (max-width: 575px) {
+  .login_page.transition_3 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .img_circle_logo {
+    top: -35px;
+  }
+  .circle_logo {
+    display: none;
+  }
+  .circle_logo_center {
+    display: block;
+    width: 100%;
+  }
+
+  .form_area {
+    position: absolute;
+    margin: 0 auto;
+    bottom: 120px;
+  }
+  #loginForm {
+    width: 100%;
+  }
+  .form_style {
+    width: 240px;
+    font-size: 18px;
+    font-family: "Pretendard Variable";
+  }
+  .btn_login_bottom {
+    margin: 20px 0;
+  }
+  .btn_login {
+    width: 195px;
+    height: 50px;
+    padding: 10px;
+    font-size: 21px;
+  }
+  .account_link > div {
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+
+  .text_div_bottom {
+    bottom: 10px;
+    font-size: 10px;
+    font-family: "Pretendard Variable";
+  }
+}
