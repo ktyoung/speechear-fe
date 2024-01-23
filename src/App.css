@@ -486,6 +486,9 @@
   line-height: 180%;
   word-break: keep-all;
 }
+.license-text.mobile {
+  display: none;
+}
 
 .select-button-wrapper {
   display: flex;
@@ -1494,6 +1497,7 @@
   border: none;
   border-radius: 34px;
   background: #fff;
+  font-family: "Pretendard Variable";
   font-size: 32px;
   letter-spacing: 1.2px;
   font-weight: 400;
@@ -1970,6 +1974,7 @@ input:checked + .slider:before {
 
 /* Mobile */
 @media screen and (max-width: 575px) {
+  /* Login */
   .login_page.transition_3 {
     position: relative;
     display: flex;
@@ -2019,5 +2024,68 @@ input:checked + .slider:before {
     bottom: 10px;
     font-size: 10px;
     font-family: "Pretendard Variable";
+  }
+
+  /* License */
+  .main-wrapper.license {
+    width: 100%;
+    height: 100vh;
+    padding: 35px;
+  }
+
+  .main-wrapper.license .main-logo {
+    display: none;
+  }
+  .main-description {
+    margin: 0;
+    white-space: normal;
+    font-size: 18px;
+  }
+  .license-text {
+    display: none;
+  }
+  .license-text.mobile {
+    display: block;
+  }
+
+  .main-contents__bottom {
+    margin: 100px 0 0 0;
+  }
+
+  .license-key-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .license-key-input {
+    width: 100%;
+    height: 100%;
+    margin: 0 0 31px 0;
+    padding: 20px;
+    font-size: 26px;
+  }
+
+  .license-check__pass {
+    flex-direction: column;
+  }
+  .license-check__pass img {
+    float: none;
+    margin: 0;
+  }
+  .license-check-modal {
+    width: 100%;
+    height: 100%;
+    margin: 20px 0;
+  }
+  .license-check__pass a {
+    margin: 0;
+  }
+
+  .main-wrapper.license .main-logo-bottom {
+    bottom: 30px;
+  }
+  .main-wrapper.license .main-logo-bottom img {
+    width: 100%;
   }
 }
