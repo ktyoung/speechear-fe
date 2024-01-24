@@ -202,7 +202,13 @@ function GlobalConfigModal({ setGlobalConfigModal }: any) {
   );
 }
 
-function NavLink({ to, defaultIcon, clickedIcon, children }: any) {
+type NavLinkProps = {
+  to: string;
+  defaultIcon: string;
+  clickedIcon: string;
+  children: string;
+};
+function NavLink({ to, defaultIcon, clickedIcon, children }: NavLinkProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -231,7 +237,7 @@ function NavLink({ to, defaultIcon, clickedIcon, children }: any) {
         }
         alt="Icon"
       />
-      {children}
+      <p>{children}</p>
     </Link>
   );
 }
