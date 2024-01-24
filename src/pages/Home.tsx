@@ -1,3 +1,4 @@
+import BottomAppBar from "@components/common/BottomAppBar";
 import SelectTypeButton from "@components/common/SelectTypeButton";
 
 export default function Home() {
