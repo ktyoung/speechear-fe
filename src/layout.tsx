@@ -1,3 +1,4 @@
+import BottomAppBar from "@components/common/BottomAppBar";
 import Header from "./components/common/Header";
 
 export default function Layout({ children }: any) {
@@ -5,6 +6,7 @@ export default function Layout({ children }: any) {
     <>
       <Header />
       {children}
+      <BottomAppBar />
     </>
   );
 }

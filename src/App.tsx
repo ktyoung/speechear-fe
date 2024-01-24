@@ -1,11 +1,13 @@
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import "./App.css";
+import Layout from "./layout";
 import Login from "@pages/Login";
 import Home from "@pages/Home";
 import SignUp from "@pages/Signup";
-import Layout from "./layout";
 import MyPage from "@pages/MyPage";
+import License from "@pages/License";
+import Settings from "@pages/Settings";
 import Test01Menu from "@pages/tests/test01/Test01Menu";
 import Test01Level from "@pages/tests/test01/Test01Level";
 import Test01Screen from "@pages/tests/test01/Test01Screen";
@@ -20,8 +22,6 @@ import Test04Level from "@pages/tests/test04/Test04Level";
 import Test04Screen from "@pages/tests/test04/Test04Screen";
 import Test05Menu from "@pages/tests/test05/Test05Menu";
 import Test05Screen from "@pages/tests/test05/Test05Screen";
-import License from "@pages/License";
-import Settings from "@pages/Settings";
 
 function LayoutRoutes() {
   return (
