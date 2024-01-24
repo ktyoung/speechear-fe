@@ -2116,7 +2116,7 @@ input:checked + .slider:before {
   }
 
   /* BottomAppBar */
-  .bottom-app-bar-container {
+  .bottom-nav-bar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2125,14 +2125,14 @@ input:checked + .slider:before {
     padding: 10px 42px 36px 42px;
     border-top: 0.333px solid rgba(0, 0, 0, 0.3);
   }
-  .bottom-app-bar-container a {
+  .bottom-nav-bar-container a {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 5px 0;
   }
-  .bottom-app-bar-text {
+  .bottom-nav-bar-text {
     font-family: "Pretendard Variable";
     font-size: 15px;
     font-weight: 500;

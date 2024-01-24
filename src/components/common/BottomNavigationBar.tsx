@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function BottomAppBar() {
+export default function BottomNavigationBar() {
   return (
-    <div className="bottom-app-bar-container">
-      <ActionButton
+    <div className="bottom-nav-bar-container">
+      <BottomNavItem
         to="/home"
         defaultIcon="icon_card_grey"
         clickedIcon="icon_card"
         children="사용자로그"
       />
-      <ActionButton
+      <BottomNavItem
         to="/home"
         defaultIcon="icon_note_grey"
         clickedIcon="icon_note"
         children="연습하기"
       />
-      <ActionButton
+      <BottomNavItem
         to="/settings"
         defaultIcon="icon_setting_grey"
         clickedIcon="icon_setting"
@@ -26,13 +26,13 @@ export default function BottomAppBar() {
   );
 }
 
-type ActionButtonProps = {
+type BottomNavItemProps = {
   to: string;
   defaultIcon: string;
   clickedIcon: string;
   children: string;
 };
-function ActionButton({ to, defaultIcon, clickedIcon, children }: ActionButtonProps) {
+function BottomNavItem({ to, defaultIcon, clickedIcon, children }: BottomNavItemProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -61,7 +61,7 @@ function ActionButton({ to, defaultIcon, clickedIcon, children }: ActionButtonPr
         }
         alt="Icon"
       />
-      <p className="bottom-app-bar-text">{children}</p>
+      <p className="bottom-nav-bar-text">{children}</p>
     </Link>
   );
 }
