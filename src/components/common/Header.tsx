@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { modalState, globalConfigModalState, gConfigState } from "@states/index";
 
-export default function Header() {
+export default function Header({ className = "" }: any) {
   const [modal, setModal] = useRecoilState(modalState);
   const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -24,7 +24,7 @@ export default function Header() {
           setModal={setModal}
         />
       )} */}
-      <header className="header-wrapper">
+      <header className={`header-wrapper ${className}`}>
         <div className="header">
           <div className="header-logo">
             <Link

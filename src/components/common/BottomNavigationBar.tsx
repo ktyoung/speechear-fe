@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function BottomNavigationBar() {
+export default function BottomNavigationBar({ className = "" }: any) {
   return (
-    <div className="bottom-nav-bar-container">
+    <div className={`bottom-nav-bar-container ${className}`}>
       <BottomNavItem
         to="/home"
         defaultIcon="icon_card_grey"

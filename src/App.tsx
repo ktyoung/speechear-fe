@@ -28,7 +28,6 @@ function LayoutRoutes() {
     <Layout>
       <Routes>
         <Route path="/home" element={<Home />} />
-
         {/* Test01  */}
         <Route path="/training/part1" element={<Test01Menu />} />
         <Route path="/training/part1/:level/:page" element={<Test01Level />} />
