@@ -631,6 +631,10 @@
 }
 
 /* Test01Menu.tsx */
+.swiper.swipe-header-tabs-container {
+  display: none;
+}
+
 .main-contents.home.test {
   align-items: flex-start;
 }
@@ -2119,7 +2123,7 @@ input:checked + .slider:before {
   }
   .main-contents.info,
   .main-contents.settings {
-    height: 100%;
+    height: auto;
     padding: 30px;
     overflow-y: scroll;
   }
@@ -2242,19 +2246,23 @@ input:checked + .slider:before {
   .main-wrapper {
     padding: 0;
     height: calc(100vh - 95px - 95px);
+    overflow-x: hidden;
   }
   .main-wrapper,
   .main-contents.home .main-select-wrapper {
     background-color: #fff;
   }
   .main-contents.home {
-    height: 100%;
+    height: auto;
     padding: 30px;
     overflow-y: scroll;
   }
   .main-contents.home .main-select-wrapper {
     width: 100%;
     height: auto;
+    padding: 0;
+  }
+  .main-contents.home.test .main-select-wrapper {
     padding: 0;
   }
 
@@ -2331,5 +2339,83 @@ input:checked + .slider:before {
 
   .bottom-nav-bar-container.settings {
     display: flex;
+  }
+
+  /* SwipeableHeaderTabs */
+  .swiper.swipe-header-tabs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 20px 0;
+    width: 80vw;
+  }
+  .header-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 200px;
+    height: 50px;
+    margin: 0 12px 0 0;
+    padding: 12px 32px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 100px;
+
+    color: #d9d9d9;
+    background: #f3f3f3;
+  }
+
+  /* Test01Menu */
+
+  .main-contents.home.test .main-contents__column > p {
+    display: none;
+  }
+
+  .main-wrapper.bg-gray,
+  .main-contents.home.test {
+    background-color: #fbfbfb;
+  }
+
+  .test-card-wrapper {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 16px;
+  }
+  .test-card-left {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .main-contents.home.test .main-select-wrapper .font-light {
+    margin: 0 10px 0 0;
+    font-weight: 800;
+    font-size: 25px;
+    color: #40a0ff;
+  }
+  .test-card-right {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+  .test-card-right__row {
+    margin: 0;
+    border: none;
+  }
+  .test-card-right p.margin {
+    width: 60%;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .test-card-right .text-gray {
+    width: 40%;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .test-card-button {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
   }
 }
