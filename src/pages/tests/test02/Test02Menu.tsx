@@ -4,6 +4,7 @@ import TestCategory from "@components/TestCategory";
 import Snb from "@components/common/Snb";
 import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 import { Link } from "react-router-dom";
+import React from "react";
 
 export default function Test02Menu() {
   const testCategories = categories["02"];
@@ -22,9 +23,8 @@ export default function Test02Menu() {
             <div className="test-category-container">
               {testCategories.map((items, i) => {
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     <TestCategory
-                      key={i}
                       part="part2"
                       icon={items.icon}
                       children={items.children}
@@ -32,7 +32,7 @@ export default function Test02Menu() {
                     <Link className="link-sm" to={`/training/part2/${items.icon}/1`}>
                       {items.children}
                     </Link>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>
