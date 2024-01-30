@@ -18,19 +18,33 @@ export default function SwipeableHeaderTabs() {
     { title: "가로세로 퀴즈", to: "/training/part5" },
   ];
 
+  // 초기 슬라이드 인덱스를 계산하는 함수
+  type TabDetail = {
+    title: string;
+    to: string;
+  };
+  const findInitialSlideIndex = (pathname: string, tabsDetail: TabDetail[]): number => {
+    return tabsDetail.findIndex((tab) => pathname.includes(tab.to));
+  };
+  //
+
+  const initialSlideIndex = findInitialSlideIndex(location.pathname, tabsDetail);
+
   useEffect(() => {
-    const tabIndex = tabsDetail.findIndex((tab) => location.pathname.includes(tab.to));
-    if (tabIndex !== -1 && swiperRef.current) {
-      swiperRef.current.slideTo(tabIndex, 500);
+    const tabIndex = findInitialSlideIndex(location.pathname, tabsDetail);
+    if (swiperRef.current && tabIndex !== activeIndex) {
+      swiperRef.current.slideTo(tabIndex);
       setActiveIndex(tabIndex);
     }
-  }, [location, tabsDetail]);
+  }, [location.pathname]);
 
   return (
     <Swiper
+      initialSlide={initialSlideIndex}
       slidesPerView={"auto"}
       centeredSlides={true}
       spaceBetween={10}
+      loop={false}
       onSwiper={(swiper: SwiperCore) => {
         swiperRef.current = swiper;
       }}
