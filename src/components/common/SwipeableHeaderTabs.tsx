@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,6 +7,7 @@ import "swiper/css";
 
 export default function SwipeableHeaderTabs() {
   const location = useLocation();
+  const swiperRef = useRef<SwiperCore | undefined>(undefined);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const tabsDetail = [
@@ -19,8 +20,11 @@ export default function SwipeableHeaderTabs() {
 
   useEffect(() => {
     const tabIndex = tabsDetail.findIndex((tab) => location.pathname.includes(tab.to));
-    if (tabIndex !== -1) setActiveIndex(tabIndex);
-  }, [location]);
+    if (tabIndex !== -1 && swiperRef.current) {
+      swiperRef.current.slideTo(tabIndex, 500);
+      setActiveIndex(tabIndex);
+    }
+  }, [location, tabsDetail]);
 
   return (
     <Swiper
@@ -28,7 +32,7 @@ export default function SwipeableHeaderTabs() {
       centeredSlides={true}
       spaceBetween={10}
       onSwiper={(swiper: SwiperCore) => {
-        swiper.slideTo(activeIndex);
+        swiperRef.current = swiper;
       }}
       className="swipe-header-tabs-container"
     >
