@@ -2449,4 +2449,12 @@ input:checked + .slider:before {
     font-size: 25px;
     font-weight: 800;
   }
+
+  /* Test03Menu */
+  .test-category-container.grid {
+    justify-items: center;
+    gap: 20px;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
