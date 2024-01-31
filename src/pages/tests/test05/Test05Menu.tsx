@@ -1,35 +1,37 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import Snb from "@components/common/Snb";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 import QuizLinks from "@components/tests/test05/QuizLinks";
+
+import SwiperCore from "swiper";
 
 export default function Test05Menu() {
   const [currentPage, setCurrentPage] = useState(1);
+  const totalPage = 2;
+  const swiperRef = useRef<SwiperCore | null>(null);
 
   // 이전 또는 다음 페이지로 이동하기 위한 로직
-  const handleLeftArrowClick = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
-  const handleRightArrowClick = () => {
-    if (currentPage < 2) {
-      setCurrentPage((prev) => prev + 1);
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(page - 1);
     }
   };
   //
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper bg-gray">
       <div className="main-contents home test">
         <div className="snb">
           <Snb />
         </div>
         <div className="main-contents__column">
           <p className="mb pb">가로세로 퀴즈</p>
+          <SwipeableHeaderTabs />
           <div className="main-select-wrapper visible relative">
             <div className="pagination-arrows">
-              <button onClick={handleLeftArrowClick}>
+              <button onClick={() => goToPage(currentPage - 1)}>
                 <img
                   src={
                     currentPage === 1
@@ -43,22 +45,22 @@ export default function Test05Menu() {
                   }}
                 />
               </button>
-              <button onClick={handleRightArrowClick}>
+              <button onClick={() => goToPage(currentPage + 1)}>
                 <img
                   src={
-                    currentPage === 2
+                    currentPage === totalPage
                       ? `${process.env.PUBLIC_URL}/images/icons/icon_arrow_right_disabled.png`
                       : `${process.env.PUBLIC_URL}/images/icons/icon_arrow_right.png`
                   }
                   alt="Right Arrow Icon"
                   style={{
-                    opacity: currentPage === 2 ? 0.5 : 1,
-                    cursor: currentPage === 2 ? "default" : "pointer",
+                    opacity: currentPage === totalPage ? 0.5 : 1,
+                    cursor: currentPage === totalPage ? "default" : "pointer",
                   }}
                 />
               </button>
             </div>
-            <QuizLinks page={currentPage} />
+            <QuizLinks page={currentPage} setPage={goToPage} />
           </div>
         </div>
       </div>
