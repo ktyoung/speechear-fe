@@ -44,7 +44,7 @@ export default function SwipeableHeaderTabs() {
       slidesPerView={"auto"}
       centeredSlides={true}
       spaceBetween={10}
-      loop={true}
+      loop={false}
       onSwiper={(swiper: SwiperCore) => {
         swiperRef.current = swiper;
       }}
