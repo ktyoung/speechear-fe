@@ -43,7 +43,7 @@ export default function Test01Level() {
   }, [currentPage]);
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper bg-gray">
       <div className="main-contents home test">
         <div className="snb">
           <Snb />
@@ -69,11 +69,11 @@ export default function Test01Level() {
   );
 }
 
-interface PaginationProps {
+type PaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (pageNumber: number) => void;
-}
+};
 function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
   return (
     <div className="pagination-wrapper">

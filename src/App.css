@@ -752,6 +752,13 @@
   padding: 0 0 14px 0;
 }
 
+.status-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 .status-card {
   display: flex;
   justify-content: center;
@@ -2419,6 +2426,39 @@ input:checked + .slider:before {
     width: 100%;
     height: auto;
     font-size: 14px;
+  }
+
+  /* Test01Level */
+  .main-contents.home.test .main-select-wrapper .font-light {
+    display: none;
+  }
+
+  .status-card {
+    width: 100%;
+    gap: 20px;
+  }
+  .status-card__number {
+    width: 10%;
+  }
+  .status-card__progress-bar {
+    width: 45%;
+  }
+  .status-card__percentage {
+    font-size: 14px;
+  }
+  .status-card__complete {
+    width: 17px;
+    height: 17px;
+  }
+  .status-card__complete > img {
+    width: 60%;
+  }
+
+  .pagination-wrapper {
+    width: 100%;
+  }
+  .pagination-wrapper .page-item {
+    margin: 0;
   }
 
   /* Test02Menu */
