@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 
+import tabsData from "@datas/swipeableHeaderTabsData.json";
+
 import Snb from "@components/common/Snb";
 import StatusCard from "@components/tests/StatusCard";
 import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
@@ -51,7 +53,7 @@ export default function Test01Level() {
         </div>
         <div className="main-contents__column">
           <p className="mb pb">소음 하 문장 듣기</p>
-          <SwipeableHeaderTabs />
+          <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
           <div className="main-select-wrapper visible sm">
             <p className="font-light">듣기연습할 문장 세트를 선택하세요.</p>
             <div className="status-card-wrapper">

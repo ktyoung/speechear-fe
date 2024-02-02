@@ -1,4 +1,5 @@
 import categories from "@datas/testCategories.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import TestSetCard from "@components/tests/test04/TestSetCard";
@@ -15,7 +16,7 @@ export default function Test04Menu() {
         </div>
         <div className="main-contents__column">
           <p className="mb pb">문장 순서화 하기</p>
-          <SwipeableHeaderTabs />
+          <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
           <div className="main-select-wrapper visible">
             {testCategories.map((items, i) => {
               return (

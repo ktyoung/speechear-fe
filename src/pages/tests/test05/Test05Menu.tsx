@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 
+import tabsData from "@datas/swipeableHeaderTabsData.json";
+
 import Snb from "@components/common/Snb";
 import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 import QuizLinks from "@components/tests/test05/QuizLinks";
@@ -28,7 +30,7 @@ export default function Test05Menu() {
         </div>
         <div className="main-contents__column">
           <p className="mb pb">가로세로 퀴즈</p>
-          <SwipeableHeaderTabs />
+          <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
           <div className="main-select-wrapper visible relative">
             <div className="pagination-arrows">
               <button onClick={() => goToPage(currentPage - 1)}>

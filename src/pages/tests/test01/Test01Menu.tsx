@@ -1,4 +1,5 @@
 import categories from "@datas/testCategories.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import DifficultyCard from "@components/tests/test01/DifficultyCard";
@@ -15,7 +16,7 @@ export default function Test01Menu() {
         </div>
         <div className="main-contents__column">
           <p>소음 하 문장 듣기</p>
-          <SwipeableHeaderTabs />
+          <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
           <div className="main-select-wrapper">
             {testCategories.map((level) => (
               <DifficultyCard

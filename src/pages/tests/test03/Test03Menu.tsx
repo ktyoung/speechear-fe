@@ -1,10 +1,12 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 import categories from "@datas/testCategories.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import TestCategory from "@components/TestCategory";
 import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
-import { Link } from "react-router-dom";
-import React from "react";
 
 export default function Test03Menu() {
   const testCategories = categories["03"];
@@ -17,7 +19,7 @@ export default function Test03Menu() {
         </div>
         <div className="main-contents__column">
           <p className="mb pb">긴 이야기 듣기</p>
-          <SwipeableHeaderTabs />
+          <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
           <div className="main-select-wrapper visible">
             <p className="font-bold">듣고 싶은 이야기를 골라주세요</p>
             <div className="test-category-container grid">
