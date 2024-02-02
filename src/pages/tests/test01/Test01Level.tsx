@@ -5,6 +5,7 @@ import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 
 import Snb from "@components/common/Snb";
 import StatusCard from "@components/tests/StatusCard";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 
 const TOTAL_CARDS = 100;
 const CARDS_PER_PAGE = 10;
@@ -50,7 +51,8 @@ export default function Test01Level() {
         </div>
         <div className="main-contents__column">
           <p className="mb pb">소음 하 문장 듣기</p>
-          <div className="main-select-wrapper visible">
+          <SwipeableHeaderTabs />
+          <div className="main-select-wrapper visible sm">
             <p className="font-light">듣기연습할 문장 세트를 선택하세요.</p>
             <div className="status-card-wrapper">
               {currentCards.map((number) => (
