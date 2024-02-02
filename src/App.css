@@ -2500,6 +2500,11 @@ input:checked + .slider:before {
     font-weight: 800;
   }
 
+  /* Test02Level */
+  .test-category-lnb.lnb__wide {
+    display: none;
+  }
+
   /* Test03Menu */
   .test-category-container.grid {
     justify-items: center;
