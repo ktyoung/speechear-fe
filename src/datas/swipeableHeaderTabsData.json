@@ -1,0 +1,33 @@
+{
+  "mainNavigationTabs": [
+    { "title": "소음 하 문장듣기", "to": "/training/part1" },
+    { "title": "짧은 이야기 듣기", "to": "/training/part2" },
+    { "title": "긴 이야기 듣기", "to": "/training/part3" },
+    { "title": "문장 순서화 하기", "to": "/training/part4" },
+    { "title": "가로세로 퀴즈", "to": "/training/part5" }
+  ],
+  "listeningShortStoriesTabs": [
+    { "title": "지역", "to": "/training/part2/location/1" },
+    { "title": "우리문화", "to": "/training/part2/culture/1" },
+    { "title": "음식", "to": "/training/part2/food/1" },
+    { "title": "기타", "to": "/training/part2/etc/1" }
+  ],
+  "listeningLongStoriesTabs": [
+    { "title": "요리", "to": "/training/part3/cook/1" },
+    { "title": "전통문화", "to": "/training/part3/orient_culture/1" },
+    { "title": "스포츠", "to": "/training/part3/sport/1" },
+    { "title": "세계의 잔치", "to": "/training/part3/party/1" },
+    { "title": "속담", "to": "/training/part3/proverb/1" },
+    { "title": "지역", "to": "/training/part3/location/1" },
+    { "title": "세계유산", "to": "/training/part3/heritage/1" },
+    { "title": "나라", "to": "/training/part3/nation/1" },
+    { "title": "건강", "to": "/training/part3/health/1" },
+    { "title": "인물", "to": "/training/part3/person/1" },
+    { "title": "기타", "to": "/training/part3/etc/1" }
+  ],
+  "sentenceOrderingTabs": [
+    { "title": "3문장 세트", "to": "/training/part4/word3/1" },
+    { "title": "4문장 세트", "to": "/training/part4/word4/1" },
+    { "title": "5문장 세트", "to": "/training/part4/word5/1" }
+  ]
+}
