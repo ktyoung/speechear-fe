@@ -4,9 +4,11 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 
 import categories from "@datas/testCategories.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import StatusCard from "@components/tests/StatusCard";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 
 const CARDS_PER_PAGE = 10;
 
@@ -49,6 +51,8 @@ export default function Test04Level() {
         <div className="main-contents__column">
           <p className="mb pb">문장 순서화 하기</p>
           <div className="main-select-wrapper visible">
+            <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
+            <SwipeableHeaderTabs tabsDetail={tabsData.sentenceOrderingTabs} />
             <div className="test-category-lnb">
               {testCategories.map((items, i) => {
                 const isActive = location.pathname.includes(items.to);

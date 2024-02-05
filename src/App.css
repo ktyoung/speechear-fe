@@ -2512,6 +2512,7 @@ input:checked + .slider:before {
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
   /* Test03Level */
   .test-category-lnb.narrow {
     display: none;
@@ -2525,6 +2526,11 @@ input:checked + .slider:before {
   .card-link {
     font-size: 14px;
     font-weight: 500;
+  }
+
+  /* Test04Level */
+  .test-category-lnb {
+    display: none;
   }
 
   /* Test05Menu */
