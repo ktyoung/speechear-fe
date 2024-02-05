@@ -2534,6 +2534,9 @@ input:checked + .slider:before {
   }
 
   /* Test05Menu */
+  .main-contents.home.test.h-auto {
+    height: auto;
+  }
   .main-contents.home.test .main-select-wrapper.visible.relative {
     padding: 30px 0 0 0;
   }

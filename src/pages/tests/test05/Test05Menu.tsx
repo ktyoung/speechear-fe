@@ -24,7 +24,7 @@ export default function Test05Menu() {
 
   return (
     <div className="main-wrapper bg-gray">
-      <div className="main-contents home test">
+      <div className="main-contents home test h-auto">
         <div className="snb">
           <Snb />
         </div>
