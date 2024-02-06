@@ -1,0 +1,167 @@
+import { useState, useEffect } from "react";
+
+import { useAnswerManagement } from "@hooks/useAnswerManagement";
+import { useQuestionNavigation } from "@hooks/useQuestionNavigation";
+
+import AnswerButton from "./AnswerButton";
+
+type MobileTestControllerProps = {
+  difficultyText: string;
+  quiz: string;
+  currentQuestionIndex: number;
+  totalQuestions: number;
+};
+
+export default function MobileTestController({
+  difficultyText,
+  quiz,
+  // currentQuestionIndex,
+  totalQuestions,
+}: MobileTestControllerProps) {
+  const [isPlay, setIsPlay] = useState(false);
+  const [isContextVisible, setIsContextVisible] = useState(false);
+
+  // 문제 이동과 관련된 상태 및 함수 관리(useQuestionNavigation)
+  const { currentQuestionIndex, handleLeftArrowClick, handleRightArrowClick } =
+    useQuestionNavigation({ totalQuestions });
+  //
+
+  // 선택된 답변을 관리하는 로직 (useAnswerManagement)
+  const { selectedAnswers, handleSelect } = useAnswerManagement();
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+
+  useEffect(() => {
+    setSelectedAnswer(selectedAnswers[currentQuestionIndex] || null);
+  }, [currentQuestionIndex, selectedAnswers]);
+
+  const handleAnswerSelect = (answer: string) => {
+    handleSelect(currentQuestionIndex, answer);
+    setSelectedAnswer(answer);
+  };
+  //
+
+  const handlePlay = () => {
+    setIsPlay(!isPlay);
+  };
+  const handleContextVisible = () => {
+    setIsContextVisible(!isContextVisible);
+  };
+
+  const audioButtonStyle = {
+    width: "100%",
+    padding: "12px 32px",
+    backgroundColor: isPlay ? "#40A0FF" : "#63b4ff1a",
+    borderRadius: "100px",
+  };
+  const moreIconStyle = {
+    transform: isContextVisible ? "rotateX(180deg)" : "rotateX(0deg)",
+    transition: "transform 0.4s",
+  };
+
+  return (
+    <div className="mobile-test-controller-container">
+      <p className="mobile__font-bold">다음 문장을 듣고 따라해 보세요.</p>
+      <img
+        src={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
+        alt="Blue Speaker Icon"
+      />
+
+      <div className="context__arrows">
+        <button onClick={handleLeftArrowClick}>
+          <img
+            src={
+              currentQuestionIndex === 1
+                ? `${process.env.PUBLIC_URL}/images/icons/icon_arrow_left_disabled.png`
+                : `${process.env.PUBLIC_URL}/images/icons/icon_arrow_left.png`
+            }
+            alt="Left Arrow Icon"
+            className="left-arrow"
+            style={{
+              opacity: currentQuestionIndex === 1 ? 0.5 : 1,
+              cursor: currentQuestionIndex === 1 ? "default" : "pointer",
+            }}
+          />
+        </button>
+        <button onClick={handleRightArrowClick}>
+          <img
+            src={
+              currentQuestionIndex === totalQuestions
+                ? `${process.env.PUBLIC_URL}/images/icons/icon_arrow_right_disabled.png`
+                : `${process.env.PUBLIC_URL}/images/icons/icon_arrow_right.png`
+            }
+            alt="Right Arrow Icon"
+            className="right-arrow"
+            style={{
+              opacity: currentQuestionIndex === totalQuestions ? 0.5 : 1,
+              cursor: currentQuestionIndex === totalQuestions ? "default" : "pointer",
+            }}
+          />
+        </button>
+      </div>
+
+      <div className="controller">
+        <div className="controller__title">
+          <p className="controller__title-bold">문장듣기</p>
+          <p className="controller__diffculty">
+            {difficultyText} [{quiz}] {currentQuestionIndex}/{totalQuestions}
+          </p>
+        </div>
+
+        <div className="controller__audio">
+          <button
+            className="controller__audio-btn"
+            style={audioButtonStyle}
+            onClick={handlePlay}
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/images/icons/${
+                isPlay ? "icon_pause_white_sm.png" : "icon_play_sm.png"
+              }`}
+              alt="Small Play Icon"
+              style={{ height: "18px" }}
+            />
+          </button>
+        </div>
+
+        <div className="controller__features-wrapper">
+          <button
+            className="controller__sentence-view-btn"
+            onClick={handleContextVisible}
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
+              alt="View More Icon"
+              style={moreIconStyle}
+            />
+            <p>문장 보기</p>
+          </button>
+          <button className="controller__no-noise">소음 없이 듣기</button>
+        </div>
+
+        {isContextVisible && (
+          <div className="controller__sentence-wrapper">
+            <p className="controller__sentence">
+              예시 문장입니다. 예시 문장입니다. 예시 문장입니다. 예시 문장입니다. 예시
+              문장입니다. 예시 문장입니다. 예시 문장입니다.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="test-contents__answer mobile">
+        <AnswerButton
+          label="정답"
+          icon="correct"
+          isSelected={selectedAnswer === "정답"}
+          onSelect={() => handleAnswerSelect("정답")}
+        />
+        <AnswerButton
+          label="오답"
+          icon="wrong"
+          isSelected={selectedAnswer === "오답"}
+          onSelect={() => handleAnswerSelect("오답")}
+        />
+      </div>
+    </div>
+  );
+}
