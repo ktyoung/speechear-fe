@@ -1,4 +1,5 @@
 type PaginationProps = {
+  className: string;
   currentPage: number;
   totalPages: number;
   onPageChange: (pageNumber: number) => void;
@@ -6,13 +7,14 @@ type PaginationProps = {
 };
 
 export default function Pagination({
+  className,
   currentPage,
   totalPages,
   onPageChange,
   handleFinished,
 }: PaginationProps) {
   return (
-    <div className="pagination-wrapper">
+    <div className={`pagination-wrapper ${className}`}>
       <ul>
         {[...Array(totalPages)].map((_, index) => {
           const number = index + 1;

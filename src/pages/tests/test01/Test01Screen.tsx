@@ -191,6 +191,7 @@ export default function Test01Screen() {
             </div>
             {!isFinished && (
               <Pagination
+                className="hidden"
                 currentPage={currentQuestionIndex}
                 totalPages={totalQuestions}
                 onPageChange={setCurrentQuestionIndex}
