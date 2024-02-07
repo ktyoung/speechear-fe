@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 
+import data from "@datas/test01Data.json";
+
 import { useAnswerManagement } from "@hooks/useAnswerManagement";
 import { useQuestionNavigation } from "@hooks/useQuestionNavigation";
+import { useQuizDataFetching } from "@hooks/useQuizDataFetching";
 
 import AnswerButton from "./AnswerButton";
 
@@ -19,11 +22,25 @@ export default function MobileTestController({
   totalQuestions,
 }: MobileTestControllerProps) {
   const [isPlay, setIsPlay] = useState(false);
+  const [currentContext, setCurrentContext] = useState("");
   const [isContextVisible, setIsContextVisible] = useState(false);
 
   // 문제 이동과 관련된 상태 및 함수 관리(useQuestionNavigation)
   const { currentQuestionIndex, handleLeftArrowClick, handleRightArrowClick } =
     useQuestionNavigation({ totalQuestions });
+  //
+
+  // 퀴즈 데이터 패칭 및 오디오 재생 로직 (useQuizDataFetching)
+  useQuizDataFetching({
+    currentQuestionIndex,
+    quizDataArray: data,
+    setContext: setCurrentContext,
+    isPlay,
+  });
+
+  const handlePlayClick = () => {
+    setIsPlay(!isPlay);
+  };
   //
 
   // 선택된 답변을 관리하는 로직 (useAnswerManagement)
@@ -40,9 +57,6 @@ export default function MobileTestController({
   };
   //
 
-  const handlePlay = () => {
-    setIsPlay(!isPlay);
-  };
   const handleContextVisible = () => {
     setIsContextVisible(!isContextVisible);
   };
@@ -107,11 +121,11 @@ export default function MobileTestController({
           </p>
         </div>
 
-        <div className="controller__audio">
+        <div className="controller__audio-control">
           <button
             className="controller__audio-btn"
             style={audioButtonStyle}
-            onClick={handlePlay}
+            onClick={handlePlayClick}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/icons/${
@@ -123,7 +137,7 @@ export default function MobileTestController({
           </button>
         </div>
 
-        <div className="controller__features-wrapper">
+        <div className="controller__features">
           <button
             className="controller__sentence-view-btn"
             onClick={handleContextVisible}
@@ -138,14 +152,18 @@ export default function MobileTestController({
           <button className="controller__no-noise">소음 없이 듣기</button>
         </div>
 
-        {isContextVisible && (
-          <div className="controller__sentence-wrapper">
-            <p className="controller__sentence">
-              예시 문장입니다. 예시 문장입니다. 예시 문장입니다. 예시 문장입니다. 예시
-              문장입니다. 예시 문장입니다. 예시 문장입니다.
-            </p>
-          </div>
-        )}
+        <div className="controller__sentence-wrapper">
+          <p
+            className="controller__sentence"
+            style={
+              isContextVisible
+                ? { opacity: 1, transition: "opacity 0.2s ease" }
+                : { opacity: 0, transition: "opacity 0.2s ease" }
+            }
+          >
+            {currentContext}
+          </p>
+        </div>
       </div>
 
       <div className="test-contents__answer mobile">
