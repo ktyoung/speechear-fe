@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-
-import data from "@datas/test01Data.json";
+import { useLocation } from "react-router-dom";
 
 import { useAnswerManagement } from "@hooks/useAnswerManagement";
 import { useQuestionNavigation } from "@hooks/useQuestionNavigation";
@@ -9,21 +8,28 @@ import { useQuizDataFetching } from "@hooks/useQuizDataFetching";
 import AnswerButton from "./AnswerButton";
 
 type MobileTestControllerProps = {
+  guideText: string;
   difficultyText: string;
   quiz: string;
   currentQuestionIndex: number;
   totalQuestions: number;
+  quizData: any[];
 };
 
 export default function MobileTestController({
+  guideText,
   difficultyText,
   quiz,
   // currentQuestionIndex,
   totalQuestions,
+  quizData,
 }: MobileTestControllerProps) {
+  const location = useLocation();
   const [isPlay, setIsPlay] = useState(false);
   const [currentContext, setCurrentContext] = useState("");
   const [isContextVisible, setIsContextVisible] = useState(false);
+
+  const isPart1Url = location.pathname.includes("/part1/");
 
   // 문제 이동과 관련된 상태 및 함수 관리(useQuestionNavigation)
   const { currentQuestionIndex, handleLeftArrowClick, handleRightArrowClick } =
@@ -33,7 +39,7 @@ export default function MobileTestController({
   // 퀴즈 데이터 패칭 및 오디오 재생 로직 (useQuizDataFetching)
   useQuizDataFetching({
     currentQuestionIndex,
-    quizDataArray: data,
+    quizDataArray: quizData,
     setContext: setCurrentContext,
     isPlay,
   });
@@ -74,7 +80,7 @@ export default function MobileTestController({
 
   return (
     <div className="mobile-test-controller-container">
-      <p className="mobile__font-bold">다음 문장을 듣고 따라해 보세요.</p>
+      <p className="mobile__font-bold">{guideText}</p>
       <img
         src={`${process.env.PUBLIC_URL}/images/icons/icon_speaker_blue.png`}
         alt="Blue Speaker Icon"
@@ -115,7 +121,9 @@ export default function MobileTestController({
 
       <div className="controller">
         <div className="controller__title">
-          <p className="controller__title-bold">문장듣기</p>
+          <p className="controller__title-bold">
+            {isPart1Url ? "문장듣기" : "이야기듣기"}
+          </p>
           <p className="controller__diffculty">
             {difficultyText} [{quiz}] {currentQuestionIndex}/{totalQuestions}
           </p>
@@ -147,9 +155,11 @@ export default function MobileTestController({
               alt="View More Icon"
               style={moreIconStyle}
             />
-            <p>문장 보기</p>
+            <p>{isPart1Url ? "문장 보기" : "이야기 보기"}</p>
           </button>
-          <button className="controller__no-noise">소음 없이 듣기</button>
+          <button className="controller__no-noise">
+            {!location.pathname.includes("/part1/basic/") && "소음 없이 듣기"}
+          </button>
         </div>
 
         <div className="controller__sentence-wrapper">

@@ -199,10 +199,12 @@ export default function Test01Screen() {
               />
             )}
             <MobileTestController
+              guideText="다음 문장을 듣고 따라해 보세요."
               difficultyText={difficultyText}
               quiz={quiz as string}
               currentQuestionIndex={currentQuestionIndex}
               totalQuestions={totalQuestions}
+              quizData={data}
             />
           </div>
         </div>
