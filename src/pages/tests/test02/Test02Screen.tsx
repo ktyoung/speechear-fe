@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import data from "@datas/test02Data.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import ToggleSwitch from "@components/common/ToggleSwitch";
@@ -9,6 +10,8 @@ import AnswerButton from "@components/common/AnswerButton";
 import SelectTypeButton from "@components/common/SelectTypeButton";
 import InteractiveTestButton from "@components/tests/InteractiveTestButton";
 import Pagination from "@components/tests/Pagination";
+import MobileTestController from "@components/common/MobileTestController";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 
 import { useQuestionNavigation } from "@hooks/useQuestionNavigation";
 import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
@@ -95,6 +98,8 @@ export default function Test02Screen() {
         <div className="main-contents__column">
           <p className="mb pb">짧은 이야기 듣기</p>
           <div className="main-select-wrapper visible">
+            <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
+            <SwipeableHeaderTabs tabsDetail={tabsData.listeningShortStoriesTabs} />
             <div className="text-container">
               {!isFinished ? (
                 <>
@@ -217,6 +222,14 @@ export default function Test02Screen() {
                 handleFinished={handleTestFinished}
               />
             )}
+            <MobileTestController
+              guideText="다음 문장과 질문을 듣고 답해 보세요."
+              difficultyText={difficultyText}
+              quiz={quiz as string}
+              currentQuestionIndex={currentQuestionIndex}
+              totalQuestions={totalQuestions}
+              quizData={data}
+            />
           </div>
         </div>
       </div>

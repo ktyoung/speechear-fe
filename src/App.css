@@ -2551,17 +2551,19 @@ input:checked + .slider:before {
     font-family: "Pretendard Variable";
     font-size: 18px;
     font-weight: 700;
+    text-wrap: nowrap;
     color: #4894fe;
   }
   .controller__no-noise {
     font-family: "Pretendard Variable";
     font-size: 14px;
     font-weight: 700;
+    text-wrap: nowrap;
     color: #4894fe;
   }
 
   .controller__sentence-wrapper {
-    height: 35px;
+    height: 50px;
     margin: 24px 0 0 0;
   }
   .controller__sentence {
@@ -2616,6 +2618,10 @@ input:checked + .slider:before {
   }
 
   /* Test03Menu */
+  .main-contents.home.test.h-auto {
+    height: auto;
+  }
+
   .test-category-container.grid {
     justify-items: center;
     gap: 20px;
