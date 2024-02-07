@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import data from "@datas/test03Data.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import SelectTypeButton from "@components/common/SelectTypeButton";
@@ -10,6 +11,7 @@ import Test03InteractiveButton from "@components/tests/test03/Test03InteractiveB
 
 import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
 import { useQuizDataFetching } from "@hooks/useQuizDataFetching";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 
 export default function Test03Screen() {
   const [currentContext, setCurrentContext] = useState("");
@@ -108,6 +110,8 @@ export default function Test03Screen() {
         <div className="main-contents__column">
           <p className="mb pb">긴 이야기 듣기</p>
           <div className="main-select-wrapper visible">
+            <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
+            <SwipeableHeaderTabs tabsDetail={tabsData.listeningLongStoriesTabs} />
             <div className="text-container">
               {!isFinished ? (
                 <>

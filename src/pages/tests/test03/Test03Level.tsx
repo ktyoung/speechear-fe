@@ -49,7 +49,7 @@ export default function Test03Level() {
           <Snb />
         </div>
         <div className="main-contents__column">
-          <p className="mb pb">짧은 이야기 듣기</p>
+          <p className="mb pb">긴 이야기 듣기</p>
           <div className="main-select-wrapper visible">
             <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
             <SwipeableHeaderTabs tabsDetail={tabsData.listeningLongStoriesTabs} />
