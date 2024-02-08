@@ -28,8 +28,11 @@ export default function MobileTestController({
   const [isPlay, setIsPlay] = useState(false);
   const [currentContext, setCurrentContext] = useState("");
   const [isContextVisible, setIsContextVisible] = useState(false);
+  const [isQuestionVisible, setIsQuestionVisible] = useState(false);
+  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
 
   const isPart1Url = location.pathname.includes("/part1/");
+  const isPart3Url = location.pathname.includes("/part3/");
 
   // 문제 이동과 관련된 상태 및 함수 관리(useQuestionNavigation)
   const { currentQuestionIndex, handleLeftArrowClick, handleRightArrowClick } =
@@ -63,20 +66,67 @@ export default function MobileTestController({
   };
   //
 
+  // 상태 관리 로직: 사용자 상호작용에 따른 UI 상태 변경
   const handleContextVisible = () => {
     setIsContextVisible(!isContextVisible);
+    setIsQuestionVisible(false);
   };
 
+  const handleQuestionVisible = () => {
+    setIsQuestionVisible(!isQuestionVisible);
+    setIsContextVisible(false);
+  };
+
+  const handleAnswerVisible = () => {
+    setIsAnswerVisible(!isAnswerVisible);
+  };
+  //
+
+  // 요소 스타일 정의
   const audioButtonStyle = {
     width: "100%",
     padding: "12px 32px",
     backgroundColor: isPlay ? "#40A0FF" : "#63b4ff1a",
     borderRadius: "100px",
   };
-  const moreIconStyle = {
-    transform: isContextVisible ? "rotateX(180deg)" : "rotateX(0deg)",
+
+  const createRotationStyle = (isVisible: boolean) => ({
+    transform: isVisible ? "rotateX(180deg)" : "rotateX(0deg)",
     transition: "transform 0.4s",
+  });
+  const contextMoreIconStyle = createRotationStyle(isContextVisible);
+  const questionMoreIconStyle = createRotationStyle(isQuestionVisible);
+
+  const activeButtonStyle = (isActive: boolean) => ({
+    color: isActive ? "#4894fe" : "#8696bb",
+  });
+  const contextButtonActiveStyle = activeButtonStyle(isContextVisible);
+  const questionButtonActiveStyle = activeButtonStyle(isQuestionVisible);
+  //
+
+  // 긴 이야기 듣기(Test03) 로직 및 문제 더미 데이터
+  const [subQuestionIndex, setSubQuestionIndex] = useState(0);
+
+  const handlePrevSubQuestion = () => {
+    if (subQuestionIndex > 0) {
+      setSubQuestionIndex(subQuestionIndex - 1);
+    }
   };
+
+  const handleNextSubQuestion = () => {
+    if (subQuestionIndex < 4) {
+      setSubQuestionIndex(subQuestionIndex + 1);
+    }
+  };
+
+  const questionData = [
+    { question: "기억나는 단어를 나열해 보세요.", answer: "스포츠 등" },
+    { question: "무엇에 관한 이야기입니까?", answer: "축구" },
+    { question: "축구에서의 한 팀은 몇 명입니까?", answer: "11명" },
+    { question: "일반적인 축구의 경기 시간은 얼만큼입니까?", answer: "90분" },
+    { question: "반칙을 당한 상대방에게 주어지는 기회는 무엇입니까?", answer: "프리킥" },
+  ];
+  //
 
   return (
     <div className="mobile-test-controller-container">
@@ -149,45 +199,122 @@ export default function MobileTestController({
           <button
             className="controller__sentence-view-btn"
             onClick={handleContextVisible}
+            style={contextButtonActiveStyle}
           >
             <img
               src={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
               alt="View More Icon"
-              style={moreIconStyle}
+              style={contextMoreIconStyle}
             />
             <p>{isPart1Url ? "문장 보기" : "이야기 보기"}</p>
           </button>
-          <button className="controller__no-noise">
-            {!location.pathname.includes("/part1/basic/") && "소음 없이 듣기"}
-          </button>
+          {!location.pathname.includes("/part1/basic/") && !isPart3Url && (
+            <button className="controller__no-noise">소음 없이 듣기</button>
+          )}
+          {isPart3Url && (
+            <button
+              className="controller__question-view-btn"
+              onClick={handleQuestionVisible}
+              style={questionButtonActiveStyle}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/images/icons/icon_more.png`}
+                alt="View More Icon"
+                style={questionMoreIconStyle}
+              />
+              <p>문제 보기</p>
+            </button>
+          )}
         </div>
 
-        <div className="controller__sentence-wrapper">
-          <p
+        <div
+          className="controller__sentence-wrapper"
+          style={isPart3Url ? { height: "260px" } : { height: "50px" }}
+        >
+          <div
             className="controller__sentence"
             style={
-              isContextVisible
+              isContextVisible || isQuestionVisible
                 ? { opacity: 1, transition: "opacity 0.2s ease" }
                 : { opacity: 0, transition: "opacity 0.2s ease" }
             }
           >
-            {currentContext}
-          </p>
+            {isContextVisible && <p>{currentContext}</p>}
+            {isQuestionVisible && (
+              <>
+                <div className="question-navigation-container">
+                  <button
+                    onClick={handlePrevSubQuestion}
+                    disabled={subQuestionIndex === 0}
+                  >
+                    <img
+                      src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_left${
+                        subQuestionIndex === 0 ? "_disabled" : ""
+                      }.png`}
+                      alt="Left Arrow Icon"
+                      className="left-arrow"
+                    />
+                    <p style={{ color: subQuestionIndex === 0 ? "#D9D9D9" : "" }}>
+                      이전 문제
+                    </p>
+                  </button>
+                  <button
+                    onClick={handleNextSubQuestion}
+                    disabled={subQuestionIndex === 4}
+                  >
+                    <img
+                      src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_right${
+                        subQuestionIndex === 4 ? "_disabled" : ""
+                      }.png`}
+                      alt="Right Arrow Icon"
+                      className="right-arrow"
+                    />
+                    <p style={{ color: subQuestionIndex === 4 ? "#D9D9D9" : "" }}>
+                      다음 문제
+                    </p>
+                  </button>
+                </div>
+                <p>
+                  Q{subQuestionIndex + 1}. {questionData[subQuestionIndex].question}
+                </p>
+                {isAnswerVisible && (
+                  <p className="answer">{questionData[subQuestionIndex].answer}</p>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
 
       <div className="test-contents__answer mobile">
+        {isPart3Url && (
+          <div
+            className="answer-checkbox"
+            style={{
+              whiteSpace: "nowrap",
+              border: "2px solid transparent",
+              backgroundColor: isAnswerVisible ? "#63B4FF1A" : "#F3F3F3",
+            }}
+            onClick={handleAnswerVisible}
+          >
+            <p style={{ margin: "0", color: isAnswerVisible ? "#40a0ff" : "#85888A" }}>
+              정답 보기
+            </p>
+          </div>
+        )}
         <AnswerButton
           label="정답"
           icon="correct"
           isSelected={selectedAnswer === "정답"}
           onSelect={() => handleAnswerSelect("정답")}
+          labelClassName={isPart3Url ? "hidden" : ""}
         />
         <AnswerButton
           label="오답"
           icon="wrong"
           isSelected={selectedAnswer === "오답"}
           onSelect={() => handleAnswerSelect("오답")}
+          labelClassName={isPart3Url ? "hidden" : ""}
         />
       </div>
     </div>
