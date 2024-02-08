@@ -8,10 +8,11 @@ import Snb from "@components/common/Snb";
 import SelectTypeButton from "@components/common/SelectTypeButton";
 import Pagination from "@components/tests/Pagination";
 import Test03InteractiveButton from "@components/tests/test03/Test03InteractiveButton";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
+import MobileTestController from "@components/common/MobileTestController";
 
 import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
 import { useQuizDataFetching } from "@hooks/useQuizDataFetching";
-import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 
 export default function Test03Screen() {
   const [currentContext, setCurrentContext] = useState("");
@@ -97,13 +98,9 @@ export default function Test03Screen() {
   };
   //
 
-  // 각 문제의 응답 상태 관리
-
-  //
-
   return (
-    <div className="main-wrapper">
-      <div className="main-contents home test">
+    <div className="main-wrapper bg-gray">
+      <div className="main-contents home test h-auto">
         <div className="snb">
           <Snb />
         </div>
@@ -221,6 +218,14 @@ export default function Test03Screen() {
                 handleFinished={handleTestFinished}
               />
             )}
+            <MobileTestController
+              guideText="다음 문장과 질문을 듣고 답해 보세요."
+              difficultyText={difficultyText}
+              quiz={quiz as string}
+              currentQuestionIndex={currentQuestionIndex}
+              totalQuestions={totalQuestions}
+              quizData={data}
+            />
           </div>
         </div>
       </div>
