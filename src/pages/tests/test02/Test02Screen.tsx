@@ -196,12 +196,14 @@ export default function Test02Screen() {
                       icon="correct"
                       isSelected={selectedAnswer === "정답"}
                       onSelect={() => handleAnswerSelect("정답")}
+                      labelClassName=""
                     />
                     <AnswerButton
                       label="오답"
                       icon="wrong"
                       isSelected={selectedAnswer === "오답"}
                       onSelect={() => handleAnswerSelect("오답")}
+                      labelClassName=""
                     />
                   </div>
                 </>
