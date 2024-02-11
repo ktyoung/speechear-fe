@@ -2686,6 +2686,30 @@ input:checked + .slider:before {
     display: none;
   }
 
+  /* MobileDraggableController */
+  .audio-controller-container {
+    margin: 0 0 24px 0;
+  }
+  .audio-controller-container:last-child {
+    margin: 0;
+  }
+  .start-ordering-btn,
+  .view-answer-btn {
+    width: 100%;
+    background-color: #63b4ff1a;
+    border-radius: 25px;
+    padding: 12px 32px;
+    color: #4894fe;
+    font-family: "Pretendard Variable";
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .context-container {
+    width: 100%;
+    margin: 12px 0;
+  }
+
   /* Test05Menu */
   .main-contents.home.test.h-auto {
     height: auto;
