@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from "react-dnd-touch-backend";
+
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import SelectTypeButton from "@components/common/SelectTypeButton";
@@ -9,6 +13,8 @@ import Pagination from "@components/tests/Pagination";
 import CoachMark from "@components/tests/CoachMark";
 import Test04InteractiveButton from "@components/tests/test04/Test04InteractiveButton";
 import DraggableQuestion from "@components/tests/test04/DraggableQuestion";
+import MobileDraggableController from "@components/common/MobileDraggableController";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 
 import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
 
@@ -85,18 +91,29 @@ export default function Test04Screen() {
   };
   //
 
-  // 퀴즈 데이터 패칭 로직
+  // 모바일 감지 로직
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 575);
 
-  //
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 575);
+    };
 
-  // 각 문제의 응답 상태 관리
+    window.addEventListener("resize", handleResize);
+    handleResize();
 
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const backend = isMobile ? TouchBackend : HTML5Backend;
   //
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className="main-wrapper">
-        <div className="main-contents home test">
+    <DndProvider backend={backend}>
+      <div className="main-wrapper bg-gray">
+        <div className="main-contents home test h-auto">
           <div className="snb">
             <Snb />
           </div>
@@ -106,6 +123,8 @@ export default function Test04Screen() {
               <CoachMark handleVisible={handleCoachMarkVisible} isRightFinger={false} />
             )}
             <div className="main-select-wrapper visible">
+              <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
+              <SwipeableHeaderTabs tabsDetail={tabsData.sentenceOrderingTabs} />
               <div className="text-container">
                 {!isFinished ? (
                   <>
@@ -177,6 +196,15 @@ export default function Test04Screen() {
                   handleFinished={handleTestFinished}
                 />
               )}
+              <MobileDraggableController
+                guideText="다음 문장을 다 듣고 순서를 맞춰보세요."
+                difficultyText={difficultyText}
+                quiz={quiz as string}
+                currentQuestionIndex={currentQuestionIndex}
+                totalQuestions={totalQuestions}
+                questionData={visibleQuestions}
+                moveQuestion={moveQuestion}
+              />
             </div>
           </div>
         </div>
