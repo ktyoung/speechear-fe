@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { modalState, globalConfigModalState, gConfigState } from "@states/index";
 
-export default function Header() {
+export default function Header({ className = "" }: any) {
   const [modal, setModal] = useRecoilState(modalState);
   const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -24,7 +24,7 @@ export default function Header() {
           setModal={setModal}
         />
       )} */}
-      <header className="header-wrapper">
+      <header className={`header-wrapper ${className}`}>
         <div className="header">
           <div className="header-logo">
             <Link
@@ -202,7 +202,13 @@ function GlobalConfigModal({ setGlobalConfigModal }: any) {
   );
 }
 
-function NavLink({ to, defaultIcon, clickedIcon, children }: any) {
+type NavLinkProps = {
+  to: string;
+  defaultIcon: string;
+  clickedIcon: string;
+  children: string;
+};
+function NavLink({ to, defaultIcon, clickedIcon, children }: NavLinkProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -231,7 +237,7 @@ function NavLink({ to, defaultIcon, clickedIcon, children }: any) {
         }
         alt="Icon"
       />
-      {children}
+      <p>{children}</p>
     </Link>
   );
 }

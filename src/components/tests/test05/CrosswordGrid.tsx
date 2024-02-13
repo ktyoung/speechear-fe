@@ -1,5 +1,6 @@
 import { renderHintNumber, isCellDisabled } from "./CrosswordHelpers";
 import HintGrid from "./HintGrid";
+import MobileHintGrid from "./MobileHintGrid";
 
 interface CrosswordGridProps {
   rows: number;
@@ -58,6 +59,7 @@ export default function CrosswordGrid({
         <tbody>{gridRows}</tbody>
       </table>
       <HintGrid rows={hintRows} />
+      <MobileHintGrid rows={hintRows} />
     </div>
   );
 }

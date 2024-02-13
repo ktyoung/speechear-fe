@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import data from "@datas/test01Data.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import ToggleSwitch from "@components/common/ToggleSwitch";
@@ -14,6 +15,8 @@ import { useQuestionNavigation } from "@hooks/useQuestionNavigation";
 import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
 import { useQuizDataFetching } from "@hooks/useQuizDataFetching";
 import { useAnswerManagement } from "@hooks/useAnswerManagement";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
+import MobileTestController from "@components/common/MobileTestController";
 
 export default function Test01Screen() {
   const [currentContext, setCurrentContext] = useState("");
@@ -21,7 +24,7 @@ export default function Test01Screen() {
   const [isPlay, setIsPlay] = useState(false);
   const [isContextVisible, setIsContextVisible] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const { level, quiz } = useParams();
+  const { level, quiz } = useParams<{ level: string; quiz: string }>();
   const totalQuestions = 10;
 
   // 난이도 매핑 로직 (useDifficultyMapping)
@@ -79,7 +82,7 @@ export default function Test01Screen() {
   //
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper bg-gray">
       <div className="main-contents home test">
         <div className="snb">
           <Snb />
@@ -87,6 +90,7 @@ export default function Test01Screen() {
         <div className="main-contents__column">
           <p className="mb pb">소음 하 문장 듣기</p>
           <div className="main-select-wrapper visible">
+            <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
             <div className="text-container">
               {!isFinished ? (
                 <>
@@ -168,12 +172,14 @@ export default function Test01Screen() {
                       icon="correct"
                       isSelected={selectedAnswer === "정답"}
                       onSelect={() => handleAnswerSelect("정답")}
+                      labelClassName=""
                     />
                     <AnswerButton
                       label="오답"
                       icon="wrong"
                       isSelected={selectedAnswer === "오답"}
                       onSelect={() => handleAnswerSelect("오답")}
+                      labelClassName=""
                     />
                   </div>
                 </>
@@ -187,12 +193,21 @@ export default function Test01Screen() {
             </div>
             {!isFinished && (
               <Pagination
+                className="hidden"
                 currentPage={currentQuestionIndex}
                 totalPages={totalQuestions}
                 onPageChange={setCurrentQuestionIndex}
                 handleFinished={handleTestFinished}
               />
             )}
+            <MobileTestController
+              guideText="다음 문장을 듣고 따라해 보세요."
+              difficultyText={difficultyText}
+              quiz={quiz as string}
+              currentQuestionIndex={currentQuestionIndex}
+              totalQuestions={totalQuestions}
+              quizData={data}
+            />
           </div>
         </div>
       </div>

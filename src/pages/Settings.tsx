@@ -1,3 +1,5 @@
+import BottomNavigationBar from "@components/common/BottomNavigationBar";
+import Header from "@components/common/Header";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -14,8 +16,9 @@ export default function Settings() {
 
   return (
     <>
+      <Header className="settings" />
       <div className="main-wrapper settings">
-        <div className="main-contents">
+        <div className="main-contents settings">
           <img
             src={`${process.env.PUBLIC_URL}/images/logo/logo.png`}
             alt="White Logo"
@@ -83,6 +86,7 @@ export default function Settings() {
           </div>
         </div>
       </div>
+      <BottomNavigationBar className="settings" />
     </>
   );
 }

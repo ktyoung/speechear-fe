@@ -3,8 +3,11 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import useAxios, { API_URL, IRequestType } from "@hooks/useAxios";
 
+import tabsData from "@datas/swipeableHeaderTabsData.json";
+
 import Snb from "@components/common/Snb";
 import StatusCard from "@components/tests/StatusCard";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 
 const TOTAL_CARDS = 100;
 const CARDS_PER_PAGE = 10;
@@ -43,14 +46,15 @@ export default function Test01Level() {
   }, [currentPage]);
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper bg-gray">
       <div className="main-contents home test">
         <div className="snb">
           <Snb />
         </div>
         <div className="main-contents__column">
           <p className="mb pb">소음 하 문장 듣기</p>
-          <div className="main-select-wrapper visible">
+          <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
+          <div className="main-select-wrapper visible sm">
             <p className="font-light">듣기연습할 문장 세트를 선택하세요.</p>
             <div className="status-card-wrapper">
               {currentCards.map((number) => (
@@ -69,11 +73,11 @@ export default function Test01Level() {
   );
 }
 
-interface PaginationProps {
+type PaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (pageNumber: number) => void;
-}
+};
 function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
   return (
     <div className="pagination-wrapper">

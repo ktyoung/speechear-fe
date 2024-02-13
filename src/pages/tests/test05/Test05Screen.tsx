@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import crosswordData from "@datas/test05Data.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import CoachMark from "@components/tests/CoachMark";
 import CrosswordGrid from "@components/tests/test05/CrosswordGrid";
 import NavigationButton from "@components/tests/test05/NavigationButton";
 import SpeechBubble from "@components/tests/test05/SpeechBubble";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
 
 export default function Test05Screen() {
   const [quizNavIndex, setQuizNavIndex] = useState(1);
@@ -58,9 +60,33 @@ export default function Test05Screen() {
   };
   //
 
+  //
+  const [quizTabs, setQuizTabs] = useState<CrossWordQuizTab[]>(
+    generateCrossWordQuizTabs()
+  );
+
+  type CrossWordQuizTab = {
+    title: string;
+    to: string;
+  };
+
+  function generateCrossWordQuizTabs(): CrossWordQuizTab[] {
+    const tabs: CrossWordQuizTab[] = [];
+
+    for (let i = 1; i <= 100; i++) {
+      tabs.push({
+        title: `퀴즈 ${i}`,
+        to: `/training/part5/${i}`,
+      });
+    }
+
+    return tabs;
+  }
+  //
+
   return (
-    <div className="main-wrapper">
-      <div className="main-contents home test">
+    <div className="main-wrapper bg-gray">
+      <div className="main-contents home test h-auto">
         <div className="snb">
           <Snb />
         </div>
@@ -70,13 +96,16 @@ export default function Test05Screen() {
             <CoachMark handleVisible={handleCoachMarkVisible} isRightFinger={true} />
           )}
           <div className="main-select-wrapper visible">
+            <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
+            <SwipeableHeaderTabs tabsDetail={quizTabs} />
             <div className="quiz-navigation-container">
               <button onClick={handlePrevious} disabled={quizNavIndex === 1}>
                 <img
-                  src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_left.png`}
+                  src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_left${
+                    quizNavIndex === 1 ? "_disabled" : ""
+                  }.png`}
                   alt="Prev Arrow Icon"
                   style={{
-                    opacity: quizNavIndex === 1 ? 0.5 : 1,
                     cursor: quizNavIndex === 1 ? "default" : "pointer",
                   }}
                 />
@@ -88,16 +117,17 @@ export default function Test05Screen() {
               </div>
               <button onClick={handleNext} disabled={quizNavIndex === 91}>
                 <img
-                  src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_right.png`}
+                  src={`${process.env.PUBLIC_URL}/images/icons/icon_arrow_right${
+                    quizNavIndex === 91 ? "_disabled" : ""
+                  }.png`}
                   alt="Next Arrow Icon"
                   style={{
-                    opacity: quizNavIndex === 91 ? 0.5 : 1,
                     cursor: quizNavIndex === 91 ? "default" : "pointer",
                   }}
                 />
               </button>
             </div>
-            <div className="test-contents flex-start">
+            <div className="test-contents flex-start visible">
               <SpeechBubble showAnswer={handleShowAnswer} />
               {quizData && (
                 <CrosswordGrid

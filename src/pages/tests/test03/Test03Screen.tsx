@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import data from "@datas/test03Data.json";
+import tabsData from "@datas/swipeableHeaderTabsData.json";
 
 import Snb from "@components/common/Snb";
 import SelectTypeButton from "@components/common/SelectTypeButton";
 import Pagination from "@components/tests/Pagination";
 import Test03InteractiveButton from "@components/tests/test03/Test03InteractiveButton";
+import SwipeableHeaderTabs from "@components/common/SwipeableHeaderTabs";
+import MobileTestController from "@components/common/MobileTestController";
 
 import { useDifficultyMapping } from "@hooks/useDifficultyMapping";
 import { useQuizDataFetching } from "@hooks/useQuizDataFetching";
@@ -95,19 +98,17 @@ export default function Test03Screen() {
   };
   //
 
-  // 각 문제의 응답 상태 관리
-
-  //
-
   return (
-    <div className="main-wrapper">
-      <div className="main-contents home test">
+    <div className="main-wrapper bg-gray">
+      <div className="main-contents home test h-auto">
         <div className="snb">
           <Snb />
         </div>
         <div className="main-contents__column">
           <p className="mb pb">긴 이야기 듣기</p>
           <div className="main-select-wrapper visible">
+            <SwipeableHeaderTabs tabsDetail={tabsData.mainNavigationTabs} />
+            <SwipeableHeaderTabs tabsDetail={tabsData.listeningLongStoriesTabs} />
             <div className="text-container">
               {!isFinished ? (
                 <>
@@ -210,12 +211,21 @@ export default function Test03Screen() {
             </div>
             {!isFinished && (
               <Pagination
+                className="hidden"
                 currentPage={currentQuestionIndex}
                 totalPages={totalQuestions}
                 onPageChange={handlePageChange}
                 handleFinished={handleTestFinished}
               />
             )}
+            <MobileTestController
+              guideText="다음 문장과 질문을 듣고 답해 보세요."
+              difficultyText={difficultyText}
+              quiz={quiz as string}
+              currentQuestionIndex={currentQuestionIndex}
+              totalQuestions={totalQuestions}
+              quizData={data}
+            />
           </div>
         </div>
       </div>
