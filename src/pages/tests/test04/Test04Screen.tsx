@@ -92,11 +92,13 @@ export default function Test04Screen() {
   //
 
   // 모바일 감지 로직
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 575);
+  const [isTouchDevice, setIsTouchDevice] = useState(
+    window.innerWidth <= 1024 || "ontouchstart" in window
+  );
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 575);
+      setIsTouchDevice(window.innerWidth <= 1024 || "ontouchstart" in window);
     };
 
     window.addEventListener("resize", handleResize);
@@ -107,7 +109,7 @@ export default function Test04Screen() {
     };
   }, []);
 
-  const backend = isMobile ? TouchBackend : HTML5Backend;
+  const backend = isTouchDevice ? TouchBackend : HTML5Backend;
   //
 
   return (
