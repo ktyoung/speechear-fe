@@ -1,11 +1,11 @@
-import AnswerButton from "@components/common/AnswerButton";
 import { useState } from "react";
 
 interface HintGridProps {
   rows: number;
+  onShowAnswer: () => void;
 }
 
-export default function HintGrid({ rows }: HintGridProps) {
+export default function HintGrid({ rows, onShowAnswer }: HintGridProps) {
   // 각 슬라이더의 상태 관리
   const [sliderValues, setSliderValues] = useState(Array(rows).fill(1));
 
@@ -87,7 +87,7 @@ export default function HintGrid({ rows }: HintGridProps) {
         })}
       <div className="hint__view-listen">
         <button>정답듣기</button>
-        <button>정답 모두보기</button>
+        <button onClick={onShowAnswer}>정답 모두보기</button>
       </div>
     </div>
   );

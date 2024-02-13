@@ -10,6 +10,7 @@ interface CrosswordGridProps {
   horizontalHints: Array<{ number: number; row: number; col: number }>;
   verticalHints: Array<{ number: number; row: number; col: number }>;
   answers: { [key: string]: string };
+  onShowAnswer: () => void;
 }
 
 export default function CrosswordGrid({
@@ -20,6 +21,7 @@ export default function CrosswordGrid({
   horizontalHints,
   verticalHints,
   answers,
+  onShowAnswer,
 }: CrosswordGridProps) {
   const gridRows = Array.from({ length: rows }, (_, rowIndex) => (
     <tr key={rowIndex} style={{ height: `${462 / rows}px` }}>
@@ -58,8 +60,8 @@ export default function CrosswordGrid({
       <table className="crossword-grid">
         <tbody>{gridRows}</tbody>
       </table>
-      <HintGrid rows={hintRows} />
-      <MobileHintGrid rows={hintRows} />
+      <HintGrid rows={hintRows} onShowAnswer={onShowAnswer} />
+      <MobileHintGrid rows={hintRows} onShowAnswer={onShowAnswer} />
     </div>
   );
 }

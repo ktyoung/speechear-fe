@@ -1421,6 +1421,9 @@
   height: 100%;
   text-align: center;
 }
+.hint-grid-container.sm {
+  display: none;
+}
 
 .hint__slider-answer {
   display: flex;
@@ -1507,7 +1510,7 @@
   margin: 0 30px;
   color: #8696bb;
   text-align: center;
-  font-family: "Pretendard Varialble";
+  font-family: "Pretendard Variable";
   font-size: 18px;
   font-weight: 800;
 }
@@ -1955,7 +1958,7 @@ input:checked + .slider:before {
     align-items: center;
     padding: 50px 80px;
   }
-  .quiz-link-container {
+  .quiz-link-slide .quiz-link-container {
     gap: 50px 10px;
   }
   .quiz-link-container a {

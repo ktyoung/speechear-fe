@@ -138,6 +138,7 @@ export default function Test05Screen() {
                   horizontalHints={quizData.horizontalHints}
                   verticalHints={quizData.verticalHints}
                   answers={showAnswers ? quizData.answers : {}}
+                  onShowAnswer={handleShowAnswer}
                 />
               )}
             </div>

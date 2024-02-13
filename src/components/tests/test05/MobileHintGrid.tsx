@@ -1,11 +1,11 @@
-import AnswerButton from "@components/common/AnswerButton";
 import { useState } from "react";
 
 interface HintGridProps {
   rows: number;
+  onShowAnswer: () => void;
 }
 
-export default function MobileHintGrid({ rows }: HintGridProps) {
+export default function MobileHintGrid({ rows, onShowAnswer }: HintGridProps) {
   // 각 문제의 응답 상태 관리
   const [selectedAnswers, setSelectedAnswers] = useState(Array(rows).fill(null));
 
@@ -46,7 +46,7 @@ export default function MobileHintGrid({ rows }: HintGridProps) {
           );
         })}
       <div className="hint__feature">
-        <button>전체 정답 보기</button>
+        <button onClick={onShowAnswer}>전체 정답 보기</button>
       </div>
     </div>
   );
