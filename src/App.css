@@ -2731,6 +2731,89 @@ input:checked + .slider:before {
   .coach-mark-container {
     display: none;
   }
+
+  .quiz-navigation-container {
+    display: none;
+  }
+  .test-contents.flex-start.visible {
+    display: flex;
+  }
+  .speech-bubble-container {
+    display: none;
+  }
+  .crossword-wrapper {
+    flex-direction: column;
+    margin: 24px 0 0 0;
+  }
+
+  /* CrosswordGrid */
+  .crossword-grid {
+    margin: 0 0 24px 0;
+  }
+
+  /* HintGrid */
+  .hint-grid-container {
+    display: none;
+  }
+
+  /* MobileHintGrid */
+  .hint-grid-container.sm {
+    display: flex;
+    width: 100%;
+  }
+  .hint__answers-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 12px 0;
+  }
+  .hint__buttons {
+    width: 60%;
+  }
+  .hint__buttons,
+  .check-answers {
+    display: flex;
+    justify-content: center;
+    text-wrap: nowrap;
+  }
+  .check-answers > p {
+    margin: 0 -12px 0 0;
+    color: #8696bb;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .play-hint__btn,
+  .play-answer__btn {
+    width: 100%;
+    margin: 0 12px 0 0;
+    padding: 16px 12px;
+    border-radius: 25px;
+    background-color: #8696bb;
+    color: #fff;
+    font-family: "Pretendard Variable";
+    font-weight: 800;
+    font-size: 15px;
+  }
+
+  .hint__feature {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 24px 0 30px 0;
+  }
+  .hint__feature > button {
+    width: 40%;
+    margin: 0 12px 0 0;
+    padding: 16px 12px;
+    border-radius: 25px;
+    background-color: #8696bb;
+    color: #fff;
+    font-family: "Pretendard Variable";
+    font-weight: 800;
+    font-size: 15px;
+    text-wrap: nowrap;
+  }
 }
 
 @media screen and (max-width: 375px) {
