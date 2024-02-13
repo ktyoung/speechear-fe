@@ -1421,6 +1421,9 @@
   height: 100%;
   text-align: center;
 }
+.hint-grid-container.sm {
+  display: none;
+}
 
 .hint__slider-answer {
   display: flex;
