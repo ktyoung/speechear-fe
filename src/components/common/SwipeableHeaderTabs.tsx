@@ -20,7 +20,13 @@ export default function SwipeableHeaderTabs({ tabsDetail }: SwipeableHeaderTabsP
   const [activeIndex, setActiveIndex] = useState(0);
 
   const findInitialSlideIndex = (pathname: string, tabsDetail: TabDetail[]): number => {
-    return tabsDetail.findIndex((tab) => pathname.includes(tab.to));
+    let index = tabsDetail.findIndex((tab) => pathname === tab.to);
+
+    if (index === -1) {
+      index = tabsDetail.findIndex((tab) => pathname.startsWith(tab.to));
+    }
+
+    return index;
   };
 
   useEffect(() => {
