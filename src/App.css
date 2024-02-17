@@ -2171,6 +2171,15 @@ input:checked + .slider:before {
   .test-contents__buttons.row button p {
     word-break: keep-all;
   }
+
+  /* Test03 */
+  .test-category-lnb.narrow {
+    gap: 15px 20px;
+  }
+  .test-category-lnb.narrow a {
+    flex: 0 0 15%;
+    white-space: nowrap;
+  }
 }
 
 /* Mobile */
