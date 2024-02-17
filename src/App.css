@@ -1157,7 +1157,7 @@
   margin: 0 0 18px 170px;
   color: #4894fe;
   text-align: center;
-  font-family: "Roboto";
+  font-family: "Pretendard Variable";
   font-size: 18px;
   font-weight: 600;
 }
@@ -1201,8 +1201,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-width: 1124px;
-  min-height: 717px;
+  width: 1124px;
+  height: 717px;
   padding: 30px;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 40px;
@@ -1929,11 +1929,7 @@ input:checked + .slider:before {
   /* Test04 */
   .coach-mark-container {
     width: 730px;
-    min-width: 730px;
-    max-width: 730px;
     height: 660px;
-    min-height: 660px;
-    max-height: 660px;
   }
   .guide-with-finger {
     left: 12%;
@@ -2116,7 +2112,6 @@ input:checked + .slider:before {
 
   .main-contents.home.test .main-select-wrapper.visible {
     width: 90%;
-    /* margin: 0 0 0 20px; */
   }
   .status-card {
     width: 100%;
@@ -2179,6 +2174,71 @@ input:checked + .slider:before {
   .test-category-lnb.narrow a {
     flex: 0 0 15%;
     white-space: nowrap;
+  }
+
+  /* Test04 */
+  .main-contents__column.relative {
+    position: relative;
+  }
+  .coach-mark-container {
+    position: absolute;
+    top: 59px;
+    width: 90%;
+    height: 734px;
+  }
+  .coach-mark-btn__close {
+    top: 7%;
+  }
+  .guide-with-finger {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    bottom: 30%;
+    left: 30%;
+  }
+
+  .test-card-container {
+    width: 100%;
+  }
+
+  .guide-text {
+    margin: 0 0 10px 95px;
+  }
+
+  .test-contents__section {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .test-contents__buttons,
+  .context-container {
+    width: calc(40% - 10px);
+  }
+  .test-contents__answer.sm {
+    width: calc(20% - 10px);
+  }
+  .button__answer {
+    margin: 0;
+  }
+  .test-contents__buttons,
+  .context-container,
+  .test-contents__answer.sm {
+    flex: none;
+    margin: 0 5px;
+  }
+  .context-container {
+    padding: 12px;
+  }
+  .test-contents__buttons.btn__sm button {
+    width: 100%;
+    padding: 0 20px;
+    word-break: keep-all;
+    font-family: "Pretendard Variable";
+    font-size: 18px;
+  }
+  .test-contents__buttons.margin-left button,
+  .test-contents__buttons button:first-child img {
+    margin: 0;
   }
 }
 
