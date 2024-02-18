@@ -1305,7 +1305,7 @@
 .speech-bubble-container {
   position: absolute;
   left: 5%;
-  top: 5%;
+  top: 2%;
   z-index: 10;
   cursor: pointer;
 }
@@ -1968,8 +1968,8 @@ input:checked + .slider:before {
   }
 
   .guide-with-finger.finger__right {
-    left: 38.5%;
-    bottom: 13.5%;
+    left: 37%;
+    bottom: 12%;
   }
 
   .crossword-wrapper {
@@ -2014,9 +2014,19 @@ input:checked + .slider:before {
 
 /* Tablet (~1024px) */
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
+  /* License */
+  .main-wrapper.license {
+    padding: 150px 50px;
+  }
+
   /* Test02 */
   .test-category-container {
     justify-content: center;
+  }
+
+  /* Test05 */
+  .pagination-arrows button {
+    top: calc((660px - 61px) / 2);
   }
 }
 
@@ -2184,7 +2194,7 @@ input:checked + .slider:before {
     position: absolute;
     top: 59px;
     width: 90%;
-    height: 734px;
+    height: calc(100% - 60px);
   }
   .coach-mark-btn__close {
     top: 7%;
@@ -2239,6 +2249,64 @@ input:checked + .slider:before {
   .test-contents__buttons.margin-left button,
   .test-contents__buttons button:first-child img {
     margin: 0;
+  }
+
+  /* Test05 */
+  .main-contents.home.test .main-select-wrapper.visible.relative {
+    padding: 50px 0;
+  }
+
+  .guide-with-finger.finger__right {
+    left: 29.5%;
+    bottom: 14.5%;
+  }
+
+  .quiz-link-container-swiper {
+    width: 55%;
+  }
+  .quiz-link-slide .quiz-link-container {
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px 10px;
+    width: 100%;
+  }
+  .quiz-link-container a {
+    font-size: 20px;
+  }
+
+  .quiz-navigation-container button img {
+    width: 12px;
+  }
+  .navigation {
+    font-size: 16px;
+  }
+  .navigation a {
+    width: 100%;
+  }
+
+  .speech-bubble-container {
+    left: 0;
+    top: 0;
+  }
+
+  .crossword-grid {
+    margin: 0 12px 0 0;
+  }
+  .crossword-answer-input input {
+    font-size: 36px;
+  }
+
+  .hint__view-listen button {
+    margin: 0 10px;
+    white-space: nowrap;
+  }
+
+  .hint-slider::-webkit-slider-thumb {
+    width: 40px;
+    height: 30px;
+  }
+  .slider-thumb-label {
+    font-size: 12px;
   }
 }
 
