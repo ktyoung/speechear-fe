@@ -9,7 +9,7 @@ export default function Test04Menu() {
   const testCategories = categories["04_1"];
 
   return (
-    <div className="main-wrapper gd-gray">
+    <div className="main-wrapper bg-gray">
       <div className="main-contents home test">
         <div className="snb">
           <Snb />

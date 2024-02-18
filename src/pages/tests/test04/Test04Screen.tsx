@@ -119,7 +119,7 @@ export default function Test04Screen() {
           <div className="snb">
             <Snb />
           </div>
-          <div className="main-contents__column  relative">
+          <div className="main-contents__column relative">
             <p className="mb pb">문장 순서화 하기</p>
             {isCoachMarkVisible && (
               <CoachMark handleVisible={handleCoachMarkVisible} isRightFinger={false} />
