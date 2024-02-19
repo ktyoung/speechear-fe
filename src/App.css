@@ -284,8 +284,10 @@
 }
 
 .auth_error {
+  width: 366px;
   text-align: center;
   margin-top: 15px;
+  word-break: keep-all;
 }
 
 .auth_error > span {
@@ -2014,6 +2016,10 @@ input:checked + .slider:before {
 
 /* Tablet (~1024px) */
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
+  /* Login */
+  .form_area {
+    margin: 0 60px 0 0;
+  }
   /* License */
   .main-wrapper.license {
     padding: 150px 50px;
@@ -2344,6 +2350,7 @@ input:checked + .slider:before {
     font-size: 18px;
     font-family: "Pretendard Variable";
   }
+
   .btn_login_bottom {
     margin: 20px 0;
   }
@@ -2356,6 +2363,13 @@ input:checked + .slider:before {
   .account_link > div {
     margin: 0 0 20px 0;
     padding: 0;
+  }
+
+  .auth_error {
+    width: 240px;
+  }
+  .auth_error > span {
+    font-size: 1em;
   }
 
   .text_div_bottom {

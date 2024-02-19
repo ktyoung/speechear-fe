@@ -117,7 +117,9 @@ export default function Login() {
               </div>
               {authError && (
                 <div className="auth_error">
-                  <span>로그인 오류 : 아이디 또는 비밀번호를 확인해주세요</span>
+                  <span>
+                    로그인 오류: <br /> 아이디 또는 비밀번호를 확인해주세요
+                  </span>
                 </div>
               )}
               <div className="btn_login_bottom">
