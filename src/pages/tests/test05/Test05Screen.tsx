@@ -90,7 +90,7 @@ export default function Test05Screen() {
         <div className="snb">
           <Snb />
         </div>
-        <div className="main-contents__column">
+        <div className="main-contents__column relative">
           <p className="mb pb">가로세로 퀴즈</p>
           {isCoachMarkVisible && (
             <CoachMark handleVisible={handleCoachMarkVisible} isRightFinger={true} />
